@@ -2,6 +2,7 @@
 import React from 'react';
 import './Tonics.css';
 import coralGlow from '../../assets/Image/coral-glow.svg';
+import Pointer from "../../assets/Image/Pointer.svg";
 
 export const Tonics = () => {
     const words = [
@@ -53,7 +54,9 @@ export const Tonics = () => {
         <section className="Tonics_section container">
             <div className="Tonics_header">
                 <h2 className="Tonics_title">НАШИ ТОНИКИ</h2>
-                <a href="#all" className="Tonics_link_all">ВСЕ ТОНИКИ ↗</a>
+                <a href="#all" className="Tonics_link_all">ВСЕ ТОНИКИ
+                    <img src={Pointer} alt="pointer" />
+                </a>
             </div>
 
             <div className="Tonics_visual">

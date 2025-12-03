@@ -58,7 +58,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--clr-bg);
+
     color: var(--clr-white);
     font-family: 'Inter', sans-serif;
     font-size: var(--fs-16);
@@ -86,6 +86,7 @@ body {
 }
 
 .section {
+    background-color: var(--clr-bg);
     border-radius: 2.08vw;
     margin-bottom: 2.08vw;
 }
@@ -208,9 +209,8 @@ section {
 
 /* Если нужен максимальный контейнер */
 .container {
-    max-width: 89.58vw; /* 1720px при 1920px */
+    max-width: 91.7vw; /* 1720px при 1920px */
     margin: 0 auto;
-    padding: 0 1.04vw; /* 20px по бокам */
 }
 
 /* ========== TABLET (768px - 1024px) ========== */
