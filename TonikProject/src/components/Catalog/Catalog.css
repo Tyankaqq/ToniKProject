@@ -19,6 +19,9 @@
 }
 
 .Catalog_link_all {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
     color: var(--clr-white);
     text-decoration: none;
     font-size: var(--fs-14);
@@ -216,7 +219,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 8.33vw;
-        padding: 0 5.56vw;
+
     }
 
     .Catalog_title {

@@ -180,7 +180,7 @@
     }
 
     .ContactForm_container {
-        padding: 0 5.56vw;
+        padding: 0;
         flex-direction: column;
         align-items: flex-start;
         gap: 8.33vw;

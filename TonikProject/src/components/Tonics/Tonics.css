@@ -20,6 +20,9 @@
 }
 
 .Tonics_link_all {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
     color: var(--clr-white);
     text-decoration: none;
     text-transform: uppercase;

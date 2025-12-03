@@ -4,6 +4,7 @@ import card1 from '../../assets/Image/card1.svg'; // Импортируй все
 import card2 from '../../assets/Image/card2.svg';
 import card3 from '../../assets/Image/card3.svg';
 import card4 from '../../assets/Image/card4.svg';
+import Pointer from "../../assets/Image/Pointer.svg";
 
 
 export const Catalog = () => {
@@ -19,7 +20,9 @@ export const Catalog = () => {
         <section className="Catalog_section container">
             <div className="Catalog_header">
                 <h2 className="Catalog_title">КАТАЛОГ</h2>
-                <a href="#all" className="Catalog_link_all">ВСЕ ТОВАРЫ ↗</a>
+                <a href="#all" className="Catalog_link_all">ВСЕ ТОВАРЫ
+                    <img src={Pointer} alt="pointer" />
+                </a>
             </div>
 
             <div className="Catalog_row">
