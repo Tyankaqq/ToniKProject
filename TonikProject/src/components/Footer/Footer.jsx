@@ -1,7 +1,7 @@
 // Footer.jsx
 import React from 'react';
 import './Footer.css';
-import logo from '../../assets/Image/logo.svg';
+import logo from '../../assets/Image/Logo.svg';
 import Kant from '../../assets/Image/KantLogo.svg';
 import vkIcon from '../../assets/Image/VkLogo.svg';
 import telegramIcon from '../../assets/Image/TgLogo.svg';

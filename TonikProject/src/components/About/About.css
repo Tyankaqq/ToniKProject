@@ -30,9 +30,9 @@
     overflow-y: auto;
 }
 
-/* Desktop: левая колонка "невидима", не создает обертку */
+
 .About_left_column {
-    display: contents; /* Элемент игнорируется, дети ведут себя так, будто wrapper нет */
+    display: contents;
 }
 
 .About_title {

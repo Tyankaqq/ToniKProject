@@ -11,7 +11,7 @@
     margin: 0 auto;
 }
 
-/* === HEADER (ЗАГОЛОВОК + ССЫЛКА) === */
+
 .Blog_header {
     display: flex;
     justify-content: space-between;
@@ -54,7 +54,7 @@
     max-height: 880px;
 }
 
-/* Большая карточка занимает 2 ряда */
+
 .Blog_card_large {
     grid-row: span 2;
 }
@@ -72,7 +72,7 @@
     transform: translateY(-5px);
 }
 
-/* === КОНТЕНТ КАРТОЧКИ (ТЕГ + ЗАГОЛОВОК) - НАД ФОТО === */
+
 .Blog_card_content {
     display: flex;
     flex-direction: column;
@@ -109,7 +109,7 @@
     -webkit-line-clamp: 2;
 }
 
-/* === ОБЕРТКА ИЗОБРАЖЕНИЯ - ПОД ТЕКСТОМ === */
+
 .Blog_card_image_wrapper {
     width: 100%;
     border-radius: 1.04vw;
