@@ -1,0 +1,240 @@
+/* src/index.css */
+
+/* Подключаем шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Цвета из Figma */
+    --clr-bg: #1e0d0d;
+    --clr-white: #ffffff;
+    --clr-black: #000000;
+    --clr-accent-blue: #cdffff;
+    --clr-grey-light: #e5e5e5;
+    --clr-text-secondary: rgba(255, 255, 255, 0.7);
+
+    /* Отступы (gaps) - рассчитываем в vw */
+    --gap-base: 1.04vw; /* 20px / 1920 * 100 */
+    --gap-medium: 2.08vw; /* 40px */
+    --gap-large: 4.16vw; /* 80px */
+
+    /* Размеры шрифтов ТОЛЬКО в vw */
+    --fs-120: 6.25vw;
+    /* Page Title (Главная страница) - 100px */
+    --fs-100: 5.2083vw;
+    /* Tonic Big (Ламинария, Анфельция) - 60px */
+    --fs-60: 3.125vw;
+    /* Section Titles (КТО МЫ...) - 50px */
+    --fs-50: 2.6042vw;
+    /* Medium Text (Зостера) - 40px */
+    --fs-40: 2.0833vw;
+    /* Subtitles Mobile/Tablet adaptives - 33px */
+    --fs-33: 1.7188vw;
+    /* Tonic Small (Корбикула) - 30px */
+    --fs-30: 1.5625vw;
+    /* Philosophy Title - 25px */
+    --fs-25: 1.3021vw;
+    /* Philosophy Title Mobile - 22px */
+    --fs-22: 1.1458vw;
+    /* Product/Tonic Names, Terms - 20px */
+    --fs-20: 1.0417vw;
+    /* Philosophy Terms Mobile - 18px */
+    --fs-18: 0.9375vw;
+    /* Body Text / Buttons (Описание, Кнопки) - 16px */
+    --fs-16: 0.8333vw;
+    /* Small Body (Footer links, desc) - 14px */
+    --fs-14: 0.7292vw;
+
+    /* Сетки */
+    --grid-container-padding: var(--gap-medium);
+    --grid-columns-desktop: 12;
+    --grid-column-gap: var(--gap-base);
+    --gap-20: 1.0417vw;
+    --gap-40: 2.0833vw;
+    --gap-60: 3.125vw;
+    --gap-80: 4.1667vw;
+    --gap-150: 7.8125vw;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--clr-bg);
+    color: var(--clr-white);
+    font-family: 'Inter', sans-serif;
+    font-size: var(--fs-16);
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+}
+
+.section-dark {
+    background-color: #1e0d0d;
+    border-radius: 0 0 2.08vw 2.08vw;
+}
+
+.section-light {
+    background-color: #ffffff;
+    border-radius: 2.08vw 2.08vw 0 0;
+}
+
+.section {
+    border-radius: 2.08vw;
+    margin-bottom: 2.08vw;
+}
+
+/* ============================================ */
+/* === АДАПТИВЫ === */
+/* ============================================ */
+
+/* === TABLET 768px - 1023px === */
+@media (max-width: 1023px) {
+    :root {
+        /* Отступы для планшета */
+        --gap-base: 15px;
+        --gap-medium: 30px;
+        --gap-large: 60px;
+        --gap-20: 15px;
+        --gap-40: 30px;
+        --gap-60: 40px;
+        --gap-80: 60px;
+        --gap-150: 100px;
+
+        /* Размеры шрифтов для планшета (768px) */
+        --fs-120: 80px;
+        --fs-100: 70px;
+        --fs-60: 40px;
+        --fs-50: 36px;
+        --fs-40: 30px;
+        --fs-33: 33px;
+        --fs-30: 28px;
+        --fs-25: 24px;
+        --fs-22: 22px;
+        --fs-20: 20px;
+        --fs-18: 18px;
+        --fs-16: 16px;
+        --fs-14: 14px;
+
+        --grid-container-padding: 20px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .section-dark {
+        border-radius: 0 0 30px 30px;
+    }
+
+    .section-light {
+        border-radius: 30px 30px 0 0;
+    }
+
+    .section {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+/* === MOBILE 320px - 767px === */
+@media (max-width: 767px) {
+    :root {
+        /* Отступы для мобилки */
+        --gap-base: 12px;
+        --gap-medium: 20px;
+        --gap-large: 40px;
+        --gap-20: 12px;
+        --gap-40: 20px;
+        --gap-60: 30px;
+        --gap-80: 40px;
+        --gap-150: 60px;
+
+        /* Размеры шрифтов для мобилки */
+        --fs-120: 50px;
+        --fs-100: 44px;
+        --fs-60: 32px;
+        --fs-50: 28px;
+        --fs-40: 24px;
+        --fs-33: 26px;
+        --fs-30: 22px;
+        --fs-25: 20px;
+        --fs-22: 18px;
+        --fs-20: 16px;
+        --fs-18: 16px;
+        --fs-16: 14px;
+        --fs-14: 13px;
+
+        --grid-container-padding: 16px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .section-dark {
+        border-radius: 0 0 20px 20px;
+    }
+
+    .section-light {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .section {
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+}
+/* В твоём App.css или globals.css */
+
+/* ========== БАЗОВЫЕ СТИЛИ (≥1025px) ========== */
+body {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+section {
+    width: calc(100% - 2.08vw); /* ~40px при 1920px */
+    margin: 0 auto;
+}
+
+/* Если нужен максимальный контейнер */
+.container {
+    max-width: 89.58vw; /* 1720px при 1920px */
+    margin: 0 auto;
+    padding: 0 1.04vw; /* 20px по бокам */
+}
+
+/* ========== TABLET (768px - 1024px) ========== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    section {
+        width: 100%;
+        padding: 0 2.60vw; /* 20px при 768px */
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 2.60vw;
+    }
+}
+
+/* ========== MOBILE (360px - 767px) ========== */
+@media (max-width: 767px) {
+    section {
+        width: 100%;
+        padding: 0 5.56vw; /* 20px при 360px */
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 5.56vw;
+    }
+}

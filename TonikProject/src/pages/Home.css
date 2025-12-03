@@ -1,0 +1,10 @@
+@media (min-width: 1025px) {
+
+    section{
+        width: calc(100% - 40px);
+    }
+
+    body{ max-width: 100%; }
+
+
+}
