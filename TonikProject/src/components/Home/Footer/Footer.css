@@ -4,6 +4,7 @@
 }
 
 .Footer_main {
+    width: 94.7%;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
