@@ -1,4 +1,4 @@
-// Tonics.jsx
+// TonicsPage.jsx
 import React from 'react';
 import './Tonics.css';
 import coralGlow from '../../../assets/Image/coral-glow.svg';

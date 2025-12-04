@@ -1,0 +1,213 @@
+/* ========== DESKTOP (≥1025px) ========== */
+.TonicsHero_section {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--clr-bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5.21vw 0;
+}
+
+.TonicsHero_mobile {
+    display: none;
+}
+
+.TonicsHero_content {
+    max-width: 91.58vw;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5.21vw;
+    position: relative;
+    z-index: 2;
+}
+
+.TonicsHero_left {
+    flex: 1;
+
+}
+
+.TonicsHero_title {
+    font-size: 10.7vw;
+    font-weight: 600;
+    line-height: 70%;
+    letter-spacing: -0.08em;
+
+    color: var(--clr-white);
+
+}
+
+.TonicsHero_description {
+    font-size: 2.1vw;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    color: var(--clr-white);
+    margin: 0 0 2.60vw 0;
+
+}
+
+.TonicsHero_button {
+    background-color: var(--clr-white);
+    color: var(--clr-black);
+    border: none;
+    padding: 0.94vw 2.08vw;
+    font-size: 0.83vw;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    border-radius: 2.08vw;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+
+.TonicsHero_button:hover {
+    opacity: 0.85;
+}
+
+.TonicsHero_right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.TonicsHero_image {
+    width: 41.67vw;
+    height: 41.67vw;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5.21vw rgba(138, 43, 226, 0.6));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2.08vw);
+    }
+}
+
+/* Добавляем фоновое свечение */
+.TonicsHero_section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    width: 52.08vw;
+    height: 52.08vw;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(0, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ========== TABLET (768px - 1024px) ========== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .TonicsHero_section {
+        min-height: 100vh;
+        padding: 7.81vw 2.60vw;
+    }
+
+    .TonicsHero_content {
+        max-width: 100%;
+        flex-direction: column;
+        text-align: center;
+        gap: 5.21vw;
+    }
+
+    .TonicsHero_left {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .TonicsHero_title {
+        font-size: 7.81vw;
+        margin-bottom: 3.91vw;
+    }
+
+    .TonicsHero_description {
+        font-size: 1.82vw;
+        max-width: 60.42vw;
+        margin-bottom: 3.91vw;
+        text-align: center;
+    }
+
+    .TonicsHero_button {
+        padding: 2.34vw 3.91vw;
+        font-size: 1.82vw;
+        border-radius: 3.91vw;
+    }
+
+    .TonicsHero_right {
+        width: 100%;
+    }
+
+    .TonicsHero_image {
+        width: 52.08vw;
+        height: 52.08vw;
+    }
+
+    .TonicsHero_section::before {
+        width: 65vw;
+        height: 65vw;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+}
+
+/* ========== MOBILE (360px - 767px) ========== */
+@media (max-width: 767px) {
+    .TonicsHero_desktop {
+        display: none;
+    }
+
+    .TonicsHero_mobile {
+        display: flex;
+        min-height: auto;
+        padding: 66.67vw 5.56vw 16.67vw;
+        background: linear-gradient(180deg, #1a0a2e 0%, #3d1f5c 50%, #1a0a2e 100%);
+    }
+
+    .TonicsHero_mobile .TonicsHero_content {
+        flex-direction: column;
+        text-align: left;
+        gap: 5.56vw;
+        max-width: 100%;
+    }
+
+    .TonicsHero_mobile .TonicsHero_title {
+        font-size: 11.11vw;
+        line-height: 110%;
+        margin-bottom: 5.56vw;
+    }
+
+    .TonicsHero_mobile .TonicsHero_description {
+        font-size: 3.89vw;
+        line-height: 150%;
+        max-width: 100%;
+        margin-bottom: 8.33vw;
+    }
+
+    .TonicsHero_mobile .TonicsHero_button {
+        width: 100%;
+        padding: 3.33vw 4.44vw;
+        font-size: 3.89vw;
+        border-radius: 6.67vw;
+        height: 13.33vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

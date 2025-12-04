@@ -1,17 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Routes, Route } from 'react-router-dom' // 1. Импортируем компоненты роутера
 import './App.css'
-import {Home} from "./pages/Home.jsx";
+import { Home } from "./pages/HomePage/Home.jsx"
+import {TonicsPage} from "./pages/TonicsPage/TonicsPage.jsx" // 2. Импортируем страницу Tonics (путь может отличаться, проверь его)
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [count, setCount] = useState(0)
 
-  return (
-    <>
-        <Home/>
-    </>
-  )
+    return (
+        <>
+            <Routes>
+
+                <Route path="/home" element={<Home />} />
+
+
+                <Route path="/" element={<TonicsPage />} />
+            </Routes>
+        </>
+    )
 }
 
 export default App
