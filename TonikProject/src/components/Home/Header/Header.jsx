@@ -1,7 +1,7 @@
 // src/components/Header/Header.jsx
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import Logo from '../../assets/Image/Logo.svg'
+import Logo from '../../../assets/Image/Logo.svg'
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);

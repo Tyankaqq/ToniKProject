@@ -2,7 +2,7 @@
     width: 100%;
     background-color: var(--clr-bg);
     padding: 5.21vw 0;
-    border-radius: 2.08vw 2.08vw 0 0;
+    border-radius: 50px 50px 0 0;
 }
 
 .Partners_container {
@@ -100,7 +100,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     .Partners_section {
         padding: 7.81vw 0;
-        border-radius: 3.91vw 3.91vw 0 0;
+
     }
 
     .Partners_container {
@@ -155,11 +155,11 @@
 @media (max-width: 767px) {
     .Partners_section {
         padding: 13.89vw 0;
-        border-radius: 5.56vw 5.56vw 0 0;
+
     }
 
     .Partners_container {
-        padding: 0 ;
+        padding: 0;
     }
 
     .Partners_header {
@@ -206,5 +206,10 @@
     .Partners_card_link {
         font-size: 4vw;
         gap: 1.39vw;
+    }
+
+    /* ВАЖНО: скрываем все карточки, начиная с пятой */
+    .Partners_card:nth-child(n+5) {
+        display: none;
     }
 }

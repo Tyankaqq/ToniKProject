@@ -1,15 +1,15 @@
 import React from 'react';
-import { Hero } from '../components/Hero/Hero';
-import { Tonics } from '../components/Tonics/Tonics';
-import { Catalog } from '../components/Catalog/Catalog';
-import { About } from '../components/About/About';
-import { ContactForm } from '../components/ContactForm/ContactForm';
+import { Hero } from '../components/Home/Hero/Hero';
+import { Tonics } from '../components/Home/Tonics/Tonics';
+import { Catalog } from '../components/Home/Catalog/Catalog';
+import { About } from '../components/Home/About/About';
+import { ContactForm } from '../components/Home/ContactForm/ContactForm';
 import './Home.css';
-import Header from "../components/Header/Header.jsx";
-import {Footer} from "../components/Footer/Footer.jsx";
-import {Partners} from "../components/Partners/Partners.jsx";
-import {Blog} from "../components/Blog/Blog.jsx";
-import {SeoText} from "../components/SeoText/SeoText.jsx";
+import Header from "../components/Home/Header/Header.jsx";
+import {Footer} from "../components/Home/Footer/Footer.jsx";
+import {Partners} from "../components/Home/Partners/Partners.jsx";
+import {Blog} from "../components/Home/Blog/Blog.jsx";
+import {SeoText} from "../components/Home/SeoText/SeoText.jsx";
 import '../index.css'
 
 export const Home = () => {

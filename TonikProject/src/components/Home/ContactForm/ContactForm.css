@@ -175,7 +175,7 @@
 /* ========== MOBILE (360px - 767px) ========== */
 @media (max-width: 767px) {
     .ContactForm_section {
-        padding: 16.67vw 0;
+        margin-bottom: 11vw;
         border-radius: 5.56vw;
     }
 

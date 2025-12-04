@@ -1,10 +1,10 @@
 // About.jsx
 import React from 'react';
 import './About.css';
-import aboutPhotoDesktop from '../../assets/Image/about-factory.svg';
-import aboutPhotoTablet from '../../assets/Image/about-factory-table.svg';
-import aboutPhotoMobile from '../../assets/Image/about-factory-mobile.svg';
-import Pointer from '../../assets/Image/Pointer.svg';
+import aboutPhotoDesktop from '../../../assets/Image/about-factory.svg';
+import aboutPhotoTablet from '../../../assets/Image/about-factory-table.svg';
+import aboutPhotoMobile from '../../../assets/Image/about-factory-mobile.svg';
+import Pointer from '../../../assets/Image/Pointer.svg';
 
 export const About = () => {
     const philosophy = [

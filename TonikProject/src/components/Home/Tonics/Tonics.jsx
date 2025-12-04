@@ -1,8 +1,8 @@
 // Tonics.jsx
 import React from 'react';
 import './Tonics.css';
-import coralGlow from '../../assets/Image/coral-glow.svg';
-import Pointer from "../../assets/Image/Pointer.svg";
+import coralGlow from '../../../assets/Image/coral-glow.svg';
+import Pointer from "../../../assets/Image/Pointer.svg";
 
 export const Tonics = () => {
     const words = [

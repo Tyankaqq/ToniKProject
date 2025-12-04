@@ -1,7 +1,7 @@
 import React from 'react';
 import './Partners.css';
-import partnerLogo from '../../assets/Image/partner-logo.svg'; // Замени на путь к логотипу
-import Pointer from '../../assets/Image/Pointer.svg';
+import partnerLogo from '../../../assets/Image/partner-logo.svg'; // Замени на путь к логотипу
+import Pointer from '../../../assets/Image/Pointer.svg';
 
 export const Partners = () => {
     const partners = Array(8).fill({

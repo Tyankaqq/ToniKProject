@@ -1,10 +1,10 @@
 import React from 'react';
 import './Catalog.css';
-import card1 from '../../assets/Image/card1.svg'; // Импортируй все изображения
-import card2 from '../../assets/Image/card2.svg';
-import card3 from '../../assets/Image/card3.svg';
-import card4 from '../../assets/Image/card4.svg';
-import Pointer from "../../assets/Image/Pointer.svg";
+import card1 from '../../../assets/Image/card1.svg'; // Импортируй все изображения
+import card2 from '../../../assets/Image/card2.svg';
+import card3 from '../../../assets/Image/card3.svg';
+import card4 from '../../../assets/Image/card4.svg';
+import Pointer from "../../../assets/Image/Pointer.svg";
 
 
 export const Catalog = () => {

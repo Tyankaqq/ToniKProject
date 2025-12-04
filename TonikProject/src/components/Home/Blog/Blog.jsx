@@ -1,11 +1,11 @@
 import React from 'react';
 import './Blog.css';
-import blogImg1 from '../../assets/Image/blog-1.svg';
-import blogImg2 from '../../assets/Image/blog-2.svg';
-import blogImg3 from '../../assets/Image/blog-3.svg';
-import blogImg4 from '../../assets/Image/blog-4.svg';
-import blogImg5 from '../../assets/Image/blog-5.svg';
-import Pointer from '../../assets/Image/Pointer.svg';
+import blogImg1 from '../../../assets/Image/blog-1.svg';
+import blogImg2 from '../../../assets/Image/blog-2.svg';
+import blogImg3 from '../../../assets/Image/blog-3.svg';
+import blogImg4 from '../../../assets/Image/blog-4.svg';
+import blogImg5 from '../../../assets/Image/blog-5.svg';
+import Pointer from '../../../assets/Image/Pointer.svg';
 
 export const Blog = () => {
     const mainArticle = {

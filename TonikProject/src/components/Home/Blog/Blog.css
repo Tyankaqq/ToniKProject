@@ -3,7 +3,7 @@
     width: 100%;
     background-color: #1e0d0d;
     padding: 5.21vw 0;
-
+    border-radius: 0 0 50px 50px;
 }
 
 .Blog_container {
@@ -134,7 +134,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     .Blog_section {
         padding: 7.81vw 0;
-        border-radius: 3.91vw 3.91vw 0 0;
+
     }
 
     .Blog_container {
@@ -226,7 +226,7 @@
 
     .Blog_section {
         padding: 13.89vw 0;
-        border-radius: 8.33vw 8.33vw 0 0;
+
         background-color: #1e0d0d;
         overflow: hidden;
     }

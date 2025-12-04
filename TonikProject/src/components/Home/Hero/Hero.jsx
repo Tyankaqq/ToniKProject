@@ -1,8 +1,8 @@
 import React from 'react';
 import './Hero.css';
-import { mockData } from '../../data/data';
-import { Button } from '../Button/Button';
-import heroImage from '../../assets/Image/HeroImage.svg'; // Замени на свой путь к изображению
+import { mockData } from '../../../data/data.js';
+import { Button } from '../Button/Button.jsx';
+import heroImage from '../../../assets/Image/HeroImage.svg'; // Замени на свой путь к изображению
 
 export const Hero = () => {
     const { hero } = mockData;
