@@ -2,15 +2,14 @@
 .Blog_section {
     width: 100%;
     background-color: #1e0d0d;
-    padding: 5.21vw 0;
+    padding: 0 0 5.21vw 0;
     border-radius: 0 0 50px 50px;
 }
 
 .Blog_container {
-    max-width: 89.79vw;
+    padding: 0;
     margin: 0 auto;
 }
-
 
 .Blog_header {
     display: flex;
@@ -30,30 +29,25 @@
 }
 
 .Blog_link {
-    font-size: 0.73vw;
+    font-size: 1.1vw;
     color: var(--clr-white);
     text-decoration: none;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 0.52vw;
-    transition: opacity 0.3s;
-}
-
-.Blog_link:hover {
-    opacity: 0.7;
+    cursor: pointer;
 }
 
 /* === СЕТКА КАРТОЧЕК === */
 .Blog_grid {
     display: grid;
-    grid-template-columns: 43.27vw repeat(2, 21.61vw);
+    grid-template-columns: 45.2vw repeat(2, 22.1vw);
     grid-template-rows: repeat(2, 1fr);
-    gap: 1.56vw;
+    gap: 1.1vw;
     height: 45.83vw;
     max-height: 880px;
 }
-
 
 .Blog_card_large {
     grid-row: span 2;
@@ -64,14 +58,9 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    transition: transform 0.3s;
     overflow: hidden;
+    cursor: pointer;
 }
-
-.Blog_card:hover {
-    transform: translateY(-5px);
-}
-
 
 .Blog_card_content {
     display: flex;
@@ -109,7 +98,6 @@
     -webkit-line-clamp: 2;
 }
 
-
 .Blog_card_image_wrapper {
     width: 100%;
     border-radius: 1.04vw;
@@ -123,18 +111,13 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.3s;
-}
-
-.Blog_card:hover .Blog_card_image {
-    transform: scale(1.05);
 }
 
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .Blog_section {
+        border-radius: 0 0 30px 30px;
         padding: 7.81vw 0;
-
     }
 
     .Blog_container {
@@ -158,7 +141,7 @@
     .Blog_grid {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto auto;
-        gap: 2.60vw;
+        gap: 1.3vw;
         height: auto;
         max-height: none;
     }
@@ -225,15 +208,16 @@
     }
 
     .Blog_section {
+        margin-bottom: 5vw;
+        border-radius: 0 0 20px 20px;
         padding: 13.89vw 0;
-
         background-color: #1e0d0d;
         overflow: hidden;
     }
 
     .Blog_container {
         height: 300vw;
-        padding: 0;
+        padding: 0 5.56vw;
     }
 
     .Blog_header {
@@ -263,7 +247,7 @@
     }
 
     .Blog_card:not(:nth-child(4)) {
-        margin-bottom: 4.17vw;
+        margin-bottom: 5.5vw;
     }
 
     .Blog_card_small .Blog_card_title {

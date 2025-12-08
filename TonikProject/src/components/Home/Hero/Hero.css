@@ -7,8 +7,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 2vw;
-    margin-bottom: 3vw;
+    gap: 1.1vw;
+    margin-bottom: 6.7vw;
 }
 
 .Hero_title {
@@ -28,7 +28,7 @@
 
 .Hero_buttons {
     flex-direction: row;
-    gap: 1.5vw;
+    gap: 1.1vw;
 }
 
 .Hero_section {
@@ -118,6 +118,7 @@
     }
 
     .Hero_image_container {
+        margin-bottom: 32vw;
         width: 100%;
         height: 64.72vw;
     }
@@ -126,7 +127,7 @@
         align-items: flex-start;
         flex-direction: column;
         display: flex;
-        padding: 8.33vw 5.56vw 0;
+        padding: 0 5.56vw 0;
     }
 
     .Hero_mobile_title {
@@ -167,8 +168,8 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 3vw;
-        margin-bottom: 5vw;
+        gap: 1.2vw;
+        margin-bottom: 9.7vw;
     }
 
     .Hero_title {
@@ -188,7 +189,7 @@
 
     .Hero_buttons {
         flex-direction: row;
-        gap: 2vw;
-        width: 96%;
+        gap: 1.3vw;
+        width: 100%;
     }
 }

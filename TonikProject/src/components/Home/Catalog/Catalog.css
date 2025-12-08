@@ -1,13 +1,11 @@
 .Catalog_section {
-
     margin-bottom: var(--gap-150);
 }
 
 .Catalog_header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: var(--gap-60);
+    align-items: center;
 }
 
 .Catalog_title {
@@ -21,23 +19,18 @@
 .Catalog_link_all {
     display: flex;
     flex-direction: row;
-    gap: 0.5vw;
+    gap: 0.3vw;
     color: var(--clr-white);
     text-decoration: none;
-    font-size: var(--fs-14);
+    font-size: 1.1vw;
     text-transform: uppercase;
-    transition: opacity 0.3s;
-}
-
-.Catalog_link_all:hover {
-    opacity: 0.7;
 }
 
 .Catalog_row {
+    margin-top: -4.6vw;
     display: flex;
     gap: 1.1vw;
     align-items: flex-start;
-
     padding-bottom: 20px;
 }
 
@@ -46,15 +39,9 @@
     border-radius: 0.52vw;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s, background 0.3s;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-}
-
-.Catalog_card:hover {
-    transform: translateY(-0.26vw);
-    background: var(--clr-bg);
 }
 
 .Catalog_card--small {
@@ -91,11 +78,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
-}
-
-.Catalog_card:hover .Catalog_card_image img {
-    transform: scale(1.05);
 }
 
 .Catalog_card_info {
@@ -103,7 +85,6 @@
     justify-content: space-between;
     align-items: baseline;
     background: #1e0d0d;
-
 }
 
 .Catalog_card_name,
@@ -136,6 +117,7 @@
     }
 
     .Catalog_link_all {
+        gap: 1.2vw;
         font-size: 1.82vw;
     }
 
@@ -199,7 +181,7 @@
 
     .Catalog_card_name,
     .Catalog_card_price {
-        margin: 0;
+        margin: 1px;
         font-size: 2.08vw;
     }
 
@@ -211,7 +193,7 @@
 
 @media (max-width: 767px) {
     .Catalog_section {
-        margin-bottom: 16.67vw;
+        margin-bottom: 22.67vw;
     }
 
     .Catalog_header {
@@ -219,7 +201,6 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 8.33vw;
-
     }
 
     .Catalog_title {
@@ -227,7 +208,9 @@
     }
 
     .Catalog_link_all {
-        font-size: 3.33vw;
+        align-items: center;
+        gap: 2.3vw;
+        font-size: 3.9vw;
     }
 
     .Catalog_row {

@@ -25,8 +25,8 @@
 
 .About_content {
     position: absolute;
-    top: 12.5vw;
-    left: 1.08vw;
+    top: 13.5vw;
+    left: 0;
     z-index: 2;
     max-height: 80%;
     overflow-y: auto;
@@ -98,7 +98,7 @@
 .About_button {
     position: absolute;
     top: 0.8vw;
-    right: 0.56vw;
+    right: 0;
     background-color: rgba(30, 13, 13, 0.9);
     color: var(--clr-white);
     border: none;
@@ -116,8 +116,8 @@
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .About_section {
-        height: auto;
-
+        height: 105vw;
+        border-radius: 0 0 30px 30px;
 
         overflow: visible;
     }
@@ -140,9 +140,9 @@
         left: auto;
         max-height: none;
         overflow-y: visible;
-        padding: 5.21vw 2.60vw;
+        padding: 3.21vw 0;
         display: flex;
-        gap: 2.60vw;
+        gap: 4.4vw;
         align-items: flex-start;
     }
 
@@ -188,9 +188,11 @@
     }
 
     .About_button {
+        display: flex;
+        gap: 1.3vw;
         position: absolute;
-        top: 2.60vw;
-        right: 2.60vw;
+        top: 0.60vw;
+        right: 0.60vw;
         font-size: 1.82vw;
         padding: 1.30vw 2.60vw;
         z-index: 10;
@@ -200,6 +202,7 @@
 /* ========== MOBILE (360px - 767px) ========== */
 @media (max-width: 767px) {
     .About_section {
+        border-radius: 0 0 20px 20px;
         height: 255vw;
         margin-bottom: 10.67vw;
 
@@ -227,13 +230,13 @@
 
     .About_title {
         font-size: 6.85vw;
-        margin-bottom: 5.56vw;
+
     }
 
     .About_text {
         font-size: 3.89vw;
         line-height: 150%;
-        margin-bottom: 5.56vw;
+
         max-width: 100%;
     }
 

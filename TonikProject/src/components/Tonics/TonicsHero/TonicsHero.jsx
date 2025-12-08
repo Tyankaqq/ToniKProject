@@ -9,9 +9,7 @@ const TonicsHero = () => {
             <div className="TonicsHero_content">
                 {/* Левая часть: Текст */}
                 <div className="TonicsHero_left">
-                    <div className="TonicsHero_breadcrumbs">
-                        Главная &gt; Страница Тоники
-                    </div>
+
 
                     <h1 className="TonicsHero_title">
                         Тоники<br />жизни

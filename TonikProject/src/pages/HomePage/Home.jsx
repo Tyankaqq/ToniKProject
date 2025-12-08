@@ -11,7 +11,6 @@ import {Partners} from "../../components/Home/Partners/Partners.jsx";
 import {Blog} from "../../components/Home/Blog/Blog.jsx";
 import {SeoText} from "../../components/Home/SeoText/SeoText.jsx";
 import '../../index.css'
-
 export const Home = () => {
     return (
         <>

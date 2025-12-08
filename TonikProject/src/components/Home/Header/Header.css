@@ -82,7 +82,9 @@
     .Header {
         padding: 20px 0;
     }
-
+    .Header_logo{
+        width: 9.7vw;
+    }
     .Header_actions{
         display: block;
     }

@@ -6,7 +6,7 @@
 .Tonics_header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     margin-bottom: 3.13vw;
 }
 
@@ -22,12 +22,12 @@
 .Tonics_link_all {
     display: flex;
     flex-direction: row;
-    gap: 3vw;
+    gap: 0.3vw;
     color: var(--clr-white);
     text-decoration: none;
     text-transform: uppercase;
     transition: opacity 0.3s;
-    font-size: 0.73vw;
+    font-size: 1.1vw;
 }
 
 .Tonics_link_all:hover {
@@ -100,7 +100,7 @@
 /* ===== MOBILE (360–767) ===== */
 @media (max-width: 767px) {
     .Tonics_section {
-        margin-bottom: 28.67vw;
+        margin-bottom: 24.67vw;
     }
 
     .Tonics_header {
@@ -115,7 +115,8 @@
     }
 
     .Tonics_link_all {
-        font-size: 3.33vw;
+        gap: 2.3vw;
+        font-size: 3.9vw;
     }
 
     .Tonics_visual {
@@ -163,6 +164,7 @@
     }
 
     .Tonics_link_all {
+        gap: 1.3vw;
         font-size: 1.82vw;
     }
 

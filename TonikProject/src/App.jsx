@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom' // 1. Импортируем компоненты роутера
 import './App.css'
+
 import { Home } from "./pages/HomePage/Home.jsx"
 import {TonicsPage} from "./pages/TonicsPage/TonicsPage.jsx" // 2. Импортируем страницу Tonics (путь может отличаться, проверь его)
 
@@ -11,7 +12,7 @@ function App() {
         <>
             <Routes>
 
-                <Route path="/home" element={<Home />} />
+                <Route path="/Home" element={<Home />} />
 
 
                 <Route path="/" element={<TonicsPage />} />

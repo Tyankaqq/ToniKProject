@@ -8,7 +8,7 @@
 .ContactForm_container {
     align-items: flex-end;
     justify-content: center;
-    max-width: 89.58vw;
+
     margin: 0 auto;
     display: flex;
     gap: 5.21vw;
@@ -180,7 +180,7 @@
     }
 
     .ContactForm_container {
-        padding: 0;
+
         flex-direction: column;
         align-items: flex-start;
         gap: 8.33vw;

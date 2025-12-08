@@ -1,10 +1,10 @@
-/* src/index.css */
 
-/* Подключаем шрифт */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Moderustic:wght@300..800&display=swap');
 
 :root {
-    /* Цвета из Figma */
+
     --clr-bg: #1e0d0d;
     --clr-white: #ffffff;
     --clr-black: #000000;
@@ -12,36 +12,36 @@
     --clr-grey-light: #e5e5e5;
     --clr-text-secondary: rgba(255, 255, 255, 0.7);
 
-    /* Отступы (gaps) - рассчитываем в vw */
-    --gap-base: 1.04vw; /* 20px / 1920 * 100 */
-    --gap-medium: 2.08vw; /* 40px */
-    --gap-large: 4.16vw; /* 80px */
 
-    /* Размеры шрифтов ТОЛЬКО в vw */
+    --gap-base: 1.04vw;
+    --gap-medium: 2.08vw;
+    --gap-large: 4.16vw;
+
+
     --fs-120: 6.25vw;
-    /* Page Title (Главная страница) - 100px */
+
     --fs-100: 5.2083vw;
-    /* Tonic Big (Ламинария, Анфельция) - 60px */
+
     --fs-60: 3.125vw;
-    /* Section Titles (КТО МЫ...) - 50px */
+
     --fs-50: 2.6042vw;
-    /* Medium Text (Зостера) - 40px */
+
     --fs-40: 2.0833vw;
-    /* Subtitles Mobile/Tablet adaptives - 33px */
+
     --fs-33: 1.7188vw;
-    /* Tonic Small (Корбикула) - 30px */
+
     --fs-30: 1.5625vw;
-    /* Philosophy Title - 25px */
+
     --fs-25: 1.3021vw;
-    /* Philosophy Title Mobile - 22px */
+
     --fs-22: 1.1458vw;
-    /* Product/Tonic Names, Terms - 20px */
+
     --fs-20: 1.0417vw;
-    /* Philosophy Terms Mobile - 18px */
+
     --fs-18: 0.9375vw;
-    /* Body Text / Buttons (Описание, Кнопки) - 16px */
+
     --fs-16: 0.8333vw;
-    /* Small Body (Footer links, desc) - 14px */
+
     --fs-14: 0.7292vw;
 
     /* Сетки */
@@ -90,15 +90,35 @@ body {
     border-radius: 2.08vw;
     margin-bottom: 2.08vw;
 }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--grid-column-gap);
+    row-gap: var(--gap-40);
+}
 
-/* ============================================ */
-/* === АДАПТИВЫ === */
-/* ============================================ */
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+
 
 /* === TABLET 768px - 1023px === */
 @media (max-width: 1023px) {
     :root {
-        /* Отступы для планшета */
+        .grid {
+            grid-template-columns: repeat(8, 1fr);
+        }
+
         --gap-base: 15px;
         --gap-medium: 30px;
         --gap-large: 60px;
@@ -108,7 +128,7 @@ body {
         --gap-80: 60px;
         --gap-150: 100px;
 
-        /* Размеры шрифтов для планшета (768px) */
+
         --fs-120: 80px;
         --fs-100: 70px;
         --fs-60: 40px;
@@ -147,7 +167,7 @@ body {
 /* === MOBILE 320px - 767px === */
 @media (max-width: 767px) {
     :root {
-        /* Отступы для мобилки */
+
         --gap-base: 12px;
         --gap-medium: 20px;
         --gap-large: 40px;
@@ -157,7 +177,7 @@ body {
         --gap-80: 40px;
         --gap-150: 60px;
 
-        /* Размеры шрифтов для мобилки */
+
         --fs-120: 50px;
         --fs-100: 44px;
         --fs-60: 32px;
@@ -191,10 +211,11 @@ body {
         border-radius: 20px;
         margin-bottom: 20px;
     }
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
-/* В твоём App.css или globals.css */
 
-/* ========== БАЗОВЫЕ СТИЛИ (≥1025px) ========== */
 body {
     max-width: 100%;
     margin: 0;
@@ -203,13 +224,13 @@ body {
 }
 
 section {
-    width: calc(100% - 2.08vw); /* ~40px при 1920px */
+    width: calc(100% - 2.08vw);
     margin: 0 auto;
 }
 
-/* Если нужен максимальный контейнер */
+
 .container {
-    max-width: 91.7vw; /* 1720px при 1920px */
+    max-width: 91.7vw;
     margin: 0 auto;
 }
 
@@ -217,7 +238,7 @@ section {
 @media (min-width: 768px) and (max-width: 1024px) {
     section {
         width: 100%;
-        padding: 0 2.60vw; /* 20px при 768px */
+        padding: 0 2.60vw;
     }
 
     .container {
@@ -230,7 +251,7 @@ section {
 @media (max-width: 767px) {
     section {
         width: 100%;
-        padding: 0 5.56vw; /* 20px при 360px */
+        padding: 0 5.56vw;
     }
 
     .container {

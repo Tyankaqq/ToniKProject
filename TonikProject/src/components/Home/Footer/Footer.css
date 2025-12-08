@@ -4,15 +4,15 @@
 }
 
 .Footer_main {
-    width: 94.7%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 4.17vw;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 0.3vw;
     margin-bottom: 2.08vw;
+    width: 100%;
 }
 
 .Footer_logo_section {
+    grid-column: 1 / 3;
     margin-top: 1.56vw;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
 }
 
 .Footer_logo {
-    width: 9.38vw;
+    width: 7.38vw;
     height: auto;
 }
 
@@ -36,11 +36,6 @@
     justify-content: center;
     width: 1.56vw;
     height: 1.56vw;
-    transition: opacity 0.3s;
-}
-
-.Footer_social_link:hover {
-    opacity: 0.7;
 }
 
 .Footer_social_link img {
@@ -49,19 +44,23 @@
     object-fit: contain;
 }
 
-.Footer_nav_columns {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-around;
-    gap: 3.5vw;
+/* Колонка "Наши тоники" */
+.Footer_column_0 {
+    grid-column: 3 / 6;
 }
 
-.Footer_column {
-    min-width: 10.42vw;
+/* Колонка "Каталог" */
+.Footer_column_1 {
+    grid-column: 7 / 10;
+}
+
+/* Колонка "О компании" */
+.Footer_column_2 {
+    grid-column: 11 / 13;
 }
 
 .Footer_column_title {
-    font-size: 1.25vw;
+    font-size: 1.4vw;
     font-weight: 400;
     margin-bottom: 0.83vw;
     letter-spacing: -0.03em;
@@ -70,7 +69,7 @@
 
 .Footer_column_content {
     display: flex;
-    gap: 2.08vw;
+    gap: 8.2vw;
 }
 
 .Footer_column_list {
@@ -85,15 +84,11 @@
 .Footer_column_list a {
     color: var(--clr-white);
     text-decoration: none;
-    font-size: 0.94vw;
+    font-size: 1.2vw;
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1.4;
-    transition: opacity 0.3s;
-}
-
-.Footer_column_list a:hover {
-    opacity: 0.7;
+    cursor: pointer;
 }
 
 .Footer_bottom {
@@ -133,26 +128,23 @@
     gap: 1.56vw;
 }
 
-/* ========== TABLET (768px - 1024px) ========== */
+/* ========== TABLET (768px - 1024px) - 8 COLUMNS ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .Footer_social_link img{
-        width: 2.5vw;
-        height: 2.94vw;
-    }
-
     .Footer_container {
-        padding: 3.91vw 2.60vw 2.60vw;
+        padding: 0 2.60vw 1.60vw;
         border-top-width: 0.13vw;
     }
 
     .Footer_main {
-        gap: 2.21vw;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        column-gap: 1.25vw;
         margin-bottom: 3.91vw;
+        width: 100%;
     }
 
     .Footer_logo_section {
-        display: flex;
-        align-items: center;
+        grid-column: 1 / 3;
         margin-top: 3.5vw;
         gap: 2.60vw;
     }
@@ -162,30 +154,48 @@
     }
 
     .Footer_social {
-        width: 80%;
+        gap: 1.04vw;
     }
 
     .Footer_social_link {
-        width: 4.17vw;
-        height: 4.17vw;
+        width: 3.17vw;
+        height: 7.17vw;
+    }
+
+    .Footer_social_link img {
+        width: 2.5vw;
+        height: 2.94vw;
     }
 
     .Footer_nav_columns {
-        justify-content: flex-start;
-        gap: 2.81vw;
+        display: contents;
+    }
+
+    .Footer_column_0 {
+        grid-column: 3 / 5;
+    }
+
+    .Footer_column_1 {
+        grid-column: 5 / 7;
+    }
+
+    .Footer_column_2 {
+        grid-column: 7 / 9;
     }
 
     .Footer_column {
-        min-width: 24.40vw;
+        min-width: 0;
     }
 
     .Footer_column_title {
-        font-size: 2.34vw;
+        font-size: 2.1vw;
         margin-bottom: 1.82vw;
     }
 
     .Footer_column_content {
-        gap: 5.21vw;
+        display: flex;
+        flex-direction: column;
+        gap: 1.56vw;
     }
 
     .Footer_column_list {
@@ -193,7 +203,7 @@
     }
 
     .Footer_column_list a {
-        font-size: 1.82vw;
+        font-size: 1.65vw;
         line-height: 1.4;
     }
 
@@ -204,12 +214,18 @@
 
     .Footer_copyright,
     .Footer_policy {
-        font-size: 1.56vw;
+        font-size: 1.2vw;
+        align-items: flex-start;
     }
 
     .Footer_policy img {
         width: 11.55vw;
         height: 1.2vw;
+    }
+
+    .Footer_logo_block{
+        margin-top: 3vw;
+    align-items: center;
     }
 }
 

@@ -6,6 +6,8 @@ import TonicsIndustries from "../../components/Tonics/TonicsIndustries/TonicsInd
 import {ContactForm} from "../../components/Home/ContactForm/ContactForm.jsx";
 import {SeoText} from "../../components/Home/SeoText/SeoText.jsx";
 import {Footer} from "../../components/Home/Footer/Footer.jsx";
+import './TonicsPage.css';
+
 
 export const TonicsPage = () => {
     return(

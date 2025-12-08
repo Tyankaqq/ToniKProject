@@ -9,7 +9,7 @@ const TonicsSeoText = () => {
                 {/* Левая колонка: Заголовок */}
                 <div className="TonicsSeoText_left">
                     <h2 className="TonicsSeoText_title">
-                        ОПИСАНИЕ ТОНИКОВ<br />КАК ЯВЛЕНИЯ
+                        ОПИСАНИЕ ТОНИКОВ КАК ЯВЛЕНИЯ
                     </h2>
                 </div>
 
