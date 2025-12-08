@@ -74,7 +74,7 @@
     display: flex;
     align-items: center;
     gap: 0.52vw;
-    font-size: 0.73vw;
+    font-size: 1.1vw;
     color: var(--clr-white);
     opacity: 0.6;
     text-decoration: none;
@@ -116,12 +116,12 @@
         width: 22.66vw;
         height: 26.56vw;
         min-height: auto;
-        padding: 2.60vw;
+        padding: 2.0vw;
         border-radius: 1.30vw;
     }
 
     .Partners_card_title {
-        font-size: 1.82vw;
+        font-size: 2.1vw;
         margin-bottom: 1.30vw;
     }
 
@@ -132,7 +132,7 @@
     }
 
     .Partners_card_link {
-        font-size: 1.56vw;
+        font-size: 1.8vw;
         gap: 0.65vw;
     }
 }
@@ -183,8 +183,8 @@
     }
 
     .Partners_card_logo {
-        width: 27.22vw;
-        height: 22.22vw;
+        width: 37.22vw;
+        height: 34.22vw;
         margin-bottom: 4.17vw;
     }
 

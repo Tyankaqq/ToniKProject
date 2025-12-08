@@ -27,6 +27,7 @@
 }
 
 .Catalog_row {
+    margin-bottom: 4vw;
     margin-top: -4.6vw;
     display: flex;
     gap: 1.1vw;
@@ -122,6 +123,7 @@
     }
 
     .Catalog_row {
+        margin-bottom: 13.02vw;
         position: relative;
         height: 120.1vw;
         display: block;
@@ -193,10 +195,12 @@
 
 @media (max-width: 767px) {
     .Catalog_section {
+
         margin-bottom: 22.67vw;
     }
 
     .Catalog_header {
+        margin-top: 30vw;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -214,6 +218,7 @@
     }
 
     .Catalog_row {
+        margin-bottom: 22vw;
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 4.17vw;
@@ -272,7 +277,7 @@
     }
 
     .Catalog_card_info {
-        padding: 1.17vw 0;
+        padding: 3vw 0;
         display: flex;
         flex-direction: column;
         gap: 1.39vw;
