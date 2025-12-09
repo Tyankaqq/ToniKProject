@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-/* Фон с ДНК спиралью - диагональ снизу слева вверх направо */
+
 .TonicsSeoText_section::before {
     content: '';
     position: absolute;
@@ -25,7 +25,7 @@
     z-index: 1;
 }
 
-/* Желтое свечение в левом нижнем углу */
+
 .TonicsSeoText_section::after {
     content: '';
     position: absolute;
@@ -40,7 +40,7 @@
     z-index: 2;
 }
 
-/* Оранжевое размытое свечение */
+
 .TonicsSeoText_bg_glow {
     position: absolute;
     bottom: 15%;

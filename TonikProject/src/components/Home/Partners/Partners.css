@@ -193,7 +193,7 @@
         gap: 1.39vw;
     }
 
-    /* ВАЖНО: скрываем все карточки, начиная с пятой */
+
     .Partners_card:nth-child(n+5) {
         display: none;
     }

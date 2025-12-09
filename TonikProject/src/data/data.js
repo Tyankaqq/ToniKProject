@@ -1,8 +1,8 @@
 export const mockData = {
 
     hero: {
-        titleLeft: "ТОНИК",      // Левая часть заголовка
-        titleRight: "ЖИЗНИ",     // Правая часть заголовка
+        titleLeft: "ТОНИК",
+        titleRight: "ЖИЗНИ",
         subtitle: "Это и есть суть Природы",
         imageAlt: "Природа",
         buttons: [

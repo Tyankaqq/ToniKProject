@@ -108,12 +108,12 @@
 
 /* ========== TABLET (768px - 1024px) ========== */
 @media (max-width: 1024px) {
-    /* Скрываем десктоп версию */
+
     .TonicsIndustries_desktop {
         display: none;
     }
 
-    /* Показываем мобильную версию */
+
     .TonicsIndustries_mobile {
         display: block;
     }

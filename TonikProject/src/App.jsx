@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom' // 1. Импортируем компоненты роутера
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 
 import { Home } from "./pages/HomePage/Home.jsx"
-import {TonicsPage} from "./pages/TonicsPage/TonicsPage.jsx" // 2. Импортируем страницу Tonics (путь может отличаться, проверь его)
+import {TonicsPage} from "./pages/TonicsPage/TonicsPage.jsx"
 
 function App() {
     const [count, setCount] = useState(0)
