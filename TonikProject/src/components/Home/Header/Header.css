@@ -76,6 +76,29 @@
 .Header_actions{
     display:none;
 }
+.Header_mobile_close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--clr-white);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    z-index: 1001;
+    transition: transform 0.2s ease;
+}
+
+.Header_mobile_close:hover {
+    transform: rotate(90deg);
+}
+
+.Header_mobile_close:active {
+    transform: scale(0.9);
+}
+
 
 /* === TABLET и MOBILE === */
 @media (max-width: 1024px) {

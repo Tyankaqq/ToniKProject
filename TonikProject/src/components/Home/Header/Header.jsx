@@ -72,6 +72,15 @@ const Header = () => {
 
             {/* Мобильное меню - просто те же ссылки */}
             <nav className={`Header_mobile_menu ${isMenuOpen ? 'active' : ''}`}>
+                {/* Кнопка закрытия */}
+                <button
+                    className="Header_mobile_close"
+                    onClick={closeMenu}
+                    aria-label="Закрыть меню"
+                >
+                    ✕
+                </button>
+
                 <div className="Header_mobile_nav">
                     <a href="/catalog" onClick={closeMenu}>Каталог</a>
                     <a href="/tonics" onClick={closeMenu}>Наши тоники</a>
