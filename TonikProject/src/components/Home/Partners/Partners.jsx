@@ -14,7 +14,10 @@ export const Partners = () => {
         <section className="Partners_section">
             <div className="Partners_container container">
                 <div className="Partners_header">
-                    <h2 className="Partners_title">Наши партнеры</h2>
+                    <h2 className="Partners_title">
+                        <span className="Partners_title_full">Наши партнеры</span>
+                        <span className="Partners_title_short">Партнеры</span>
+                    </h2>
                     <a href="#" className="Partners_link">
                         ВСЕ ПАРТНЕРЫ
                         <img src={Pointer}/>
@@ -41,3 +44,4 @@ export const Partners = () => {
         </section>
     );
 };
+

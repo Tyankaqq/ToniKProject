@@ -81,9 +81,23 @@
     text-transform: uppercase;
     cursor: pointer;
 }
+.Partners_title_short {
+    display: none;
+}
+
+.Partners_title_full {
+    display: inline;
+}
 
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
+    .Partners_title_short {
+        display: inline;
+    }
+
+    .Partners_title_full {
+        display: none;
+    }
     .Partners_section {
         border-radius: 30px 30px 0 0;
         padding: 11.81vw 0;
@@ -139,6 +153,13 @@
 
 /* ========== MOBILE (360px - 767px) ========== */
 @media (max-width: 767px) {
+    .Partners_title_short {
+        display: inline;
+    }
+
+    .Partners_title_full {
+        display: none;
+    }
     .Partners_section {
         border-radius: 20px 20px 0 0;
         padding: 13.89vw 0;

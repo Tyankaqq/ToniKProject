@@ -91,6 +91,7 @@
 }
 
 .Footer_bottom {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -207,8 +208,9 @@
     }
 
     .Footer_bottom {
+        padding-bottom: 5vw;
         margin-top: 2.60vw;
-        padding-top: 2.60vw;
+
     }
 
     .Footer_copyright,
@@ -321,12 +323,13 @@
     }
 
     .Footer_bottom {
+        padding-bottom: 5vw;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         gap: 2.78vw;
         margin-top: 4.17vw;
-        padding-top: 4.17vw;
+
         border-top: 0.28vw solid rgba(255, 255, 255, 0.1);
     }
 

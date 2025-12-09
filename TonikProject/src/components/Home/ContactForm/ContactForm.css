@@ -121,7 +121,7 @@
         padding: 0 2.60vw;
         flex-direction: row;
         align-items: flex-end;
-        gap: 5.21vw;
+        gap: 1.21vw;
     }
 
     .ContactForm_content {
@@ -130,6 +130,7 @@
     }
 
     .ContactForm_title {
+        width: 95%;
         font-size: 4.30vw;
         margin-bottom: 2.60vw;
     }
@@ -183,7 +184,7 @@
 
         flex-direction: column;
         align-items: flex-start;
-        gap: 8.33vw;
+        gap: 4.7vw;
     }
 
     .ContactForm_content {

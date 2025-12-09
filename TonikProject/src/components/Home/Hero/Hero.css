@@ -106,7 +106,7 @@
 
     .Hero_section {
         padding: 0;
-        padding-top: 66.22vw;
+        padding-top: 22.22vw;
         padding-bottom: 22.4vw;
         min-height: auto;
         height: auto;
@@ -169,7 +169,7 @@
         align-items: center;
         justify-content: center;
         gap: 1.2vw;
-        margin-bottom: 9.7vw;
+        margin-bottom: 15.7vw;
     }
 
     .Hero_title {
