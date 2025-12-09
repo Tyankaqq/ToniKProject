@@ -208,7 +208,8 @@
     }
 
     .Footer_bottom {
-        padding-top: 1.04vw;
+
+        padding-top: 2.04vw;
         padding-bottom: 5vw;
         margin-top: 2.60vw;
 
@@ -324,7 +325,7 @@
     }
 
     .Footer_bottom {
-        padding-top: 1.04vw;
+        padding-top: 3.04vw;
         padding-bottom: 5vw;
         display: flex;
         flex-direction: row;
