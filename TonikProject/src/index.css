@@ -113,7 +113,7 @@ body {
 
 
 /* === TABLET 768px - 1023px === */
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
     :root {
         .grid {
             grid-template-columns: repeat(8, 1fr);
