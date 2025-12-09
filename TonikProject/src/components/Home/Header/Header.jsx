@@ -33,7 +33,9 @@ const Header = () => {
                     <div className="Header_container">
                         {/* Логотип */}
                         <div className="Header_logo">
+                            <a href="/" className="Header_nav_link">
                             <img src={Logo}/>
+                            </a>
                         </div>
 
                         {/* Десктопная навигация */}
