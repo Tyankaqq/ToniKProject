@@ -85,11 +85,12 @@ const Header = () => {
                 </button>
 
                 <div className="Header_mobile_nav">
+                    <a href="/product" onClick={closeMenu}>О продукте</a>
                     <a href="/catalog" onClick={closeMenu}>Каталог</a>
                     <a href="/tonics" onClick={closeMenu}>Наши тоники</a>
                     <a href="/about" onClick={closeMenu}>О компании</a>
-                    <a href="/blog" onClick={closeMenu}>Блог</a>
-                    <a href="/contacts" onClick={closeMenu}>Контакты</a>
+                    <a href="/blog" onClick={closeMenu}>Сотрудничество</a>
+                    <a href="/contacts" onClick={closeMenu}>Корзина</a>
                 </div>
             </nav>
         </>
