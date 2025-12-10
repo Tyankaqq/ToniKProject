@@ -40,11 +40,12 @@ const Header = () => {
 
                         {/* Десктопная навигация */}
                         <nav className="Header_nav">
+                            <a href="/product" className="Header_nav_link">О продукте</a>
                             <a href="/catalog" className="Header_nav_link">Каталог</a>
                             <a href="/tonics" className="Header_nav_link">Наши тоники</a>
                             <a href="/about" className="Header_nav_link">О компании</a>
-                            <a href="/blog" className="Header_nav_link">Блог</a>
-                            <a href="/contacts" className="Header_nav_link">Контакты</a>
+                            <a href="/partners" className="Header_nav_link">Сотрудничество</a>
+                            <a href="/garbage" className="Header_nav_link">Корзина</a>
                         </nav>
 
                         {/* Действия справа */}
