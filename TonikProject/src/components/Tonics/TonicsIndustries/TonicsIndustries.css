@@ -16,8 +16,11 @@
     align-items: stretch;
 }
 
-
+TonicsIndustries_listWrapper{
+    display:flex;
+}
 .TonicsIndustries_list_wrapper {
+
     display: flex;
     flex-direction: column;
     background-color: var(--clr-bg);
@@ -25,6 +28,7 @@
 }
 
 .TonicsIndustries_list {
+    justify-content: center;
     list-style: none;
     padding: 0;
     margin: 0;
