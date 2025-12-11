@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProductModal.css';
-import ArrowIcon from '../../../assets/Image/Galochka.svg';
+import ArrowIcon from '../../../assets/Image/galochka.svg';
 import ProductPhoto from '../../../assets/Image/ProductPhoto.jpg';
 
 const ProductModal = ({ isOpen, onClose, product }) => {
