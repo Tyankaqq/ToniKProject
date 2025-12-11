@@ -17,6 +17,8 @@
 }
 
 .TonicsIndustries_listWrapper{
+    justify-content: flex-end;
+    align-items: center;
     display:flex;
 }
 .TonicsIndustries_list_wrapper {
@@ -38,7 +40,7 @@
 }
 
 .TonicsIndustries_item {
-    padding-left: 3.7vw;
+    padding-left: 4.1vw;
     font-size: 4.4vw;
     font-weight: 500;
     line-height: 110%;
