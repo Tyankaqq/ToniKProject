@@ -16,7 +16,7 @@
     align-items: stretch;
 }
 
-TonicsIndustries_listWrapper{
+.TonicsIndustries_listWrapper{
     display:flex;
 }
 .TonicsIndustries_list_wrapper {
