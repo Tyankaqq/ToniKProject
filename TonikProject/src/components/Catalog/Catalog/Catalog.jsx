@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Catalog.css';
 import ProductPhoto from '../../../assets/Image/ProductPhoto.jpg';
 import ProductPhoto2 from '../../../assets/Image/ProductPhoto2.png';
-import Galochka from '../../../assets/Image/Galochka.svg';
+import Galochka from '../../../assets/Image/galochka.svg';
 import GalochkaPrime from '../../../assets/Image/GalochkaPrime.svg';
 import SearchIcon from '../../../assets/Image/search.svg';
 import FilterIcon from '../../../assets/Image/Filter.svg';
