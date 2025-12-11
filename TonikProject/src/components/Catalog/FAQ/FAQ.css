@@ -1,5 +1,5 @@
 :root {
-    --faq-gap: 1.04vw; /* 20px */
+    --faq-gap: 1.04vw;
 }
 
 .faq {
@@ -11,7 +11,7 @@
 .faq__title {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 2.6vw; /* 50px */
+    font-size: 2.6vw;
     line-height: 110%;
     letter-spacing: -3%;
     text-transform: uppercase;
@@ -19,7 +19,6 @@
     margin: 0 0 2.6vw 0;
 }
 
-/* Сетка FAQ - 4 колонки для гибкости */
 .faq__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -27,7 +26,6 @@
     width: 100%;
 }
 
-/* Карточки FAQ */
 .faq-card {
     border: 1px solid #999999;
     background: linear-gradient(100deg, rgba(255, 255, 255, 0.10) 3.64%, rgba(153, 153, 153, 0.10) 86.15%);
@@ -39,18 +37,14 @@
     justify-content: space-between;
 }
 
-/* Маленькая карточка */
 .faq-card--small {
-    height: 12vw; /* 225px */
+    height: 12vw;
 }
 
-/* Большая карточка */
 .faq-card--large {
-    height: 12vw; /* 225px */
+    height: 12vw;
 }
 
-/* ЛЕВАЯ КОЛОНКА */
-/* Ряд 1: две маленькие карточки */
 .faq-card-1 {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -61,20 +55,16 @@
     grid-row: 1 / 2;
 }
 
-/* Ряд 2: одна большая на всю ширину */
 .faq-card-3 {
     grid-column: 1 / 3;
     grid-row: 2 / 3;
 }
 
-/* ПРАВАЯ КОЛОНКА */
-/* Ряд 1: одна большая на всю ширину */
 .faq-card-4 {
     grid-column: 3 / 5;
     grid-row: 1 / 2;
 }
 
-/* Ряд 2: две маленькие карточки */
 .faq-card-5 {
     grid-column: 3 / 4;
     grid-row: 2 / 3;
@@ -85,68 +75,59 @@
     grid-row: 2 / 3;
 }
 
-/* Вопрос */
 .faq-card__question {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.5vw; /* 20px */
+    font-size: 1.5vw;
     line-height: 130%;
     color: #ffffff;
     margin: 0;
 }
 
-/* Ответ */
 .faq-card__answer {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 0.86vw; /* 16px */
+    font-size: 0.86vw;
     line-height: 110%;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
 }
+
 .faq-card--large .faq-card__answer {
     width: 58%;
 }
 
-/* Планшетный адаптив (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     .faq {
-        padding: 10.42vw 0; /* 80px */
+        padding: 10.42vw 0;
     }
 
     .faq__title {
-        font-size: 4.3vw; /* 33px */
+        font-size: 4.3vw;
         font-weight: 400;
-        margin-bottom: 5.21vw; /* 40px */
+        margin-bottom: 5.21vw;
     }
 
-    /* Сетка FAQ - 2 колонки */
     .faq__grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.3vw; /* 10px */
+        gap: 1.3vw;
     }
 
-    /* Размеры карточек для планшета */
     .faq-card {
-        padding: 2.6vw; /* 20px */
-        gap: 1.3vw; /* 10px */
+        padding: 2.6vw;
+        gap: 1.3vw;
     }
 
-    /* Большая карточка: 359x234 */
     .faq-card--large {
-        width: 46.74vw; /* 359px */
-        height: 30.47vw; /* 234px */
+        width: 46.74vw;
+        height: 30.47vw;
     }
 
-    /* Маленькая карточка: 359x162 */
     .faq-card--small {
-        width: 46.74vw; /* 359px */
-        height: 21.09vw; /* 162px */
+        width: 46.74vw;
+        height: 21.09vw;
     }
 
-    /* Позиционирование карточек */
-
-    /* РЯД 1: 2 большие карточки */
     .faq-card-1 {
         grid-column: 1 / 2;
         grid-row: 1 / 2;
@@ -157,7 +138,6 @@
         grid-row: 1 / 2;
     }
 
-    /* РЯД 2: 2 маленькие карточки */
     .faq-card-3 {
         grid-column: 1 / 2;
         grid-row: 2 / 3;
@@ -168,7 +148,6 @@
         grid-row: 2 / 3;
     }
 
-    /* РЯД 3: 2 маленькие карточки */
     .faq-card-5 {
         grid-column: 1 / 2;
         grid-row: 3 / 4;
@@ -179,70 +158,63 @@
         grid-row: 3 / 4;
     }
 
-    /* Вопрос */
     .faq-card__question {
-        font-size: 2.34vw; /* 18px */
+        font-size: 2.34vw;
         line-height: 110%;
     }
 
-    /* Ответ - разные размеры */
     .faq-card--small .faq-card__answer {
-        font-size: 1.56vw; /* 12px */
+        font-size: 1.56vw;
         line-height: 110%;
     }
 
     .faq-card--large .faq-card__answer {
         width: 100%;
-        font-size: 1.82vw; /* 14px */
+        font-size: 1.82vw;
         line-height: 110%;
     }
-    .faq-card{
+
+    .faq-card {
         border-radius: 2.67vw;
     }
 }
 
-/* Мобильный адаптив (360px - 767px) */
 @media (max-width: 767px) {
     .faq {
-        padding: 13.89vw 0; /* 50px */
+        padding: 13.89vw 0;
     }
 
     .faq__title {
-        font-size: 9.17vw; /* 33px для 360px */
+        font-size: 9.17vw;
         font-weight: 400;
-        margin-bottom: 8.33vw; /* 30px */
+        margin-bottom: 8.33vw;
         line-height: 110%;
         letter-spacing: -3%;
     }
 
-    /* Сетка FAQ - 1 колонка */
     .faq__grid {
         grid-template-columns: 1fr;
-        gap: 2.78vw; /* 10px */
+        gap: 2.78vw;
     }
 
-    /* Карточки FAQ */
     .faq-card {
         width: 100% !important;
         height: auto !important;
-        padding: 5.56vw; /* 20px */
-        gap: 2.78vw; /* 10px */
-        border-radius: 5.78vw; /* 10px */
+        padding: 5.56vw;
+        gap: 2.78vw;
+        border-radius: 5.78vw;
         border: 1px solid #999999;
         background: linear-gradient(100deg, rgba(255, 255, 255, 0.10) 3.64%, rgba(153, 153, 153, 0.10) 86.15%);
     }
 
-    /* Большая карточка: высота auto, но с минимальной высотой */
     .faq-card--large {
-        min-height: 65vw; /* ~234px */
+        min-height: 65vw;
     }
 
-    /* Маленькая карточка */
     .faq-card--small {
-        min-height: 45vw; /* ~162px */
+        min-height: 45vw;
     }
 
-    /* Позиционирование карточек - все в 1 колонку */
     .faq-card-1,
     .faq-card-2,
     .faq-card-3,
@@ -259,18 +231,16 @@
     .faq-card-5 { grid-row: 5 / 6; }
     .faq-card-6 { grid-row: 6 / 7; }
 
-    /* Вопрос */
     .faq-card__question {
         width: 100%;
         font-family: 'Inter', sans-serif;
         font-weight: 400;
-        font-size: 5.6vw; /* 18px */
+        font-size: 5.6vw;
         line-height: 130%;
         color: #ffffff;
         margin: 0;
     }
 
-    /* Ответ - общий */
     .faq-card__answer {
         font-family: 'Inter', sans-serif;
         font-weight: 400;
@@ -280,16 +250,14 @@
         white-space: pre-line;
     }
 
-    /* Ответ для маленьких карточек */
     .faq-card--small .faq-card__answer {
-        font-size: 3.89vw; /* 14px */
+        font-size: 3.89vw;
         line-height: 110%;
     }
 
-    /* Ответ для больших карточек */
     .faq-card--large .faq-card__answer {
         width: 100%;
-        font-size: 3.89vw; /* 15px */
+        font-size: 3.89vw;
         line-height: 110%;
     }
 }
