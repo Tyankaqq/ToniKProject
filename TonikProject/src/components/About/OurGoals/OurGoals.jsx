@@ -1,7 +1,7 @@
 // src/components/About/OurGoals.jsx
 import React from 'react';
 import './OurGoals.css';
-import StarIcon from '../../../assets/Image/star.svg';
+import StarIcon from '../../../assets/Image/Star.svg';
 
 const OurGoals = () => {
     const goals = [

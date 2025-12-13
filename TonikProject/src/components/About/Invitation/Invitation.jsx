@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './Invitation.css';
 import InvitePhoto from '../../../assets/Image/PhotoInvite.jpg';
-import StarIcon from '../../../assets/Image/star.svg';
+import StarIcon from '../../../assets/Image/Star.svg';
 
 const Invitation = () => {
     const [activeCategory, setActiveCategory] = useState('products');
