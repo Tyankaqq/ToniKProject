@@ -6,6 +6,7 @@ import { Home } from "./pages/HomePage/Home.jsx"
 import {TonicsPage} from "./pages/TonicsPage/TonicsPage.jsx"
 import {ProductPage} from "./pages/ProductPage/ProductPage.jsx";
 import {CatalogPage} from "./pages/CatalogPage/CatalogPage.jsx";
+import {AboutCompanyPage} from "./pages/AboutCompanyPage/AboutCompanyPage.jsx";
 
 function App() {
     const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/product" element={<ProductPage />} />
                 <Route path="/tonics" element={<TonicsPage />} />
                 <Route path="/catalog" element={<CatalogPage />} />
+                <Route path="/about" element={<AboutCompanyPage />} />
             </Routes>
         </>
     )
