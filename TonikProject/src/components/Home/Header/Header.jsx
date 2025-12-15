@@ -89,7 +89,7 @@ const Header = () => {
                     <a href="/catalog" onClick={closeMenu}>Каталог</a>
                     <a href="/tonics" onClick={closeMenu}>Наши тоники</a>
                     <a href="/about" onClick={closeMenu}>О компании</a>
-                    <a href="/blog" onClick={closeMenu}>Сотрудничество</a>
+                    <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
                     <a href="/contacts" onClick={closeMenu}>Корзина</a>
                 </div>
             </nav>
