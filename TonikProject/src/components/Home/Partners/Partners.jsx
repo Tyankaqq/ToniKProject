@@ -31,7 +31,7 @@ export const Partners = ({
                         <span className="Partners_title_short">{titleShort}</span>
                     </h2>
                     {showAllLink && (
-                        <a href="#" className="Partners_link">
+                        <a href="/partners" className="Partners_link">
                             ВСЕ ПАРТНЕРЫ
                             <img src={Pointer} alt=""/>
                         </a>
