@@ -1,14 +1,15 @@
 // src/components/Header/Header.jsx
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import Logo from '../../../assets/Image/Logo.svg'
+import Logo from '../../../assets/Image/Logo.svg';
+import Cart from '../../Cart/Cart/Cart.jsx';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
-    // Блокировка скролла при открытом меню
     useEffect(() => {
-        if (isMenuOpen) {
+        if (isMenuOpen || isCartOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
@@ -16,7 +17,7 @@ const Header = () => {
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, [isMenuOpen]);
+    }, [isMenuOpen, isCartOpen]);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -26,33 +27,37 @@ const Header = () => {
         setIsMenuOpen(false);
     };
 
+    const openCart = (e) => {
+        e.preventDefault();
+        setIsCartOpen(true);
+        setIsMenuOpen(false);
+    };
+
+    const closeCart = () => {
+        setIsCartOpen(false);
+    };
+
     return (
         <>
             <header className="Header">
                 <div className="container">
                     <div className="Header_container">
-                        {/* Логотип */}
                         <div className="Header_logo">
                             <a href="/" className="Header_nav_link">
-                            <img src={Logo}/>
+                                <img src={Logo} alt="Logo"/>
                             </a>
                         </div>
 
-                        {/* Десктопная навигация */}
                         <nav className="Header_nav">
                             <a href="/product" className="Header_nav_link">О продукте</a>
                             <a href="/catalog" className="Header_nav_link">Каталог</a>
                             <a href="/tonics" className="Header_nav_link">Наши тоники</a>
                             <a href="/about" className="Header_nav_link">О компании</a>
                             <a href="/partners" className="Header_nav_link">Сотрудничество</a>
-                            <a href="/garbage" className="Header_nav_link">Корзина</a>
+                            <a href="#" className="Header_nav_link" onClick={openCart}>Корзина</a>
                         </nav>
 
-                        {/* Действия справа */}
                         <div className="Header_actions">
-
-
-                            {/* Бургер-кнопка */}
                             <button
                                 className={`Header_burger ${isMenuOpen ? 'active' : ''}`}
                                 onClick={toggleMenu}
@@ -67,15 +72,12 @@ const Header = () => {
                 </div>
             </header>
 
-            {/* Overlay */}
             <div
                 className={`Header_mobile_overlay ${isMenuOpen ? 'active' : ''}`}
                 onClick={closeMenu}
             />
 
-            {/* Мобильное меню - просто те же ссылки */}
             <nav className={`Header_mobile_menu ${isMenuOpen ? 'active' : ''}`}>
-                {/* Кнопка закрытия */}
                 <button
                     className="Header_mobile_close"
                     onClick={closeMenu}
@@ -90,9 +92,12 @@ const Header = () => {
                     <a href="/tonics" onClick={closeMenu}>Наши тоники</a>
                     <a href="/about" onClick={closeMenu}>О компании</a>
                     <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
-                    <a href="/contacts" onClick={closeMenu}>Корзина</a>
+                    <a href="#" onClick={(e) => { closeMenu(); openCart(e); }}>Корзина</a>
                 </div>
             </nav>
+
+
+            <Cart isOpen={isCartOpen} onClose={closeCart} />
         </>
     );
 };

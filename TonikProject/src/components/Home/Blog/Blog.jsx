@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Blog.css';
 import blogImg1 from '../../../assets/Image/blog-1.jpg';
 import blogImg2 from '../../../assets/Image/blog-2.jpg';
@@ -15,21 +16,27 @@ import Search from '../../../assets/Image/search.svg';
 import GalochkaPrime from '../../../assets/Image/GalochkaPrime.svg';
 
 export const Blog = ({
-                         variant = 'default', // 'default' или 'extended'
+                         variant = 'default',
                          title = 'Блог',
                          showAllLink = true,
                          showSearchBar = false,
                          categories = []
                      }) => {
     const [activeCategory, setActiveCategory] = useState('Все');
+    const navigate = useNavigate();
+
+    // Функция для перехода на страницу статьи
+    const handleArticleClick = (e, articleId) => {
+        e.preventDefault();
+        navigate(`/blog/${articleId}`);
+    };
 
     // Первая большая карточка (для default и extended)
     const mainArticle = {
         id: 1,
         title: 'Название статьи название статьи название статьи название статьи название статьи название статьи название статьи название статьи',
         tag: '#Текст текст',
-        image: blogImg1,
-        link: '#'
+        image: blogImg1
     };
 
     // 4 маленьких карточки (для default и extended)
@@ -38,29 +45,25 @@ export const Blog = ({
             id: 2,
             title: 'Название статьи название статьи название статьи',
             tag: '#Текст текст',
-            image: blogImg2,
-            link: '#'
+            image: blogImg2
         },
         {
             id: 3,
             title: 'Название статьи название статьи название статьи',
             tag: '#Текст текст',
-            image: blogImg3,
-            link: '#'
+            image: blogImg3
         },
         {
             id: 4,
             title: 'Название статьи название статьи название статьи',
             tag: '#Текст текст',
-            image: blogImg4,
-            link: '#'
+            image: blogImg4
         },
         {
             id: 5,
             title: 'Название статьи название статьи название статьи',
             tag: '#Текст текст',
-            image: blogImg5,
-            link: '#'
+            image: blogImg5
         }
     ];
 
@@ -70,29 +73,25 @@ export const Blog = ({
             id: 6,
             title: 'Название статьи название статьи название статьи',
             tag: '#Текст текст',
-            image: blogImg6,
-            link: '#'
+            image: blogImg6
         },
         {
             id: 7,
             title: 'Название статьи название статьи название статьи',
             tag: '#Текст текст',
-            image: blogImg7,
-            link: '#'
+            image: blogImg7
         },
         {
             id: 8,
             title: 'Название статьи название статьи название статьи',
             tag: '#Текст текст',
-            image: blogImg8,
-            link: '#'
+            image: blogImg8
         },
         {
             id: 9,
             title: 'Название статьи название статьи название статьи',
             tag: '#Текст текст',
-            image: blogImg9,
-            link: '#'
+            image: blogImg9
         }
     ];
 
@@ -101,8 +100,7 @@ export const Blog = ({
         id: 10,
         title: 'Название статьи название статьи название статьи название статьи название статьи название статьи название статьи название статьи',
         tag: '#Текст текст',
-        image: blogImg10,
-        link: '#'
+        image: blogImg10
     };
 
     return (
@@ -149,7 +147,11 @@ export const Blog = ({
                 {variant === 'default' && (
                     <div className="Blog_grid Blog_grid--default">
                         {/* Большая карточка слева */}
-                        <a href={mainArticle.link} className="Blog_card Blog_card_large">
+                        <a
+                            href={`/blog/${mainArticle.id}`}
+                            className="Blog_card Blog_card_large"
+                            onClick={(e) => handleArticleClick(e, mainArticle.id)}
+                        >
                             <div className="Blog_card_content">
                                 <span className="Blog_card_tag">{mainArticle.tag}</span>
                                 <h3 className="Blog_card_title">{mainArticle.title}</h3>
@@ -165,7 +167,12 @@ export const Blog = ({
 
                         {/* 4 маленьких карточки справа */}
                         {articles.map((article) => (
-                            <a key={article.id} href={article.link} className="Blog_card Blog_card_small">
+                            <a
+                                key={article.id}
+                                href={`/blog/${article.id}`}
+                                className="Blog_card Blog_card_small"
+                                onClick={(e) => handleArticleClick(e, article.id)}
+                            >
                                 <div className="Blog_card_content">
                                     <span className="Blog_card_tag">{article.tag}</span>
                                     <h3 className="Blog_card_title">{article.title}</h3>
@@ -187,7 +194,11 @@ export const Blog = ({
                     <>
                         {/* Первый блок: 1 большая слева + 4 маленьких справа */}
                         <div className="Blog_grid Blog_grid--default">
-                            <a href={mainArticle.link} className="Blog_card Blog_card_large">
+                            <a
+                                href={`/blog/${mainArticle.id}`}
+                                className="Blog_card Blog_card_large"
+                                onClick={(e) => handleArticleClick(e, mainArticle.id)}
+                            >
                                 <div className="Blog_card_content">
                                     <span className="Blog_card_tag">{mainArticle.tag}</span>
                                     <h3 className="Blog_card_title">{mainArticle.title}</h3>
@@ -202,7 +213,12 @@ export const Blog = ({
                             </a>
 
                             {articles.map((article) => (
-                                <a key={article.id} href={article.link} className="Blog_card Blog_card_small">
+                                <a
+                                    key={article.id}
+                                    href={`/blog/${article.id}`}
+                                    className="Blog_card Blog_card_small"
+                                    onClick={(e) => handleArticleClick(e, article.id)}
+                                >
                                     <div className="Blog_card_content">
                                         <span className="Blog_card_tag">{article.tag}</span>
                                         <h3 className="Blog_card_title">{article.title}</h3>
@@ -221,7 +237,12 @@ export const Blog = ({
                         {/* Второй блок: 4 маленьких слева + 1 большая справа */}
                         <div className="Blog_grid Blog_grid--extended">
                             {extendedArticles.map((article) => (
-                                <a key={article.id} href={article.link} className="Blog_card Blog_card_small">
+                                <a
+                                    key={article.id}
+                                    href={`/blog/${article.id}`}
+                                    className="Blog_card Blog_card_small"
+                                    onClick={(e) => handleArticleClick(e, article.id)}
+                                >
                                     <div className="Blog_card_content">
                                         <span className="Blog_card_tag">{article.tag}</span>
                                         <h3 className="Blog_card_title">{article.title}</h3>
@@ -236,7 +257,11 @@ export const Blog = ({
                                 </a>
                             ))}
 
-                            <a href={largeArticle.link} className="Blog_card Blog_card_large Blog_card_large--extended">
+                            <a
+                                href={`/blog/${largeArticle.id}`}
+                                className="Blog_card Blog_card_large Blog_card_large--extended"
+                                onClick={(e) => handleArticleClick(e, largeArticle.id)}
+                            >
                                 <div className="Blog_card_content">
                                     <span className="Blog_card_tag">{largeArticle.tag}</span>
                                     <h3 className="Blog_card_title">{largeArticle.title}</h3>
