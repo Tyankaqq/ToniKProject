@@ -3,7 +3,7 @@
 .DetailedProductCard {
     display: flex;
     gap: 1.1vw;
-    margin-bottom: 3.13vw; /* 60px */
+    margin-bottom: 3.13vw;
 }
 
 /* ========== ЛЕВАЯ ЧАСТЬ - СЛАЙДЕР ========== */
@@ -13,9 +13,9 @@
 
 .DetailedProductCard_slider {
     position: relative;
-    width: 45.27vw; /* 850px */
-    height: 33.33vw; /* 640px / 1920px * 100 */
-    border-radius: 1.04vw; /* 20px */
+    width: 45.27vw;
+    height: 33.33vw;
+    border-radius: 1.04vw;
     overflow: hidden;
 }
 
@@ -34,7 +34,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 2.60vw; /* 50px / 1920px * 100 */
+    width: 2.60vw;
     height: 2.60vw;
     background: rgba(39, 39, 39, 1);
     border: none;
@@ -60,7 +60,7 @@
 }
 
 .DetailedProductCard_slider_btn svg {
-    width: 1.25vw; /* 24px */
+    width: 1.25vw;
     height: 1.25vw;
 }
 
@@ -69,7 +69,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 1.56vw; /* 30px */
+    gap: 1.56vw;
 }
 
 .DetailedProductCard_header {
@@ -79,13 +79,13 @@
 
 .DetailedProductCard_title {
     font-family: 'Inter', sans-serif;
-    font-weight: 400; /* По JSON */
-    font-size: 3.13vw; /* 60px / 1920px * 100 */
+    font-weight: 400;
+    font-size: 3.13vw;
     line-height: 110%;
-    letter-spacing: -0.04em; /* -4% */
+    letter-spacing: -0.04em;
     text-transform: uppercase;
     color: #ffffff;
-    margin: 0 0 0.52vw 0; /* Отступ 10px снизу */
+    margin: 0 0 0.52vw 0;
 }
 
 .DetailedProductCard_subtitle {
@@ -102,10 +102,10 @@
 
 .DetailedProductCard_price {
     font-family: 'Inter', sans-serif;
-    font-weight: 500; /* Medium по JSON */
-    font-size: 1.56vw; /* 30px / 1920px * 100 */
+    font-weight: 500;
+    font-size: 1.56vw;
     line-height: 110%;
-    letter-spacing: -0.03em; /* -3% */
+    letter-spacing: -0.03em;
     color: #ffffff;
     margin: 0;
 }
@@ -113,11 +113,11 @@
 /* ========== КОНТЕНТ ROW ========== */
 .DetailedProductCard_content_row {
     display: flex;
-    gap: 1.1vw; /* 40px */
+    gap: 1.1vw;
 }
 
 .DetailedProductCard_description_block {
-    flex: 0 0 22.61vw; /* 415px / 1920px * 100 */
+    flex: 0 0 22.61vw;
     display: flex;
     flex-direction: column;
     gap: 1.04vw;
@@ -126,9 +126,9 @@
 .DetailedProductCard_description {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 0.83vw; /* 16px / 1920px * 100 */
+    font-size: 0.83vw;
     line-height: 110%;
-    letter-spacing: -0.03em; /* -3% */
+    letter-spacing: -0.03em;
     color: #ffffff;
     margin: 0;
 }
@@ -190,7 +190,7 @@
 .DetailedProductCard_certificate_title {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 0.83vw; /* 16px */
+    font-size: 0.83vw;
     line-height: 110%;
     letter-spacing: -0.03em;
     color: #ffffff;
@@ -198,11 +198,11 @@
 
 .DetailedProductCard_certificate_btn {
     padding: 0.52vw 1.04vw;
-    border-radius: 1.04vw; /* 20px */
+    border-radius: 1.04vw;
     background: transparent;
     border: 0.05vw solid #ffffff;
     font-family: 'Inter', sans-serif;
-    font-size: 0.83vw; /* 16px */
+    font-size: 0.83vw;
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 110%;
@@ -218,10 +218,10 @@
 
 /* ========== ХАРАКТЕРИСТИКИ ========== */
 .DetailedProductCard_characteristics {
-    flex: 0 0 21.61vw; /* 415px / 1920px * 100 */
+    flex: 0 0 21.61vw;
     display: flex;
     flex-direction: column;
-    gap: 0.27vw; /* 10px */
+    gap: 0.27vw;
 }
 
 .DetailedProductCard_char_row {
@@ -229,7 +229,7 @@
     justify-content: space-between;
     align-items: flex-start;
     font-family: 'Inter', sans-serif;
-    font-size: 0.83vw; /* 16px / 1920px * 100 */
+    font-size: 0.83vw;
     line-height: 110%;
     letter-spacing: -0.03em;
 
@@ -238,7 +238,7 @@
 }
 
 .DetailedProductCard_char_label {
-    color: rgba(255, 255, 255, 0.4); /* opacity 0.4 по JSON */
+    color: rgba(255, 255, 255, 0.4);
     font-weight: 400;
     flex: 0 0 45%;
 }
@@ -253,21 +253,21 @@
 /* ========== ДЕЙСТВИЯ ========== */
 .DetailedProductCard_actions {
     display: flex;
-    gap: 1.1vw; /* 15px */
+    gap: 1.1vw;
     align-items: center;
     margin-top: auto;
 }
 
 .DetailedProductCard_quantity {
-    width: 15.06vw; /* 270px / 1920px * 100 */
-    height: 2.19vw; /* 42px / 1920px * 100 */
+    width: 15.06vw;
+    height: 2.19vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.56vw; /* 30px */
+    gap: 1.56vw;
     background: transparent;
     border: 0.05vw solid rgba(255, 255, 255, 1);
-    border-radius: 1.04vw; /* 20px */
+    border-radius: 1.04vw;
     padding: 0;
 }
 
@@ -295,18 +295,18 @@
     min-width: 0.52vw;
     text-align: center;
     font-family: 'Inter', sans-serif;
-    font-size: 0.83vw; /* 16px */
+    font-size: 0.83vw;
     font-weight: 400;
     color: #ffffff;
 }
 
 .DetailedProductCard_btn {
-    width: 14.06vw; /* 270px / 1920px * 100 */
-    height: 2.19vw; /* 42px */
+    width: 14.06vw;
+    height: 2.19vw;
     padding: 0;
-    border-radius: 2.08vw; /* 40px */
+    border-radius: 2.08vw;
     font-family: 'Inter', sans-serif;
-    font-size: 0.83vw; /* 16px */
+    font-size: 0.83vw;
     font-weight: 400;
     letter-spacing: -0.03em;
     cursor: pointer;
@@ -345,7 +345,7 @@
     opacity: 0.8;
 }
 
-/* Пульсация при добавлении */
+
 @keyframes pulse {
     0% {
         transform: scale(1);
