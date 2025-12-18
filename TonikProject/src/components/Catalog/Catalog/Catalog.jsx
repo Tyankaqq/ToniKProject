@@ -8,7 +8,8 @@ import GalochkaPrime from '../../../assets/Image/GalochkaPrime.svg';
 import FilterIcon from '../../../assets/Image/Filter.svg';
 import ProductModal from '../ProductModal/ProductModal';
 import DetailedProductCard from "../DetailedProductCard/DetailedProductCard.jsx";
-import Cart from '../../Cart/Cart/Cart.jsx';  // Импортируем компонент корзины
+import Cart from '../../Cart/Cart/Cart.jsx';
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";  // Импортируем компонент корзины
 
 const Catalog = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -122,8 +123,9 @@ const Catalog = () => {
     return (
         <div className="catalog">
             <div className="container">
-                {/* Хедер */}
+                <Breadcrumbs />
                 <div className="catalog__header">
+
                     <h1 className="Katalog">Каталог</h1>
 
                     {/* Фильтры десктоп внутри header */}

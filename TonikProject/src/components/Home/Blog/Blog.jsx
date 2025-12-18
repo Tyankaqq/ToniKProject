@@ -14,6 +14,7 @@ import blogImg10 from '../../../assets/Image/blog-10.jpg';
 import Pointer from '../../../assets/Image/Pointer.svg';
 import Search from '../../../assets/Image/search.svg';
 import GalochkaPrime from '../../../assets/Image/GalochkaPrime.svg';
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
 
 export const Blog = ({
                          variant = 'default',
@@ -106,7 +107,9 @@ export const Blog = ({
     return (
         <section className={`Blog_section Blog_section--${variant}`}>
             <div className="Blog_container container">
+                <Breadcrumbs />
                 <div className="Blog_header">
+
                     <h2 className="Blog_title">{title}</h2>
 
                     {showAllLink && (

@@ -1,0 +1,61 @@
+/* src/components/Breadcrumbs/Breadcrumbs.css */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.83vw; /* 16px на 1920px (16/1920*100) */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2.08vw;
+    padding: 1.04vw 0 0 0;
+}
+
+.breadcrumb-link {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.breadcrumb-separator {
+    margin: 0 0.52vw;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.breadcrumb-current {
+    color: rgba(255, 255, 255, 1);
+}
+
+.breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Планшет (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .breadcrumbs {
+        font-size: 14px !important; /* ИСПРАВЛЕНО: !important после значения */
+        margin-bottom: 3.9vw;
+        padding: 2.6vw 0 0 0;
+    }
+
+    .breadcrumb-separator {
+        margin: 0 1.3vw;
+    }
+}
+
+/* Мобилка (до 767px) */
+@media (max-width: 767px) {
+    .breadcrumbs {
+        font-size: 14px !important; /* ИСПРАВЛЕНО: !important после значения */
+        margin-bottom: 5.56vw;
+        padding: 4.44vw 0 0 0;
+    }
+
+    .breadcrumb-separator {
+        margin: 0 2.22vw;
+    }
+}

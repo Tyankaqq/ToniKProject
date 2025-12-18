@@ -1,7 +1,8 @@
 import React from 'react';
 import './TonicsHero.css';
-import { Button } from '../../../components/Home/Button/Button.jsx';// Проверь правильность пути к Button
+import { Button } from '../../../components/Home/Button/Button.jsx';
 import EarthPhoto from '../../../assets/Image/Earth.svg'
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
 
 const TonicsHero = () => {
     return (
@@ -9,8 +10,7 @@ const TonicsHero = () => {
             <div className="TonicsHero_content">
                 {/* Левая часть: Текст */}
                 <div className="TonicsHero_left">
-
-
+                    <Breadcrumbs />
                     <h1 className="TonicsHero_title">
                         Тоники<br />жизни
                     </h1>
@@ -21,7 +21,6 @@ const TonicsHero = () => {
                         ЕСТЕСТВЕННЫХ НАСТРОЕК ЖИВЫХ ОРГАНИЗМОВ.
                     </p>
 
-                    {/* Используем твой компонент Button */}
                     <Button variant="primary">
                         ОТКРЫТЬ КАТАЛОГ
                     </Button>

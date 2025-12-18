@@ -8,7 +8,7 @@
 }
 
 .ProductHero_container {
-    padding-top: 9.08vw;
+    padding-top: 5.08vw;
     padding-bottom: 4.16vw;
 }
 
@@ -119,7 +119,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     .ProductHero_container {
         padding: 0;
-        padding-top: 17.91vw;
+        padding-top: 10.91vw;
         padding-bottom: 5.21vw;
     }
 
@@ -183,7 +183,7 @@
     }
     .ProductHero_container {
         padding: 0;
-        padding-top: 23.56vw;
+        padding-top: 12.56vw;
         padding-bottom: 8.33vw;
     }
 

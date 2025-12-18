@@ -1,11 +1,13 @@
 import React from 'react';
 import './AboutCompany.css';
 import AboutImage from '../../../assets/Image/AboutCompany.jpg';
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
 
 const AboutCompany = () => {
     return (
         <section className="about">
             <div className="container">
+                <Breadcrumbs />
                 <h2 className="about__label">О компании</h2>
 
                 {/* ДЕСКТОП ВЕРСИЯ */}

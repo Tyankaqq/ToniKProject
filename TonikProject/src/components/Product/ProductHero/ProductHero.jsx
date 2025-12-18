@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProductHero.css';
 import coralImage from '../../../assets/Image/Tonic.svg';
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
 
 export const ProductHero = ({
 
@@ -14,8 +15,11 @@ export const ProductHero = ({
 
 
                 <div className="ProductHero_wrapper">
+                    <Breadcrumbs />
                     <div className="ProductHero_top">
+
                         <div className="ProductHero_text_wrapper">
+
                             <h2 className="ProductHero_subtitle">{subtitle}</h2>
                             <p className="ProductHero_description">{description}</p>
                         </div>

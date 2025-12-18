@@ -2,6 +2,7 @@ import React from 'react';
 import './Partners.css';
 import partnerLogo from '../../../assets/Image/partner-logo.svg';
 import Pointer from '../../../assets/Image/Pointer.svg';
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
 
 export const Partners = ({
                              variant = 'default', // 'default' или 'featured-double'
@@ -25,8 +26,11 @@ export const Partners = ({
     return (
         <section className={`Partners_section Partners_section--${variant}`}>
             <div className="Partners_container container">
+                <Breadcrumbs />
                 <div className="Partners_header">
+
                     <h2 className="Partners_title">
+
                         <span className="Partners_title_full">{title}</span>
                         <span className="Partners_title_short">{titleShort}</span>
                     </h2>

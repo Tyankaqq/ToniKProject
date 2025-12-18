@@ -1,5 +1,5 @@
 .BlogArticle {
-    padding-top: 10vw;
+    padding-top: 5vw;
     width: 100%;
     background-color: var(--clr-bg);
     padding-bottom: 5.21vw;
@@ -305,10 +305,12 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
+.BlogArticle_load_more{
+    display: none;
+}
 @media (min-width: 768px) and (max-width: 1024px) {
     .BlogArticle {
-        padding-top: 15vw;
+        padding-top: 10vw;
         padding-bottom: 7.81vw;
     }
 
@@ -458,7 +460,7 @@
 
 @media (max-width: 767px) {
     .BlogArticle {
-        padding-top: 20vw;
+        padding-top: 13vw;
         padding-bottom: 13.89vw;
     }
 

@@ -11,12 +11,14 @@ import {PartnersPage} from "./pages/PartnersPage/PartnersPage.jsx";
 import {BlogPage} from "./pages/BlogPage/BlogPage.jsx";
 import {BlogArticlePage} from "./components/Blog/BlogArticle/BlogArticlePage.jsx";
 import {BlogIdPage} from "./pages/BlogIdPage/BlogIdPage.jsx";
+import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs.jsx";
 
 function App() {
     const [count, setCount] = useState(0)
 
     return (
         <>
+
             <Routes>
 
                 <Route path="/" element={<Home />} />

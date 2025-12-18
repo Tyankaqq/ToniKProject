@@ -163,6 +163,23 @@ body {
         margin-bottom: 30px;
     }
 }
+/* Обертка для хлебных крошек */
+.breadcrumbs-wrapper {
+    background: var(--clr-bg); /* Ваш фон страницы */
+    padding-top: 2.08vw; /* Отступ сверху после хедера */
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .breadcrumbs-wrapper {
+        padding-top: 3.9vw;
+    }
+}
+
+@media (max-width: 767px) {
+    .breadcrumbs-wrapper {
+        padding-top: 5.56vw;
+    }
+}
 
 /* === MOBILE 320px - 767px === */
 @media (max-width: 767px) {

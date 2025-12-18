@@ -3,6 +3,7 @@ import './BlogArticle.css';
 import WhatsAppIcon from '../../../assets/Image/WhLogo.svg';
 import TelegramIcon from '../../../assets/Image/TgLogo.svg';
 import VKIcon from '../../../assets/Image/VkLogo.svg';
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
 
 export const BlogArticle = ({ articleData }) => {
     const [activeSection, setActiveSection] = useState(0);
@@ -125,7 +126,9 @@ export const BlogArticle = ({ articleData }) => {
         <div className="BlogArticle">
             {/* Header (название и автор) НАД фото */}
             <div className="container">
+                <Breadcrumbs/>
                 <div className="BlogArticle_header">
+
                     <h1 className="BlogArticle_title">{article.title}</h1>
                     <div className="BlogArticle_meta">
                         <p className="BlogArticle_author">{article.author}</p>
