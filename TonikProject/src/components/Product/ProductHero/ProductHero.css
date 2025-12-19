@@ -66,7 +66,7 @@
 }
 
 .ProductHero_subtitle {
-    font-size: 2.08vw;
+    font-size: 2.6vw;
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -119,7 +119,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     .ProductHero_container {
         padding: 0;
-        padding-top: 10.91vw;
+        padding-top: 9.91vw;
         padding-bottom: 5.21vw;
     }
 
@@ -145,11 +145,11 @@
 
     .ProductHero_text_wrapper {
         max-width: 60.77vw;
-        gap: 53.08vw;
+        gap: 46.08vw;
     }
 
     .ProductHero_subtitle {
-        font-size: 3.25vw;
+        font-size: 4.25vw;
         line-height: 1;
     }
 
@@ -183,7 +183,7 @@
     }
     .ProductHero_container {
         padding: 0;
-        padding-top: 12.56vw;
+        padding-top: 13.56vw;
         padding-bottom: 8.33vw;
     }
 
@@ -201,7 +201,7 @@
         min-height: auto;
         display: flex;
         flex-direction: column;
-        gap: 5.56vw;
+
     }
 
     .ProductHero_top {

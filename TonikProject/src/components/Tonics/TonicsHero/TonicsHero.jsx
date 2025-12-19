@@ -7,32 +7,35 @@ import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
 const TonicsHero = () => {
     return (
         <section className="TonicsHero_section">
-            <div className="TonicsHero_content">
-                {/* Левая часть: Текст */}
-                <div className="TonicsHero_left">
-                    <Breadcrumbs />
-                    <h1 className="TonicsHero_title">
-                        Тоники<br />жизни
-                    </h1>
+            <div className="container">
+                <Breadcrumbs />
 
-                    <p className="TonicsHero_description">
-                        ТОНИКИ ЖИЗНИ — ЭТО РЕЛИКТОВЫЕ ТВОРЕНИЯ НАШЕЙ ПЛАНЕТЫ,
-                        СОЗДАННЫЕ И СОХРАНЕННЫЕ ПРИРОДОЙ ДЛЯ ВОССТАНОВЛЕНИЯ
-                        ЕСТЕСТВЕННЫХ НАСТРОЕК ЖИВЫХ ОРГАНИЗМОВ.
-                    </p>
+                <div className="TonicsHero_content">
+                    {/* Левая часть: Текст */}
+                    <div className="TonicsHero_left">
+                        <h1 className="TonicsHero_title">
+                            Тоники жизни
+                        </h1>
 
-                    <Button variant="primary">
-                        ОТКРЫТЬ КАТАЛОГ
-                    </Button>
-                </div>
+                        <p className="TonicsHero_description">
+                            ТОНИКИ ЖИЗНИ — ЭТО РЕЛИКТОВЫЕ ТВОРЕНИЯ НАШЕЙ ПЛАНЕТЫ,
+                            СОЗДАННЫЕ И СОХРАНЕННЫЕ ПРИРОДОЙ ДЛЯ ВОССТАНОВЛЕНИЯ
+                            ЕСТЕСТВЕННЫХ НАСТРОЕК ЖИВЫХ ОРГАНИЗМОВ.
+                        </p>
 
-                {/* Правая часть: Планета */}
-                <div className="TonicsHero_right">
-                    <img
-                        src={EarthPhoto}
-                        alt="Тоники жизни планета"
-                        className="TonicsHero_image"
-                    />
+                        <Button variant="primary">
+                            ОТКРЫТЬ КАТАЛОГ
+                        </Button>
+                    </div>
+
+                    {/* Правая часть: Планета */}
+                    <div className="TonicsHero_right">
+                        <img
+                            src={EarthPhoto}
+                            alt="Тоники жизни планета"
+                            className="TonicsHero_image"
+                        />
+                    </div>
                 </div>
             </div>
         </section>

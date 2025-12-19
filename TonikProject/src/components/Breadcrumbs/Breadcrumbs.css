@@ -1,5 +1,6 @@
 /* src/components/Breadcrumbs/Breadcrumbs.css */
 .breadcrumbs {
+    padding: 0;
     display: flex;
     align-items: center;
     font-family: 'Inter', sans-serif;
@@ -7,7 +8,7 @@
     font-weight: 400;
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 2.08vw;
-    padding: 1.04vw 0 0 0;
+
 }
 
 .breadcrumb-link {
@@ -50,9 +51,10 @@
 /* Мобилка (до 767px) */
 @media (max-width: 767px) {
     .breadcrumbs {
+        margin-bottom: 3.3vw !important;
         font-size: 14px !important; /* ИСПРАВЛЕНО: !important после значения */
-        margin-bottom: 5.56vw;
-        padding: 4.44vw 0 0 0;
+
+        padding: 1.3vw 0 0 0;
     }
 
     .breadcrumb-separator {

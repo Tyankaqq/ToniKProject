@@ -305,7 +305,7 @@
     .Blog_card_content {
         gap: 1.30vw;
         margin-bottom: 1.30vw;
-        min-height: 12.5vw;
+
     }
 
     .Blog_card_tag {
@@ -362,7 +362,7 @@
     }
 
     .Blog_section--extended .Blog_container {
-        height: 425vw;
+        height: 390vw;
     }
 
 
@@ -385,11 +385,11 @@
         justify-content: space-between;
         align-items: center;
         gap: 5.56vw;
-        margin-bottom: 8.33vw;
+        margin-bottom: 5.33vw;
     }
 
     .Blog_title {
-        font-size: 8.5vw;
+        font-size: 6.67vw;
         color: #fff;
     }
 

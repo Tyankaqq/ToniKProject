@@ -31,7 +31,7 @@ export const ProductSelection = () => {
 
                     {/* Заголовок для планшета и мобилки */}
                     <h2 className="ProductSelection_title ProductSelection_title--mobile">
-                        Тоники
+                        Наши Тоники
                     </h2>
 
                     {/* Кнопка "ВСЕ ТОНИКИ" */}

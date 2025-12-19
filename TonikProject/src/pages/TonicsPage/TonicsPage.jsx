@@ -8,6 +8,7 @@ import {SeoText} from "../../components/Home/SeoText/SeoText.jsx";
 import {Footer} from "../../components/Home/Footer/Footer.jsx";
 import './TonicsPage.css';
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.jsx";
+import React from "react";
 
 
 export const TonicsPage = () => {
