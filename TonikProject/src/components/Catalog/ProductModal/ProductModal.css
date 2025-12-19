@@ -97,11 +97,11 @@
 .breadcrumbs {
     display: flex;
     align-items: center;
-    gap: 0.52vw;
+
     font-family: 'Inter', sans-serif;
     font-size: 0.94vw;
     color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 2.08vw;
+    margin-bottom: 1.3vw;
 }
 
 .breadcrumbs .separator {
