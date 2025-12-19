@@ -389,7 +389,7 @@
     }
 
     .Blog_title {
-        font-size: 6.67vw;
+        font-size: 8.5vw;
         color: #fff;
     }
 
@@ -399,9 +399,10 @@
     }
 
     .Blog_search {
-        width: 11.67vw;
-        height: 11.67vw;
-        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        width: 15.67vw;
+        height: 8.67vw;
+        border-radius: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
