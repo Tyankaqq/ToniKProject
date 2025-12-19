@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProductSelection.css';
 import productPhoto from '../../../assets/Image/ProductPhoto.jpg';
+import Pointer from '../../../assets/Image/Pointer.svg';
 
 export const ProductSelection = () => {
     const products = [
@@ -21,7 +22,24 @@ export const ProductSelection = () => {
     return (
         <section className="ProductSelection">
             <div className="ProductSelection_container container">
-                <h2 className="ProductSelection_title">Выберите подходящий Тоник для себя</h2>
+                {/* Header с заголовком и кнопкой */}
+                <div className="ProductSelection_header">
+                    {/* Заголовок для десктопа */}
+                    <h2 className="ProductSelection_title ProductSelection_title--desktop">
+                        Выберите подходящий Тоник для себя
+                    </h2>
+
+                    {/* Заголовок для планшета и мобилки */}
+                    <h2 className="ProductSelection_title ProductSelection_title--mobile">
+                        Тоники
+                    </h2>
+
+                    {/* Кнопка "ВСЕ ТОНИКИ" */}
+                    <a href="/tonics" className="ProductSelection_link">
+                        ВСЕ ТОНИКИ
+                        <img src={Pointer} alt="" />
+                    </a>
+                </div>
 
                 <div className="ProductSelection_grid">
                     {products.map((product) => (
@@ -36,8 +54,6 @@ export const ProductSelection = () => {
                         </div>
                     ))}
                 </div>
-
-                <button className="ProductSelection_button">показать еще</button>
             </div>
         </section>
     );

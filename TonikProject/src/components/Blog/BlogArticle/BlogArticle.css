@@ -6,7 +6,7 @@
 }
 
 .BlogArticle_header {
-    margin-bottom: 3.13vw;
+    margin-bottom: 1.3vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +53,7 @@
 }
 
 .BlogArticle_toc {
-    margin-bottom: 3.13vw;
+    margin-bottom: 1.3vw;
 }
 
 .BlogArticle_toc_title {
@@ -208,6 +208,14 @@
     margin-top: 0;
 }
 
+/* Header для "ДРУГИЕ СТАТЬИ" с кнопкой */
+.BlogArticle_related_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3.13vw;
+}
+
 .BlogArticle_related_title {
     font-size: 2.60vw;
     font-weight: 400;
@@ -215,7 +223,30 @@
     letter-spacing: -0.03em;
     line-height: 110%;
     color: var(--clr-white);
-    margin: 0 0 3.13vw 0;
+    margin: 0;
+}
+
+/* Кнопка "ВСЕ СТАТЬИ" */
+.BlogArticle_all_articles_link {
+    font-size: 1.1vw;
+    color: var(--clr-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.BlogArticle_all_articles_link:hover {
+    opacity: 0.7;
+}
+
+.BlogArticle_all_articles_link img {
+    width: 1.1vw;
+    height: 1.1vw;
+    object-fit: contain;
 }
 
 .BlogArticle_related_grid {
@@ -292,22 +323,12 @@
 }
 
 .BlogArticle_load_more {
-    display: block;
-    margin: 0 auto;
-    padding: 0.43vw 10.41vw;
-    background-color: transparent;
-    border: 0.10vw solid var(--clr-white);
-    border-radius: 2.08vw;
-    font-size: 1.1vw;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: var(--clr-white);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.BlogArticle_load_more{
     display: none;
 }
+
+/* ============================================
+   ПЛАНШЕТ (768px - 1024px)
+   ============================================ */
 @media (min-width: 768px) and (max-width: 1024px) {
     .BlogArticle {
         padding-top: 10vw;
@@ -315,7 +336,7 @@
     }
 
     .BlogArticle_header {
-        margin-bottom: 5.21vw;
+        margin-bottom: 1.3vw;
         flex-direction: row;
         align-items: center;
         text-align: right;
@@ -350,15 +371,33 @@
         margin-bottom: 2.60vw;
     }
 
+    /* Слайдер для кнопок на планшете */
     .BlogArticle_toc_buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
         gap: 1.04vw;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 1.3vw;
+    }
+
+    /* Скрываем скроллбар */
+    .BlogArticle_toc_buttons::-webkit-scrollbar {
+        display: none;
     }
 
     .BlogArticle_toc_btn {
         width: 15.36vw;
+        min-width: 15.36vw;
         height: 3.65vw;
         padding: 0.52vw 2.08vw;
         font-size: 2.08vw;
+        flex-shrink: 0;
+        white-space: nowrap;
     }
 
     .BlogArticle_content {
@@ -411,9 +450,22 @@
         height: 3.9vw;
     }
 
+    .BlogArticle_related_header {
+        margin-bottom: 5.21vw;
+    }
+
     .BlogArticle_related_title {
         font-size: 4.30vw;
-        margin-bottom: 5.21vw;
+    }
+
+    .BlogArticle_all_articles_link {
+        font-size: 1.82vw;
+        gap: 1.04vw;
+    }
+
+    .BlogArticle_all_articles_link img {
+        width: 1.82vw;
+        height: 1.82vw;
     }
 
     .BlogArticle_related_grid {
@@ -458,6 +510,9 @@
     }
 }
 
+/* ============================================
+   МОБИЛКА (до 767px)
+   ============================================ */
 @media (max-width: 767px) {
     .BlogArticle {
         padding-top: 13vw;
@@ -465,7 +520,7 @@
     }
 
     .BlogArticle_header {
-        margin-bottom: 8.33vw;
+        margin-bottom: 2.78vw;
         flex-direction: column;
         align-items: flex-start;
         gap: 2.78vw;
@@ -576,9 +631,26 @@
         height: 6.67vw;
     }
 
+    .BlogArticle_related_header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5.56vw;
+        margin-bottom: 8.33vw;
+    }
+
     .BlogArticle_related_title {
         font-size: 6.67vw;
-        margin-bottom: 8.33vw;
+    }
+
+    .BlogArticle_all_articles_link {
+        font-size: 3.33vw;
+        gap: 1.39vw;
+    }
+
+    .BlogArticle_all_articles_link img {
+        width: 3.33vw;
+        height: 3.33vw;
     }
 
     .BlogArticle_related_grid {

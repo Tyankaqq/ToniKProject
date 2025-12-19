@@ -39,7 +39,7 @@
     .breadcrumbs {
         font-size: 14px !important; /* ИСПРАВЛЕНО: !important после значения */
         margin-bottom: 3.9vw;
-        padding: 2.6vw 0 0 0;
+        padding: 0;
     }
 
     .breadcrumb-separator {

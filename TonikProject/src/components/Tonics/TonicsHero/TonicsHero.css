@@ -131,6 +131,7 @@
     }
 
     .TonicsHero_title {
+        margin-top: 5.21vw;
         font-size: 13.02vw;
         font-weight: 600;
         line-height: 70%;
@@ -166,10 +167,10 @@
 
     .TonicsHero_right {
         position: absolute;
-        right: 2.60vw;
-        top: 15.63vw;
-        width: 42.45vw;  /* 326px / 768px * 100 */
-        height: 41.41vw; /* 318px / 768px * 100 */
+        right: -14.4vw;
+        top: 4.63vw;
+        width: 77.45vw;
+        height: 73.41vw;
     }
 
     .TonicsHero_image_wrapper {
@@ -247,6 +248,7 @@
 
     /* Скрываем Breadcrumbs в обычном потоке, показываем через grid */
     .TonicsHero_left > .breadcrumbs {
+        padding-top: 7vw;
         position: absolute;
         top: 0;
         left: 0;

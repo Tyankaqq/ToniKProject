@@ -4,6 +4,7 @@ import './ContactForm.css';
 export const ContactForm = () => {
     const [formData, setFormData] = useState({
         name: '',
+        phone: '',
         email: '',
         message: '',
         agree: false
@@ -25,7 +26,6 @@ export const ContactForm = () => {
 
     return (
         <section className="ContactForm_section section-light">
-
             <div className="ContactForm_container container">
                 <div className="ContactForm_content">
                     <h2 className="ContactForm_title">
@@ -54,6 +54,16 @@ export const ContactForm = () => {
                     />
 
                     <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Телефон"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="ContactForm_input"
+                        required
+                    />
+
+                    <input
                         type="email"
                         name="email"
                         placeholder="Электронная почта"
@@ -72,23 +82,25 @@ export const ContactForm = () => {
                         required
                     />
 
-                    <label className="ContactForm_checkbox">
-                        <input
-                            type="checkbox"
-                            name="agree"
-                            checked={formData.agree}
-                            onChange={handleChange}
-                            required
-                        />
-                        <span>Подтверждаю согласие обработки персональных данных</span>
-                    </label>
+                    {/* Обертка для checkbox и кнопки */}
+                    <div className="ContactForm_footer">
+                        <label className="ContactForm_checkbox">
+                            <input
+                                type="checkbox"
+                                name="agree"
+                                checked={formData.agree}
+                                onChange={handleChange}
+                                required
+                            />
+                            <span>Принимаю условия обработки персональных данных.</span>
+                        </label>
 
-                    <button type="submit" className="ContactForm_button">
-                        Отправить сообщение
-                    </button>
+                        <button type="submit" className="ContactForm_button">
+                            Отправить сообщение
+                        </button>
+                    </div>
                 </form>
             </div>
-
         </section>
     );
 };

@@ -10,7 +10,7 @@ const Breadcrumbs = () => {
     const pathNames = {
         '': 'Главная',
         'product': 'Анфельция',
-        'tonics': 'Тоники',
+        'tonics': 'Страница Тоники',
         'catalog': 'Каталог',
         'about': 'О компании',
         'partners': 'Партнеры',

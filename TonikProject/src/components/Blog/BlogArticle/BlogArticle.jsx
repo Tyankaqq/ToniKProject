@@ -3,6 +3,7 @@ import './BlogArticle.css';
 import WhatsAppIcon from '../../../assets/Image/WhLogo.svg';
 import TelegramIcon from '../../../assets/Image/TgLogo.svg';
 import VKIcon from '../../../assets/Image/VkLogo.svg';
+import Pointer from '../../../assets/Image/Pointer.svg';
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
 
 export const BlogArticle = ({ articleData }) => {
@@ -128,7 +129,6 @@ export const BlogArticle = ({ articleData }) => {
             <div className="container">
                 <Breadcrumbs/>
                 <div className="BlogArticle_header">
-
                     <h1 className="BlogArticle_title">{article.title}</h1>
                     <div className="BlogArticle_meta">
                         <p className="BlogArticle_author">{article.author}</p>
@@ -219,7 +219,17 @@ export const BlogArticle = ({ articleData }) => {
             {/* Related Articles */}
             <div className="container">
                 <div className="BlogArticle_related">
-                    <h2 className="BlogArticle_related_title">ДРУГИЕ СТАТЬИ</h2>
+                    {/* Header с заголовком и кнопкой */}
+                    <div className="BlogArticle_related_header">
+                        <h2 className="BlogArticle_related_title">ДРУГИЕ СТАТЬИ</h2>
+
+                        {/* Кнопка "ВСЕ СТАТЬИ" */}
+                        <a href="/blog" className="BlogArticle_all_articles_link">
+                            ВСЕ СТАТЬИ
+                            <img src={Pointer} alt="" />
+                        </a>
+                    </div>
+
                     <div className="BlogArticle_related_grid">
                         {article.relatedArticles.map((relArticle, index) => (
                             <a
@@ -245,15 +255,10 @@ export const BlogArticle = ({ articleData }) => {
                                     <p className="BlogArticle_related_card_excerpt">
                                         {relArticle.excerpt}
                                     </p>
-
                                 </div>
                             </a>
                         ))}
                     </div>
-
-                    <button className="BlogArticle_load_more">
-                        показать еще
-                    </button>
                 </div>
             </div>
         </div>

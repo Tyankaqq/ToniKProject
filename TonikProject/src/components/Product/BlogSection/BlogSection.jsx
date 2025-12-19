@@ -3,6 +3,7 @@ import './BlogSection.css';
 import blogImage1 from '../../../assets/Image/photo-1.jpg';
 import blogImage2 from '../../../assets/Image/photo-2.jpg';
 import blogImage3 from '../../../assets/Image/photo-3.jpg';
+import Pointer from '../../../assets/Image/Pointer.svg';
 
 export const BlogSection = () => {
     const articles = [
@@ -35,7 +36,24 @@ export const BlogSection = () => {
     return (
         <section className="BlogSection">
             <div className="BlogSection_container container">
-                <h2 className="BlogSection_title">Читать подробнее</h2>
+                {/* Header с заголовком и кнопкой */}
+                <div className="BlogSection_header">
+                    {/* Заголовок для десктопа */}
+                    <h2 className="BlogSection_title BlogSection_title--desktop">
+                        Читать подробнее
+                    </h2>
+
+                    {/* Заголовок для планшета и мобилки */}
+                    <h2 className="BlogSection_title BlogSection_title--mobile">
+                        Подробнее
+                    </h2>
+
+                    {/* Кнопка "ВСЕ СТАТЬИ" */}
+                    <a href="/blog" className="BlogSection_link">
+                        ВСЕ СТАТЬИ
+                        <img src={Pointer} alt="" />
+                    </a>
+                </div>
 
                 <div className="BlogSection_grid">
                     {articles.map((article) => (
@@ -54,8 +72,6 @@ export const BlogSection = () => {
                         </article>
                     ))}
                 </div>
-
-                <button className="BlogSection_button">показать еще</button>
             </div>
         </section>
     );

@@ -12,7 +12,7 @@ export const AboutCompanyPage = () => {
         <>
             <Header/>
             <main>
-                <div style={{backgroundColor: '#1e0d0d'}}>
+                <div className={'First_block'}>
                     <AboutCompany/>
                     <OurGoals/>
                     <Invitation/>

@@ -36,7 +36,7 @@
 .ForWhom_grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.08vw;
+    gap: 1.08vw;
 }
 
 .ForWhom_card {

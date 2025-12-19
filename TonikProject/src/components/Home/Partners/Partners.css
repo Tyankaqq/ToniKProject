@@ -2,7 +2,7 @@
     width: 100%;
     background-color: var(--clr-bg);
     padding: 5.21vw 0;
-    border-radius: 50px 50px 0 0;
+    border-radius: 40px 40px 0 0;
 }
 
 .Partners_container {
@@ -245,7 +245,7 @@
     grid-row: 4;
 }
 .Partners_section--featured-double {
-    border-radius: 0;
+    border-radius: 0 0 40px 40px;
 }
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -263,7 +263,7 @@
         padding: 11.81vw 0;
     }
     .Partners_section--featured-double {
-        border-radius: 0;
+        border-radius: 0 0 30px 30px;
     }
     .Partners_container {
         max-width: 100%;
@@ -409,7 +409,7 @@
         padding: 13.89vw 0;
     }
     .Partners_section--featured-double {
-        border-radius: 0;
+        border-radius: 0 0 20px 20px;
     }
     .Partners_header {
         flex-direction: row;

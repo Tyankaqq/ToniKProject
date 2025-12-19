@@ -78,24 +78,21 @@
     display: flex;
     padding: 0.26vw 1.56vw;
     border-radius: 52.08vw;
-    background: #ffffff;
+    background: rgba(85, 85, 85, 1);
     border: none;
     font-family: 'Inter', sans-serif;
     font-size: 0.73vw;
     font-weight: 400;
-    color: #000000;
+    color: white;
     cursor: pointer;
     white-space: nowrap;
     transition: background 0.3s;
 }
+.Knopka_filtry_katalog img {
+     filter: brightness(0) invert(1);
+ }
 
-.Knopka_filtry_katalog:hover {
-    background: #f0f0f0;
-}
 
-.Knopka_filtry_katalog.active {
-    background: #e8e8e8;
-}
 
 .Component_54,
 .Component_53,
@@ -195,11 +192,11 @@
 
 .filter-toggle-btn {
     display: flex;
-    width: 5.47vw;
+    width: 10.47vw;
     height: 5.47vw;
     background: rgba(255, 255, 255, 0.3);
     border: none;
-    border-radius: 50%;
+    border-radius: 1000px;
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -867,10 +864,16 @@
     }
 
     .filter-toggle-btn {
-        width: 11.67vw;
-        height: 11.67vw;
-        background: none;
-        border-radius: 0;
+        display: flex;
+        width: 20.89vw; /* ~104px на 360px */
+        height: 11.67vw; /* ~42px на 360px */
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        border-radius: 1000px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s;
     }
 
     .filter-toggle-btn img {
