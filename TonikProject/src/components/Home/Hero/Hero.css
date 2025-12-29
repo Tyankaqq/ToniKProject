@@ -1,5 +1,97 @@
+.Hero_imageFloating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: #000;
+}
+
+.Hero_imageFloatingImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.Hero_imageFloatingOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
+
+/* Контент поверх картинки */
+.Hero_section {
+    position: relative;
+}
+.Hero_content {
+    position: relative;
+    z-index: 2;
+}
+.Hero_image_container {
+    visibility: hidden;
+}
+
+
+/* =========================================
+
+
+
+
+
+   NEW VIDEO STYLES (ADD THIS AT THE TOP)
+   ========================================= */
+.Hero_videoFloating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; /* Под контентом */
+    overflow: hidden;
+    pointer-events: none;
+    background: #000;
+}
+.Hero_videoFloatingVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.Hero_videoFloatingOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
+
+/* Нужно добавить relative и z-index, чтобы контент был выше видео */
+.Hero_section {
+    position: relative;
+}
+.Hero_content {
+    position: relative;
+    z-index: 2;
+}
+.Hero_image_container {
+    visibility: hidden; /* Скрываем контейнер-мишень, видео будет поверх */
+}
+
+/* =========================================
+   YOUR ORIGINAL CSS (UNCHANGED BELOW)
+   ========================================= */
+
 .Hero_section {
     padding: 4vw 5vw;
+    background-color: var(--clr-bg);
 }
 
 .Hero_title_wrapper {
@@ -9,6 +101,7 @@
     justify-content: center;
     gap: 1.1vw;
     margin-bottom: 6.7vw;
+
 }
 
 .Hero_title {
@@ -19,6 +112,7 @@
     width: 30vw;
     height: 16.7vw;
     border-radius: 0.3vw;
+
 }
 
 .Hero_subtitle {
@@ -32,12 +126,16 @@
 }
 
 .Hero_section {
+    /* Оставляем 100vh как у тебя */
     height: 100vh;
     min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    /* Добавляем background, чтобы не было белых полос при ресайзе */
+    background: var(--clr-bg);
 }
 
 .Hero_content {
@@ -64,23 +162,7 @@
     flex-shrink: 0;
 }
 
-.Hero_image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.Hero_image_container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    pointer-events: none;
-}
+/* .Hero_image удален, так как картинки больше нет */
 
 .Hero_subtitle {
     font-weight: 400;

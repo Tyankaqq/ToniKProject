@@ -1,8 +1,8 @@
 // src/components/Catalog/Catalog.jsx
 import React, { useState } from 'react';
 import './Catalog.css';
-import ProductPhoto from '../../../assets/Image/ProductPhoto.jpg';
-import ProductPhoto2 from '../../../assets/Image/ProductPhoto2.png';
+import ProductPhoto from '../../../assets/Image/ProductPhoto.svg';
+import ProductPhoto2 from '../../../assets/Image/ProductPhoto2.svg';
 import Galochka from '../../../assets/Image/galochka.svg';
 import GalochkaPrime from '../../../assets/Image/GalochkaPrime.svg';
 import FilterIcon from '../../../assets/Image/Filter.svg';
@@ -69,7 +69,7 @@ const Catalog = () => {
             name: 'АНФЕЛЬЦИЯ',
             subtitle: '/ ТОБУЧИНСКАЯ',
             price: '5 000 ₽',
-            images: [ProductPhoto, ProductPhoto2, ProductPhoto],
+            images: [ProductPhoto],
             description: 'Текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания Текст описания текст описания текст описания текст описания текст описания',
             characteristics: [
                 { label: 'Масса нетто', value: '100 мл.' },
@@ -89,7 +89,7 @@ const Catalog = () => {
             name: 'АНФЕЛЬЦИЯ',
             subtitle: '/ ТОБУЧИНСКАЯ',
             price: '5 000 ₽',
-            images: [ProductPhoto2, ProductPhoto, ProductPhoto2],
+            images: [ProductPhoto2],
             description: 'Текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания текст описания Текст описания текст описания текст описания текст описания текст описания',
             characteristics: [
                 { label: 'Масса нетто', value: '100 мл.' },
@@ -256,7 +256,9 @@ const Catalog = () => {
                     {detailedProducts.map((product, index) => (
                         <div key={product.id} className={`DetailedProductCard-wrapper ${index % 2 === 1 ? 'reverse' : ''}`}>
                             <DetailedProductCard
+                                key={product.id}
                                 product={product}
+                                index={index}
                                 onAddToCart={handleAddToCart}
                                 addingToCart={addingToCart}
                             />
@@ -295,10 +297,10 @@ const Catalog = () => {
                     product={selectedProduct}
                 />
 
-                <button className="Component_38">
+                {/*<button className="Component_38">
                     Смотреть больше
                     <img src={GalochkaPrime} alt="arrow" />
-                </button>
+                </button>*/}
             </div>
 
             {/* Компонент корзины */}

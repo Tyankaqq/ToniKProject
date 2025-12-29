@@ -99,7 +99,7 @@
     position: absolute;
     top: 0.8vw;
     right: 0;
-    background-color: rgba(30, 13, 13, 0.9);
+    background-color: rgba(30, 13, 13, 0);
     color: var(--clr-white);
     border: none;
     cursor: pointer;
