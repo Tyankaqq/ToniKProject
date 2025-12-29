@@ -151,7 +151,7 @@ export const Hero = () => {
                         </Button>
                         <Button
                             variant="outline"
-                            onClick={() => window.open('https://t.me/le_bed_eva', '_blank')}
+                            onClick={() => window.open('https://t.me/tonik_jizni', '_blank')}
                         >
                             {hero.buttons[1].text}
                         </Button>
