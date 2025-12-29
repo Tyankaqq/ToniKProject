@@ -48,41 +48,7 @@ export const Catalog = () => {
                 { label: 'Срок', value: '3 месяца с даты' }
             ]
         },
-        {
-            id: 3,
-            name: 'ЛАМИНАРИЯ',
-            subtitle: '/ ЯПОНСКАЯ',
-            price: '3 800 ₽',
-            description: 'Текст описания текст описания текст описания текст описания текст описания текст описания',
-            images: [ProductPhoto],
-            certificates: [
-                { title: 'Сертификат качества 2024.pdf' },
-                { title: 'Декларация соответствия.pdf' }
-            ],
-            characteristics: [
-                { label: 'Масса нетто', value: '200 мл.' },
-                { label: 'Назначение', value: 'Для щитовидной железы' },
-                { label: 'Безопасность', value: 'Без консервантов' },
-                { label: 'Срок', value: '4 месяца с даты' }
-            ]
-        },
-        {
-            id: 4,
-            name: 'СПИРУЛИНА',
-            subtitle: '/ ОРГАНИКА',
-            price: '6 200 ₽',
-            description: 'Текст описания текст описания текст описания текст описания текст описания текст описания',
-            images: [ProductPhoto2],
-            certificates: [
-                { title: 'Сертификат качества 2024.pdf' }
-            ],
-            characteristics: [
-                { label: 'Масса нетто', value: '250 мл.' },
-                { label: 'Назначение', value: 'Для детокса' },
-                { label: 'Безопасность', value: 'Эко-сертификат' },
-                { label: 'Срок', value: '6 месяцев с даты' }
-            ]
-        }
+
     ];
 
     const nextSlide = () => {
@@ -151,7 +117,7 @@ export const Catalog = () => {
         <section className="Catalog_section container">
             <div className="Catalog_header">
                 <h2 className="Catalog_title">КАТАЛОГ</h2>
-                <a href="#all" className="Catalog_link_all">
+                <a href="/catalog" className="Catalog_link_all">
                     НАШИ ТОНИКИ
                     <img src={Pointer} alt="pointer" />
                 </a>
@@ -226,13 +192,7 @@ export const Catalog = () => {
                 </div>
             </div>
 
-            {/* ПРОГРЕСС БАР */}
-            <div className="Catalog_slider_progress">
-                <div
-                    className="Catalog_slider_progress_bar"
-                    style={{ width: `${((currentSlide + 1) / products.length) * 100}%` }}
-                />
-            </div>
+
         </section>
     );
 };

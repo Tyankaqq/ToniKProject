@@ -1,7 +1,7 @@
 .Catalog_section {
     margin-bottom: var(--gap-150);
     position: relative;
-    padding-bottom: 5vw; /* Добавили отступ снизу */
+    padding-bottom: 5vw;
 }
 
 .Catalog_header {
@@ -86,8 +86,12 @@
     padding: 0;
 }
 
-/* КНОПКИ НАВИГАЦИИ */
+/* КНОПКИ НАВИГАЦИИ - ТОЛЬКО ДЕСКТОП */
 .Catalog_slider_btn {
+    opacity: 0;
+    visibility: hidden;
+    right: 2vw;
+    left: auto;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -99,35 +103,32 @@
     height: 3.65vw;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.Catalog_slider_btn:hover:not(:disabled) {
+.Catalog_slider_container:hover .Catalog_slider_btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+.Catalog_slider_container:hover .Catalog_slider_btn:hover:not(:disabled) {
     background: rgba(205, 255, 255, 0.3);
     border-color: rgba(205, 255, 255, 0.8);
     transform: translateY(-50%) scale(1.15);
     box-shadow: 0 0 30px rgba(205, 255, 255, 0.5);
 }
 
-.Catalog_slider_btn:active:not(:disabled) {
+.Catalog_slider_container:hover .Catalog_slider_btn:active:not(:disabled) {
     transform: translateY(-50%) scale(1.05);
 }
 
 .Catalog_slider_btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
-}
-
-.Catalog_slider_btn--prev {
-    left: 1.04vw;
-}
-
-.Catalog_slider_btn--next {
-    right: 1.04vw;
 }
 
 .Catalog_slider_btn svg {
@@ -140,7 +141,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 0;
 }
 
@@ -204,7 +204,7 @@
     height: 0.21vw;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 0.1vw;
-    margin-top: 1.5vw; /* Увеличили отступ сверху */
+    margin-top: 1.5vw;
     overflow: hidden;
 }
 
@@ -243,7 +243,7 @@
     }
 }
 
-/* ========== TABLET (768px - 1024px) ========== */
+/* ========== TABLET (768px - 1024px) - БЕЗ КНОПОК ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .Catalog_section {
         margin-bottom: 13.02vw;
@@ -285,28 +285,13 @@
         border-radius: 1vw;
     }
 
-
-
+    /* ✅ КНОПКИ ПОЛНОСТЬЮ УБРАНЫ НА ПЛАНШЕТЕ */
     .Catalog_slider_btn {
-        width: 6vw;
-        height: 6vw;
-    }
-
-    .Catalog_slider_btn--prev {
-        left: 2vw;
-    }
-
-    .Catalog_slider_btn--next {
-        right: 2vw;
-    }
-
-    .Catalog_slider_btn svg {
-        width: 3vw;
-        height: 3vw;
+        display: none !important;
     }
 
     .Catalog_slider_navigation {
-        margin-top: 6vw;
+        margin-bottom: 6vw;
     }
 
     .Catalog_slider_dots {
@@ -333,7 +318,7 @@
     }
 }
 
-/* ========== MOBILE (max-width: 767px) ========== */
+/* ========== MOBILE (max-width: 767px) - БЕЗ КНОПОК ========== */
 @media (max-width: 767px) {
     .Catalog_section {
         margin-bottom: 22.67vw;
@@ -377,33 +362,15 @@
         border-radius: 2vw;
     }
 
-
-
+    /* ✅ КНОПКИ ПОЛНОСТЬЮ УБРАНЫ НА МОБИЛКЕ */
     .Catalog_slider_btn {
-        width: 12vw;
-        height: 12vw;
-        border-width: 0.3vw;
-    }
-
-    .Catalog_slider_btn--prev {
-        left: 3vw;
-        top: 40%;
-    }
-
-    .Catalog_slider_btn--next {
-        right: 3vw;
-        top: 40%;
-    }
-
-    .Catalog_slider_btn svg {
-        width: 6vw;
-        height: 6vw;
+        display: none !important;
     }
 
     .Catalog_slider_navigation {
         flex-direction: column;
         gap: 4vw;
-        margin-top: 8vw;
+        margin-bottom: 8vw;
     }
 
     .Catalog_slider_dots {

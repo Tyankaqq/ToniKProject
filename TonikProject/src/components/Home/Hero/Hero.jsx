@@ -30,17 +30,17 @@ export const Hero = () => {
         const ctx = gsap.context(() => {
             const mm = gsap.matchMedia();
 
-            const scrollConfig = {
-                trigger: sectionRef.current,
-                start: 'top top',
-                end: '+=150%',
-                scrub: 1,
-                pin: true,
-                invalidateOnRefresh: true
-            };
-
-            // === DESKTOP (> 1200px) ===
+            // ДЕСКТОП - длинная прокрутка
             mm.add("(min-width: 1200px)", () => {
+                const scrollConfig = {
+                    trigger: sectionRef.current,
+                    start: 'top top',
+                    end: '+=150%',
+                    scrub: 1,
+                    pin: true,
+                    invalidateOnRefresh: true
+                };
+
                 gsap.set(imageRef.current, {
                     position: 'absolute', top: '50%', left: '50%', xPercent: -50, yPercent: -50,
                     width: '100vw', height: '100vh', borderRadius: 0, zIndex: 0
@@ -50,22 +50,26 @@ export const Hero = () => {
                 gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 100, opacity: 0 });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
-
                 tl.to(imageRef.current, {
-                    width: '30vw',
-                    height: '16.7vw',
-                    borderRadius: '0.3vw',
-                    top: '40%', // ← Подгонка высоты
-                    left: '49%', x: 0, y: 0,
+                    width: '30vw', height: '16.7vw', borderRadius: '0.3vw',
+                    top: '40%', left: '49%', x: 0, y: 0,
                     duration: 1, ease: 'power2.inOut'
                 }, 0);
-
                 tl.to([desktopTitleLeftRef.current, desktopTitleRightRef.current], { x: 0, opacity: 1, duration: 0.8 }, 0.2);
                 tl.to([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 0, opacity: 1, duration: 0.8 }, 0.3);
             });
 
-            // === TABLET (768px - 1199px) ===
+            // ПЛАНШЕТ - короткая прокрутка
             mm.add("(min-width: 768px) and (max-width: 1199px)", () => {
+                const scrollConfig = {
+                    trigger: sectionRef.current,
+                    start: 'top top',
+                    end: '+=80%',  // ✅ Меньше для планшета
+                    scrub: 1,
+                    pin: true,
+                    invalidateOnRefresh: true
+                };
+
                 gsap.set(imageRef.current, {
                     position: 'absolute', top: '50%', left: '50%', xPercent: -50, yPercent: -50,
                     width: '100vw', height: '100vh', borderRadius: 0, zIndex: 0
@@ -75,22 +79,26 @@ export const Hero = () => {
                 gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 100, opacity: 0 });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
-
                 tl.to(imageRef.current, {
-                    width: '30vw',
-                    height: '16.7vw',
-                    borderRadius: '0.52vw',
-                    top: '40%', // ← Подгонка высоты
-                    left: '49%', x: 0, y: 0,
+                    width: '30vw', height: '16.7vw', borderRadius: '0.52vw',
+                    top: '40%', left: '49%', x: 0, y: 0,
                     duration: 1, ease: 'power2.inOut'
                 }, 0);
-
                 tl.to([desktopTitleLeftRef.current, desktopTitleRightRef.current], { x: 0, opacity: 1, duration: 0.8 }, 0.2);
                 tl.to([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 0, opacity: 1, duration: 0.8 }, 0.3);
             });
 
-            // === MOBILE (< 767px) ===
+            // МОБИЛЬНЫЙ - самая короткая прокрутка
             mm.add("(max-width: 767px)", () => {
+                const scrollConfig = {
+                    trigger: sectionRef.current,
+                    start: 'top top',
+                    end: '+=60%',  // ✅ Еще меньше для мобилки
+                    scrub: 1,
+                    pin: true,
+                    invalidateOnRefresh: true
+                };
+
                 gsap.set(imageRef.current, {
                     position: 'absolute', top: 0, left: 0, x: 0, y: 0, xPercent: 0, yPercent: 0,
                     width: '100vw', height: '100vh', borderRadius: 0
@@ -99,16 +107,13 @@ export const Hero = () => {
                 gsap.set([mobileTextRef.current, mobileButtonsRef.current], { y: 50, opacity: 0 });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
-
                 tl.to(imageRef.current, {
                     width: '100vw', height: '64.72vw', top: '22.22vw',
                     left: 0, x: 0, y: 0, borderRadius: 0,
                     duration: 1, ease: 'power2.inOut'
                 }, 0);
-
                 tl.to([mobileTextRef.current, mobileButtonsRef.current], { y: 0, opacity: 1, duration: 0.8 }, 0.3);
             });
-
         }, sectionRef);
 
         return () => ctx.revert();
@@ -168,7 +173,7 @@ export const Hero = () => {
                         </Button>
                         <Button
                             variant="outline"
-                            onClick={() => window.open('https://t.me/le_bed_eva', '_blank')}
+                            onClick={() => window.open('https://t.me/tonik_jizni', '_blank')}
                         >
                             {hero.buttons[1].text}
                         </Button>

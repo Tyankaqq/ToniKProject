@@ -218,7 +218,10 @@ const DetailedProductCard = ({ product, onAddToCart, addingToCart, index }) => {
                             +
                         </button>
                     </div>
-                    <button className="DetailedProductCard_btn DetailedProductCard_btn_buy">
+                    <button
+                        className="DetailedProductCard_btn DetailedProductCard_btn_buy"
+                        onClick={() => window.open('https://t.me/le_bed_eva', '_blank')}
+                    >
                         Купить сейчас
                     </button>
                     <button
@@ -317,7 +320,12 @@ const DetailedProductCard = ({ product, onAddToCart, addingToCart, index }) => {
                             +
                         </button>
                     </div>
-                    <button className="DetailedProductCard_btn DetailedProductCard_btn_buy">Купить сейчас</button>
+                    <button
+                        className="DetailedProductCard_btn DetailedProductCard_btn_buy"
+                        onClick={() => window.open('https://t.me/le_bed_eva', '_blank')}
+                    >
+                        Купить сейчас
+                    </button>
                     <button
                         className={`DetailedProductCard_btn DetailedProductCard_btn_cart ${addingToCart ? 'adding' : ''}`}
                         onClick={handleAddToCartClick}
