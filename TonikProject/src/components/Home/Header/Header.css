@@ -110,9 +110,7 @@
    TABLET (768px - 1024px)
    ============================================ */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .Header {
-        padding: 2.6vw 0 1.3vw 0;
-    }
+
 
     /* Лого для планшета - 76px на 768px = 9.9vw */
     .Header_logo {
@@ -256,9 +254,7 @@
    MOBILE (до 767px)
    ============================================ */
 @media (max-width: 767px) {
-    .Header {
-        padding: 4.44vw 0;
-    }
+
 
     /* Лого для мобилки */
     .Header_logo {
