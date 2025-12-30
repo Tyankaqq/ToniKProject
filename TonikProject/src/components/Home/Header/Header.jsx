@@ -107,13 +107,13 @@ const Header = () => {
             />
 
             <nav className={`Header_mobile_menu ${isMenuOpen ? 'active' : ''}`}>
-                <button
+                {/*<button
                     className="Header_mobile_close"
                     onClick={closeMenu}
                     aria-label="Закрыть меню"
                 >
                     ✕
-                </button>
+                </button>*/}
 
                 <div className="Header_mobile_nav">
                     <a href="/product" onClick={closeMenu}>О продукте</a>
