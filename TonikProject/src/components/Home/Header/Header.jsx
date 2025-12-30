@@ -1,5 +1,5 @@
 // src/components/Header/Header.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import Logo from '../../../assets/Image/Logo.svg';
 import Cart from '../../Cart/Cart/Cart.jsx';
@@ -7,6 +7,8 @@ import Cart from '../../Cart/Cart/Cart.jsx';
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const lastScrollY = useRef(0);
 
     useEffect(() => {
         if (isMenuOpen || isCartOpen) {
@@ -18,6 +20,32 @@ const Header = () => {
             document.body.style.overflow = 'unset';
         };
     }, [isMenuOpen, isCartOpen]);
+
+    // ✅ SCROLL HANDLER - СКРЫТИЕ/ПОЯВЛЕНИЕ HEADER
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY < 100) {
+                // Показываем header в самом верху страницы
+                setIsVisible(true);
+            } else if (currentScrollY > lastScrollY.current) {
+                // Скролл вниз → скрываем header
+                setIsVisible(false);
+            } else {
+                // Скролл вверх → показываем header
+                setIsVisible(true);
+            }
+
+            lastScrollY.current = currentScrollY;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -39,7 +67,8 @@ const Header = () => {
 
     return (
         <>
-            <header className="Header">
+            {/* ✅ КЛАСС isVisible ДЛЯ АНИМАЦИИ */}
+            <header className={`Header ${isVisible ? 'Header--visible' : 'Header--hidden'}`}>
                 <div className="container">
                     <div className="Header_container">
                         <div className="Header_logo">
@@ -95,7 +124,6 @@ const Header = () => {
                     <a href="#" onClick={(e) => { closeMenu(); openCart(e); }}>Корзина</a>
                 </div>
             </nav>
-
 
             <Cart isOpen={isCartOpen} onClose={closeCart} />
         </>

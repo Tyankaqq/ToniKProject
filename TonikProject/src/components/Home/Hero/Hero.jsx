@@ -3,8 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { mockData } from '../../../data/data.js';
 import { Button } from '../Button/Button.jsx';
-// import heroVideo from '../../../assets/videos/hero-video.mp4'; // Закомментировано
-import heroImage from '../../../assets/Image/HeroImage.svg'; // ← НОВАЯ КАРТИНКА
+import heroVideo from '../../../assets/videos/hero-video.mp4'; // ✅ ВЕРНУЛИ ВИДЕО
 import './Hero.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const Hero = () => {
     const { hero } = mockData;
     const sectionRef = useRef(null);
-    const imageRef = useRef(null); // ← Переименовал с videoRef на imageRef
+    const videoRef = useRef(null); // ✅ ВЕРНУЛИ videoRef
 
     // Refs
     const desktopContainerRef = useRef(null);
@@ -41,7 +40,7 @@ export const Hero = () => {
                     invalidateOnRefresh: true
                 };
 
-                gsap.set(imageRef.current, {
+                gsap.set(videoRef.current, {
                     position: 'absolute', top: '50%', left: '50%', xPercent: -50, yPercent: -50,
                     width: '100vw', height: '100vh', borderRadius: 0, zIndex: 0
                 });
@@ -50,7 +49,7 @@ export const Hero = () => {
                 gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 100, opacity: 0 });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
-                tl.to(imageRef.current, {
+                tl.to(videoRef.current, {
                     width: '30vw', height: '16.7vw', borderRadius: '0.3vw',
                     top: '40%', left: '49%', x: 0, y: 0,
                     duration: 1, ease: 'power2.inOut'
@@ -64,13 +63,13 @@ export const Hero = () => {
                 const scrollConfig = {
                     trigger: sectionRef.current,
                     start: 'top top',
-                    end: '+=80%',  // ✅ Меньше для планшета
+                    end: '+=80%',
                     scrub: 1,
                     pin: true,
                     invalidateOnRefresh: true
                 };
 
-                gsap.set(imageRef.current, {
+                gsap.set(videoRef.current, {
                     position: 'absolute', top: '50%', left: '50%', xPercent: -50, yPercent: -50,
                     width: '100vw', height: '100vh', borderRadius: 0, zIndex: 0
                 });
@@ -79,7 +78,7 @@ export const Hero = () => {
                 gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 100, opacity: 0 });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
-                tl.to(imageRef.current, {
+                tl.to(videoRef.current, {
                     width: '30vw', height: '16.7vw', borderRadius: '0.52vw',
                     top: '40%', left: '49%', x: 0, y: 0,
                     duration: 1, ease: 'power2.inOut'
@@ -93,13 +92,13 @@ export const Hero = () => {
                 const scrollConfig = {
                     trigger: sectionRef.current,
                     start: 'top top',
-                    end: '+=60%',  // ✅ Еще меньше для мобилки
+                    end: '+=60%',
                     scrub: 1,
                     pin: true,
                     invalidateOnRefresh: true
                 };
 
-                gsap.set(imageRef.current, {
+                gsap.set(videoRef.current, {
                     position: 'absolute', top: 0, left: 0, x: 0, y: 0, xPercent: 0, yPercent: 0,
                     width: '100vw', height: '100vh', borderRadius: 0
                 });
@@ -107,7 +106,7 @@ export const Hero = () => {
                 gsap.set([mobileTextRef.current, mobileButtonsRef.current], { y: 50, opacity: 0 });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
-                tl.to(imageRef.current, {
+                tl.to(videoRef.current, {
                     width: '100vw', height: '64.72vw', top: '22.22vw',
                     left: 0, x: 0, y: 0, borderRadius: 0,
                     duration: 1, ease: 'power2.inOut'
@@ -122,14 +121,18 @@ export const Hero = () => {
     return (
         <section className="Hero_section" ref={sectionRef}>
 
-            {/* ← КАРТИНКА ВМЕСТО ВИДЕО */}
-            <div className="Hero_imageFloating" ref={imageRef}>
-                <img
-                    src={heroImage}
-                    alt="Hero Image"
-                    className="Hero_imageFloatingImg"
-                />
-                <div className="Hero_imageFloatingOverlay"></div>
+            {/* ✅ ВИДЕО ВМЕСТО КАРТИНКИ */}
+            <div className="Hero_videoFloating" ref={videoRef}>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="Hero_videoFloatingVideo"
+                >
+                    <source src={heroVideo} type="video/mp4" />
+                </video>
+                <div className="Hero_videoFloatingOverlay"></div>
             </div>
 
             <div className="Hero_content">

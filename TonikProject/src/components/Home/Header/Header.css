@@ -2,12 +2,19 @@
    DESKTOP (≥1025px)
    ============================================ */
 .Header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.04vw 0;
-    z-index: 100;
+    z-index: 1000;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+.Header--visible {
+    transform: translateY(0);
+}
+.Header--hidden {
+    transform: translateY(-100%);
 }
 
 .Header_container {
