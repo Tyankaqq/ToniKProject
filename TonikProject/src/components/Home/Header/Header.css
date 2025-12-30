@@ -14,7 +14,7 @@
     transform: translateY(0);
 }
 .Header--hidden {
-    transform: translateY(-100%);
+    transform: translateY(calc(-100% - 20px)); /* ← СДВИГ НА ВЫСоту + отступ */
 }
 
 .Header_container {
