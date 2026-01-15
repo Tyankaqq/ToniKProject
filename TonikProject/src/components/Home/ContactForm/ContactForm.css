@@ -1,194 +1,337 @@
+/* ========== ОСНОВНАЯ СЕКЦИЯ ========== */
 .ContactForm_section {
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--clr-bg);
     padding: 5.21vw 0;
-    border-radius: 2.08vw;
 }
 
 .ContactForm_container {
-    align-items: flex-end;
-    justify-content: center;
     margin: 0 auto;
     display: flex;
-    gap: 4.8vw;
+    justify-content: center;
 }
 
 .ContactForm_content {
-    flex: 1;
-    max-width: 41.67vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .ContactForm_title {
-    font-size: 2.6vw;
+    font-family: 'Hikasami', sans-serif;
+    text-align: center;
+    font-size: 2.9vw;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: -0.03em;
     line-height: 110%;
-    color: var(--clr-black);
+    color: white;
     margin-bottom: 2.08vw;
 }
 
-.ContactForm_description {
-    font-size: 0.83vw;
-    line-height: 150%;
-    color: var(--clr-black);
-    opacity: 0.8;
+.ContactForm_trigger_button {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+    background: transparent;
+    border: none;
+    font-size: 1.3vw;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    padding: 0.8vw 0;
+    transition: opacity 0.3s;
 }
 
-.ContactForm_form {
-    flex: 1;
+.ContactForm_trigger_button:hover {
+    opacity: 0.7;
+}
+
+
+
+/* ========== МОДАЛЬНОЕ ОКНО ========== */
+.ContactForm_overlay {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.ContactForm_modal {
+    scrollbar-width: none;
+    position: fixed;
+    top: 50%;
+    left: -100%; /* Начальная позиция за экраном слева */
+    transform: translateY(-50%);
+    width: 49.48vw; /* 950px / 1920px * 100 */
+    height: 50vw; /* 960px / 1920px * 100 */
+    max-height: 90vh;
+    background: #272727;
+    z-index: 1000;
+    padding: 5.21vw; /* 100px / 1920px * 100 = 5.21vw */
+    overflow: hidden;
+    transition: left 0.4s ease;
+    border-radius: 0.52vw;
+}
+
+.ContactForm_modal.active {
+    left: 0
+}
+
+.ContactForm_close {
+    position: absolute;
+    top: 1.56vw;
+    right: 1.56vw;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 1.56vw;
+    height: 1.56vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+    z-index: 10;
+}
+
+.ContactForm_close:hover {
+    opacity: 0.7;
+}
+
+.ContactForm_close svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ContactForm_modal_title {
+    font-size: 2.9vw;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 110%;
+    color: #ffffff;
+
+    font-family: 'Hikasami', sans-serif;
+    margin: 0;
+    padding-bottom: 2.08vw;
+}
+
+.ContactForm_modal_socials {
+    display: flex;
+    align-items: center;
+    gap: 1.1vw;
+    margin-bottom: 1.56vw;
+    font-size: 2.1vw;
+    color: #ffffff;
+}
+
+.ContactForm_modal_icons {
+    margin-top: 0.5vw;
+    display: flex;
+    gap: 0.52vw;
+}
+
+.ContactForm_modal_icon {
+    display: block;
+    width: 1.35vw;
+    height: 1.35vw;
+    transition: opacity 0.3s;
+}
+
+.ContactForm_modal_icon:hover {
+    opacity: 0.7;
+}
+
+.ContactForm_modal_icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.ContactForm_modal_description {
+    max-width: 30vw;
+    font-size: 1.3vw;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 2.08vw;
+}
+
+.ContactForm_modal_form {
     display: flex;
     flex-direction: column;
     gap: 1.04vw;
 }
 
-.ContactForm_input,
-.ContactForm_textarea {
+.ContactForm_modal_input {
     width: 100%;
-    padding: 0.78vw 1.04vw;
-    font-size: 0.83vw;
+    height: 2.19vw;
+    padding: 1.3vw 1.04vw;
+    font-size: 1.3vw;
     font-family: inherit;
-    border: none;
-    background-color: #E5E5E5;
-    border-radius: 2.08vw;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0.52vw;
+    color: #ffffff;
     outline: none;
-    transition: box-shadow 0.3s;
+    transition: border-color 0.3s;
 }
 
-.ContactForm_input {
-    height: 2.19vw;
+.ContactForm_modal_input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
-.ContactForm_input:focus,
-.ContactForm_textarea:focus {
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+.ContactForm_modal_input:focus {
+    border-color: rgba(255, 255, 255, 0.8);
 }
 
-.ContactForm_textarea {
-    height: 2.19vw;
-    resize: none;
-}
-
-/* Обертка для checkbox и кнопки в ряд (только десктоп) */
-.ContactForm_footer {
+.ContactForm_modal_checkbox {
     display: flex;
-    align-items: center;
-    gap: 1.04vw;
-}
-
-.ContactForm_checkbox {
-    display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.52vw;
-    font-size: 0.73vw;
-    color: var(--clr-black);
-    opacity: 0.8;
+    font-size: 0.83vw;
+    color: #ffffff;
     cursor: pointer;
-    flex: 1;
 }
 
-.ContactForm_checkbox input[type="checkbox"] {
-    width: 1.04vw;
-    height: 1.04vw;
+.ContactForm_modal_checkbox input[type="checkbox"] {
+    width: 0.94vw;
+    height: 0.94vw;
     cursor: pointer;
     flex-shrink: 0;
+    margin-top: 0.1vw;
 }
 
-.ContactForm_button {
-    /* Фиксированный размер: 415x42 на 1920px */
-    width: 21.61vw; /* 415px / 1920px * 100 */
-    height: 2.19vw; /* 42px / 1920px * 100 */
-    padding: 0;
-    background-color: #CDFFFF;
-    color: var(--clr-black);
+.ContactForm_modal_checkbox u {
+    text-decoration: underline;
+}
+
+.ContactForm_modal_submit {
+    width: 100%;
+    height: 2.7vw;
+    background: #CDFFFF;
+    color: #000;
     font-size: 0.83vw;
     font-weight: 400;
     text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
-    border-radius: 2.08vw;
+    border-radius: 0.52vw;
     cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Inter', sans-serif;
-    white-space: nowrap;
-    flex-shrink: 0;
+    transition: background 0.3s;
 }
 
-.ContactForm_button:hover {
-    background-color: #B0F0F0;
+.ContactForm_modal_submit:hover {
+    background: #B0F0F0;
 }
 
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .ContactForm_section {
-        padding: 5.21vw 0;
+        padding: 5.21vw 2.60vw;
         border-radius: 3.91vw;
-    }
-
-    .ContactForm_container {
-        max-width: 100%;
-        padding: 0 2.60vw;
-        flex-direction: row;
-        align-items: flex-end;
-        gap: 1.21vw;
     }
 
     .ContactForm_content {
         max-width: 100%;
-        width: 46.74vw;
     }
 
     .ContactForm_title {
-        width: 95%;
+        font-family: 'Hikasami', sans-serif;
         font-size: 4.30vw;
         margin-bottom: 2.60vw;
     }
 
-    .ContactForm_description {
+    .ContactForm_trigger_button {
         font-size: 1.82vw;
+        gap: 1.04vw;
+        padding: 1.30vw 0;
+    }
+
+    .ContactForm_trigger_button img {
+        width: 2.6vw;
+    }
+
+    .ContactForm_modal {
+        width: 70vw;
+        height: 80vh;
+        padding: 9.77vw; /* 100px на планшете ~9.77vw */
+        left: -100%;
+    }
+
+    .ContactForm_modal.active {
+        left: 2.60vw;
+    }
+
+    .ContactForm_close {
+        top: 2.60vw;
+        right: 2.60vw;
+        width: 3.91vw;
+        height: 3.91vw;
+    }
+
+    .ContactForm_modal_title {
+        font-size: 3.39vw;
+        margin-bottom: 2.60vw;
+    }
+
+    .ContactForm_modal_socials {
+        font-size: 2.60vw;
+        gap: 1.04vw;
+        margin-bottom: 2.60vw;
+    }
+
+    .ContactForm_modal_icons {
+        gap: 1.04vw;
+    }
+
+    .ContactForm_modal_icon {
+        width: 2.60vw;
+        height: 2.60vw;
+    }
+
+    .ContactForm_modal_description {
+        font-size: 1.56vw;
         line-height: 110%;
+        margin-bottom: 2.60vw;
     }
 
-    .ContactForm_form {
-        width: 46.74vw;
-        gap: 2.60vw;
+    .ContactForm_modal_form {
+        gap: 2.08vw;
     }
 
-    /* На планшете checkbox и кнопка в колонку */
-    .ContactForm_footer {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 2.60vw;
-    }
-
-    .ContactForm_input,
-    .ContactForm_textarea {
+    .ContactForm_modal_input {
         height: 5.47vw;
         padding: 1.95vw 2.60vw;
         font-size: 1.82vw;
-        border-radius: 26.04vw;
-        background-color: #E5E5E5;
+        border-radius: 1.30vw;
     }
 
-    .ContactForm_checkbox {
-        height: 4.30vw;
-        gap: 1.30vw;
+    .ContactForm_modal_checkbox {
         font-size: 1.56vw;
+        gap: 1.04vw;
     }
 
-    .ContactForm_checkbox input[type="checkbox"] {
+    .ContactForm_modal_checkbox input[type="checkbox"] {
         width: 2.08vw;
         height: 2.08vw;
     }
 
-    .ContactForm_button {
-        width: 100%;
+    .ContactForm_modal_submit {
         height: 5.47vw;
-        padding: 2.34vw 2.60vw;
         font-size: 1.82vw;
-        border-radius: 5.21vw;
+        border-radius: 1.30vw;
     }
 }
 
@@ -197,17 +340,11 @@
     .ContactForm_section {
         margin-bottom: 11vw;
         border-radius: 5.56vw;
-    }
-
-    .ContactForm_container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4.7vw;
+        padding: 8.33vw 5.56vw;
     }
 
     .ContactForm_content {
         max-width: 100%;
-        width: 100%;
     }
 
     .ContactForm_title {
@@ -215,46 +352,85 @@
         margin-bottom: 5.56vw;
     }
 
-    .ContactForm_description {
+    .ContactForm_trigger_button {
+        font-size: 4vw;
+        gap: 2.78vw;
+        padding: 2.78vw 0;
+    }
+
+    .ContactForm_trigger_button img {
+        width: 5.56vw;
+    }
+
+    .ContactForm_modal {
+        width: 90vw;
+        height: 85vh;
+        padding: 13.89vw; /* 100px на мобилке ~13.89vw (из расчета 720px ширина) */
+        border-radius: 2.78vw;
+        left: -100%;
+    }
+
+    .ContactForm_modal.active {
+        left: 5vw;
+    }
+
+    .ContactForm_close {
+        top: 2.78vw;
+        right: 2.78vw;
+        width: 5.56vw;
+        height: 5.56vw;
+    }
+
+    .ContactForm_modal_title {
+        font-size: 6.67vw;
+        margin-bottom: 4.17vw;
+    }
+
+    .ContactForm_modal_socials {
+        font-size: 4.44vw;
+        gap: 2.78vw;
+        margin-bottom: 4.17vw;
+    }
+
+    .ContactForm_modal_icons {
+        gap: 2.78vw;
+    }
+
+    .ContactForm_modal_icon {
+        width: 5.56vw;
+        height: 5.56vw;
+    }
+
+    .ContactForm_modal_description {
         font-size: 3.89vw;
         line-height: 150%;
+        margin-bottom: 5.56vw;
     }
 
-    .ContactForm_form {
-        width: 100%;
+    .ContactForm_modal_form {
         gap: 4.17vw;
     }
 
-    /* На мобилке checkbox и кнопка в колонку */
-    .ContactForm_footer {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4.17vw;
-    }
-
-    .ContactForm_input,
-    .ContactForm_textarea {
+    .ContactForm_modal_input {
         height: 13.33vw;
         padding: 3.33vw 4.44vw;
         font-size: 3.89vw;
-        border-radius: 27.78vw;
+        border-radius: 2.78vw;
     }
 
-    .ContactForm_checkbox {
-        gap: 2.78vw;
+    .ContactForm_modal_checkbox {
         font-size: 3.33vw;
+        gap: 2.78vw;
     }
 
-    .ContactForm_checkbox input[type="checkbox"] {
+    .ContactForm_modal_checkbox input[type="checkbox"] {
         width: 4.44vw;
         height: 4.44vw;
     }
 
-    .ContactForm_button {
-        width: 100%;
+    .ContactForm_modal_submit {
         height: 13.33vw;
-        padding: 3.33vw 4.44vw;
         font-size: 3.89vw;
-        border-radius: 6.67vw;
+        border-radius: 2.78vw;
     }
 }

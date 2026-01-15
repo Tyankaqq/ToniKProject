@@ -10,11 +10,13 @@
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
 }
+
 .Header--visible {
     transform: translateY(0);
 }
+
 .Header--hidden {
-    transform: translateY(calc(-100% - 20px)); /* ← СДВИГ НА ВЫСоту + отступ */
+    transform: translateY(calc(-100% - 20px));
 }
 
 .Header_container {
@@ -23,41 +25,22 @@
     align-items: center;
 }
 
-.Header_nav {
-    display: flex;
-    gap: 2.08vw;
+.Header_logo img {
+    width: 6vw;
 }
 
-.Header_nav_link {
-    color: var(--clr-white);
-    text-decoration: none;
-    font-size: var(--fs-16);
-    text-transform: uppercase;
-    letter-spacing: -0.03em;
-    font-weight: 400;
-    opacity: 0.9;
-    transition: opacity 0.3s;
-}
-
-.Header_nav_link:hover {
-    opacity: 1;
-}
-
+/* DESKTOP: actions (корзина + бургер) */
 .Header_actions {
-    display: none;
-}
-
-.Header_language {
-    font-size: var(--fs-14);
-    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1.04vw;
 }
 
 .Header_icon_btn {
     background: none;
     border: none;
-    color: var(--clr-white);
     cursor: pointer;
-    padding: 0.52vw;
+    padding: 0;
     transition: opacity 0.3s;
     display: flex;
     align-items: center;
@@ -68,185 +51,206 @@
     opacity: 0.7;
 }
 
+.Header_icon_btn img {
+    width: 1.56vw;
+    height: 1.56vw;
+}
+
+/* БУРГЕР/КРЕСТИК */
 .Header_burger {
-    display: none !important;
-    width: 0;
-    height: 0;
-    visibility: hidden;
-    position: absolute;
-}
-
-.Header_mobile_overlay,
-.Header_mobile_menu {
-    display: none;
-}
-
-.Header_mobile_close {
-    position: absolute;
-    top: 2.6vw;
-    right: 2.6vw;
-    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.31vw;
+    width: 1.56vw;
+    height: 1.56vw;
+    background: transparent;
     border: none;
-    color: var(--clr-white);
-    font-size: 3.26vw;
     cursor: pointer;
-    padding: 0.65vw;
-    line-height: 1;
+    padding: 0;
+    position: relative;
     z-index: 1001;
-    transition: transform 0.2s ease;
-}
-.Header_nav_link img{
-    width: 6vw;
-}
-.Header_mobile_close:hover {
-    transform: rotate(90deg);
 }
 
-.Header_mobile_close:active {
-    transform: scale(0.9);
+.Header_burger span {
+    width: 100%;
+    height: 0.16vw;
+    background: var(--clr-white);
+    border-radius: 0.08vw;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Крестик */
+.Header_burger.active span:nth-child(1) {
+    transform: translateY(0.47vw) rotate(45deg);
+}
+
+.Header_burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.Header_burger.active span:nth-child(3) {
+    transform: translateY(-0.47vw) rotate(-45deg);
+}
+
+/* ОВЕРЛЕЙ */
+.Header_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.Header_overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* САЙДБАР СЛЕВА (выезжает под хедером) */
+.Header_sidebar {
+    position: fixed;
+    top: 5.73vw; /* Под header (110px на 1920px) */
+    left: -100%;
+    width: 24.9vw; /* ~478px на 1920px */
+    background: rgba(39, 39, 39, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    transition: left 0.4s ease;
+    border-radius: 0 1.04vw 1.04vw 0;
+    overflow: hidden;
+}
+
+.Header_sidebar.active {
+    left: 0;
+}
+
+/* Табы сверху */
+.Header_sidebar_tabs {
+    display: flex;
+    gap: 0.52vw;
+    padding: 1.04vw;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.Header_sidebar_tab {
+    flex: 1;
+    padding: 0.78vw 1.04vw;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.52vw;
+    color: var(--clr-white);
+    font-size: 0.83vw;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.Header_sidebar_tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.Header_sidebar_tab.active {
+    background: rgba(205, 255, 255, 0.15);
+    border-color: rgba(205, 255, 255, 0.3);
+    color: #CDFFFF;
+}
+
+/* Контент подкаталога */
+.Header_sidebar_content {
+    padding: 1.56vw 1.04vw;
+}
+
+.Header_submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.04vw;
+}
+
+.Header_submenu a {
+    color: var(--clr-white);
+    text-decoration: none;
+    font-size: 0.83vw;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+    padding: 0.52vw 0.78vw;
+    border-radius: 0.52vw;
+    transition: all 0.3s;
+}
+
+.Header_submenu a:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* ============================================
    TABLET (768px - 1024px)
    ============================================ */
 @media (min-width: 768px) and (max-width: 1024px) {
-
-
-    /* Лого для планшета - 76px на 768px = 9.9vw */
-    .Header_logo {
-        width: 9.9vw;
-        height: 4.56vw; /* 35px на 768px */
-    }
-
     .Header_logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    .Header_nav {
-        display: none;
+        width: 9.9vw;
     }
 
     .Header_actions {
-        display: flex;
-        align-items: center;
         gap: 1.95vw;
     }
 
-    .Header_icon_btn {
-        padding: 1.04vw;
-    }
-
-    .Header_icon_btn svg {
+    .Header_icon_btn img {
         width: 2.6vw;
         height: 2.6vw;
     }
 
-    /* Бургер меню для планшета */
     .Header_burger {
-        display: flex !important;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1.04vw;
-        width: 4.56vw; /* 35px на 768px */
-        height: 5.56vw;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        position: relative;
-        z-index: 1001;
-        visibility: visible;
+        gap: 0.52vw;
+        width: 2.6vw;
+        height: 2.6vw;
     }
 
     .Header_burger span {
-        width: 100%;
-        height: 0.26vw; /* 2px на 768px */
-        background: var(--clr-white);
-        border-radius: 0.26vw;
-        transition: all 0.3s ease;
-        transform-origin: center;
+        height: 0.26vw;
     }
 
     .Header_burger.active span:nth-child(1) {
-        transform: translateY(1.3vw) rotate(45deg);
-    }
-
-    .Header_burger.active span:nth-child(2) {
-        opacity: 0;
+        transform: translateY(0.78vw) rotate(45deg);
     }
 
     .Header_burger.active span:nth-child(3) {
-        transform: translateY(-1.3vw) rotate(-45deg);
+        transform: translateY(-0.78vw) rotate(-45deg);
     }
 
-    /* Оверлей */
-    .Header_mobile_overlay {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 998;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
+    .Header_sidebar {
+        top: 9.11vw;
+        width: 40vw;
     }
 
-    .Header_mobile_overlay.active {
-        opacity: 1;
-        pointer-events: all;
+    .Header_sidebar_tabs {
+        gap: 1.04vw;
+        padding: 2.08vw;
     }
 
-    /* Мобильное меню */
-    .Header_mobile_menu {
-        display: block;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 36.46vw; /* 280px на 768px */
-        max-width: 85vw;
-        height: 100vh;
-        background: var(--clr-bg);
-        z-index: 999;
-        transition: right 0.3s ease;
-        overflow-y: auto;
-        box-shadow: -0.26vw 0 2.6vw rgba(0, 0, 0, 0.5);
+    .Header_sidebar_tab {
+        padding: 1.3vw 1.56vw;
+        font-size: 1.56vw;
     }
 
-    .Header_mobile_menu.active {
-        right: 0;
+    .Header_sidebar_content {
+        padding: 2.6vw 2.08vw;
     }
 
-    .Header_mobile_nav {
-        padding: 10.42vw 3.13vw 3.13vw;
-        display: flex;
-        flex-direction: column;
-        gap: 3.13vw;
+    .Header_submenu {
+        gap: 2.08vw;
     }
 
-    .Header_mobile_nav a {
-        color: var(--clr-white);
-        text-decoration: none;
-        font-size: 2.34vw;
-        text-transform: uppercase;
-        letter-spacing: -0.03em;
-        font-weight: 400;
-        transition: opacity 0.3s;
-    }
-
-    .Header_mobile_nav a:hover {
-        opacity: 0.7;
-    }
-
-    .Header_mobile_close {
-        top: 2.6vw;
-        right: 2.6vw;
-        font-size: 3.26vw;
-        padding: 0.65vw;
+    .Header_submenu a {
+        font-size: 1.82vw;
+        padding: 0.78vw 1.04vw;
     }
 }
 
@@ -254,143 +258,64 @@
    MOBILE (до 767px)
    ============================================ */
 @media (max-width: 767px) {
-
-
-    /* Лого для мобилки */
-    .Header_logo {
-        width: 15.33vw;
-        height: auto;
-    }
-
     .Header_logo img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .Header_nav {
-        display: none;
+        width: 15.33vw;
     }
 
     .Header_actions {
-        display: flex;
-        align-items: center;
         gap: 3.33vw;
     }
 
-    .Header_icon_btn {
-        padding: 1.67vw;
-    }
-
-    .Header_icon_btn svg {
+    .Header_icon_btn img {
         width: 5vw;
         height: 5vw;
     }
 
-    /* Бургер меню для мобилки */
     .Header_burger {
-        display: flex !important;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1.67vw;
-        width: 6.56vw;
-        height: 6.44vw;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        position: relative;
-        z-index: 1001;
-        visibility: visible;
+        gap: 1.11vw;
+        width: 5.56vw;
+        height: 5.56vw;
     }
 
     .Header_burger span {
-        width: 100%;
-        height: 0.56vw; /* 2px на 360px */
-        background: var(--clr-white);
-        border-radius: 0.56vw;
-        transition: all 0.3s ease;
-        transform-origin: center;
+        height: 0.56vw;
     }
 
     .Header_burger.active span:nth-child(1) {
-        transform: translateY(2.67vw) rotate(45deg); /* ← Симметрично */
-    }
-
-    .Header_burger.active span:nth-child(2) {
-        opacity: 0;
-        transform: scale(0);
+        transform: translateY(1.67vw) rotate(45deg);
     }
 
     .Header_burger.active span:nth-child(3) {
-        transform: translateY(-1.67vw) rotate(-45deg); /* ← Симметрично */
+        transform: translateY(-1.67vw) rotate(-45deg);
     }
 
-    /* Оверлей */
-    .Header_mobile_overlay {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 998;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
+    .Header_sidebar {
+        top: 16.67vw;
+        width: 85vw;
     }
 
-    .Header_mobile_overlay.active {
-        opacity: 1;
-        pointer-events: all;
+    .Header_sidebar_tabs {
+        gap: 2.78vw;
+        padding: 4.17vw;
     }
 
-    /* Мобильное меню */
-    .Header_mobile_menu {
-        display: block;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 72.22vw; /* 260px на 360px */
-        max-width: 85vw;
-        height: 100vh;
-        background: var(--clr-bg);
-        z-index: 999;
-        transition: right 0.3s ease;
-        overflow-y: auto;
-        box-shadow: -0.56vw 0 5.56vw rgba(0, 0, 0, 0.5);
+    .Header_sidebar_tab {
+        padding: 2.78vw 3.33vw;
+        font-size: 3.33vw;
+        border-radius: 2.78vw;
     }
 
-    .Header_mobile_menu.active {
-        right: 0;
+    .Header_sidebar_content {
+        padding: 5.56vw 4.17vw;
     }
 
-    .Header_mobile_nav {
-        padding: 19.44vw 5.56vw 5.56vw;
-        display: flex;
-        flex-direction: column;
-        gap: 5.56vw;
+    .Header_submenu {
+        gap: 4.17vw;
     }
 
-    .Header_mobile_nav a {
-        color: var(--clr-white);
-        text-decoration: none;
+    .Header_submenu a {
         font-size: 4.44vw;
-        text-transform: uppercase;
-        letter-spacing: -0.03em;
-        font-weight: 400;
-        transition: opacity 0.3s;
-    }
-
-    .Header_mobile_nav a:hover {
-        opacity: 0.7;
-    }
-
-    .Header_mobile_close {
-        top: 5.56vw;
-        right: 5.56vw;
-        font-size: 6.94vw;
-        padding: 1.39vw;
+        padding: 2.78vw 3.33vw;
+        border-radius: 2.78vw;
     }
 }

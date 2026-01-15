@@ -1,14 +1,14 @@
 .Button {
     display: flex;
     width: 21.61vw;
-    height: 2.19vw;
+    height: 3.2vw;
     min-height: 42px;
     padding: 0.94vw 0;
     justify-content: center;
     align-items: center;
     gap: 0.52vw;
-    border-radius: 5.08vw;
-    font-size: var(--fs-16);
+    border-radius: 0.85vw;
+    font-size: 1.3vw;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: -0.03em;

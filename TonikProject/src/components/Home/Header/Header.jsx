@@ -2,12 +2,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import Logo from '../../../assets/Image/Logo.svg';
+import Market from '../../../assets/Image/market.svg';
 import Cart from '../../Cart/Cart/Cart.jsx';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
+    const [activeCatalog, setActiveCatalog] = useState('tonics'); // По умолчанию "Наши тоники"
     const lastScrollY = useRef(0);
 
     useEffect(() => {
@@ -21,19 +23,15 @@ const Header = () => {
         };
     }, [isMenuOpen, isCartOpen]);
 
-    // ✅ SCROLL HANDLER - СКРЫТИЕ/ПОЯВЛЕНИЕ HEADER
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
             if (currentScrollY < 100) {
-                // Показываем header в самом верху страницы
                 setIsVisible(true);
             } else if (currentScrollY > lastScrollY.current) {
-                // Скролл вниз → скрываем header
                 setIsVisible(false);
             } else {
-                // Скролл вверх → показываем header
                 setIsVisible(true);
             }
 
@@ -65,9 +63,12 @@ const Header = () => {
         setIsCartOpen(false);
     };
 
+    const switchCatalog = (catalog) => {
+        setActiveCatalog(catalog);
+    };
+
     return (
         <>
-            {/* ✅ КЛАСС isVisible ДЛЯ АНИМАЦИИ */}
             <header className={`Header ${isVisible ? 'Header--visible' : 'Header--hidden'}`}>
                 <div className="container">
                     <div className="Header_container">
@@ -77,16 +78,17 @@ const Header = () => {
                             </a>
                         </div>
 
-                        <nav className="Header_nav">
-                            <a href="/product" className="Header_nav_link">О продукте</a>
-                            <a href="/catalog" className="Header_nav_link">Каталог</a>
-                            <a href="/tonics" className="Header_nav_link">Наши тоники</a>
-                            <a href="/about" className="Header_nav_link">О компании</a>
-                            <a href="/partners" className="Header_nav_link">Сотрудничество</a>
-                            <a href="#" className="Header_nav_link" onClick={openCart}>Корзина</a>
-                        </nav>
-
                         <div className="Header_actions">
+                            {/* Иконка корзины */}
+                            <button
+                                className="Header_icon_btn"
+                                onClick={openCart}
+                                aria-label="Корзина"
+                            >
+                                <img src={Market} alt="Корзина" />
+                            </button>
+
+                            {/* Бургер/Крестик */}
                             <button
                                 className={`Header_burger ${isMenuOpen ? 'active' : ''}`}
                                 onClick={toggleMenu}
@@ -99,31 +101,62 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* ПАНЕЛЬ С ТАБАМИ (выезжает слева под хедером) */}
+                <div className={`Header_sidebar ${isMenuOpen ? 'active' : ''}`}>
+                    <div className="Header_sidebar_tabs">
+                        <button
+                            className={`Header_sidebar_tab ${activeCatalog === 'catalog' ? 'active' : ''}`}
+                            onClick={() => switchCatalog('catalog')}
+                        >
+                            Каталог
+                        </button>
+                        <button
+                            className={`Header_sidebar_tab ${activeCatalog === 'tonics' ? 'active' : ''}`}
+                            onClick={() => switchCatalog('tonics')}
+                        >
+                            Наши тоники
+                        </button>
+                        <button
+                            className={`Header_sidebar_tab ${activeCatalog === 'info' ? 'active' : ''}`}
+                            onClick={() => switchCatalog('info')}
+                        >
+                            Информация
+                        </button>
+                    </div>
+
+                    {/* Подкаталог */}
+                    <div className="Header_sidebar_content">
+                        {activeCatalog === 'catalog' && (
+                            <div className="Header_submenu">
+                                <a href="/catalog" onClick={closeMenu}>Весь каталог</a>
+                            </div>
+                        )}
+
+                        {activeCatalog === 'tonics' && (
+                            <div className="Header_submenu">
+                                <a href="/tonics/anfelcia" onClick={closeMenu}>Анфельция</a>
+                                <a href="/tonics/laminaria" onClick={closeMenu}>Ламинария</a>
+                                <a href="/tonics/fucus" onClick={closeMenu}>Фукус</a>
+                            </div>
+                        )}
+
+                        {activeCatalog === 'info' && (
+                            <div className="Header_submenu">
+                                <a href="/product" onClick={closeMenu}>О продукте</a>
+                                <a href="/about" onClick={closeMenu}>О компании</a>
+                                <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
+                            </div>
+                        )}
+                    </div>
+                </div>
             </header>
 
+            {/* Оверлей затемнения */}
             <div
-                className={`Header_mobile_overlay ${isMenuOpen ? 'active' : ''}`}
+                className={`Header_overlay ${isMenuOpen ? 'active' : ''}`}
                 onClick={closeMenu}
             />
-
-            <nav className={`Header_mobile_menu ${isMenuOpen ? 'active' : ''}`}>
-                {/*<button
-                    className="Header_mobile_close"
-                    onClick={closeMenu}
-                    aria-label="Закрыть меню"
-                >
-                    ✕
-                </button>*/}
-
-                <div className="Header_mobile_nav">
-                    <a href="/product" onClick={closeMenu}>О продукте</a>
-                    <a href="/catalog" onClick={closeMenu}>Каталог</a>
-                    <a href="/tonics" onClick={closeMenu}>Наши тоники</a>
-                    <a href="/about" onClick={closeMenu}>О компании</a>
-                    <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
-                    <a href="#" onClick={(e) => { closeMenu(); openCart(e); }}>Корзина</a>
-                </div>
-            </nav>
 
             <Cart isOpen={isCartOpen} onClose={closeCart} />
         </>

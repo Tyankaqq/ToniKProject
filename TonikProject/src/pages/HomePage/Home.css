@@ -3,11 +3,11 @@ section{
 }
 .First_block{
     background-color: var(--clr-bg);
-    border-radius: 0 0 40px 40px;
+
 }
 .Second_block{
     background-color: var(--clr-bg);
-    border-radius: 40px;
+
 }
 .Third_block{
     background-color: var(--clr-bg);

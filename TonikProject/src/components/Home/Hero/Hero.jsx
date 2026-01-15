@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { mockData } from '../../../data/data.js';
 import { Button } from '../Button/Button.jsx';
-import heroVideo from '../../../assets/videos/hero-video.mp4'; // ✅ ВЕРНУЛИ ВИДЕО
+import heroVideo from '../../../assets/videos/hero-video.mp4';
 import './Hero.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,15 +11,14 @@ gsap.registerPlugin(ScrollTrigger);
 export const Hero = () => {
     const { hero } = mockData;
     const sectionRef = useRef(null);
-    const videoRef = useRef(null); // ✅ ВЕРНУЛИ videoRef
+    const videoRef = useRef(null);
+    const spacerRef = useRef(null);
 
-    // Refs
     const desktopContainerRef = useRef(null);
     const desktopTitleLeftRef = useRef(null);
     const desktopTitleRightRef = useRef(null);
     const desktopSubtitleRef = useRef(null);
     const desktopButtonsRef = useRef(null);
-    const desktopImageTargetRef = useRef(null);
 
     const mobileContainerRef = useRef(null);
     const mobileTextRef = useRef(null);
@@ -29,7 +28,7 @@ export const Hero = () => {
         const ctx = gsap.context(() => {
             const mm = gsap.matchMedia();
 
-            // ДЕСКТОП - длинная прокрутка
+            // ДЕСКТОП
             mm.add("(min-width: 1200px)", () => {
                 const scrollConfig = {
                     trigger: sectionRef.current,
@@ -40,25 +39,68 @@ export const Hero = () => {
                     invalidateOnRefresh: true
                 };
 
+                // Начальное состояние: видео на весь экран по центру
                 gsap.set(videoRef.current, {
-                    position: 'absolute', top: '50%', left: '50%', xPercent: -50, yPercent: -50,
-                    width: '100vw', height: '100vh', borderRadius: 0, zIndex: 0
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    xPercent: -50,
+                    yPercent: -50,
+                    width: '100vw',
+                    height: '100vh',
+                    zIndex: 0,
+                    borderRadius: 0
                 });
+
                 gsap.set(desktopContainerRef.current, { opacity: 1 });
-                gsap.set([desktopTitleLeftRef.current, desktopTitleRightRef.current], { x: (i) => i === 0 ? '-50vw' : '50vw', opacity: 0 });
-                gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 100, opacity: 0 });
+                gsap.set([desktopTitleLeftRef.current, desktopTitleRightRef.current], {
+                    x: (i) => i === 0 ? '-50vw' : '50vw',
+                    opacity: 0
+                });
+                gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], {
+                    y: 100,
+                    opacity: 0
+                });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
+
+                // Анимация видео: уменьшение и перемещение к spacer
                 tl.to(videoRef.current, {
-                    width: '30vw', height: '16.7vw', borderRadius: '0.3vw',
-                    top: '40%', left: '49%', x: 0, y: 0,
-                    duration: 1, ease: 'power2.inOut'
+                    width: '44.27vw',
+                    height: '24.74vw',
+
+                    // Вычисляем финальную позицию относительно spacer
+                    top: () => {
+                        const spacerRect = spacerRef.current.getBoundingClientRect();
+                        const sectionRect = sectionRef.current.getBoundingClientRect();
+                        return spacerRect.top - sectionRect.top + spacerRect.height / 2;
+                    },
+                    left: () => {
+                        const spacerRect = spacerRef.current.getBoundingClientRect();
+                        const sectionRect = sectionRef.current.getBoundingClientRect();
+                        return spacerRect.left - sectionRect.left + spacerRect.width / 2;
+                    },
+                    xPercent: -50,
+                    yPercent: -50,
+                    duration: 1,
+                    ease: 'power2.inOut'
                 }, 0);
-                tl.to([desktopTitleLeftRef.current, desktopTitleRightRef.current], { x: 0, opacity: 1, duration: 0.8 }, 0.2);
-                tl.to([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 0, opacity: 1, duration: 0.8 }, 0.3);
+
+                // Появление текста
+                tl.to([desktopTitleLeftRef.current, desktopTitleRightRef.current], {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.8
+                }, 0.2);
+
+                tl.to([desktopSubtitleRef.current, desktopButtonsRef.current], {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8
+                }, 0.3);
             });
 
-            // ПЛАНШЕТ - короткая прокрутка
+            // ПЛАНШЕТ
             mm.add("(min-width: 768px) and (max-width: 1199px)", () => {
                 const scrollConfig = {
                     trigger: sectionRef.current,
@@ -70,24 +112,62 @@ export const Hero = () => {
                 };
 
                 gsap.set(videoRef.current, {
-                    position: 'absolute', top: '50%', left: '50%', xPercent: -50, yPercent: -50,
-                    width: '100vw', height: '100vh', borderRadius: 0, zIndex: 0
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    xPercent: -50,
+                    yPercent: -50,
+                    width: '100vw',
+                    height: '100vh',
+                    zIndex: 0
                 });
+
                 gsap.set(desktopContainerRef.current, { opacity: 1 });
-                gsap.set([desktopTitleLeftRef.current, desktopTitleRightRef.current], { x: (i) => i === 0 ? '-50vw' : '50vw', opacity: 0 });
-                gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 100, opacity: 0 });
+                gsap.set([desktopTitleLeftRef.current, desktopTitleRightRef.current], {
+                    x: (i) => i === 0 ? '-50vw' : '50vw',
+                    opacity: 0
+                });
+                gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], {
+                    y: 100,
+                    opacity: 0
+                });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
+
                 tl.to(videoRef.current, {
-                    width: '30vw', height: '16.7vw', borderRadius: '0.52vw',
-                    top: '40%', left: '49%', x: 0, y: 0,
-                    duration: 1, ease: 'power2.inOut'
+                    width: '44.27vw',
+                    height: '24.74vw',
+
+                    top: () => {
+                        const spacerRect = spacerRef.current.getBoundingClientRect();
+                        const sectionRect = sectionRef.current.getBoundingClientRect();
+                        return spacerRect.top - sectionRect.top + spacerRect.height / 2;
+                    },
+                    left: () => {
+                        const spacerRect = spacerRef.current.getBoundingClientRect();
+                        const sectionRect = sectionRef.current.getBoundingClientRect();
+                        return spacerRect.left - sectionRect.left + spacerRect.width / 2;
+                    },
+                    xPercent: -50,
+                    yPercent: -50,
+                    duration: 1,
+                    ease: 'power2.inOut'
                 }, 0);
-                tl.to([desktopTitleLeftRef.current, desktopTitleRightRef.current], { x: 0, opacity: 1, duration: 0.8 }, 0.2);
-                tl.to([desktopSubtitleRef.current, desktopButtonsRef.current], { y: 0, opacity: 1, duration: 0.8 }, 0.3);
+
+                tl.to([desktopTitleLeftRef.current, desktopTitleRightRef.current], {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.8
+                }, 0.2);
+
+                tl.to([desktopSubtitleRef.current, desktopButtonsRef.current], {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8
+                }, 0.3);
             });
 
-            // МОБИЛЬНЫЙ - самая короткая прокрутка
+            // МОБИЛЬНЫЙ
             mm.add("(max-width: 767px)", () => {
                 const scrollConfig = {
                     trigger: sectionRef.current,
@@ -99,19 +179,39 @@ export const Hero = () => {
                 };
 
                 gsap.set(videoRef.current, {
-                    position: 'absolute', top: 0, left: 0, x: 0, y: 0, xPercent: 0, yPercent: 0,
-                    width: '100vw', height: '100vh', borderRadius: 0
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    xPercent: 0,
+                    yPercent: 0,
+                    width: '100vw',
+                    height: '100vh'
                 });
+
                 gsap.set(mobileContainerRef.current, { opacity: 1 });
-                gsap.set([mobileTextRef.current, mobileButtonsRef.current], { y: 50, opacity: 0 });
+                gsap.set([mobileTextRef.current, mobileButtonsRef.current], {
+                    y: 50,
+                    opacity: 0
+                });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
+
                 tl.to(videoRef.current, {
-                    width: '100vw', height: '64.72vw', top: '22.22vw',
-                    left: 0, x: 0, y: 0, borderRadius: 0,
-                    duration: 1, ease: 'power2.inOut'
+                    width: '100vw',
+                    height: '64.72vw',
+                    top: '22.22vw',
+                    left: 0,
+                    xPercent: 0,
+                    yPercent: 0,
+                    duration: 1,
+                    ease: 'power2.inOut'
                 }, 0);
-                tl.to([mobileTextRef.current, mobileButtonsRef.current], { y: 0, opacity: 1, duration: 0.8 }, 0.3);
+
+                tl.to([mobileTextRef.current, mobileButtonsRef.current], {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8
+                }, 0.3);
             });
         }, sectionRef);
 
@@ -120,8 +220,6 @@ export const Hero = () => {
 
     return (
         <section className="Hero_section" ref={sectionRef}>
-
-            {/* ✅ ВИДЕО ВМЕСТО КАРТИНКИ */}
             <div className="Hero_videoFloating" ref={videoRef}>
                 <video
                     autoPlay
@@ -139,23 +237,17 @@ export const Hero = () => {
                 <div className="Hero_desktop" ref={desktopContainerRef}>
                     <div className="Hero_title_wrapper">
                         <h1 className="Hero_title Hero_title--left" ref={desktopTitleLeftRef}>{hero.titleLeft}</h1>
-                        <div className="Hero_image_container" ref={desktopImageTargetRef}></div>
+                        <div className="Hero_image_container" ref={spacerRef}></div>
                         <h1 className="Hero_title Hero_title--right" ref={desktopTitleRightRef}>{hero.titleRight}</h1>
                     </div>
                     <div ref={desktopSubtitleRef}>
                         <p className="Hero_subtitle">{hero.subtitle}</p>
                     </div>
                     <div className="Hero_buttons" ref={desktopButtonsRef}>
-                        <Button
-                            variant="primary"
-                            onClick={() => window.location.href = '/catalog'}
-                        >
+                        <Button variant="primary" onClick={() => window.location.href = '/catalog'}>
                             {hero.buttons[0].text}
                         </Button>
-                        <Button
-                            variant="outline"
-                            onClick={() => window.open('https://t.me/tonik_jizni', '_blank')}
-                        >
+                        <Button variant="outline" onClick={() => window.open('https://t.me/tonik_jizni', '_blank')}>
                             {hero.buttons[1].text}
                         </Button>
                     </div>
@@ -168,16 +260,10 @@ export const Hero = () => {
                         <p className="Hero_mobile_subtitle">{hero.subtitle}</p>
                     </div>
                     <div className="Hero_mobile_buttons" ref={mobileButtonsRef}>
-                        <Button
-                            variant="primary"
-                            onClick={() => window.location.href = '/catalog'}
-                        >
+                        <Button variant="primary" onClick={() => window.location.href = '/catalog'}>
                             {hero.buttons[0].text}
                         </Button>
-                        <Button
-                            variant="outline"
-                            onClick={() => window.open('https://t.me/tonik_jizni', '_blank')}
-                        >
+                        <Button variant="outline" onClick={() => window.open('https://t.me/tonik_jizni', '_blank')}>
                             {hero.buttons[1].text}
                         </Button>
                     </div>

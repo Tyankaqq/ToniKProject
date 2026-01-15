@@ -32,7 +32,7 @@ export const Home = () => {
                  <SeoText/>
                 </div>
             </main>
-            <div style={{backgroundColor: '#1e0d0d', borderRadius: ''}}>
+            <div style={{backgroundColor: 'var(--clr-bg)', borderRadius: ''}}>
             <Footer />
             </div>
         </>

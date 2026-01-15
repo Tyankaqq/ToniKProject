@@ -1,7 +1,6 @@
 .Catalog_section {
-    margin-bottom: var(--gap-150);
+    padding-bottom: var(--gap-150);
     position: relative;
-    padding-bottom: 5vw;
 }
 
 .Catalog_header {
@@ -17,6 +16,7 @@
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 110%;
+    font-family: 'Hikasami', sans-serif;
 }
 
 .Catalog_link_all {
@@ -25,8 +25,10 @@
     gap: 0.52vw;
     color: var(--clr-white);
     text-decoration: none;
-    font-size: 1.1vw;
+    font-size: 1.25vw;
     text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 }
@@ -58,196 +60,139 @@
     transform: translateX(0.26vw);
 }
 
-/* ========== SLIDER ========== */
-.Catalog_slider_container {
-    position: relative;
-    width: 100%;
-    padding: 0;
+/* ========== GRID LAYOUT - 3 В РЯД ========== */
+.Catalog_grid {
+    display: grid;
+    grid-template-columns: 22.1vw 22.1vw 45.5vw;
+    gap: 1.04vw;
 }
 
-.Catalog_slider_wrapper {
+/* ========== КАРТОЧКИ С ДИНАМИЧЕСКОЙ ТЕНЬЮ ========== */
+.Catalog_card {
+    position: relative;
+    height: 28.65vw;
+    border-radius: 0.78vw;
     overflow: hidden;
-    position: relative;
-    border-radius: 1.04vw;
-    width: 100%;
-}
-
-.Catalog_slider_track {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(153, 153, 153, 0.05) 100%);
+    border: 0.05vw solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(0.63vw);
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    width: 100%;
+    flex-direction: column;
 }
 
-.Catalog_slider_item {
-    min-width: 100%;
-    max-width: 100%;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    padding: 0;
+.Catalog_card:hover {
+    transform: translateY(-0.52vw);
+    border-color: rgba(var(--shadow-color), 0.6);
+    box-shadow:
+            0 0.52vw 1.56vw rgba(var(--shadow-color), 0.2),
+            0 1.04vw 3.13vw rgba(var(--shadow-color), 0.15),
+            0 0 2.08vw rgba(var(--shadow-color), 0.3);
 }
 
-/* КНОПКИ НАВИГАЦИИ - ТОЛЬКО ДЕСКТОП */
-.Catalog_slider_btn {
-    opacity: 0;
-    visibility: hidden;
-    right: 2vw;
-    left: auto;
+/* МАЛЕНЬКИЕ КАРТОЧКИ */
+.Catalog_card--small {
+    width: 22.1vw;
+}
+
+/* БОЛЬШАЯ КАРТОЧКА */
+.Catalog_card--large {
+    width: 45.5vw;
+}
+
+/* ========== ИЗОБРАЖЕНИЕ В ПРАВОМ НИЖНЕМ УГЛУ С БЛЮРОМ ========== */
+.Catalog_card_image {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    border: 0.1vw solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    width: 3.65vw;
-    height: 3.65vw;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    bottom: -5vw;
+    right: -5vw;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
 }
 
-.Catalog_slider_container:hover .Catalog_slider_btn {
+.Catalog_card_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom right;
+    filter: blur(0.31vw);
+    opacity: 0.85;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: bottom right;
+}
+
+.Catalog_card:hover .Catalog_card_image img {
+    transform: scale(1.1);
+    filter: blur(0.15vw);
     opacity: 1;
-    visibility: visible;
 }
 
-.Catalog_slider_container:hover .Catalog_slider_btn:hover:not(:disabled) {
-    background: rgba(205, 255, 255, 0.3);
-    border-color: rgba(205, 255, 255, 0.8);
-    transform: translateY(-50%) scale(1.15);
-    box-shadow: 0 0 30px rgba(205, 255, 255, 0.5);
-}
-
-.Catalog_slider_container:hover .Catalog_slider_btn:active:not(:disabled) {
-    transform: translateY(-50%) scale(1.05);
-}
-
-.Catalog_slider_btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.Catalog_slider_btn svg {
-    width: 1.56vw;
-    height: 1.56vw;
-}
-
-/* NAVIGATION */
-.Catalog_slider_navigation {
+/* ========== КОНТЕНТ ========== */
+.Catalog_card_content {
+    position: relative;
+    z-index: 2;
+    padding: 1.56vw 1.67vw;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    background: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    transparent 100%);
+}
+
+/* КНОПКА В ПРАВОМ ВЕРХНЕМ УГЛУ */
+.Catalog_card_link {
+    display: flex;
     align-items: center;
-    padding: 0;
-}
-
-/* DOTS */
-.Catalog_slider_dots {
-    display: flex;
-    gap: 0.52vw;
-}
-
-.Catalog_slider_dot {
-    width: 0.52vw;
-    height: 0.52vw;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0;
-}
-
-.Catalog_slider_dot.active {
-    background: rgba(205, 255, 255, 1);
-    box-shadow: 0 0 10px rgba(205, 255, 255, 0.6);
-    transform: scale(1.5);
-}
-
-.Catalog_slider_dot:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.2);
-}
-
-/* COUNTER */
-.Catalog_slider_counter {
-    display: flex;
-    align-items: baseline;
     gap: 0.26vw;
     font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-}
-
-.Catalog_slider_counter_current {
-    font-size: 1.56vw;
-    color: rgba(205, 255, 255, 1);
+    font-size: 1.25vw;
     font-weight: 500;
-}
-
-.Catalog_slider_counter_separator {
-    font-size: 1.04vw;
     color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    align-self: flex-end;
+    margin-bottom: 5.83vw;
 }
 
-.Catalog_slider_counter_total {
-    font-size: 1.04vw;
-    color: rgba(255, 255, 255, 0.6);
+.Catalog_card:hover .Catalog_card_link {
+    color: rgba(205, 255, 255, 0.9);
 }
 
-/* PROGRESS BAR */
-.Catalog_slider_progress {
-    width: 100%;
-    height: 0.21vw;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 0.1vw;
-    margin-top: 1.5vw;
-    overflow: hidden;
+.Catalog_card_link svg {
+    width: 0.94vw;
+    height: 0.94vw;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.Catalog_slider_progress_bar {
-    height: 100%;
-    background: linear-gradient(90deg, rgba(205, 255, 255, 1) 0%, rgba(150, 230, 230, 1) 100%);
-    border-radius: 0.1vw;
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 15px rgba(205, 255, 255, 0.6);
+.Catalog_card:hover .Catalog_card_link svg {
+    transform: translateX(0.26vw);
 }
 
-/* ========== АДАПТИВ ДЛЯ СЛАЙДЕРА (max-width: 1440px) ========== */
-@media (max-width: 1440px) {
-    .Catalog_slider_wrapper {
-        max-height: 50vw;
-        overflow-y: auto;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(205, 255, 255, 0.3) transparent;
-    }
-
-    .Catalog_slider_wrapper::-webkit-scrollbar {
-        width: 0.3vw;
-    }
-
-    .Catalog_slider_wrapper::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    .Catalog_slider_wrapper::-webkit-scrollbar-thumb {
-        background: rgba(205, 255, 255, 0.3);
-        border-radius: 0.5vw;
-    }
-
-    .Catalog_slider_item {
-        padding: 1vw 0;
-    }
+/* ЗАГОЛОВОК СЛЕВА */
+.Catalog_card_title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.77vw;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 110%;
+    white-space: pre-line;
+    margin: 0;
+    align-self: flex-start;
 }
 
-/* ========== TABLET (768px - 1024px) - БЕЗ КНОПОК ========== */
+/* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .Catalog_section {
         margin-bottom: 13.02vw;
-        padding-bottom: 8vw;
     }
 
     .Catalog_header {
@@ -260,73 +205,72 @@
 
     .Catalog_link_all {
         gap: 1.2vw;
-        font-size: 1.82vw;
+        font-size: 2.34vw;
     }
 
-    .Catalog_slider_wrapper {
-        max-height: 140vw;
-        overflow-y: auto;
-        overflow-x: hidden;
-        border-radius: 2.75vw;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(205, 255, 255, 0.3) transparent;
+    .Catalog_grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.6vw;
     }
 
-    .Catalog_slider_wrapper::-webkit-scrollbar {
-        width: 0.5vw;
+    .Catalog_card {
+        border-radius: 1.95vw;
+        backdrop-filter: blur(1.56vw);
+        height: 71.61vw;
     }
 
-    .Catalog_slider_wrapper::-webkit-scrollbar-track {
-        background: transparent;
+    .Catalog_card--small {
+        width: 100%;
     }
 
-    .Catalog_slider_wrapper::-webkit-scrollbar-thumb {
-        background: rgba(205, 255, 255, 0.3);
-        border-radius: 1vw;
+    .Catalog_card--large {
+        grid-column: 1 / 3;
+        width: 100%;
+        height: 78.13vw;
     }
 
-    /* ✅ КНОПКИ ПОЛНОСТЬЮ УБРАНЫ НА ПЛАНШЕТЕ */
-    .Catalog_slider_btn {
-        display: none !important;
+    .Catalog_card_image {
+        bottom: -4vw;
+        right: -4vw;
+        width: 65%;
+        height: 65%;
     }
 
-    .Catalog_slider_navigation {
-        margin-bottom: 6vw;
+    .Catalog_card_image img {
+        filter: blur(0.78vw);
     }
 
-    .Catalog_slider_dots {
-        gap: 1.2vw;
+    .Catalog_card:hover .Catalog_card_image img {
+        filter: blur(0.39vw);
     }
 
-    .Catalog_slider_dot {
-        width: 1.2vw;
-        height: 1.2vw;
+    .Catalog_card_content {
+        padding: 3.9vw;
     }
 
-    .Catalog_slider_counter_current {
-        font-size: 3vw;
+    .Catalog_card_title {
+        font-size: 3.39vw;
     }
 
-    .Catalog_slider_counter_separator,
-    .Catalog_slider_counter_total {
-        font-size: 2vw;
+    .Catalog_card_link {
+        font-size: 2.34vw;
+        gap: 0.65vw;
+        margin-bottom: 14.5vw;
     }
 
-    .Catalog_slider_progress {
-        height: 0.4vw;
-        margin-top: 2.5vw;
+    .Catalog_card_link svg {
+        width: 2.34vw;
+        height: 2.34vw;
     }
 }
 
-/* ========== MOBILE (max-width: 767px) - БЕЗ КНОПОК ========== */
+/* ========== MOBILE (max-width: 767px) ========== */
 @media (max-width: 767px) {
     .Catalog_section {
         margin-bottom: 22.67vw;
-        padding-bottom: 12vw;
     }
 
     .Catalog_header {
-        margin-top: 30vw;
         margin-bottom: 8.33vw;
     }
 
@@ -336,63 +280,67 @@
 
     .Catalog_link_all {
         gap: 2.3vw;
-        font-size: 3.9vw;
+        font-size: 3.33vw;
     }
 
-    .Catalog_slider_wrapper {
-        max-height: 280vw;
-        overflow-y: auto;
-        overflow-x: hidden;
-        border-radius: 0;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(205, 255, 255, 0.3) transparent;
-        -webkit-overflow-scrolling: touch;
+    .Catalog_link_all img {
+        width: 2.78vw;
+        height: auto;
     }
 
-    .Catalog_slider_wrapper::-webkit-scrollbar {
-        width: 1vw;
+    .Catalog_grid {
+        grid-template-columns: 1fr;
+        gap: 4.17vw;
     }
 
-    .Catalog_slider_wrapper::-webkit-scrollbar-track {
-        background: transparent;
+    .Catalog_card {
+        border-radius: 3.33vw;
+        backdrop-filter: blur(2.78vw);
+        width: 100%;
+        height: 152.78vw;
     }
 
-    .Catalog_slider_wrapper::-webkit-scrollbar-thumb {
-        background: rgba(205, 255, 255, 0.3);
-        border-radius: 2vw;
+    .Catalog_card--small {
+        width: 100%;
     }
 
-    /* ✅ КНОПКИ ПОЛНОСТЬЮ УБРАНЫ НА МОБИЛКЕ */
-    .Catalog_slider_btn {
-        display: none !important;
+    .Catalog_card--large {
+        grid-column: 1;
+        width: 100%;
+        height: 166.67vw;
     }
 
-    .Catalog_slider_navigation {
-        flex-direction: column;
-        gap: 4vw;
-        margin-bottom: 8vw;
+    .Catalog_card_image {
+        bottom: -6vw;
+        right: -6vw;
+        width: 70%;
+        height: 70%;
     }
 
-    .Catalog_slider_dots {
-        gap: 2vw;
+    .Catalog_card_image img {
+        filter: blur(1.67vw);
     }
 
-    .Catalog_slider_dot {
-        width: 2vw;
-        height: 2vw;
+    .Catalog_card:hover .Catalog_card_image img {
+        filter: blur(0.83vw);
     }
 
-    .Catalog_slider_counter_current {
-        font-size: 5vw;
+    .Catalog_card_content {
+        padding: 6.94vw;
     }
 
-    .Catalog_slider_counter_separator,
-    .Catalog_slider_counter_total {
-        font-size: 3.5vw;
+    .Catalog_card_title {
+        font-size: 7.22vw;
     }
 
-    .Catalog_slider_progress {
-        height: 0.8vw;
-        margin-top: 5vw;
+    .Catalog_card_link {
+        font-size: 4.44vw;
+        gap: 1.39vw;
+        margin-bottom: 30vw;
+    }
+
+    .Catalog_card_link svg {
+        width: 4.17vw;
+        height: 4.17vw;
     }
 }

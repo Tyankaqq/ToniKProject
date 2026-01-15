@@ -3,7 +3,7 @@ export const mockData = {
     hero: {
         titleLeft: "ТОНИК",
         titleRight: "ЖИЗНИ",
-        subtitle: "Это и есть суть Природы",
+        subtitle: "ЭТО И ЕСТЬ СУТЬ ПРИРОДЫ",
         imageAlt: "Природа",
         buttons: [
             { text: "Открыть каталог", primary: true },

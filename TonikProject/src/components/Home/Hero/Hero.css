@@ -1,4 +1,7 @@
-.Hero_imageFloating {
+/* =========================================
+   VIDEO STYLES
+   ========================================= */
+.Hero_videoFloating {
     position: absolute;
     top: 0;
     left: 0;
@@ -10,60 +13,206 @@
     background: #000;
 }
 
-.Hero_imageFloatingImg {
+.Hero_videoFloatingVideo {/* ========== ОСНОВНАЯ СЕКЦИЯ ========== */
+    .Hero_section {
+        position: relative;
+        padding: 4vw 5vw;
+        background-color: var(--clr-bg);
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Hero_content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1720px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* ========== ДЕСКТОП ========== */
+    .Hero_desktop {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Hero_title_wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1.1vw; /* Одинаковый отступ с обеих сторон */
+        margin-bottom: 6.7vw;
+    }
+
+    .Hero_title {
+        font-size: 6.5vw;
+        font-weight: 600;
+        line-height: 110%;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        margin: 0;
+        white-space: nowrap;
+        color: #ffffff;
+        font-family: 'Hikasami', sans-serif;
+    }
+
+    /* ========== ВИДЕО КОНТЕЙНЕР ========== */
+    .Hero_video_wrapper {
+        position: relative; /* По умолчанию в потоке */
+        width: 44.27vw; /* Конечный размер */
+        height: 24.74vw;
+        overflow: hidden;
+        flex-shrink: 0;
+        border-radius: 0.78vw; /* Опционально */
+    }
+
+    /* GSAP изменит на position: fixed при загрузке, затем обратно на relative */
+
+    .Hero_video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .Hero_video_overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .Hero_subtitle {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 1.5vw;
+        line-height: 100%;
+        letter-spacing: -0.03em;
+        text-align: center;
+        color: #ffffff;
+        margin: 0 0 2.5vw;
+    }
+
+    .Hero_buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 1.1vw;
+    }
+
+    .Hero_mobile { display: none; }
+
+    /* ========== MOBILE (360px - 767px) ========== */
+    @media (max-width: 767px) {
+        .Hero_desktop { display: none; }
+        .Hero_mobile  {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .Hero_section {
+            padding: 0;
+            min-height: auto;
+            height: auto;
+        }
+
+        .Hero_content {
+            max-width: 100%;
+            padding: 22.22vw 0 22.4vw;
+        }
+
+        .Hero_video_wrapper {
+            width: 100vw;
+            height: 64.72vw; /* Конечный размер для мобилки */
+            margin-bottom: 32vw;
+            border-radius: 0;
+        }
+
+        .Hero_mobile_text {
+            padding: 0 5.56vw;
+            margin-bottom: 8.33vw;
+        }
+
+        .Hero_mobile_title {
+            font-size: 11.11vw;
+            line-height: 110%;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin: 0 0 2.78vw;
+            color: #fff;
+            font-family: 'Hikasami', sans-serif;
+            font-weight: 600;
+        }
+
+        .Hero_mobile_subtitle {
+            font-size: 4.44vw;
+            line-height: 120%;
+            margin: 0;
+            color: #fff;
+        }
+
+        .Hero_mobile_buttons {
+            padding: 0 5.56vw;
+            display: flex;
+            flex-direction: column;
+            gap: 4.17vw;
+        }
+
+        .Hero_mobile_buttons .Button {
+            width: 100%;
+            height: 11.67vw;
+            border-radius: 11.11vw;
+            font-size: 3.89vw;
+        }
+    }
+
+    /* ========== TABLET (768px - 1024px) ========== */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .Hero_title_wrapper {
+            gap: 1.2vw;
+            margin-bottom: 15.7vw;
+        }
+
+        .Hero_title {
+            font-size: 7.81vw;
+        }
+
+        .Hero_video_wrapper {
+            width: 44.27vw;
+            height: 24.74vw;
+            border-radius: 1.04vw;
+        }
+
+        .Hero_subtitle {
+            font-size: 2.6vw;
+            margin-bottom: 4vw;
+        }
+
+        .Hero_buttons {
+            gap: 1.3vw;
+        }
+    }
+
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.Hero_imageFloatingOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-}
-
-/* Контент поверх картинки */
-.Hero_section {
-    position: relative;
-}
-.Hero_content {
-    position: relative;
-    z-index: 2;
-}
-.Hero_image_container {
-    visibility: hidden;
-}
-
-
-/* =========================================
-
-
-
-
-
-   NEW VIDEO STYLES (ADD THIS AT THE TOP)
-   ========================================= */
-.Hero_videoFloating {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0; /* Под контентом */
-    overflow: hidden;
-    pointer-events: none;
-    background: #000;
-}
-.Hero_videoFloatingVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
 .Hero_videoFloatingOverlay {
     position: absolute;
     top: 0;
@@ -71,22 +220,24 @@
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.3);
+    z-index: 1;
 }
 
-/* Нужно добавить relative и z-index, чтобы контент был выше видео */
 .Hero_section {
     position: relative;
 }
+
 .Hero_content {
     position: relative;
     z-index: 2;
 }
+
 .Hero_image_container {
-    visibility: hidden; /* Скрываем контейнер-мишень, видео будет поверх */
+    visibility: hidden;
 }
 
 /* =========================================
-   YOUR ORIGINAL CSS (UNCHANGED BELOW)
+   ORIGINAL STYLES
    ========================================= */
 
 .Hero_section {
@@ -101,7 +252,6 @@
     justify-content: center;
     gap: 1.1vw;
     margin-bottom: 6.7vw;
-
 }
 
 .Hero_title {
@@ -109,10 +259,14 @@
 }
 
 .Hero_image_container {
-    width: 30vw;
-    height: 16.7vw;
-    border-radius: 0.3vw;
+    /* ✅ ИЗМЕНЕНЫ РАЗМЕРЫ ЗДЕСЬ ЧТОБЫ ТЕКСТ РАЗЪЕЗЖАЛСЯ ПРАВИЛЬНО */
+    width: 44.27vw;  /* Было 30vw */
+    height: 24.74vw; /* Было 16.7vw */
 
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    visibility: hidden; /* Скрываем, так как там видео поверх */
 }
 
 .Hero_subtitle {
@@ -126,15 +280,12 @@
 }
 
 .Hero_section {
-    /* Оставляем 100vh как у тебя */
     height: 100vh;
     min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-
-    /* Добавляем background, чтобы не было белых полос при ресайзе */
     background: var(--clr-bg);
 }
 
@@ -154,6 +305,7 @@
     margin: 0;
     white-space: nowrap;
     color: #ffffff;
+    font-family: 'Hikasami', sans-serif;
 }
 
 .Hero_image_container {
@@ -162,9 +314,8 @@
     flex-shrink: 0;
 }
 
-/* .Hero_image удален, так как картинки больше нет */
-
 .Hero_subtitle {
+    font-family: 'Inter', Regular;
     font-weight: 400;
     line-height: 100%;
     letter-spacing: -0.03em;
@@ -259,9 +410,9 @@
     }
 
     .Hero_image_container {
-        width: 30.73vw;
-        height: 17.32vw;
-        border-radius: 0.52vw;
+        width: 44.27vw;
+        height: 24.74vw;
+        border-radius: 1.04vw;
     }
 
     .Hero_subtitle {
