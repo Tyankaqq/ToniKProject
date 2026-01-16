@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3.13vw;
+    margin-bottom: 9.13vw;
 }
 
 .Catalog_title {
@@ -101,6 +101,10 @@
 /* БОЛЬШАЯ КАРТОЧКА */
 .Catalog_card--large {
     width: 45.5vw;
+    transform: translateY(-150px);
+}
+.Catalog_card--large:hover {
+    transform: translateY(-160px); /* -150px + -10px (эквивалент -0.52vw) */
 }
 
 /* ========== ИЗОБРАЖЕНИЕ В ПРАВОМ НИЖНЕМ УГЛУ С БЛЮРОМ ========== */
