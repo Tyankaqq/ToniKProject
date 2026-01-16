@@ -2,7 +2,8 @@
 .ContactForm_section {
     width: 100%;
     background-color: var(--clr-bg);
-    padding: 5.21vw 0;
+    padding: 12.21vw 0;
+
 }
 
 .ContactForm_container {
@@ -48,8 +49,6 @@
     opacity: 0.7;
 }
 
-
-
 /* ========== МОДАЛЬНОЕ ОКНО ========== */
 .ContactForm_overlay {
     overflow: hidden;
@@ -71,22 +70,20 @@
 .ContactForm_modal {
     scrollbar-width: none;
     position: fixed;
-    top: 50%;
+    top: 0;
     left: -100%; /* Начальная позиция за экраном слева */
-    transform: translateY(-50%);
     width: 49.48vw; /* 950px / 1920px * 100 */
-    height: 50vw; /* 960px / 1920px * 100 */
-    max-height: 90vh;
+    height: 100vh; /* На всю высоту экрана */
     background: #272727;
     z-index: 1000;
-    padding: 5.21vw; /* 100px / 1920px * 100 = 5.21vw */
-    overflow: hidden;
+    padding: 5.21vw;
+    overflow-y: auto;
     transition: left 0.4s ease;
-    border-radius: 0.52vw;
+    border-radius: 0;
 }
 
 .ContactForm_modal.active {
-    left: 0
+    left: 0;
 }
 
 .ContactForm_close {
@@ -122,7 +119,6 @@
     letter-spacing: -0.03em;
     line-height: 110%;
     color: #ffffff;
-
     font-family: 'Hikasami', sans-serif;
     margin: 0;
     padding-bottom: 2.08vw;
@@ -265,13 +261,14 @@
 
     .ContactForm_modal {
         width: 70vw;
-        height: 80vh;
-        padding: 9.77vw; /* 100px на планшете ~9.77vw */
+        height: 100vh; /* На всю высоту */
+        padding: 9.77vw;
         left: -100%;
+        border-radius: 0;
     }
 
     .ContactForm_modal.active {
-        left: 2.60vw;
+        left: 0;
     }
 
     .ContactForm_close {
@@ -363,15 +360,15 @@
     }
 
     .ContactForm_modal {
-        width: 90vw;
-        height: 85vh;
-        padding: 13.89vw; /* 100px на мобилке ~13.89vw (из расчета 720px ширина) */
-        border-radius: 2.78vw;
+        width: 100vw;
+        height: 100vh; /* На всю высоту */
+        padding: 13.89vw;
+        border-radius: 0;
         left: -100%;
     }
 
     .ContactForm_modal.active {
-        left: 5vw;
+        left: 0;
     }
 
     .ContactForm_close {

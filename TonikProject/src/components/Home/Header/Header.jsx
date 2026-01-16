@@ -9,11 +9,16 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
-    const [activeCatalog, setActiveCatalog] = useState('tonics'); // По умолчанию "Наши тоники"
+    const [hoveredTab, setHoveredTab] = useState(null);
     const lastScrollY = useRef(0);
+    const menuRef = useRef(null);
+    const leaveTimeoutRef = useRef(null);
+
+    // Граница в пикселях (до этого момента хедер всегда видим)
+    const VIDEO_THRESHOLD = 1500; // <- Поменяй на нужное значение (например 1000, 1200 и т.д.)
 
     useEffect(() => {
-        if (isMenuOpen || isCartOpen) {
+        if (isCartOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
@@ -21,16 +26,23 @@ const Header = () => {
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, [isMenuOpen, isCartOpen]);
+    }, [isCartOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            if (currentScrollY < 100) {
+            // Пока не доскроллили до VIDEO_THRESHOLD — хедер всегда видим
+            if (currentScrollY < VIDEO_THRESHOLD) {
                 setIsVisible(true);
-            } else if (currentScrollY > lastScrollY.current) {
+                lastScrollY.current = currentScrollY;
+                return;
+            }
+
+            // После VIDEO_THRESHOLD — обычная логика скрытия
+            if (currentScrollY > lastScrollY.current) {
                 setIsVisible(false);
+                setIsMenuOpen(false);
             } else {
                 setIsVisible(true);
             }
@@ -45,12 +57,38 @@ const Header = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        if (isMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isMenuOpen]);
+
+    useEffect(() => {
+        return () => {
+            if (leaveTimeoutRef.current) {
+                clearTimeout(leaveTimeoutRef.current);
+            }
+        };
+    }, []);
+
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+        setHoveredTab(null);
     };
 
     const closeMenu = () => {
         setIsMenuOpen(false);
+        setHoveredTab(null);
     };
 
     const openCart = (e) => {
@@ -63,8 +101,32 @@ const Header = () => {
         setIsCartOpen(false);
     };
 
-    const switchCatalog = (catalog) => {
-        setActiveCatalog(catalog);
+    const handleTabEnter = (tabName) => {
+        if (leaveTimeoutRef.current) {
+            clearTimeout(leaveTimeoutRef.current);
+            leaveTimeoutRef.current = null;
+        }
+
+        if (isMenuOpen) {
+            setHoveredTab(tabName);
+        }
+    };
+
+    const handleTabLeave = () => {
+        leaveTimeoutRef.current = setTimeout(() => {
+            setHoveredTab(null);
+        }, 300);
+    };
+
+    const handleDropdownEnter = () => {
+        if (leaveTimeoutRef.current) {
+            clearTimeout(leaveTimeoutRef.current);
+            leaveTimeoutRef.current = null;
+        }
+    };
+
+    const handleDropdownLeave = () => {
+        setHoveredTab(null);
     };
 
     return (
@@ -72,14 +134,97 @@ const Header = () => {
             <header className={`Header ${isVisible ? 'Header--visible' : 'Header--hidden'}`}>
                 <div className="container">
                     <div className="Header_container">
+                        {/* ЛОГО СЛЕВА */}
                         <div className="Header_logo">
-                            <a href="/" className="Header_nav_link">
+                            <a href="/">
                                 <img src={Logo} alt="Logo"/>
                             </a>
                         </div>
 
-                        <div className="Header_actions">
-                            {/* Иконка корзины */}
+                        {/* ПРАВАЯ ЧАСТЬ: MEGA MENU + КОРЗИНА */}
+                        <div className="Header_right">
+                            {/* MEGA MENU БЛОК */}
+                            <div className={`Header_mega_menu ${isMenuOpen ? 'active' : ''}`} ref={menuRef}>
+                                {/* ТАБЫ */}
+                                <div className="Header_tabs">
+                                    {/* Каталог */}
+                                    <div
+                                        className="Header_tab_item"
+                                        onMouseEnter={() => handleTabEnter('catalog')}
+                                        onMouseLeave={handleTabLeave}
+                                    >
+                                        <a href="/catalog" className="Header_tab">Каталог</a>
+
+                                        {isMenuOpen && hoveredTab === 'catalog' && (
+                                            <div
+                                                className="Header_tab_dropdown"
+                                                onMouseEnter={handleDropdownEnter}
+                                                onMouseLeave={handleDropdownLeave}
+                                            >
+                                                <a href="/catalog" onClick={closeMenu}>Весь каталог</a>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Наши тоники */}
+                                    <div
+                                        className="Header_tab_item"
+                                        onMouseEnter={() => handleTabEnter('tonics')}
+                                        onMouseLeave={handleTabLeave}
+                                    >
+                                        <a href="/tonics" className="Header_tab">Наши тоники</a>
+
+                                        {isMenuOpen && hoveredTab === 'tonics' && (
+                                            <div
+                                                className="Header_tab_dropdown"
+                                                onMouseEnter={handleDropdownEnter}
+                                                onMouseLeave={handleDropdownLeave}
+                                            >
+                                                <a href="/tonics/anfelcia" onClick={closeMenu}>Анфельция</a>
+                                                <a href="/tonics/laminaria" onClick={closeMenu}>Ламинария</a>
+                                                <a href="/tonics/fucus" onClick={closeMenu}>Фукус</a>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Информация */}
+                                    <div
+                                        className="Header_tab_item"
+                                        onMouseEnter={() => handleTabEnter('info')}
+                                        onMouseLeave={handleTabLeave}
+                                    >
+                                        <span className="Header_tab">Информация</span>
+
+                                        {isMenuOpen && hoveredTab === 'info' && (
+                                            <div
+                                                className="Header_tab_dropdown"
+                                                onMouseEnter={handleDropdownEnter}
+                                                onMouseLeave={handleDropdownLeave}
+                                            >
+                                                <a href="/product" onClick={closeMenu}>О продукте</a>
+                                                <a href="/about" onClick={closeMenu}>О компании</a>
+                                                <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* РАЗДЕЛИТЕЛЬ перед крестиком */}
+                                <div className="Header_divider"></div>
+
+                                {/* БУРГЕР/КРЕСТИК СПРАВА */}
+                                <button
+                                    className={`Header_burger ${isMenuOpen ? 'active' : ''}`}
+                                    onClick={toggleMenu}
+                                    aria-label="Меню"
+                                >
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </div>
+
+                            {/* КОРЗИНА */}
                             <button
                                 className="Header_icon_btn"
                                 onClick={openCart}
@@ -87,76 +232,10 @@ const Header = () => {
                             >
                                 <img src={Market} alt="Корзина" />
                             </button>
-
-                            {/* Бургер/Крестик */}
-                            <button
-                                className={`Header_burger ${isMenuOpen ? 'active' : ''}`}
-                                onClick={toggleMenu}
-                                aria-label="Меню"
-                            >
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
                         </div>
                     </div>
                 </div>
-
-                {/* ПАНЕЛЬ С ТАБАМИ (выезжает слева под хедером) */}
-                <div className={`Header_sidebar ${isMenuOpen ? 'active' : ''}`}>
-                    <div className="Header_sidebar_tabs">
-                        <button
-                            className={`Header_sidebar_tab ${activeCatalog === 'catalog' ? 'active' : ''}`}
-                            onClick={() => switchCatalog('catalog')}
-                        >
-                            Каталог
-                        </button>
-                        <button
-                            className={`Header_sidebar_tab ${activeCatalog === 'tonics' ? 'active' : ''}`}
-                            onClick={() => switchCatalog('tonics')}
-                        >
-                            Наши тоники
-                        </button>
-                        <button
-                            className={`Header_sidebar_tab ${activeCatalog === 'info' ? 'active' : ''}`}
-                            onClick={() => switchCatalog('info')}
-                        >
-                            Информация
-                        </button>
-                    </div>
-
-                    {/* Подкаталог */}
-                    <div className="Header_sidebar_content">
-                        {activeCatalog === 'catalog' && (
-                            <div className="Header_submenu">
-                                <a href="/catalog" onClick={closeMenu}>Весь каталог</a>
-                            </div>
-                        )}
-
-                        {activeCatalog === 'tonics' && (
-                            <div className="Header_submenu">
-                                <a href="/tonics/anfelcia" onClick={closeMenu}>Анфельция</a>
-                                <a href="/tonics/laminaria" onClick={closeMenu}>Ламинария</a>
-                                <a href="/tonics/fucus" onClick={closeMenu}>Фукус</a>
-                            </div>
-                        )}
-
-                        {activeCatalog === 'info' && (
-                            <div className="Header_submenu">
-                                <a href="/product" onClick={closeMenu}>О продукте</a>
-                                <a href="/about" onClick={closeMenu}>О компании</a>
-                                <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
-                            </div>
-                        )}
-                    </div>
-                </div>
             </header>
-
-            {/* Оверлей затемнения */}
-            <div
-                className={`Header_overlay ${isMenuOpen ? 'active' : ''}`}
-                onClick={closeMenu}
-            />
 
             <Cart isOpen={isCartOpen} onClose={closeCart} />
         </>

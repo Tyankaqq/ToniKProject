@@ -2,11 +2,9 @@
     width: 100%;
     background-color: var(--clr-bg);
     padding: 5.21vw 0;
-
 }
 
 .SeoText_container {
-
     margin: 0 auto;
 }
 
@@ -25,6 +23,7 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 1.1vw;
     row-gap: 1.56vw;
+    align-items: center;
 }
 
 .SeoText_column {
@@ -32,11 +31,24 @@
     flex-direction: column;
 }
 
+/* Картинка 850x312 */
+.SeoText_column--image {
+    width: 100%;
+}
+
+.SeoText_image {
+    width: 100%;
+    height: 17.25vw; /* 312px при 1920px */
+    object-fit: cover;
+    border-radius: 0.78vw; /* ~15px */
+    display: block;
+}
+
 .SeoText_text {
-    font-size: 0.83vw;
+    font-size: 1.3vw;
     font-weight: 400;
     letter-spacing: -0.03em;
-    line-height: 140%;
+    line-height: 110%;
     color: var(--clr-white);
     margin: 0;
 }
@@ -62,6 +74,11 @@
         display: grid;
         grid-template-columns: 1fr;
         row-gap: 3.26vw;
+    }
+
+    .SeoText_image {
+        height: 30vw;
+        border-radius: 1.56vw;
     }
 
     .SeoText_text {
@@ -91,6 +108,11 @@
         display: grid;
         grid-template-columns: 1fr;
         row-gap: 5.56vw;
+    }
+
+    .SeoText_image {
+        height: 50vw;
+        border-radius: 2.78vw;
     }
 
     .SeoText_text {

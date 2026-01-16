@@ -2,7 +2,7 @@
 .Blog_section {
     width: 100%;
     background-color: var(--clr-bg);
-    padding: 0 0 5.21vw 0;
+    padding: 0 0 10.21vw 0;
     border-radius: 0 0 40px 40px;
     overflow: hidden;
 }
@@ -215,6 +215,166 @@
     align-items: center;
     gap: 0.52vw;
 }
+/* DESKTOP: chaotic layout (vw от макета 1727px) */
+/* ========== DESKTOP: chaotic layout ========== */
+.Blog_grid--chaotic {
+    position: relative;
+    width: 100%;
+    height: 37.85vw;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Враппер карточки */
+.Blog_card_wrapper {
+    position: absolute;
+}
+
+.Blog_card_wrapper--1 { left: 0vw;     top: 7vw;    width: 22.03vw; }
+.Blog_card_wrapper--2 { left: 23.2vw;  top: -4vw;   width: 22.03vw; }
+.Blog_card_wrapper--3 { left: 46.5vw;  top: -4vw;   width: 14.4vw; }
+.Blog_card_wrapper--4 { left: 46.46vw; top: 15.61vw; width: 29.8vw; }
+.Blog_card_wrapper--5 { left: 77.3vw;  top: 8.61vw; width: 14.4vw; }
+
+/* Карточка */
+.Blog_grid--chaotic .Blog_card {
+    position: relative;
+    display: block;
+    border-radius: 0.87vw;
+    overflow: hidden;
+    transition: transform 0.25s ease;
+    cursor: pointer;
+}
+
+.Blog_grid--chaotic .Blog_card--1,
+.Blog_grid--chaotic .Blog_card--2 {
+    height: 29.3vw;
+}
+
+.Blog_grid--chaotic .Blog_card--3,
+.Blog_grid--chaotic .Blog_card--5 {
+    height: 15.3vw;
+}
+
+.Blog_grid--chaotic .Blog_card--4 {
+    height: 20.5vw;
+}
+
+/* Картинка */
+.Blog_grid--chaotic .Blog_card_image_wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.Blog_grid--chaotic .Blog_card_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Оверлей */
+.Blog_card_overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+
+.Blog_grid--chaotic .Blog_card:hover .Blog_card_overlay {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* #РУБРИКА (с рамкой внизу по центру) */
+.Blog_card_tag_center {
+    position: absolute;
+    bottom: 1.5vw;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: 1.04vw;
+    color: #FFFFFF;
+    background: none;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.36vw;
+    padding: 0.4vw 0.9vw;
+    text-transform: uppercase;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.Blog_grid--chaotic .Blog_card:hover .Blog_card_tag_center {
+    opacity: 1;
+}
+
+/* Кнопка читать статью (БЕЗ рамки) */
+.Blog_card_btn_center {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5vw;
+
+    font-size: 1.25vw;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    opacity: 0;
+    transform: translateY(0.5vw);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+}
+
+.Blog_card_btn_center img {
+    width: 1vw;
+    height: 1vw;
+}
+
+.Blog_grid--chaotic .Blog_card:hover .Blog_card_btn_center {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.Blog_card_btn_center:hover {
+    opacity: 0.7;
+}
+
+/* Hover карточки */
+.Blog_grid--chaotic .Blog_card:hover {
+    transform: scale(1.02);
+    z-index: 5;
+}
+
+/* Заголовок под карточкой (ОДИН) */
+.Blog_card_title_external {
+    font-size: 1.56vw;
+    font-weight: 600;
+    line-height: 110%;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    margin: 0.8vw 0 0 0;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
 
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
