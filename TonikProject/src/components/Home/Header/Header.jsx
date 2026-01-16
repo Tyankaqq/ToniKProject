@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import Logo from '../../../assets/Image/Logo.svg';
-import Market from '../../../assets/Image/market.svg';
+import Market from '../../../assets/Image/Market.svg';
 import Cart from '../../Cart/Cart/Cart.jsx';
 
 const Header = () => {
