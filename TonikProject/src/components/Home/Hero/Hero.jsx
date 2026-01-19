@@ -39,7 +39,6 @@ export const Hero = () => {
                     invalidateOnRefresh: true
                 };
 
-                // Начальное состояние: видео на весь экран по центру
                 gsap.set(videoRef.current, {
                     position: 'absolute',
                     top: '50%',
@@ -64,12 +63,12 @@ export const Hero = () => {
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
 
-                // Анимация видео: уменьшение и перемещение к spacer
+                // Анимация видео с translate(-48px, 50px)
                 tl.to(videoRef.current, {
                     width: '44.27vw',
                     height: '24.74vw',
-
-                    // Вычисляем финальную позицию относительно spacer
+                    x: '15px',  // translate X
+                    y: '50px',   // translate Y
                     top: () => {
                         const spacerRect = spacerRef.current.getBoundingClientRect();
                         const sectionRect = sectionRef.current.getBoundingClientRect();
@@ -86,13 +85,24 @@ export const Hero = () => {
                     ease: 'power2.inOut'
                 }, 0);
 
-                // Появление текста
-                tl.to([desktopTitleLeftRef.current, desktopTitleRightRef.current], {
+                // Левый заголовок (ТОНИК)
+                tl.to(desktopTitleLeftRef.current, {
                     x: 0,
                     opacity: 1,
                     duration: 0.8
                 }, 0.2);
 
+                // Правый заголовок (ЖИЗНИ) с translate(20px, 0px)
+                tl.to(desktopTitleRightRef.current, {
+                    x: '20px',
+                    y: '0px',
+                    xPercent: 0,
+                    yPercent: 0,
+                    opacity: 1,
+                    duration: 0.8
+                }, 0.2);
+
+                // Подзаголовок и кнопки
                 tl.to([desktopSubtitleRef.current, desktopButtonsRef.current], {
                     y: 0,
                     opacity: 1,
@@ -100,7 +110,9 @@ export const Hero = () => {
                 }, 0.3);
             });
 
+
             // ПЛАНШЕТ
+            // ПЛАНШЕТ (768px - 1199px)
             mm.add("(min-width: 768px) and (max-width: 1199px)", () => {
                 const scrollConfig = {
                     trigger: sectionRef.current,
@@ -111,62 +123,47 @@ export const Hero = () => {
                     invalidateOnRefresh: true
                 };
 
+                // Начальное состояние: видео на весь экран сверху
                 gsap.set(videoRef.current, {
                     position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    xPercent: -50,
-                    yPercent: -50,
+                    top: 0,
+                    left: 0,
+                    xPercent: 0,
+                    yPercent: 0,
                     width: '100vw',
-                    height: '100vh',
-                    zIndex: 0
+                    height: '100vh'
                 });
 
-                gsap.set(desktopContainerRef.current, { opacity: 1 });
-                gsap.set([desktopTitleLeftRef.current, desktopTitleRightRef.current], {
-                    x: (i) => i === 0 ? '-50vw' : '50vw',
-                    opacity: 0
-                });
-                gsap.set([desktopSubtitleRef.current, desktopButtonsRef.current], {
-                    y: 100,
+                gsap.set(mobileContainerRef.current, { opacity: 1 });
+                gsap.set([mobileTextRef.current, mobileButtonsRef.current], {
+                    y: 50,
                     opacity: 0
                 });
 
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
 
+                // Анимация видео: уменьшение и позиционирование
                 tl.to(videoRef.current, {
-                    width: '44.27vw',
-                    height: '24.74vw',
-
-                    top: () => {
-                        const spacerRect = spacerRef.current.getBoundingClientRect();
-                        const sectionRect = sectionRef.current.getBoundingClientRect();
-                        return spacerRect.top - sectionRect.top + spacerRect.height / 2;
-                    },
-                    left: () => {
-                        const spacerRect = spacerRef.current.getBoundingClientRect();
-                        const sectionRect = sectionRef.current.getBoundingClientRect();
-                        return spacerRect.left - sectionRect.left + spacerRect.width / 2;
-                    },
+                    width: '70.83vw',
+                    height: '91.02vw',
+                    top: '10.42vw',  // Отступ сверху
+                    left: '50%',
                     xPercent: -50,
-                    yPercent: -50,
+                    yPercent: 0,
                     duration: 1,
                     ease: 'power2.inOut'
                 }, 0);
 
-                tl.to([desktopTitleLeftRef.current, desktopTitleRightRef.current], {
-                    x: 0,
-                    opacity: 1,
-                    duration: 0.8
-                }, 0.2);
-
-                tl.to([desktopSubtitleRef.current, desktopButtonsRef.current], {
+                // Появление текста и кнопок
+                tl.to([mobileTextRef.current, mobileButtonsRef.current], {
                     y: 0,
                     opacity: 1,
                     duration: 0.8
                 }, 0.3);
             });
 
+
+            // МОБИЛЬНЫЙ
             // МОБИЛЬНЫЙ
             mm.add("(max-width: 767px)", () => {
                 const scrollConfig = {
@@ -197,11 +194,11 @@ export const Hero = () => {
                 const tl = gsap.timeline({ scrollTrigger: scrollConfig });
 
                 tl.to(videoRef.current, {
-                    width: '100vw',
-                    height: '64.72vw',
-                    top: '22.22vw',
-                    left: 0,
-                    xPercent: 0,
+                    width: '88.89vw',      // 320px
+                    height: '91.94vw',     // 331px
+                    top: '22.22vw',        // 80px отступ сверху
+                    left: '50%',           // Центрируем
+                    xPercent: -50,         // Центрируем
                     yPercent: 0,
                     duration: 1,
                     ease: 'power2.inOut'
@@ -213,6 +210,7 @@ export const Hero = () => {
                     duration: 0.8
                 }, 0.3);
             });
+
         }, sectionRef);
 
         return () => ctx.revert();

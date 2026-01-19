@@ -1,6 +1,7 @@
 import React from 'react';
 import './Catalog.css';
 import Pointer from "../../../assets/Image/Pointer.svg";
+import GreyPointer from "../../../assets/Image/GreyPointer.svg";
 import AnfelciaImg from '../../../assets/Image/Anfelcia.svg';
 import LaminariaImg from '../../../assets/Image/laminaria.svg';
 import FucusImg from '../../../assets/Image/Fucus.svg';
@@ -60,13 +61,7 @@ export const Catalog = () => {
                         <div className="Catalog_card_content">
                             <div className="Catalog_card_link">
                                 <span>Перейти в раздел</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                    <path d="M2 9H16M16 9L9 2M16 9L9 16"
-                                          stroke="currentColor"
-                                          strokeWidth="2"
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"/>
-                                </svg>
+                                <img src={GreyPointer} alt="pointer" />
                             </div>
 
                             <h3 className="Catalog_card_title">

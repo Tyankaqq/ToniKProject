@@ -87,7 +87,7 @@ export const Footer = () => {
                 {/* Нижняя рамка на всю ширину */}
                 <div className="Footer_bottom">
                     <p className="Footer_copyright">
-                        Сайт разработан <img src={Kant} alt="KANT.studio" />
+                        Сайт разработан: <img src={Kant} alt="KANT.studio" />
                     </p>
                 </div>
             </div>

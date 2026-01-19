@@ -45,7 +45,6 @@
 
 .Partners_card {
     background: linear-gradient(100deg, rgba(255, 255, 255, 0.05) 3.64%, rgba(153, 153, 153, 0.05) 86.15%);
-
     border: 1px solid rgba(255, 255, 255, 0.30);
     border-radius: 1.04vw;
     padding: 1.1vw;
@@ -123,9 +122,7 @@
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: var(--clr-white);
-
     white-space: pre-line;
-
 }
 
 .Partners_featured--1 .Partners_featured_content {
@@ -152,7 +149,6 @@
     text-decoration: none;
     text-transform: uppercase;
     cursor: pointer;
-
 }
 
 /* ========== ВТОРОЙ БОЛЬШОЙ БЛОК ========== */
@@ -169,8 +165,6 @@
     text-transform: uppercase;
     color: var(--clr-white);
     margin: 0;
-
-
 }
 
 .Partners_featured--2 .Partners_featured_content {
@@ -182,8 +176,7 @@
 }
 
 .Partners_featured--2 .Partners_featured_content img {
-  width: 100%;
-
+    width: 100%;
     object-fit: contain;
 }
 
@@ -197,14 +190,15 @@
     text-decoration: none;
     text-transform: uppercase;
     cursor: pointer;
-
 }
-.Partners_featured_header{
+
+.Partners_featured_header {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 /* Карточки 1-4 справа от первого блока */
 .Partners_grid--featured-double .Partners_card:nth-child(1) {
     grid-column: 3;
@@ -246,9 +240,11 @@
     grid-column: 2;
     grid-row: 4;
 }
+
 .Partners_section--featured-double {
     border-radius: 0 0 40px 40px;
 }
+
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
 
@@ -264,9 +260,11 @@
         border-radius: 30px 30px 0 0;
         padding: 9.81vw 0;
     }
+
     .Partners_section--featured-double {
         border-radius: 0 0 30px 30px;
     }
+
     .Partners_container {
         max-width: 100%;
         padding: 0 2.60vw;
@@ -301,7 +299,7 @@
     }
 
     .Partners_card_title {
-        font-size: 2.1vw;
+        font-size: 2.6vw;
         margin-bottom: 1.30vw;
     }
 
@@ -312,8 +310,13 @@
     }
 
     .Partners_card_link {
-        font-size: 1.8vw;
+        font-size: 2.1vw;
         gap: 0.65vw;
+    }
+
+    /* Показываем только 6 карточек на планшете */
+    .Partners_card:nth-child(n+7) {
+        display: none;
     }
 
     /* Featured для планшета: 2 колонки, все карточки одинаковые */
@@ -344,14 +347,15 @@
         width: 100%;
     }
 
-    .Partners_featured--1 .Partners_featured_title
-    {
+    .Partners_featured--1 .Partners_featured_title {
         font-size: 5.1vw; /* Как у карточек */
         text-align: center;
     }
-    .Partners_featured--2 .Partners_featured_title{
+
+    .Partners_featured--2 .Partners_featured_title {
         font-size: 3.3vw;
     }
+
     .Partners_featured--1 .Partners_featured_content,
     .Partners_featured--2 .Partners_featured_content {
         flex: 1;
@@ -386,14 +390,11 @@
         grid-row: auto;
     }
 
-    /* Показываем все 8 карточек на планшете для featured */
-    .Partners_grid--featured-double .Partners_card:nth-child(n+5) {
-        display: flex;
+    /* Показываем 6 обычных карточек для featured-double */
+    .Partners_grid--featured-double .Partners_card:nth-child(n+7) {
+        display: none;
     }
-
-
 }
-
 
 /* ========== MOBILE (360px - 767px) ========== */
 @media (max-width: 767px) {
@@ -410,9 +411,11 @@
         border-radius: 20px 20px 0 0;
         padding: 13.89vw 0;
     }
+
     .Partners_section--featured-double {
         border-radius: 0 0 20px 20px;
     }
+
     .Partners_header {
         flex-direction: row;
         align-items: center;
@@ -430,30 +433,30 @@
         gap: 1.39vw;
     }
 
-    /* Grid для мобилки: 2 колонки */
+    /* Grid для мобилки: 1 колонка */
     .Partners_grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 4.17vw;
     }
 
-    /* Все карточки одинакового размера 155x207 */
+    /* Карточка на всю ширину контейнера */
     .Partners_card {
         font-family: 'Inter', Regular;
-        width: 43.06vw; /* 155px из 360px */
-        height: 57.5vw; /* 207px из 360px */
-        min-height: auto;
-        padding: 2.9vw 1.56vw;
+        width: 100%;
+        height: auto;
+        min-height: 50vw; /* 180px компактная высота */
+        padding: 4.17vw 5.56vw;
         border-radius: 2.78vw;
     }
 
     .Partners_card_title {
-        font-size: 4.44vw;
+        font-size: 5vw;
         margin-bottom: 4.17vw;
     }
 
     .Partners_card_logo {
-        width: 37.22vw;
-        height: 34.22vw;
+        width: 30vw;
+        height: 30vw;
         margin-bottom: 4.17vw;
     }
 
@@ -462,21 +465,22 @@
         gap: 1.39vw;
     }
 
-    /* По умолчанию показываем только 4 карточки */
-    .Partners_card:nth-child(n+5) {
+    /* Показываем только 3 карточки на мобилке */
+    .Partners_card:nth-child(n+4) {
         display: none;
     }
 
-    /* Featured на мобилке: 2 колонки, все карточки одинаковые */
+    /* Featured на мобилке: 1 колонка */
     .Partners_grid--featured-double {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.9vw;
+        grid-template-columns: 1fr;
+        gap: 4.17vw;
     }
 
-    /* Большой блок становится такого же размера 155x207 */
+    /* Большой блок на всю ширину */
     .Partners_featured {
-        width: 43.06vw; /* 155px */
-        height: 57.5vw; /* 207px */
+        width: 100%;
+        height: auto;
+        min-height: 50vw; /* 180px */
         padding: 5.56vw;
         border-radius: 2.78vw;
     }
@@ -494,12 +498,12 @@
 
     /* Стили для первого блока (теперь как карточка) */
     .Partners_featured--1 .Partners_featured_header {
-        margin-top: 10vw;
         width: 100%;
+        margin-bottom: 4.17vw;
     }
 
     .Partners_featured--1 .Partners_featured_title {
-        font-size: 5.44vw; /* Как у карточек */
+        font-size: 5.44vw;
         text-align: center;
     }
 
@@ -508,11 +512,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 4.17vw;
     }
 
     .Partners_featured--1 .Partners_featured_content img {
-        max-width: 60%;
-        max-height: 60%;
+        max-width: 50%;
+        max-height: 100%;
     }
 
     .Partners_featured--1 .Partners_featured_link {
@@ -532,12 +537,13 @@
     .Partners_grid--featured-double .Partners_card:nth-child(8) {
         grid-column: auto;
         grid-row: auto;
-        display: flex; /* Показываем все карточки */
+        display: flex;
     }
 
-    /* Скрываем карточки после 8-й для featured-double */
-    .Partners_grid--featured-double .Partners_card:nth-child(n+9) {
+    /* Показываем только 3 карточки для featured-double */
+    .Partners_grid--featured-double .Partners_card:nth-child(n+4) {
         display: none;
     }
 }
+
 

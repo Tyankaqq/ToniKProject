@@ -145,18 +145,150 @@ export const Blog = ({
                     </div>
                 )}
 
-
-
-                {/* DEFAULT: хаотичная сетка (5 карточек) */}
+                {/* DEFAULT: хаотичная сетка (5 карточек) - DESKTOP ONLY */}
                 {variant === 'default' && (
-                    <div className="Blog_grid Blog_grid--chaotic">
-                        {/* Карточка 1 */}
-                        <div className="Blog_card_wrapper Blog_card_wrapper--1">
+                    <>
+                        {/* Desktop версия - хаотичная сетка */}
+                        <div className="Blog_grid Blog_grid--chaotic">
+                            {/* Карточка 1 */}
+                            <div className="Blog_card_wrapper Blog_card_wrapper--1">
+                                <a
+                                    href={`/blog/${mainArticle.id}`}
+                                    className="Blog_card Blog_card--1"
+                                    onClick={(e) => handleArticleClick(e, mainArticle.id)}
+                                >
+                                    <div className="Blog_card_image_wrapper">
+                                        <img
+                                            src={mainArticle.image}
+                                            alt={mainArticle.title}
+                                            className="Blog_card_image"
+                                        />
+                                    </div>
+
+                                    <div className="Blog_card_overlay">
+                                        <span className="Blog_card_tag_center">#РУБРИКА</span>
+                                        <button className="Blog_card_btn_center" type="button">
+                                            читать статью
+                                            <img src={Pointer} alt="" />
+                                        </button>
+                                    </div>
+                                </a>
+                                <h3 className="Blog_card_title_external">Название статьи </h3>
+                            </div>
+
+                            {/* Карточка 2 */}
+                            <div className="Blog_card_wrapper Blog_card_wrapper--2">
+                                <a
+                                    href={`/blog/${articles[0].id}`}
+                                    className="Blog_card Blog_card--2"
+                                    onClick={(e) => handleArticleClick(e, articles[0].id)}
+                                >
+                                    <div className="Blog_card_image_wrapper">
+                                        <img
+                                            src={articles[0].image}
+                                            alt={articles[0].title}
+                                            className="Blog_card_image"
+                                        />
+                                    </div>
+
+                                    <div className="Blog_card_overlay">
+                                        <span className="Blog_card_tag_center">#РУБРИКА</span>
+                                        <button className="Blog_card_btn_center" type="button">
+                                            читать статью
+                                            <img src={Pointer} alt="" />
+                                        </button>
+                                    </div>
+                                </a>
+                                <h3 className="Blog_card_title_external">Название статьи </h3>
+                            </div>
+
+                            {/* Карточка 3 */}
+                            <div className="Blog_card_wrapper Blog_card_wrapper--3">
+                                <a
+                                    href={`/blog/${articles[1].id}`}
+                                    className="Blog_card Blog_card--3"
+                                    onClick={(e) => handleArticleClick(e, articles[1].id)}
+                                >
+                                    <div className="Blog_card_image_wrapper">
+                                        <img
+                                            src={articles[1].image}
+                                            alt={articles[1].title}
+                                            className="Blog_card_image"
+                                        />
+                                    </div>
+
+                                    <div className="Blog_card_overlay">
+                                        <span className="Blog_card_tag_center">#РУБРИКА</span>
+                                        <button className="Blog_card_btn_center" type="button">
+                                            читать статью
+                                            <img src={Pointer} alt="" />
+                                        </button>
+                                    </div>
+                                </a>
+                                <h3 className="Blog_card_title_external">Название статьи </h3>
+                            </div>
+
+                            {/* Карточка 4 */}
+                            <div className="Blog_card_wrapper Blog_card_wrapper--4">
+                                <a
+                                    href={`/blog/${articles[2].id}`}
+                                    className="Blog_card Blog_card--4"
+                                    onClick={(e) => handleArticleClick(e, articles[2].id)}
+                                >
+                                    <div className="Blog_card_image_wrapper">
+                                        <img
+                                            src={articles[2].image}
+                                            alt={articles[2].title}
+                                            className="Blog_card_image"
+                                        />
+                                    </div>
+
+                                    <div className="Blog_card_overlay">
+                                        <span className="Blog_card_tag_center">#РУБРИКА</span>
+                                        <button className="Blog_card_btn_center" type="button">
+                                            читать статью
+                                            <img src={Pointer} alt="" />
+                                        </button>
+                                    </div>
+                                </a>
+                                <h3 className="Blog_card_title_external">Название статьи </h3>
+                            </div>
+
+                            {/* Карточка 5 */}
+                            <div className="Blog_card_wrapper Blog_card_wrapper--5">
+                                <a
+                                    href={`/blog/${articles[3].id}`}
+                                    className="Blog_card Blog_card--5"
+                                    onClick={(e) => handleArticleClick(e, articles[3].id)}
+                                >
+                                    <div className="Blog_card_image_wrapper">
+                                        <img
+                                            src={articles[3].image}
+                                            alt={articles[3].title}
+                                            className="Blog_card_image"
+                                        />
+                                    </div>
+
+                                    <div className="Blog_card_overlay">
+                                        <span className="Blog_card_tag_center">#РУБРИКА</span>
+                                        <button className="Blog_card_btn_center" type="button">
+                                            читать статью
+                                            <img src={Pointer} alt="" />
+                                        </button>
+                                    </div>
+                                </a>
+                                <h3 className="Blog_card_title_external">Название статьи </h3>
+                            </div>
+                        </div>
+
+                        {/* Tablet/Mobile версия - сетка с контентом */}
+                        <div className="Blog_grid Blog_grid--default">
                             <a
                                 href={`/blog/${mainArticle.id}`}
-                                className="Blog_card Blog_card--1"
+                                className="Blog_card Blog_card_large"
                                 onClick={(e) => handleArticleClick(e, mainArticle.id)}
                             >
+
                                 <div className="Blog_card_image_wrapper">
                                     <img
                                         src={mainArticle.image}
@@ -164,126 +296,36 @@ export const Blog = ({
                                         className="Blog_card_image"
                                     />
                                 </div>
+                                <div className="Blog_card_content">
 
-                                <div className="Blog_card_overlay">
-                                    <span className="Blog_card_tag_center">#РУБРИКА</span>
-                                    <button className="Blog_card_btn_center" type="button">
-                                        читать статью
-                                        <img src={Pointer} alt="" />
-                                    </button>
+                                    <h3 className="Blog_card_title">{mainArticle.title}</h3>
                                 </div>
                             </a>
-                            <h3 className="Blog_card_title_external">Название статьи </h3>
+
+                            {articles.map((article) => (
+                                <a
+                                    key={article.id}
+                                    href={`/blog/${article.id}`}
+                                    className="Blog_card Blog_card_small"
+                                    onClick={(e) => handleArticleClick(e, article.id)}
+                                >
+
+                                    <div className="Blog_card_image_wrapper">
+                                        <img
+                                            src={article.image}
+                                            alt={article.title}
+                                            className="Blog_card_image"
+                                        />
+                                    </div>
+                                    <div className="Blog_card_content">
+
+                                        <h3 className="Blog_card_title">{article.title}</h3>
+                                    </div>
+                                </a>
+                            ))}
                         </div>
-
-                        {/* Карточка 2 */}
-                        <div className="Blog_card_wrapper Blog_card_wrapper--2">
-                            <a
-                                href={`/blog/${articles[0].id}`}
-                                className="Blog_card Blog_card--2"
-                                onClick={(e) => handleArticleClick(e, articles[0].id)}
-                            >
-                                <div className="Blog_card_image_wrapper">
-                                    <img
-                                        src={articles[0].image}
-                                        alt={articles[0].title}
-                                        className="Blog_card_image"
-                                    />
-                                </div>
-
-                                <div className="Blog_card_overlay">
-                                    <span className="Blog_card_tag_center">#РУБРИКА</span>
-                                    <button className="Blog_card_btn_center" type="button">
-                                        читать статью
-                                        <img src={Pointer} alt="" />
-                                    </button>
-                                </div>
-                            </a>
-                            <h3 className="Blog_card_title_external">Название статьи </h3>
-                        </div>
-
-                        {/* Карточка 3 */}
-                        <div className="Blog_card_wrapper Blog_card_wrapper--3">
-                            <a
-                                href={`/blog/${articles[1].id}`}
-                                className="Blog_card Blog_card--3"
-                                onClick={(e) => handleArticleClick(e, articles[1].id)}
-                            >
-                                <div className="Blog_card_image_wrapper">
-                                    <img
-                                        src={articles[1].image}
-                                        alt={articles[1].title}
-                                        className="Blog_card_image"
-                                    />
-                                </div>
-
-                                <div className="Blog_card_overlay">
-                                    <span className="Blog_card_tag_center">#РУБРИКА</span>
-                                    <button className="Blog_card_btn_center" type="button">
-                                        читать статью
-                                        <img src={Pointer} alt="" />
-                                    </button>
-                                </div>
-                            </a>
-                            <h3 className="Blog_card_title_external">Название статьи </h3>
-                        </div>
-
-                        {/* Карточка 4 */}
-                        <div className="Blog_card_wrapper Blog_card_wrapper--4">
-                            <a
-                                href={`/blog/${articles[2].id}`}
-                                className="Blog_card Blog_card--4"
-                                onClick={(e) => handleArticleClick(e, articles[2].id)}
-                            >
-                                <div className="Blog_card_image_wrapper">
-                                    <img
-                                        src={articles[2].image}
-                                        alt={articles[2].title}
-                                        className="Blog_card_image"
-                                    />
-                                </div>
-
-                                <div className="Blog_card_overlay">
-                                    <span className="Blog_card_tag_center">#РУБРИКА</span>
-                                    <button className="Blog_card_btn_center" type="button">
-                                        читать статью
-                                        <img src={Pointer} alt="" />
-                                    </button>
-                                </div>
-                            </a>
-                            <h3 className="Blog_card_title_external">Название статьи </h3>
-                        </div>
-
-                        {/* Карточка 5 */}
-                        <div className="Blog_card_wrapper Blog_card_wrapper--5">
-                            <a
-                                href={`/blog/${articles[3].id}`}
-                                className="Blog_card Blog_card--5"
-                                onClick={(e) => handleArticleClick(e, articles[3].id)}
-                            >
-                                <div className="Blog_card_image_wrapper">
-                                    <img
-                                        src={articles[3].image}
-                                        alt={articles[3].title}
-                                        className="Blog_card_image"
-                                    />
-                                </div>
-
-                                <div className="Blog_card_overlay">
-                                    <span className="Blog_card_tag_center">#РУБРИКА</span>
-                                    <button className="Blog_card_btn_center" type="button">
-                                        читать статью
-                                        <img src={Pointer} alt="" />
-                                    </button>
-                                </div>
-                            </a>
-                            <h3 className="Blog_card_title_external">Название статьи </h3>
-                        </div>
-                    </div>
+                    </>
                 )}
-
-
-
 
                 {/* EXTENDED: оставил как было */}
                 {variant === 'extended' && (
@@ -385,4 +427,5 @@ export const Blog = ({
             </div>
         </section>
     );
+
 };
