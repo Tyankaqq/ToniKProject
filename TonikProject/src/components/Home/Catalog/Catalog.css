@@ -290,7 +290,7 @@
 
     .Catalog_link_all {
         gap: 2.3vw;
-        font-size: 3.33vw;
+        font-size: 3.9vw;
     }
 
     .Catalog_link_all img {
@@ -307,7 +307,7 @@
         border-radius: 3.33vw;
         backdrop-filter: blur(2.78vw);
         width: 100%;
-        height: 65.78vw;
+        height: 59.78vw;
     }
 
     .Catalog_card--small {
@@ -317,7 +317,7 @@
     .Catalog_card--large {
         grid-column: 1;
         width: 100%;
-        height: 65.78vw;
+        height: 59.78vw;
     }
 
     .Catalog_card_image {

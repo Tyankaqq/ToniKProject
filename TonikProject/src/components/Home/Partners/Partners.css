@@ -437,7 +437,7 @@
     /* Grid для мобилки: 1 колонка */
     .Partners_grid {
         grid-template-columns: 1fr;
-        gap: 4.17vw;
+        gap: 2.8vw;
     }
 
     /* Карточка на всю ширину контейнера */

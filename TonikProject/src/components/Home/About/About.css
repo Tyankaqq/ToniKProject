@@ -153,7 +153,7 @@
 
     .About_content {
         position: relative;
-        top: -34%;
+        top: -37%;
         left: auto;
         max-height: none;
     }
@@ -170,7 +170,7 @@
 
     .About_text {
         font-size: 3.89vw;
-        line-height: 150%;
+        line-height: 110%;
         max-width: 100%;
     }
 
