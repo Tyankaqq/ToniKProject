@@ -352,7 +352,7 @@
     }
 
     .ContactForm_title {
-        font-size: 6.67vw;
+        font-size: 6.8vw;
         margin-bottom: 5.56vw;
     }
 
@@ -367,9 +367,12 @@
     }
 
     .ContactForm_modal {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
         width: 100vw;
         height: 100vh; /* На всю высоту */
-        padding: 13.89vw;
+        padding: 7.89vw;
         border-radius: 0;
         left: -100%;
     }
@@ -386,12 +389,12 @@
     }
 
     .ContactForm_modal_title {
-        font-size: 6.67vw;
+        font-size: 6.8vw;
         margin-bottom: 4.17vw;
     }
 
     .ContactForm_modal_socials {
-        font-size: 4.44vw;
+        font-size: 5.5vw;
         gap: 2.78vw;
         margin-bottom: 4.17vw;
     }
@@ -406,7 +409,7 @@
     }
 
     .ContactForm_modal_description {
-        width: 75%;
+        width: 80%;
         font-size: 3.89vw;
         line-height: 150%;
         margin-bottom: 5.56vw;
@@ -424,7 +427,7 @@
     }
 
     .ContactForm_modal_checkbox {
-        font-size: 3.33vw;
+        font-size: 3.89vw;
         gap: 2.78vw;
     }
 

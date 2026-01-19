@@ -11,12 +11,13 @@
 }
 
 .Tonics_title {
+    font-family: 'Hikasami', sans-serif;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: -0.03em;
     line-height: 110%;
     color: var(--clr-white);
-    font-size: 2.60vw;
+    font-size: 2.95vw;
 }
 
 .Tonics_link_all {

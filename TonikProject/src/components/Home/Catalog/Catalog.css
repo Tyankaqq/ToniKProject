@@ -11,9 +11,9 @@
 }
 
 .Catalog_title {
-    font-size: var(--fs-50);
+    font-size: 2.95vw;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: -0.03em;
     line-height: 110%;
     font-family: 'Hikasami', sans-serif;
