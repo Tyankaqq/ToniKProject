@@ -41,12 +41,12 @@
 .Header_mega_menu {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Крестик всегда справа */
+    justify-content: flex-end;
     gap: 0;
     height: 3.125vw; /* 60px */
     background: linear-gradient(100deg, rgba(255, 255, 255, 0.05) 3.64%, rgba(153, 153, 153, 0.05) 86.15%);
     border: 0.057vw solid rgba(255, 255, 255, 0.3);
-    border-radius: 0.568vw; /* 10.909px */
+    border-radius: 0.568vw;
     padding: 0;
     overflow: visible;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -240,8 +240,8 @@
 }
 
 .Header_icon_btn img {
-    width: 1.25vw; /* 24px */
-    height: 1.25vw; /* 24px */
+    width: 2.08vw; /* 40px при 1920px */
+    height: 2.08vw; /* 40px при 1920px */
 }
 
 /* ============================================
@@ -315,14 +315,14 @@
     }
 
     .Header_icon_btn img {
-        width: 2.34vw; /* 18px */
-        height: 2.34vw; /* 18px */
+        width: 3.26vw; /* 25px при 768px */
+        height: 3.26vw; /* 25px при 768px */
     }
 
     /* MOBILE NAV MENU */
     .Header_mobile_nav {
         position: fixed;
-        top: 10.46vw; /* Под хедером (20px + 45px + gap) */
+        top: 10.46vw;
         right: 2.60vw;
         width: 39.45vw; /* 303px */
         background: linear-gradient(100deg, rgba(69, 69, 69, 0.40) 3.64%, rgba(0, 0, 0, 0.40) 86.15%);
@@ -455,7 +455,7 @@
     }
 
     .Header_mobile_social_link {
-        width: 4.86vw; /* 45px */
+        width: 4.86vw;
         height: 5.86vw;
         display: flex;
         align-items: center;
@@ -534,14 +534,14 @@
     }
 
     .Header_icon_btn img {
-        width: 3.33vw; /* 12px */
-        height: 3.33vw; /* 12px */
+        width: 5.56vw; /* 20px при 360px */
+        height: 5.56vw; /* 20px при 360px */
     }
 
     /* MOBILE NAV MENU */
     .Header_mobile_nav {
         position: fixed;
-        top: 16.44vw; /* Под хедером (20px + 30px + gap) */
+        top: 16.44vw;
         right: 5.56vw;
         width: 77.78vw; /* 280px */
         background: linear-gradient(100deg, rgba(69, 69, 69, 0.40) 3.64%, rgba(0, 0, 0, 0.40) 86.15%);

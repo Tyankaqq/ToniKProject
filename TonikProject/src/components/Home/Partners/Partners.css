@@ -1,7 +1,7 @@
 .Partners_section {
     width: 100%;
     background-color: var(--clr-bg);
-    padding: 5.21vw 0;
+    padding: 7.8125vw 0;
     border-radius: 40px 40px 0 0;
 }
 
@@ -445,7 +445,7 @@
         font-family: 'Inter', Regular;
         width: 100%;
         height: auto;
-        min-height: 50vw; /* 180px компактная высота */
+        min-height: 58vw; /* 180px компактная высота */
         padding: 4.17vw 5.56vw;
         border-radius: 2.78vw;
     }

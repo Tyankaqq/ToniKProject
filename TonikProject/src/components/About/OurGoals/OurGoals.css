@@ -1,276 +1,327 @@
-.goals {
-    padding: 5.21vw 0;
-    background: #1e0d0d;
+.goals-new {
+    background: var(--clr-bg);
     color: #ffffff;
+    min-height: 47.92vw; /* 920px */
+    position: relative;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
-.row {
+.goals-new__wrapper {
+    min-height: 47.92vw;
     display: flex;
-    flex-direction: row;
-    gap: 18.6vw;
+    align-items: flex-start;
+    gap: 3vw;
+    padding: 5.21vw 0;
 }
 
-.goals__title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 2.6vw;
+.goals-new__left {
+    flex: 0 0 45%;
+    display: flex;
+    gap: 1.5vw;
+    height: 47.92vw;
+}
+
+.goals-new__progress-bar {
+    position: relative;
+    width: 0.16vw;
+    height: 47.92vw;
+    flex-shrink: 0;
+}
+
+.goals-new__progress-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 0.78vw;
+}
+
+.goals-new__progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 0.78vw;
+}
+
+.goals-new__titles {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.goals-new__title-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.goals-new__title-section--top {
+    align-items: flex-start;
+    padding-top: 5vw;
+}
+
+.goals-new__title-section--bottom {
+    align-items: flex-end;
+    padding-bottom: 8vw;
+}
+
+.goals-new__title {
+    font-family: 'Hikasami', sans-serif;
+    font-weight: 600;
+    font-size: 2.86vw;
     line-height: 110%;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    margin: 0 0 2.08vw 0;
+    margin: 0;
+    color: #ffffff;
+    transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
-.goals__subtitle {
+.goals-new__right {
+    flex: 1;
+    max-width: 44.27vw;
+    padding-top: 5vw;
+}
+
+.goals-new__content {
+    will-change: opacity, filter;
+}
+
+.goals-new__description {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.15vw;
+    font-size: 1.25vw;
     line-height: 110%;
     letter-spacing: -0.03em;
-    margin: 0 0 3.13vw 0;
-    max-width: 44.27vw;
+    margin: 0;
+    white-space: pre-line;
 }
 
-/* ДЕСКТОП - показываем, планшет/мобилка - скрываем */
-.goals__wrapper--desktop {
-    display: block;
+/* Карточки */
+.goals-new__cards {
+    position: relative;
+    width: 100%;
+    min-height: 30vw;
+    padding-top: 0;
 }
 
-.goals__wrapper--mobile {
-    display: none;
-}
-
-.goals__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1vw;
-    margin-bottom: 3.13vw;
+.goals-new__cards-stack {
+    position: relative;
+    width: 100%;
+    perspective: 1000px;
 }
 
 .goal-card {
-    background: #333333;
-    border: 1px solid #555555;
-    border-radius: 0.52vw;
-    padding: 1.04vw;
+    width: 29.17vw; /* 560px при 1920px */
+    height: 20.36vw; /* 391px при 1920px */
+    background: rgba(39, 39, 39, 1);
+    border: 0.05vw solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.78vw;
+    padding: 2.08vw;
+    position: relative;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    gap: 1.04vw;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
 }
 
-.goal-card__header {
-    display: flex;
-    flex-direction: column;
-    gap: 2.9vw;
-}
-
-.goal-card__number {
-    font-family: 'STIX Two Math', serif;
-    font-weight: 400;
-    font-size: 2.4vw;
-    line-height: 110%;
-    color: rgba(255, 255, 255, 0.2);
+.goal-card--background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    filter: blur(0.1vw);
+    pointer-events: none;
+    transition: transform 0.5s ease;
 }
 
 .goal-card__title {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.5vw;
+    font-size: 1.56vw;
     line-height: 110%;
     letter-spacing: -0.03em;
     margin: 0;
+    order: 1;
+    text-align: center;
+}
+
+.goal-card__lines {
+    display: flex;
+    gap: 0.52vw; /* 10px */
+    order: 2;
+}
+
+.goal-card__line {
+    width: 0.16vw; /* 3px */
+    height: 8.33vw; /* 160px при 1920px */
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 0.16vw;
 }
 
 .goal-card__description {
+
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 0.85vw;
+    font-size: 0.94vw;
     line-height: 110%;
     letter-spacing: -0.03em;
     margin: 0;
     color: rgba(255, 255, 255, 0.9);
+    order: 3;
+    text-align: left;
+    align-self: flex-start;
+    width: 70%;
 }
 
-.goals__footer {
-    margin-right: 6vw;
-    display: flex;
-    align-items: center;
-    gap: 1vw;
-    justify-content: center;
-}
-
-.goals__icon {
-    flex-shrink: 0;
-}
-
-.goals__icon img {
-    width: 4.38vw;
-    height: auto;
-    display: block;
-}
-
-.goals__cta {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 1.15vw;
-    line-height: 110%;
-    letter-spacing: -0.03em;
-    margin: 0;
-    max-width: 29.17vw;
-}
-
-/* ПЛАНШЕТ */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .goals {
+    .goals-new {
+        min-height: 100vw;
+    }
+
+    .goals-new__wrapper {
+        flex-direction: column;
         padding: 8vw 0;
+        min-height: 100vw;
+        align-items: flex-start;
     }
 
-    .row {
-        flex-direction: row;
-        gap: 2.13vw;
-        margin-bottom: 5.8vw;
+    .goals-new__left {
+        flex: none;
+        width: 100%;
+        height: auto;
     }
 
-    .goals__title {
-        font-size: 4.3vw;
-        margin-bottom: 0;
+    .goals-new__progress-bar {
+        width: 0.3vw;
+        height: 60vw;
     }
 
-    .goals__subtitle {
-        font-size: 2.08vw;
-        max-width: 46.74vw;
-        margin-bottom: 4.17vw;
+    .goals-new__titles {
+        height: auto;
     }
 
-    /* Скрываем десктоп, показываем мобильную */
-    .goals__wrapper--desktop {
-        display: none;
+    .goals-new__title-section--top {
+        padding-top: 0;
     }
 
-    .goals__wrapper--mobile {
-        display: block;
+    .goals-new__title-section--bottom {
+        padding-bottom: 0;
     }
 
-    .goals__grid-mobile {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.4vw;
+    .goals-new__title {
+        font-size: 5vw;
     }
 
-    .goal-card {
-        max-width: 46.74vw;
-        padding: 2.6vw;
-        gap: 2.6vw;
-        border-radius: 1.3vw;
+    .goals-new__right {
+        max-width: 100%;
+        padding-top: 4vw;
     }
 
-    .goal-card__header {
-        gap: 7.6vw;
-    }
-
-    .goal-card__number {
-        font-size: 6.4vw;
-    }
-
-    .goal-card__title {
+    .goals-new__description {
         font-size: 2.6vw;
     }
 
-    .goal-card__description {
-        font-size: 1.82vw;
-    }
-
-    /* Футер как элемент grid в правой нижней ячейке */
-    .goals__footer-mobile {
-        justify-content: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2.6vw;
-    }
-
-    .goals__footer-mobile .goals__icon img {
-        width: 10.94vw;
-        height: auto;
-    }
-
-    .goals__footer-mobile .goals__cta {
-        font-size: 2.08vw;
-        max-width: 46.74vw;
-    }
-}
-
-/* МОБИЛКА */
-@media (max-width: 767px) {
-    .goals {
-        padding: 0;
-    }
-    .goal-card__header{
-        gap: 5.7vw;
-    }
-    .row {
-        flex-direction: column;
-        gap: 6vw;
-    }
-
-    .goals__title {
-        font-size: 6.94vw; /* 25px → uppercase */
-        text-transform: uppercase;
-        margin-bottom: 0;
-    }
-
-    .goals__subtitle {
-        font-size: 4.44vw; /* 16px */
-        max-width: 100%;
-        margin-bottom: 8vw;
-    }
-
-    /* Скрываем десктоп, показываем мобильную */
-    .goals__wrapper--desktop {
-        display: none;
-    }
-
-    .goals__wrapper--mobile {
-        display: block;
-    }
-
-    .goals__grid-mobile {
-        display: flex;
-        flex-direction: column;
-        gap: 4vw;
-    }
-
     .goal-card {
-        padding: 5.56vw; /* 20px */
-        gap: 2.78vw; /* 10px по Figma itemSpacing */
-        border-radius: 2.78vw; /* 10px */
-    }
-
-    .goal-card__number {
-        font-size: 8.2vw;
+        width: 60vw;
+        height: 42vw;
+        padding: 4vw;
+        gap: 2vw;
     }
 
     .goal-card__title {
-        font-size: 5.1vw; /* Примерно 20px */
+        font-size: 3vw;
+    }
+
+    .goal-card__lines {
+        gap: 1vw;
+    }
+
+    .goal-card__line {
+        width: 0.4vw;
+        height: 15vw;
     }
 
     .goal-card__description {
-        font-size: 4.1vw; /* 16px по Figma */
-    }
-
-    .goals__footer-mobile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6vw;
-    }
-
-    .goals__footer-mobile .goals__icon img {
-        width: 23.33vw; /* 84px по Figma */
-        height: auto;
-    }
-
-    .goals__footer-mobile .goals__cta {
-        font-size: 4.44vw; /* 16px по Figma */
-        max-width: 100%;
+        font-size: 2vw;
     }
 }
 
+@media (max-width: 767px) {
+    .goals-new {
+        min-height: 120vw;
+    }
+
+    .goals-new__wrapper {
+        flex-direction: column;
+        gap: 8vw;
+        padding: 13vw 0;
+        min-height: 120vw;
+        align-items: flex-start;
+    }
+
+    .goals-new__left {
+        flex-direction: column;
+        gap: 6vw;
+        width: 100%;
+        height: auto;
+    }
+
+    .goals-new__progress-bar {
+        width: 0.83vw;
+        height: 50vw;
+    }
+
+    .goals-new__titles {
+        height: auto;
+    }
+
+    .goals-new__title-section {
+        align-items: flex-start !important;
+        padding: 0 !important;
+    }
+
+    .goals-new__title {
+        font-size: 6.5vw;
+    }
+
+    .goals-new__right {
+        padding-top: 0;
+    }
+
+    .goals-new__description {
+        font-size: 4.44vw;
+    }
+
+    .goal-card {
+        width: 80vw;
+        height: 56vw;
+        padding: 5vw;
+        gap: 3vw;
+    }
+
+    .goal-card__title {
+        font-size: 5vw;
+    }
+
+    .goal-card__lines {
+        gap: 2vw;
+    }
+
+    .goal-card__line {
+        width: 0.83vw;
+        height: 25vw;
+    }
+
+    .goal-card__description {
+        font-size: 4vw;
+    }
+}

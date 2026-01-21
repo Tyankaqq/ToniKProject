@@ -1,81 +1,88 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './AboutCompany.css';
-import AboutImage from '../../../assets/Image/AboutCompany.jpg';
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
+
+// Настройки анимации для переиспользования
+const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: "easeOut" }
+    }
+};
 
 const AboutCompany = () => {
     return (
-        <section className="about">
-            <div className="container">
-                <Breadcrumbs />
-                <h2 className="about__label">О компании</h2>
-
-                {/* ДЕСКТОП ВЕРСИЯ */}
-                <div className="about__inner about__inner--desktop">
-                    <div className="about__left">
-                        <p className="about__subtitle">
-                            Основополагающая идея нашей философии обращать внимание на неочевидное.
-                        </p>
-                        <div className="about__image-wrapper">
-                            <img src={AboutImage} alt="" className="about__image" />
-                        </div>
-                    </div>
-
-                    <div className="about__right">
-                        <p className="about__lead">
-                            А что, если всё вокруг — не совсем то, чем кажется? Обычное дерево в парке, уголь в костре, вода в реке... Мы привыкли к ним и проходим мимо.<br/>
-                            Наша компания родилась из желания заглянуть глубже. Мы верим, что в самых простых вещах спрятаны удивительные возможности.
-                        </p>
-
-                        <div className="about__mission">
-
-                            <p className="about__mission-text">
-                                <span className="about__mission-highlight">
-                                    Наша миссия — находить эти скрытые дары природы
-                                </span>{' '}
-                                и превращать их в решения, которые помогают человеку раскрыть свой потенциал —почувствовать себя полным сил, энергии и ясности. Мы ищем ценность там, где другие видят лишь отходы, и создаём будущее из того, что уже есть вокруг.
-                                Для нас это больше, чем бизнес. Это новый способ видеть мир.<br/>
-                                Мы хотим, чтобы жизнь была по-настоящему качественной и насыщенной в любом возрасте. Чтобы каждый мог реализовать себя и подарить миру что-то важное. И мы создаём для этого все условия, используя самые неожиданные ресурсы природы.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* ПЛАНШЕТ ВЕРСИЯ */}
-                <div className="about__inner about__inner--mobile">
-                    <div className="about__grid">
-                        <div className="about__column about__column--left">
-                            <p className="about__subtitle">
-                                Основополагаю<span className="about__br-tablet"><br/></span>щая идея нашей философии обращать внимание на неочевидное.
-                            </p>
-
-                            <p className="about__lead">
-                                А что, если всё вокруг — не совсем то, чем кажется? Обычное дерево в парке, уголь в костре, вода в реке... Мы привыкли к ним и проходим мимо.<br/>
-                                Наша компания родилась из желания заглянуть глубже. Мы верим, что в самых простых вещах спрятаны удивительные возможности.
-                            </p>
-                        </div>
-
-                        <div className="about__column about__column--right">
-                            <div className="about__image-wrapper">
-                                <img src={AboutImage} alt="" className="about__image" />
-                            </div>
-
-                            <div className="about__mission">
-
-                                <p className="about__mission-text">
-                    <span className="about__mission-highlight">
-                        Наша миссия — находить эти скрытые дары природы
-                    </span>{' '}
-                                    и превращать их в решения, которые помогают человеку раскрыть свой потенциал —почувствовать себя полным сил, энергии и ясности. Мы ищем ценность там, где другие видят лишь отходы, и создаём будущее из того, что уже есть вокруг.
-                                    Для нас это больше, чем бизнес. Это новый способ видеть мир.<br/>
-                                    Мы хотим, чтобы жизнь была по-настоящему качественной и насыщенной в любом возрасте. Чтобы каждый мог реализовать себя и подарить миру что-то важное. И мы создаём для этого все условия, используя самые неожиданные ресурсы природы.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+        <>
+            {/* Хлебные крошки */}
+            <div className="about__breadcrumbs-wrapper">
+                <div className="container">
+                    <Breadcrumbs />
                 </div>
             </div>
-        </section>
+
+            {/* Блок 1 */}
+            <section className="about__block">
+                <div className="container">
+                    <motion.h3
+                        className="about__block-title"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        variants={fadeInUp}
+                    >
+                        Основополагающая идея нашей философии<br/>
+                        обращать внимание на неочевидное.
+                    </motion.h3>
+                </div>
+            </section>
+
+            {/* Блок 2 */}
+            <section className="about__block">
+                <div className="container">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        variants={{
+                            visible: { transition: { staggerChildren: 0.3 } }
+                        }}
+                    >
+                        <motion.h3 className="about__block-title" variants={fadeInUp}>
+                            А что, если всё вокруг — не совсем то, чем кажется?
+                        </motion.h3>
+                        <motion.p className="about__block-text" variants={fadeInUp}>
+                            Обычное дерево в парке, уголь в костре, вода в реке...<br/>
+                            Мы привыкли к ним и проходим мимо.
+                        </motion.p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Блок 3 */}
+            <section className="about__block">
+                <div className="container">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        variants={{
+                            visible: { transition: { staggerChildren: 0.3 } }
+                        }}
+                    >
+                        <motion.h3 className="about__block-title" variants={fadeInUp}>
+                            Наша компания родилась из желания заглянуть глубже.
+                        </motion.h3>
+                        <motion.p className="about__block-text" variants={fadeInUp}>
+                            Мы верим, что в самых простых вещах спрятаны<br/>
+                            удивительные возможности.
+                        </motion.p>
+                    </motion.div>
+                </div>
+            </section>
+        </>
     );
 };
 

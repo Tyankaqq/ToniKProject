@@ -1,11 +1,11 @@
 .Footer {
     width: 100%;
     background-color: var(--clr-bg);
-    padding-bottom: 2vw;
+    padding-bottom: 1vw;
 }
 
 .Footer_container {
-    padding: 2.08vw 0 1.56vw;
+    padding: 2.08vw 0 0;
 }
 
 /* ========== ВЕРХНЯЯ ЧАСТЬ ========== */
@@ -81,7 +81,7 @@
     height: 11.51vw;
     display: flex;
     flex-direction: column;
-    gap: 0.52vw;
+    gap: 1.52vw;
 }
 
 .Footer_column_title {
@@ -145,11 +145,15 @@
 /* ========== TABLET (768px - 1024px) ========== */
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
+    .Footer{
+        padding-bottom: 2vw;
+    }
     .Footer_container {
         padding: 3.91vw 2.60vw 2.60vw;
     }
 
     .Footer_main {
+        margin: 0;
         display: grid;
         grid-template-columns: repeat(4, 22.79vw);
         grid-template-rows: 21.61vw auto;

@@ -1,75 +1,202 @@
-// src/components/About/Invitation.jsx
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Invitation.css';
-import InvitePhoto from '../../../assets/Image/PhotoInvite.jpg';
-import StarIcon from '../../../assets/Image/Star.svg';
+import Pointer from '../../../assets/Image/Pointer.svg';
+import TgLogo from '../../../assets/Image/TgLogo.svg';
+import VkLogo from '../../../assets/Image/VkLogo.svg';
 
 const Invitation = () => {
-    const [activeCategory, setActiveCategory] = useState('products');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLocked, setIsLocked] = useState(false);
+    const sectionRef = useRef(null);
+    const scrollAttemptsRef = useRef(0);
 
-    const categories = [
-        { id: 'products', label: 'Бизнесам и производителям' },
-        { id: 'investors', label: 'Учёным и исследователям' },
-        { id: 'researchers', label: 'Экологам и активистам вопросов' },
-        { id: 'activists', label: 'Государственным и общественным организациям' }
-    ];
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        message: '',
+        agree: false
+    });
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!sectionRef.current || isModalOpen) return;
+
+            const rect = sectionRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            const isFullscreen = rect.top <= 0 && rect.bottom >= windowHeight;
+
+            if (isFullscreen && !isLocked) {
+                setIsLocked(true);
+                scrollAttemptsRef.current = 0;
+            }
+        };
+
+        const handleWheel = (e) => {
+            if (!isLocked || isModalOpen) return;
+
+            e.preventDefault();
+
+            scrollAttemptsRef.current += 1;
+
+            if (scrollAttemptsRef.current >= 3) {
+                setIsLocked(false);
+                scrollAttemptsRef.current = 0;
+
+                setTimeout(() => {
+                    if (e.deltaY > 0) {
+                        window.scrollTo({
+                            top: sectionRef.current.offsetTop + sectionRef.current.offsetHeight,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        window.scrollTo({
+                            top: sectionRef.current.offsetTop - window.innerHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 100);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('wheel', handleWheel, { passive: false });
+
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('wheel', handleWheel);
+        };
+    }, [isLocked, isModalOpen]);
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form submitted:', formData);
+        setIsModalOpen(false);
+    };
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
-        <section className="invitation">
-            <div className="container">
-                <div className="row_container">
-                    <h2 className="invitation__title">
-                        Приглашаем вас к сотрудничеству что бы создавать будущее вместе!
-                    </h2>
-                    <p className="invitation__subtitle">
-                        Самые громкие открытия происходят на стыке разных идей и опыта. Поэтому мы всегда открыты к сотрудничеству и ищем единомышленников —тех, кто, как и мы, хочет сделать мир осознаннее, здоровее и технологичнее.
-                    </p>
-                </div>
-                <div className="invitation__categories">
-                    {categories.map((category) => (
-                        <button
-                            key={category.id}
-                            className={`invitation__category-btn ${activeCategory === category.id ? 'active' : ''}`}
-                            onClick={() => setActiveCategory(category.id)}
-                        >
-                            {category.label}
+        <>
+            <section
+                className={`invitation section-light ${isLocked ? 'is-locked' : ''}`}
+                ref={sectionRef}
+            >
+                <div className="invitation_container container">
+                    <div className="invitation_content">
+                        <h2 className="invitation_title">
+                            ПРИГЛАШАЕМ ВАС К СОТРУДНИЧЕСТВУ ЧТО БЫ СОЗДАВАТЬ БУДУЩЕЕ ВМЕСТЕ!
+                        </h2>
+
+                        <button className="invitation_trigger_button" onClick={openModal}>
+                            СВЯЗАТЬСЯ
+                            <img src={Pointer} alt="pointer" />
                         </button>
-                    ))}
+                    </div>
                 </div>
+            </section>
 
-                <div className="invitation__content">
+            {/* Модальное окно */}
+            {isModalOpen && (
+                <>
+                    <div className="invitation_overlay" onClick={closeModal}></div>
+                    <div className={`invitation_modal ${isModalOpen ? 'active' : ''}`}>
+                        <button className="invitation_close" onClick={closeModal}>
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                <path d="M7.5 7.5L22.5 22.5M22.5 7.5L7.5 22.5" stroke="white" strokeWidth="2"/>
+                            </svg>
+                        </button>
 
-                    <div className="invitation__text-block">
-                        <p className="invitation__question">
-                            Работаете в сфере продуктов, услуг или производства? Давайте вместе переосмыслим ваш подход!
-                        </p>
+                        <h3 className="invitation_modal_title">
+                            Появились вопросы<br />
+                            или предложения?
+                        </h3>
 
-                        <div className="invitation__offer">
-                            <div className="invitation__offer-label">
-                                Что предлагаем:
+                        <div className="invitation_modal_socials">
+                            <span>Связаться с нами</span>
+                            <div className="invitation_modal_icons">
+                                <a href="#" className="invitation_modal_icon">
+                                    <img src={TgLogo} alt="Telegram" />
+                                </a>
+                                <a href="#" className="invitation_modal_icon">
+                                    <img src={VkLogo} alt="VK" />
+                                </a>
                             </div>
-                            <p className="invitation__offer-text">
-                                Поможем сделать ваши продукты и услуги не просто прибыльными, а по-настоящему ценными для людей — полезными, честными и вдохновляющими.
-                            </p>
                         </div>
 
-                    </div>
-                    <div className="invitation__image-wrapper">
-                        <img src={InvitePhoto} alt="Лаборатория" className="invitation__image" />
-                    </div>
-                </div>
+                        <p className="invitation_modal_description">
+                            Если вы являетесь представителями отрасли сельского хозяйства
+                            (земледелие, животноводство, птицеводство, рыбоводство)
+                            и разделяете наши ценности, мы приглашаем вас к сотрудничеству
+                            с командой Тоников Жизни.
+                        </p>
 
-                <div className="invitation__footer">
-                    <div className="invitation__icon">
-                        <img src={StarIcon} alt="*" />
+                        <form className="invitation_modal_form" onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Имя"
+                                value={formData.name}
+                                onChange={handleChange}
+                                className="invitation_modal_input"
+                                required
+                            />
+
+                            <input
+                                type="tel"
+                                name="phone"
+                                placeholder="Телефон"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                className="invitation_modal_input"
+                                required
+                            />
+
+                            <input
+                                type="text"
+                                name="message"
+                                placeholder="Сообщение"
+                                value={formData.message}
+                                onChange={handleChange}
+                                className="invitation_modal_input"
+                                required
+                            />
+
+                            <label className="invitation_modal_checkbox">
+                                <input
+                                    type="checkbox"
+                                    name="agree"
+                                    checked={formData.agree}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <span>Принимаю <u>условия обработки персональных данных</u>.</span>
+                            </label>
+
+                            <button type="submit" className="invitation_modal_submit">
+                                Отправить сообщение
+                            </button>
+                        </form>
                     </div>
-                    <p className="invitation__cta">
-                        Если вы узнали в одном из этих пунктов себя и вам откликается наш подход, —давайте знакомиться!
-                        Вместе мы сможем раскрыть неочевидное и создать будущее, в котором хочется жить.
-                    </p>
-                </div>
-            </div>
-        </section>
+                </>
+            )}
+        </>
     );
 };
 

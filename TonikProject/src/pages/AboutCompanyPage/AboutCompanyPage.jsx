@@ -6,6 +6,7 @@ import {ContactForm} from "../../components/Home/ContactForm/ContactForm.jsx";
 import {SeoText} from "../../components/Home/SeoText/SeoText.jsx";
 import {Footer} from "../../components/Home/Footer/Footer.jsx";
 import React from "react";
+import PartnersGallery from "../../components/About/PartnersGallery/PartnersGallery.jsx";
 
 export const AboutCompanyPage = () => {
     return (
@@ -13,12 +14,13 @@ export const AboutCompanyPage = () => {
             <Header/>
             <main>
                 <div className={'First_block'}>
+
                     <AboutCompany/>
                     <OurGoals/>
                     <Invitation/>
-
+                    <PartnersGallery/>
                 </div>
-                <ContactForm/>
+
                 <div>
                     <SeoText/>
                 </div>

@@ -3,7 +3,19 @@
     width: 100%;
     background-color: var(--clr-bg);
     padding: 12.21vw 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: filter 0.3s ease; /* Добавлено для плавности */
+}
 
+/* Класс для залипания */
+.ContactForm_section.is-locked {
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
 
 .ContactForm_container {
@@ -57,29 +69,44 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5); /* Немного затемнено */
+    backdrop-filter: blur(10px); /* Блюр на весь фон */
+    -webkit-backdrop-filter: blur(10px); /* Для Safari */
     z-index: 999;
     animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
 }
 
 .ContactForm_modal {
     scrollbar-width: none;
     position: fixed;
     top: 0;
-    left: -100%; /* Начальная позиция за экраном слева */
-    width: 49.48vw; /* 950px / 1920px * 100 */
-    height: 100vh; /* На всю высоту экрана */
+    left: -100%;
+    width: 49.48vw;
+    height: 100vh;
     background: #272727;
     z-index: 1000;
     padding: 5.21vw;
     overflow-y: auto;
     transition: left 0.4s ease;
     border-radius: 0;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); /* Добавлена тень */
+}
+
+.ContactForm_modal::-webkit-scrollbar {
+    display: none; /* Скрываем scrollbar для webkit */
 }
 
 .ContactForm_modal.active {
@@ -94,8 +121,8 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    width: 1.56vw;
-    height: 1.56vw;
+    width: 2.08vw;
+    height: 2.08vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,7 +248,6 @@
     color: #000;
     font-size: 0.83vw;
     font-weight: 400;
-
     border: none;
     border-radius: 0.52vw;
     cursor: pointer;
@@ -236,7 +262,11 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     .ContactForm_section {
         padding: 40.21vw 2.60vw;
+        min-height: 100vh;
+    }
 
+    .ContactForm_section.is-locked {
+        height: 100vh;
     }
 
     .ContactForm_content {
@@ -260,11 +290,15 @@
         width: 1.6vw;
     }
 
+    .ContactForm_overlay {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
     .ContactForm_modal {
         flex-direction: column;
         display: flex;
         justify-content: center;
-        /* align-items: center; */
         width: 70vw;
         height: 100vh;
         padding: 2.77vw;
@@ -342,9 +376,12 @@
 /* ========== MOBILE (360px - 767px) ========== */
 @media (max-width: 767px) {
     .ContactForm_section {
-
-
         padding: 62.33vw 5.56vw;
+        min-height: 100vh;
+    }
+
+    .ContactForm_section.is-locked {
+        height: 100vh;
     }
 
     .ContactForm_content {
@@ -363,7 +400,12 @@
     }
 
     .ContactForm_trigger_button img {
-        width: 5.56vw;
+        width: 4.56vw;
+    }
+
+    .ContactForm_overlay {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
     }
 
     .ContactForm_modal {
@@ -371,7 +413,7 @@
         justify-content: center;
         flex-direction: column;
         width: 100vw;
-        height: 100vh; /* На всю высоту */
+        height: 100vh;
         padding: 7.89vw;
         border-radius: 0;
         left: -100%;
