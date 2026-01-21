@@ -58,6 +58,7 @@
 }
 
 .Partners_card_title {
+    font-weight: 400;
     font-size: 1.6vw;
     color: var(--clr-white);
     text-align: center;
@@ -426,7 +427,7 @@
 
     .Partners_title {
         width: 50%;
-        font-size: 6.67vw;
+        font-size: 7vw;
     }
 
     .Partners_link {
