@@ -625,7 +625,7 @@
     }
 
     .Blog_card:not(:last-child) {
-        margin-bottom: 5.5vw;
+        margin-bottom: 2.8vw;
     }
 
     /* Все карточки выглядят одинаково на мобилке */
