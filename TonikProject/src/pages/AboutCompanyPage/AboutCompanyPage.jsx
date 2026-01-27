@@ -21,7 +21,7 @@ export const AboutCompanyPage = () => {
                     <PartnersGallery/>
                 </div>
 
-                <div>
+                <div className={'Second_block'} style={{scrollSnapAlign: 'start'}}>
                     <SeoText/>
                 </div>
             </main>

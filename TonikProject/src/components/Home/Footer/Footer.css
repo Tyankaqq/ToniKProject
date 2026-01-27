@@ -2,6 +2,7 @@
     width: 100%;
     background-color: var(--clr-bg);
     padding-bottom: 1vw;
+
 }
 
 .Footer_container {
@@ -103,7 +104,7 @@
 }
 
 .Footer_column_list a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 1);
     text-decoration: none;
     font-size: 1.3vw;
     font-weight: 400;
@@ -131,7 +132,7 @@
     display: flex;
     align-items: center;
     gap: 0.52vw;
-    font-size: 0.85vw;
+    font-size: 1.3vw;
     font-weight: 400;
     color: white;
     margin: 0;

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import './ContactForm.css';
 import Pointer from '../../../assets/Image/Pointer.svg';
 import TgLogo from '../../../assets/Image/TgLogo.svg';
@@ -6,9 +6,6 @@ import VkLogo from '../../../assets/Image/VkLogo.svg';
 
 export const ContactForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isLocked, setIsLocked] = useState(false);
-    const sectionRef = useRef(null);
-    const scrollAttemptsRef = useRef(0);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -16,63 +13,6 @@ export const ContactForm = () => {
         message: '',
         agree: false
     });
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!sectionRef.current || isModalOpen) return;
-
-            const rect = sectionRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            // Проверяем, что блок занимает весь экран
-            const isFullscreen = rect.top <= 0 && rect.bottom >= windowHeight;
-
-            if (isFullscreen && !isLocked) {
-                setIsLocked(true);
-                scrollAttemptsRef.current = 0;
-            }
-        };
-
-        const handleWheel = (e) => {
-            if (!isLocked || isModalOpen) return;
-
-            e.preventDefault();
-
-            scrollAttemptsRef.current += 1;
-
-            // После 2-3 попыток прокрутки - отпускаем блок
-            if (scrollAttemptsRef.current >= 3) {
-                setIsLocked(false);
-                scrollAttemptsRef.current = 0;
-
-                // Скроллим в нужном направлении
-                setTimeout(() => {
-                    if (e.deltaY > 0) {
-                        window.scrollTo({
-                            top: sectionRef.current.offsetTop + sectionRef.current.offsetHeight,
-                            behavior: 'smooth'
-                        });
-                    } else {
-                        window.scrollTo({
-                            top: sectionRef.current.offsetTop - window.innerHeight,
-                            behavior: 'smooth'
-                        });
-                    }
-                }, 100);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('wheel', handleWheel, { passive: false });
-
-        // Проверяем сразу при монтировании
-        handleScroll();
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('wheel', handleWheel);
-        };
-    }, [isLocked, isModalOpen]);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -98,10 +38,7 @@ export const ContactForm = () => {
 
     return (
         <>
-            <section
-                className={`ContactForm_section section-light ${isLocked ? 'is-locked' : ''}`}
-                ref={sectionRef}
-            >
+            <section className="ContactForm_section section-light">
                 <div className="ContactForm_container container">
                     <div className="ContactForm_content">
                         <h2 className="ContactForm_title">

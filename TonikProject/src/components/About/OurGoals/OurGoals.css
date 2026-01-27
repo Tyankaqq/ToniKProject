@@ -1,7 +1,7 @@
 .goals-new {
     background: var(--clr-bg);
     color: #ffffff;
-    min-height: 47.92vw; /* 920px */
+    min-height: 47.92vw;
     position: relative;
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -87,10 +87,19 @@
     flex: 1;
     max-width: 44.27vw;
     padding-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 37.92vw;
+    transition: align-items 0.3s ease;
 }
 
 .goals-new__content {
     will-change: opacity, filter;
+    width: 100%;
+    max-height: 37.92vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .goals-new__description {
@@ -101,25 +110,28 @@
     letter-spacing: -0.03em;
     margin: 0;
     white-space: pre-line;
+    max-height: 37.92vw;
+    overflow-y: auto;
 }
 
-/* Карточки */
 .goals-new__cards {
     position: relative;
     width: 100%;
-    min-height: 30vw;
-    padding-top: 0;
+    height: 37.92vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .goals-new__cards-stack {
     position: relative;
-    width: 100%;
+    width: auto;
     perspective: 1000px;
 }
 
 .goal-card {
-    width: 29.17vw; /* 560px при 1920px */
-    height: 20.36vw; /* 391px при 1920px */
+    width: 29.17vw;
+    height: 20.36vw;
     background: rgba(39, 39, 39, 1);
     border: 0.05vw solid rgba(255, 255, 255, 0.3);
     border-radius: 0.78vw;
@@ -156,19 +168,18 @@
 
 .goal-card__lines {
     display: flex;
-    gap: 0.52vw; /* 10px */
+    gap: 0.52vw;
     order: 2;
 }
 
 .goal-card__line {
-    width: 0.16vw; /* 3px */
-    height: 8.33vw; /* 160px при 1920px */
+    width: 0.16vw;
+    height: 8.33vw;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 0.16vw;
 }
 
 .goal-card__description {
-
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 0.94vw;
@@ -182,79 +193,187 @@
     width: 70%;
 }
 
+.goals-new__description::-webkit-scrollbar {
+    width: 0.31vw;
+}
+
+.goals-new__description::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.16vw;
+}
+
+.goals-new__description::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 0.16vw;
+}
+
+.goals-new__description::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ========== ПЛАНШЕТ (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .goals-new {
-        min-height: 100vw;
+        min-height: auto;
     }
 
     .goals-new__wrapper {
-        flex-direction: column;
-        padding: 8vw 0;
-        min-height: 100vw;
+        padding: 7.81vw 0;
+        min-height: auto;
+    }
+
+    .goals-new--mobile .goals-new__wrapper {
+        flex-direction: row;
+        gap: 11.59vw; /* 89px при 768px */
         align-items: flex-start;
     }
 
-    .goals-new__left {
-        flex: none;
+    .goals-new__mobile-container {
         width: 100%;
-        height: auto;
+        display: flex;
+        gap: 11.59vw; /* 89px при 768px */
     }
 
-    .goals-new__progress-bar {
-        width: 0.3vw;
-        height: 60vw;
+    /* Прогресс-бар */
+    .goals-new__mobile-progress {
+        position: relative;
+        width: 0.52vw;
+        height: 100%;
+        min-height: 91.15vw;
+        flex-shrink: 0;
     }
 
-    .goals-new__titles {
-        height: auto;
+    .goals-new__mobile-progress-track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 0.52vw;
     }
 
-    .goals-new__title-section--top {
-        padding-top: 0;
+    .goals-new__mobile-progress-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 0.52vw;
     }
 
-    .goals-new__title-section--bottom {
-        padding-bottom: 0;
+    /* Контент */
+    .goals-new__mobile-content-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4.17vw;
+        align-items: flex-start; /* Выравнивание по левому краю */
     }
 
-    .goals-new__title {
-        font-size: 5vw;
+    /* Заголовки - 36px = 4.69vw при 768px */
+    .goals-new__mobile-title {
+        font-family: 'Hikasami', sans-serif;
+        font-weight: 600;
+        font-size: 4.69vw;
+        line-height: 110%;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin: 0;
+        cursor: pointer;
+        transition: opacity 0.5s ease, filter 0.5s ease;
+        align-self: flex-start; /* Заголовок по левому краю */
     }
 
-    .goals-new__right {
-        max-width: 100%;
-        padding-top: 4vw;
-    }
-
+    /* Текст описания - 16px = 2.08vw при 768px */
     .goals-new__description {
-        font-size: 2.6vw;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 2.08vw;
+        line-height: 140%;
+        letter-spacing: -0.03em;
+        margin: 2.6vw 0 0 0;
+        white-space: pre-line;
+        max-height: none;
+        overflow-y: visible;
+        text-align: left; /* Текст по левому краю */
+        align-self: flex-start;
+        width: 100%;
+    }
+
+    /* Карточки - 359x291 = 46.74vw x 37.89vw при 768px */
+    .goals-new__cards {
+        margin-top: 2.6vw;
+        height: 37.89vw;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start; /* Карточки по левому краю */
+        align-items: flex-start;
     }
 
     .goal-card {
-        width: 60vw;
-        height: 42vw;
-        padding: 4vw;
-        gap: 2vw;
+        width: 46.74vw;
+        height: 37.89vw;
+        background: rgba(39, 39, 39, 1);
+        border: 0.13vw solid rgba(255, 255, 255, 0.3);
+        border-radius: 2.08vw;
+        padding: 3.13vw;
+        gap: 2.08vw;
     }
 
+    /* Заголовок карточки - 30px = 3.91vw при 768px */
     .goal-card__title {
-        font-size: 3vw;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 3.91vw;
+        line-height: 110%;
+        letter-spacing: -0.03em;
     }
 
+    /* Линии */
     .goal-card__lines {
-        gap: 1vw;
+        gap: 1.04vw;
     }
 
     .goal-card__line {
-        width: 0.4vw;
-        height: 15vw;
+        width: 0.39vw;
+        height: 13.02vw;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 0.39vw;
     }
 
+    /* Описание карточки - 20px = 2.6vw при 768px */
     .goal-card__description {
-        font-size: 2vw;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 2.6vw;
+        line-height: 130%;
+        letter-spacing: -0.03em;
+        width: 85%;
+    }
+
+    /* Скроллбар */
+    .goals-new__description::-webkit-scrollbar {
+        width: 0.52vw;
+    }
+
+    .goals-new__description::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 0.26vw;
+    }
+
+    .goals-new__description::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 0.26vw;
+    }
+
+    .goals-new__description::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
     }
 }
 
+/* ========== МОБИЛКА (до 767px) ========== */
 @media (max-width: 767px) {
     .goals-new {
         min-height: 120vw;
@@ -295,10 +414,20 @@
 
     .goals-new__right {
         padding-top: 0;
+        min-height: 80vw;
+    }
+
+    .goals-new__content {
+        max-height: 80vw;
     }
 
     .goals-new__description {
         font-size: 4.44vw;
+        max-height: 80vw;
+    }
+
+    .goals-new__cards {
+        height: 80vw;
     }
 
     .goal-card {
@@ -323,5 +452,9 @@
 
     .goal-card__description {
         font-size: 4vw;
+    }
+
+    .goals-new__description::-webkit-scrollbar {
+        width: 1.1vw;
     }
 }
