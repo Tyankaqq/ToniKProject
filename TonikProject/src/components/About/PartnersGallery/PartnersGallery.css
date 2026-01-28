@@ -91,7 +91,7 @@
 /* КНОПКА ПОД КАРТОЧКОЙ */
 .partners-card__button {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     width: 29.17vw;
     padding: 0.52vw 1.04vw;
@@ -607,6 +607,21 @@
         width: 2.47vw;
         height: 2.47vw;
     }
+    .partners-gallery__scroll-text{
+        font-size: 2.6vw;
+    }
+    .partners-gallery__scroll-indicator img{
+        width: 2.47vw;
+        height: 2.47vw;
+    }
+    .partners-gallery__scroll-dot{
+        width: 1vw;
+        height: 1vw;
+    }
+    .partners-gallery__scroll-indicator{
+        gap: 1vw;
+        align-items: center;
+    }
 }
 
 
@@ -632,12 +647,12 @@
 
     .partners-gallery {
         padding: 16.67vw 0;
-        min-height: auto;
+        min-height: 150vh !important;
     }
 
     .partners-gallery__container {
         max-width: 100%;
-        min-height: auto;
+        min-height: 150vh !important;
         padding: 0 5.56vw;
         display: flex;
         flex-direction: column;
@@ -659,13 +674,15 @@
         gap: 2.78vw;
     }
 
-    /* ЗАКРЫТЫЕ КАРТОЧКИ */
+    /* ЗАКРЫТЫЕ КАРТОЧКИ - каждая своего размера */
     .partners-card-wrapper--1 .partners-card {
+        margin-right: auto;
         width: 66.11vw; /* 238px */
         height: 81.67vw; /* 294px */
     }
 
     .partners-card-wrapper--2 .partners-card {
+        margin-left: auto;
         width: 65.83vw; /* 237px */
         height: 91.39vw; /* 329px */
     }
@@ -680,24 +697,44 @@
         height: 59.44vw; /* 214px */
     }
 
-    /* РАСКРЫТЫЕ КАРТОЧКИ - 320x663px */
+    /* РАСКРЫТЫЕ КАРТОЧКИ - каждая своего размера в высоту */
     .partners-card.expanded {
-        width: 88.89vw !important;
-        height: 184.17vw !important;
-        min-height: 200.17vw !important;
-        max-height: 184.17vw !important;
         padding: 5.56vw;
         flex-direction: column !important;
         gap: 5.56vw;
-        overflow: hidden;
+        overflow: visible;
     }
 
-    .partners-card-wrapper--1 .partners-card.expanded,
-    .partners-card-wrapper--2 .partners-card.expanded,
-    .partners-card-wrapper--3 .partners-card.expanded,
+    /* Карточка 1 раскрытая - 320х(294+контент) */
+    .partners-card-wrapper--1 .partners-card.expanded {
+        width: 88.89vw !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+    }
+
+    /* Карточка 2 раскрытая - 320х(329+контент) */
+    .partners-card-wrapper--2 .partners-card.expanded {
+        width: 88.89vw !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+    }
+
+    /* Карточка 3 раскрытая - 320х(258+контент) */
+    .partners-card-wrapper--3 .partners-card.expanded {
+        width: 88.89vw !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+    }
+
+    /* Карточка 4 раскрытая - 320х(214+контент) */
     .partners-card-wrapper--4 .partners-card.expanded {
         width: 88.89vw !important;
-        height: 184.17vw !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
     }
 
     /* Убираем transform для раскрытых */
@@ -708,7 +745,9 @@
         transform: none !important;
     }
 
-    /* Фото - 280x623px */
+    /* ФОТО ВНУТРИ РАСКРЫТЫХ КАРТОЧЕК - размеры как у закрытых */
+
+    /* Карточка 1 - фото 218x279px */
     .partners-card-wrapper--1 .partners-card.expanded .partners-card__image-wrapper {
         width: 60.56vw !important;
         height: 77.50vw !important;
@@ -717,6 +756,7 @@
 
     /* Карточка 2 - фото 217x309px */
     .partners-card-wrapper--2 .partners-card.expanded .partners-card__image-wrapper {
+        margin-left: auto;
         width: 60.28vw !important;
         height: 85.83vw !important;
         flex-shrink: 0;
@@ -763,18 +803,18 @@
     }
 
     .partners-card__question {
-        font-size: 5.3vw; /* 16px */
+        font-size: 5.3vw; /* 19px */
         line-height: 110%;
         margin: 0;
     }
 
     .partners-card__offer-label {
-        font-size: 4.5vw; /* 14px */
+        font-size: 4.5vw; /* 16px */
         line-height: 110%;
     }
 
     .partners-card__offer-text {
-        font-size: 4.5vw; /* 14px */
+        font-size: 4.5vw; /* 16px */
         line-height: 110%;
         margin: 0;
     }
@@ -791,6 +831,7 @@
         height: 4.44vw;
     }
 
+    /* Кнопка под карточкой - адаптируется к ширине карточки */
     .partners-card__button {
         width: 100%;
         padding: 3.33vw 5.56vw;
@@ -811,13 +852,23 @@
         display: none;
     }
 
-    .partners-gallery__scroll-indicator {
-        display: none;
+    .partners-gallery__scroll-indicator{
+        gap: 2vw;
     }
-    .partners-card-wrapper--1{
-        left: 2vw;
+    .partners-gallery__scroll-text{
+
+        font-size: 4.5vw;
+    }
+    .partners-gallery__scroll-indicator img{
+        width: 4.47vw;
+        height: 4.47vw;
+    }
+    .partners-gallery__scroll-dot{
+        width: 1.3vw;
+        height: 1.3vw;
     }
 }
+
 
 
 

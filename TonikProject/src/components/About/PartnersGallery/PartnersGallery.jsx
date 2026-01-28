@@ -77,8 +77,12 @@ const PartnersGallery = () => {
         const calculateHeight = () => {
             const width = window.innerWidth;
 
+            // Для мобилки (≤767px)
+            if (width <= 767) {
+                setContainerHeight('150vh');
+            }
             // Для планшета (768px - 1024px)
-            if (width >= 768 && width <= 1024) {
+            else if (width >= 768 && width <= 1024) {
                 // Позиции карточек в пикселях при scroll-progress = 1
                 const card1Bottom = (31 * window.innerHeight / 100) + (43.57 * width / 100);
                 const card2Bottom = (42 * window.innerHeight / 100) + (50.91 * width / 100);
@@ -92,8 +96,9 @@ const PartnersGallery = () => {
                 const heightInVh = ((maxBottom + window.innerHeight * 0.1) / window.innerHeight) * 100;
 
                 setContainerHeight(`${Math.min(heightInVh, 220)}vh`);
-            } else {
-                // Для desktop оставляем стандартную высоту
+            }
+            // Для desktop
+            else {
                 setContainerHeight('220vh');
             }
         };
