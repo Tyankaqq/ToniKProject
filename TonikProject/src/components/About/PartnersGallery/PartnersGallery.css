@@ -478,7 +478,7 @@
         width: 58.72vw;
         height: 41.80vw;
     }
-
+    /* РАСКРЫТЫЕ КАРТОЧКИ - FLEXBOX */
     /* РАСКРЫТЫЕ КАРТОЧКИ - FLEXBOX */
     .partners-card.expanded {
         padding: 2.6vw;
