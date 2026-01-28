@@ -12,7 +12,10 @@ import Galochka from '../../../assets/Image/GalochkaPrime.svg';
 const PartnersGallery = () => {
     const [expandedCards, setExpandedCards] = useState([]);
     const [scrollProgress, setScrollProgress] = useState(0);
+    const [containerHeight, setContainerHeight] = useState('220vh');
+    const [isMobile, setIsMobile] = useState(false);
     const sectionRef = useRef(null);
+    const cardRefs = useRef([]);
 
     const cards = [
         {
@@ -53,10 +56,53 @@ const PartnersGallery = () => {
                 'с органами власти \n' +
                 'и социальными проектами для реализации инициатив, направленных на системное улучшение качества жизни \n' +
                 'и здоровья людей. ',
-
             direction: 'left'
         }
     ];
+
+    // Определение мобильного устройства
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 767);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Вычисление высоты контейнера на основе позиций карточек
+    useEffect(() => {
+        const calculateHeight = () => {
+            const width = window.innerWidth;
+
+            // Для планшета (768px - 1024px)
+            if (width >= 768 && width <= 1024) {
+                // Позиции карточек в пикселях при scroll-progress = 1
+                const card1Bottom = (31 * window.innerHeight / 100) + (43.57 * width / 100);
+                const card2Bottom = (42 * window.innerHeight / 100) + (50.91 * width / 100);
+                const card3Bottom = (74 * window.innerHeight / 100) + (40.36 * width / 100);
+                const card4Bottom = (100 * window.innerHeight / 100) + (41.80 * width / 100);
+
+                // Находим самую нижнюю карточку
+                const maxBottom = Math.max(card1Bottom, card2Bottom, card3Bottom, card4Bottom);
+
+                // Добавляем отступ и переводим в vh
+                const heightInVh = ((maxBottom + window.innerHeight * 0.1) / window.innerHeight) * 100;
+
+                setContainerHeight(`${Math.min(heightInVh, 220)}vh`);
+            } else {
+                // Для desktop оставляем стандартную высоту
+                setContainerHeight('220vh');
+            }
+        };
+
+        calculateHeight();
+        window.addEventListener('resize', calculateHeight);
+
+        return () => window.removeEventListener('resize', calculateHeight);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -67,9 +113,7 @@ const PartnersGallery = () => {
             const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
 
-            // Начинаем анимацию когда секция появляется в viewport
             const startScroll = sectionTop - windowHeight;
-            // Первый элемент встает на место за 40% viewport
             const animationDistance = windowHeight * 0.4;
             const progress = Math.min(Math.max((scrollY - startScroll) / animationDistance, 0), 1);
 
@@ -93,9 +137,23 @@ const PartnersGallery = () => {
 
     const isCardExpanded = (id) => expandedCards.includes(id);
 
+    // Обработчик клика на карточку (только для мобилки)
+    const handleCardClick = (id, e) => {
+        // Проверяем что клик не по кнопке CTA
+        if (isMobile && !e.target.closest('.partners-card__cta')) {
+            toggleCard(id);
+        }
+    };
+
     return (
         <section className="partners-gallery" ref={sectionRef}>
-            <div className="partners-gallery__container" style={{ '--scroll-progress': scrollProgress }}>
+            <div
+                className="partners-gallery__container"
+                style={{
+                    '--scroll-progress': scrollProgress,
+                    minHeight: containerHeight
+                }}
+            >
                 <div className="partners-gallery__scroll-indicator">
                     <span className="partners-gallery__scroll-dot"></span>
                     <span className="partners-gallery__scroll-text">листай вниз</span>
@@ -105,10 +163,13 @@ const PartnersGallery = () => {
                 {cards.map((card, index) => (
                     <div
                         key={card.id}
+                        ref={el => cardRefs.current[index] = el}
                         className={`partners-card-wrapper partners-card-wrapper--${index + 1} ${isCardExpanded(card.id) ? 'expanded' : ''}`}
                     >
                         <div
                             className={`partners-card ${isCardExpanded(card.id) ? 'expanded' : ''} ${isCardExpanded(card.id) ? `expanded--${card.direction}` : ''}`}
+                            onClick={(e) => handleCardClick(card.id, e)}
+                            style={{ cursor: isMobile && isCardExpanded(card.id) ? 'pointer' : 'default' }}
                         >
                             <div className="partners-card__image-wrapper">
                                 <img src={card.image} alt={card.title} className="partners-card__image" />
@@ -116,9 +177,13 @@ const PartnersGallery = () => {
 
                             {isCardExpanded(card.id) && (
                                 <div className={`partners-card__expanded-content partners-card__expanded-content--${card.direction}`}>
+                                    {/* Крестик скрываем на мобилке через CSS */}
                                     <button
                                         className="partners-card__close"
-                                        onClick={() => toggleCard(card.id)}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleCard(card.id);
+                                        }}
                                     >
                                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
                                             <path d="M3 3L27 27M27 3L3 27" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
@@ -128,11 +193,16 @@ const PartnersGallery = () => {
                                     <div className="partners-card__content">
                                         <h3 className="partners-card__title">{card.title}</h3>
                                         <p className="partners-card__question">{card.question}</p>
-                                        <div className="partners-card__offer">
-                                            <div className="partners-card__offer-label">{card.offerLabel}</div>
-                                            <p className="partners-card__offer-text">{card.offerText}</p>
-                                        </div>
-                                        <button className="partners-card__cta">
+                                        {card.offerLabel && (
+                                            <div className="partners-card__offer">
+                                                <div className="partners-card__offer-label">{card.offerLabel}</div>
+                                                <p className="partners-card__offer-text">{card.offerText}</p>
+                                            </div>
+                                        )}
+                                        <button
+                                            className="partners-card__cta"
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
                                             Связаться с нами
                                             <img src={Pointer} alt="Arrow" />
                                         </button>

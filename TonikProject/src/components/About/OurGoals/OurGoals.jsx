@@ -8,6 +8,7 @@ const OurGoals = () => {
     const [activeCard, setActiveCard] = useState(0);
     const [textAlignment, setTextAlignment] = useState('flex-start');
     const [isMobile, setIsMobile] = useState(false);
+    const [isTablet, setIsTablet] = useState(false);
     const isTransitioning = useRef(false);
     const textRef = useRef(null);
 
@@ -33,18 +34,20 @@ const OurGoals = () => {
     ];
 
     useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 1024);
+        const checkDevice = () => {
+            const width = window.innerWidth;
+            setIsMobile(width <= 767); // Только мобилка
+            setIsTablet(width >= 768 && width <= 1024); // Только планшет
         };
 
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
+        checkDevice();
+        window.addEventListener('resize', checkDevice);
 
-        return () => window.removeEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkDevice);
     }, []);
 
     useEffect(() => {
-        if (textRef.current && activeScene === 0 && !isMobile) {
+        if (textRef.current && activeScene === 0 && !isMobile && !isTablet) {
             const textHeight = textRef.current.scrollHeight;
             const containerHeight = textRef.current.clientHeight;
 
@@ -54,7 +57,7 @@ const OurGoals = () => {
                 setTextAlignment('center');
             }
         }
-    }, [activeScene, isMobile]);
+    }, [activeScene, isMobile, isTablet]);
 
     const swipeHandlers = useSwipeable({
         onSwipedUp: (eventData) => {
@@ -76,14 +79,14 @@ const OurGoals = () => {
             }
         },
         trackMouse: true,
-        preventScrollOnSwipe: isMobile,
+        preventScrollOnSwipe: isMobile || isTablet,
         delta: 50,
         swipeDuration: 500,
         touchEventOptions: { passive: false }
     });
 
     const handleWheel = (e) => {
-        if (isTransitioning.current || isMobile) return;
+        if (isTransitioning.current || isMobile || isTablet) return;
 
         const delta = e.deltaY;
 
@@ -123,13 +126,13 @@ const OurGoals = () => {
     return (
         <section
             {...swipeHandlers}
-            className={`goals-new ${isMobile ? 'goals-new--mobile' : ''}`}
+            className={`goals-new ${isMobile ? 'goals-new--mobile' : ''} ${isTablet ? 'goals-new--tablet' : ''}`}
             onWheel={handleWheel}
         >
             <div className="container">
                 <div className="goals-new__wrapper">
                     {/* Desktop версия */}
-                    {!isMobile ? (
+                    {!isMobile && !isTablet ? (
                         <>
                             <div className="goals-new__left">
                                 <div className="goals-new__progress-bar">
@@ -278,10 +281,14 @@ const OurGoals = () => {
                                     }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    Наша миссия находить эти скрытые дары природы
+                                    {/* На планшете полный текст, на мобилке короткий */}
+                                    {isTablet
+                                        ? 'Наша миссия находить эти скрытые дары природы'
+                                        : 'Наша миссия'
+                                    }
                                 </motion.h2>
 
-                                {/* Контент первой сцены (под заголовком) */}
+                                {/* Контент первой сцены */}
                                 <AnimatePresence mode="wait">
                                     {activeScene === 0 && (
                                         <motion.div
@@ -310,10 +317,14 @@ const OurGoals = () => {
                                     }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    Наши глобальные цели для светлого будущего
+                                    {/* На планшете полный текст, на мобилке короткий */}
+                                    {isTablet
+                                        ? 'Наши глобальные цели для светлого будущего'
+                                        : 'Наши большие цели'
+                                    }
                                 </motion.h2>
 
-                                {/* Контент второй сцены (под заголовком) */}
+                                {/* Контент второй сцены */}
                                 <AnimatePresence mode="wait">
                                     {activeScene === 1 && (
                                         <motion.div

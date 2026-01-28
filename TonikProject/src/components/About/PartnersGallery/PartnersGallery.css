@@ -91,7 +91,7 @@
 /* КНОПКА ПОД КАРТОЧКОЙ */
 .partners-card__button {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     width: 29.17vw;
     padding: 0.52vw 1.04vw;
@@ -296,7 +296,7 @@
 }
 
 .partners-card__title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Hikasami', sans-serif;
     font-size: 2.08vw;
     font-weight: 600;
     letter-spacing: -0.03em;
@@ -310,7 +310,7 @@
     font-size: 1.25vw;
     font-weight: 400;
     letter-spacing: -0.03em;
-    line-height: 130%;
+    line-height: 110%;
     color: #ffffff;
     margin: 0;
 }
@@ -324,7 +324,7 @@
 .partners-card__offer-label {
     font-family: 'Inter', sans-serif;
     font-size: 1.04vw;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: -0.03em;
     line-height: 110%;
     background: transparent;
@@ -338,7 +338,7 @@
     font-size: 1.04vw;
     font-weight: 400;
     letter-spacing: -0.03em;
-    line-height: 130%;
+    line-height: 110%;
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
 }
@@ -425,14 +425,15 @@
 }
 
 /* ========== TABLET (768px - 1024px) ========== */
+/* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .partners-gallery {
         padding: 8vw 0;
-        min-height: 300vh;
+        min-height: 230vh;
     }
 
     .partners-gallery__container {
-        min-height: 280vh;
+
     }
 
     .partners-card-wrapper {
@@ -478,7 +479,7 @@
         width: 58.72vw;
         height: 41.80vw;
     }
-    /* РАСКРЫТЫЕ КАРТОЧКИ - FLEXBOX */
+
     /* РАСКРЫТЫЕ КАРТОЧКИ - FLEXBOX */
     .partners-card.expanded {
         padding: 2.6vw;
@@ -491,8 +492,10 @@
         height: 50.65vw !important;
     }
 
+    /* КАРТОЧКА 1 ФОТО - 247x310 = 32.16vw x 40.36vw при 768px */
     .partners-card-wrapper--1 .partners-card.expanded .partners-card__image-wrapper {
-        width: 50%;
+        width: 32.16vw;
+        height: 40.36vw;
     }
 
     /* КАРТОЧКА 2 РАСКРЫТАЯ - 636x463 */
@@ -501,8 +504,10 @@
         height: 60.29vw !important;
     }
 
+    /* КАРТОЧКА 2 ФОТО - 249x351 = 32.42vw x 45.70vw при 768px */
     .partners-card-wrapper--2 .partners-card.expanded .partners-card__image-wrapper {
-        width: 40%;
+        width: 32.42vw;
+        height: 45.70vw;
     }
 
     /* КАРТОЧКА 3 РАСКРЫТАЯ - 728x373 */
@@ -511,8 +516,10 @@
         height: 48.57vw !important;
     }
 
+    /* КАРТОЧКА 3 ФОТО - 247x280 = 32.16vw x 36.46vw при 768px */
     .partners-card-wrapper--3 .partners-card.expanded .partners-card__image-wrapper {
-        width: 45%;
+        width: 32.16vw;
+        height: 36.46vw;
     }
 
     /* КАРТОЧКА 4 РАСКРЫТАЯ - 728x396 */
@@ -521,38 +528,43 @@
         height: 51.56vw !important;
     }
 
+    /* КАРТОЧКА 4 ФОТО - 339x281 = 44.14vw x 36.59vw при 768px */
     .partners-card-wrapper--4 .partners-card.expanded .partners-card__image-wrapper {
-        width: 50%;
+        width: 44.14vw;
+        height: 36.59vw;
     }
 
     /* КОНТЕНТ */
     .partners-card__content {
         padding-top: 0;
-        gap: 2.60vw;
+        gap: 0;
     }
 
     .partners-card__offer {
-        gap: 2.60vw;
+        gap: 1.3vw;
     }
 
     .partners-card__title {
         font-size: 3.91vw;
+        padding-bottom: 2.6vw;
     }
 
     .partners-card__question {
-        font-size: 2.60vw;
+        font-size: 3.1vw;
+        padding-bottom: 2.6vw;
     }
 
     .partners-card__offer-label {
-        font-size: 2.08vw;
+        font-size: 2.6vw;
     }
 
     .partners-card__offer-text {
-        font-size: 2.08vw;
+        padding-bottom: 2.6vw;
+        font-size: 2.6vw;
     }
 
     .partners-card__cta {
-        font-size: 2.08vw;
+        font-size: 2.6vw;
     }
 
     .partners-card__cta img {
@@ -565,7 +577,7 @@
     }
 
     .partners-card-wrapper--2 {
-        top: calc(31% + (42% - 50%) * var(--scroll-progress));
+        top: calc(49% + (42% - 50%) * var(--scroll-progress));
         left: calc(58% + (65% - 50%) * var(--scroll-progress));
     }
 
@@ -574,84 +586,204 @@
     }
 
     .partners-card-wrapper--3 {
-        top: calc(20% + (74% - 50%) * var(--scroll-progress));
-        left: calc(45% + (32% - 50%) * var(--scroll-progress));
+        top: calc(57% + (74% - 50%) * var(--scroll-progress));
+        left: calc(42.3% + (32% - 50%) * var(--scroll-progress));
     }
 
     .partners-card-wrapper--3.expanded {
-        transform: translateX(calc(-43.5% + 14.585vw)) !important;
+        transform: translateX(calc(-41% + 14.585vw)) !important;
     }
 
     .partners-card-wrapper--4 {
-        top: calc(11.3% + (100% - 50%) * var(--scroll-progress));
+        top: calc(65.3% + (100% - 50%) * var(--scroll-progress));
         left: calc(54% + (66% - 50%) * var(--scroll-progress));
     }
 
     .partners-card-wrapper--4.expanded {
         transform: translateX(calc(-49% - 18.805vw)) !important;
     }
+
+    .partners-card__close {
+        width: 2.47vw;
+        height: 2.47vw;
+    }
 }
+
+
 
 /* ========== MOBILE (360px - 767px) ========== */
 @media (max-width: 767px) {
+
+    .goals-new__mobile-title-wrapper {
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+    }
+
+    .goals-new__mobile-subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-top: 0.5rem;
+        opacity: 0.8;
+    }
+
+    .goals-new__mobile-title {
+        margin-bottom: 0;
+    }
+
     .partners-gallery {
         padding: 16.67vw 0;
-        min-height: 400vh;
+        min-height: auto;
     }
 
     .partners-gallery__container {
         max-width: 100%;
-        min-height: 370vh;
+        min-height: auto;
         padding: 0 5.56vw;
+        display: flex;
+        flex-direction: column;
+        gap: 5.56vw;
+        align-items: center;
     }
 
+    /* Убираем абсолютное позиционирование */
+    .partners-card-wrapper {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.78vw;
+    }
+
+    /* ЗАКРЫТЫЕ КАРТОЧКИ */
+    .partners-card-wrapper--1 .partners-card {
+        width: 66.11vw; /* 238px */
+        height: 81.67vw; /* 294px */
+    }
+
+    .partners-card-wrapper--2 .partners-card {
+        width: 65.83vw; /* 237px */
+        height: 91.39vw; /* 329px */
+    }
+
+    .partners-card-wrapper--3 .partners-card {
+        width: 88.89vw; /* 320px */
+        height: 71.67vw; /* 258px */
+    }
+
+    .partners-card-wrapper--4 .partners-card {
+        width: 88.89vw; /* 320px */
+        height: 59.44vw; /* 214px */
+    }
+
+    /* РАСКРЫТЫЕ КАРТОЧКИ - 320x663px */
     .partners-card.expanded {
         width: 88.89vw !important;
-        height: auto !important;
-        min-height: 120vw !important;
+        height: 184.17vw !important;
+        min-height: 200.17vw !important;
+        max-height: 184.17vw !important;
         padding: 5.56vw;
         flex-direction: column !important;
         gap: 5.56vw;
+        overflow: hidden;
     }
 
-    .partners-card.expanded .partners-card__image-wrapper {
-        width: 100% !important;
-        height: 60vw;
+    .partners-card-wrapper--1 .partners-card.expanded,
+    .partners-card-wrapper--2 .partners-card.expanded,
+    .partners-card-wrapper--3 .partners-card.expanded,
+    .partners-card-wrapper--4 .partners-card.expanded {
+        width: 88.89vw !important;
+        height: 184.17vw !important;
+    }
+
+    /* Убираем transform для раскрытых */
+    .partners-card-wrapper--1.expanded,
+    .partners-card-wrapper--2.expanded,
+    .partners-card-wrapper--3.expanded,
+    .partners-card-wrapper--4.expanded {
+        transform: none !important;
+    }
+
+    /* Фото - 280x623px */
+    .partners-card-wrapper--1 .partners-card.expanded .partners-card__image-wrapper {
+        width: 60.56vw !important;
+        height: 77.50vw !important;
+        flex-shrink: 0;
+    }
+
+    /* Карточка 2 - фото 217x309px */
+    .partners-card-wrapper--2 .partners-card.expanded .partners-card__image-wrapper {
+        width: 60.28vw !important;
+        height: 85.83vw !important;
+        flex-shrink: 0;
+    }
+
+    /* Карточка 3 - фото 280x237px */
+    .partners-card-wrapper--3 .partners-card.expanded .partners-card__image-wrapper {
+        width: 77.78vw !important;
+        height: 65.83vw !important;
+        flex-shrink: 0;
+    }
+
+    /* Карточка 4 - фото 280x194px */
+    .partners-card-wrapper--4 .partners-card.expanded .partners-card__image-wrapper {
+        width: 77.78vw !important;
+        height: 53.89vw !important;
+        flex-shrink: 0;
     }
 
     .partners-card__expanded-content--right,
     .partners-card__expanded-content--left {
         width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     .partners-card__content {
         padding-top: 0;
-        gap: 5.56vw;
+        gap: 4.44vw;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     .partners-card__offer {
-        gap: 5.56vw;
+        gap: 2.78vw;
     }
 
     .partners-card__title {
-        font-size: 5.56vw;
+        font-size: 5.56vw; /* 20px */
+        line-height: 120%;
+        margin: 0;
     }
 
     .partners-card__question {
-        font-size: 4.44vw;
+        font-size: 5.3vw; /* 16px */
+        line-height: 110%;
+        margin: 0;
     }
 
     .partners-card__offer-label {
-        font-size: 4.44vw;
+        font-size: 4.5vw; /* 14px */
+        line-height: 110%;
     }
 
     .partners-card__offer-text {
-        font-size: 4.44vw;
+        font-size: 4.5vw; /* 14px */
+        line-height: 110%;
+        margin: 0;
     }
 
     .partners-card__cta {
-        font-size: 4.44vw;
-        padding: 3.33vw 0;
+        font-size: 4.5vw;
+        padding: 2.78vw 0;
+        margin-top: auto;
+        gap: 2.78vw;
     }
 
     .partners-card__cta img {
@@ -660,12 +792,14 @@
     }
 
     .partners-card__button {
-        width: 88.89vw;
-        padding: 2.78vw 5.56vw;
+        width: 100%;
+        padding: 3.33vw 5.56vw;
+        border-radius: 2.78vw;
     }
 
     .partners-card__button-text {
-        font-size: 5.56vw;
+        font-size: 4.44vw;
+        line-height: 120%;
     }
 
     .partners-card__button-arrow {
@@ -673,43 +807,17 @@
         height: 5.56vw;
     }
 
-    .partners-card-wrapper--1 {
-        top: 2%;
-        left: 50%;
+    .partners-card__close {
+        display: none;
     }
 
-    .partners-card-wrapper--1 .partners-card {
-        width: 88.89vw;
-        height: 66.67vw;
+    .partners-gallery__scroll-indicator {
+        display: none;
     }
-
-    .partners-card-wrapper--2 {
-        top: 30%;
-        left: 50%;
-    }
-
-    .partners-card-wrapper--2 .partners-card {
-        width: 88.89vw;
-        height: 75vw;
-    }
-
-    .partners-card-wrapper--3 {
-        top: 60%;
-        left: 50%;
-    }
-
-    .partners-card-wrapper--3 .partners-card {
-        width: 88.89vw;
-        height: 66.67vw;
-    }
-
-    .partners-card-wrapper--4 {
-        top: 88%;
-        left: 50%;
-    }
-
-    .partners-card-wrapper--4 .partners-card {
-        width: 88.89vw;
-        height: 70vw;
+    .partners-card-wrapper--1{
+        left: 2vw;
     }
 }
+
+
+
