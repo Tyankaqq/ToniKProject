@@ -10,10 +10,11 @@
 }
 
 .Partner_container {
+    height: auto;
     width: 100%;
     margin: 0 auto;
     padding-top: 5.2vw;
-    padding-bottom: 5.2vw;
+    padding-bottom: 4.2vw;
 }
 
 /* Hero */

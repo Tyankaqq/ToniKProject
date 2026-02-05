@@ -1,5 +1,5 @@
 // src/pages/PartnerDetailPage/PartnerDetailPage.jsx
-import React from "react";
+import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import Header from "../../components/Home/Header/Header.jsx";
 import {Footer} from "../../components/Home/Footer/Footer.jsx";
@@ -9,6 +9,11 @@ import "./PartnerDetailPage.css";
 
 export const PartnerDetailPage = () => {
     const {id} = useParams();
+
+    // Сброс скролла при монтировании компонента
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]); // Сбрасываем при изменении id
 
     return (
         <>
@@ -54,8 +59,8 @@ export const PartnerDetailPage = () => {
                                         <div className="Partner_stat_label">ГОРОДОВ В РФ</div>
                                         <div className="Partner_stat_cities">
                                             Москва<br/>
-                                            Санкт-Петербург
-                                            Владивосток
+                                            Санкт-Петербург<br/>
+                                            Владивосток<br/>
                                             Хабаровск<br/>
                                             Владимир
                                         </div>
