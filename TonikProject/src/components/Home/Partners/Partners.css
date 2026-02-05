@@ -1,8 +1,8 @@
 .Partners_section {
     width: 100%;
     background-color: var(--clr-bg);
-    padding: 7.8125vw 0;
-    border-radius: 40px 40px 0 0;
+    padding: 5.8125vw 0;
+
 }
 
 .Partners_container {
@@ -101,14 +101,19 @@
 
 /* Общие стили для больших блоков */
 .Partners_featured {
-    background-color: #181818;
+    cursor: pointer;
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0.05) 3.64%, rgba(153, 153, 153, 0.05) 86.15%);
+    border: 1px solid rgba(255, 255, 255, 0.30);
     border-radius: 1.04vw;
     padding: 2.08vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     position: relative;
+}
+.Partners_featured:hover {
+    opacity: 0.9;
 }
 
 /* ========== ПЕРВЫЙ БОЛЬШОЙ БЛОК ========== */
@@ -118,8 +123,9 @@
 }
 
 .Partners_featured--1 .Partners_featured_title {
+    font-family: 'Inter', Semibold;
     font-size: 6.4vw;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 110%;
     letter-spacing: -0.03em;
     text-transform: uppercase;
@@ -145,7 +151,7 @@
     display: flex;
     align-items: center;
     gap: 0.52vw;
-    font-size: 1.1vw;
+    font-size: 1.3vw;
     color: var(--clr-white);
     opacity: 0.6;
     text-decoration: none;
@@ -160,8 +166,8 @@
 }
 
 .Partners_featured--2 .Partners_featured_title {
-    font-size: 2.65vw;
-    font-weight: 400;
+    font-size: 2.95vw;
+    font-weight: 600;
     line-height: 110%;
     letter-spacing: -0.03em;
     text-transform: uppercase;
@@ -186,7 +192,7 @@
     display: flex;
     align-items: center;
     gap: 0.52vw;
-    font-size: 1.1vw;
+    font-size: 1.3vw;
     color: var(--clr-white);
     opacity: 0.6;
     text-decoration: none;
@@ -244,11 +250,32 @@
 }
 
 .Partners_section--featured-double {
-    border-radius: 0 0 40px 40px;
-}
 
+}
+.Partners_hero_text {
+    /* Отступы в VW (рассчитано для базы 1920px) */
+    margin-top: 13.4vw;
+    margin-bottom: 20.6vw;
+
+    /* Типографика и выравнивание */
+    text-align: center;
+    font-family: 'Hikasami', sans-serif; /* Как в примере OurGoals */
+    font-weight: 600;
+    font-size: 2.85vw;
+    line-height: 125%;
+    text-transform: uppercase;
+    color: #ffffff;
+
+    /* Ограничение ширины для красивого переноса строк */
+
+    margin-left: auto;
+    margin-right: auto;
+}
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
+    .Partners_hero_text{
+        font-size: 4.7vw;
+    }
 
     .Partners_title_short {
         display: inline;
@@ -259,12 +286,12 @@
     }
 
     .Partners_section {
-        border-radius: 30px 30px 0 0;
+
         padding: 9.81vw 0;
     }
 
     .Partners_section--featured-double {
-        border-radius: 0 0 30px 30px;
+
     }
 
     .Partners_container {
@@ -317,7 +344,7 @@
     }
 
     /* Показываем только 6 карточек на планшете */
-    .Partners_card:nth-child(n+7) {
+    .Partners_card:nth-child(n+9) {
         display: none;
     }
 
@@ -393,13 +420,19 @@
     }
 
     /* Показываем 6 обычных карточек для featured-double */
-    .Partners_grid--featured-double .Partners_card:nth-child(n+7) {
+    .Partners_grid--featured-double .Partners_card:nth-child(n+8) {
         display: none;
     }
 }
 
 /* ========== MOBILE (360px - 767px) ========== */
 @media (max-width: 767px) {
+    .Partners_hero_text {
+        margin-top: 39vw;
+        margin-bottom: 58vw;
+        font-size: 7.3vw;
+
+    }
 
     .Partners_title_short {
         display: inline;
@@ -410,12 +443,12 @@
     }
 
     .Partners_section {
-        border-radius: 20px 20px 0 0;
+
         padding: 13.89vw 0;
     }
 
     .Partners_section--featured-double {
-        border-radius: 0 0 20px 20px;
+
     }
 
     .Partners_header {
@@ -468,7 +501,7 @@
     }
 
     /* Показываем только 3 карточки на мобилке */
-    .Partners_card:nth-child(n+4) {
+    .Partners_card:nth-child(n+8) {
         display: none;
     }
 
@@ -487,9 +520,21 @@
         border-radius: 2.78vw;
     }
 
+
     /* Скрываем второй большой блок на мобилке */
     .Partners_featured--2 {
-        display: none;
+        grid-column: auto;
+        grid-row: auto;
+    }
+    .Partners_featured--2 .Partners_featured_header {
+        width: 100%;
+        margin-bottom: 4.17vw;
+    }
+
+    .Partners_featured--2 .Partners_featured_title {
+        font-size: 7vw;
+        text-align: center;
+        white-space: normal;
     }
 
     /* Первый большой блок */
@@ -501,12 +546,13 @@
     /* Стили для первого блока (теперь как карточка) */
     .Partners_featured--1 .Partners_featured_header {
         width: 100%;
-        margin-bottom: 4.17vw;
+        margin-bottom: 11.17vw;
     }
 
     .Partners_featured--1 .Partners_featured_title {
-        font-size: 5.44vw;
+        font-size: 7vw;
         text-align: center;
+        white-space: normal;
     }
 
     .Partners_featured--1 .Partners_featured_content {
@@ -543,8 +589,15 @@
     }
 
     /* Показываем только 3 карточки для featured-double */
-    .Partners_grid--featured-double .Partners_card:nth-child(n+4) {
+    .Partners_grid--featured-double .Partners_card:nth-child(n+6) {
         display: none;
+    }
+    .Partners_featured--2 .Partners_featured_link{
+        font-size: 4vw;
+        gap: 1.39vw;
+    }
+    .Partners_featured--2 .Partners_featured_content img{
+        margin-bottom: 4.17vw;
     }
 }
 

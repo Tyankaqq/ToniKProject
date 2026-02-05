@@ -15,7 +15,7 @@ const Header = () => {
     const [hoveredTab, setHoveredTab] = useState(null);
     const lastScrollY = useRef(0);
     const menuRef = useRef(null);
-    const mobileNavRef = useRef(null); // ДОБАВЛЕНО
+    const mobileNavRef = useRef(null);
     const leaveTimeoutRef = useRef(null);
 
     const VIDEO_THRESHOLD = 1500;
@@ -58,7 +58,6 @@ const Header = () => {
         };
     }, []);
 
-    // ИСПРАВЛЕНО: учитываем и мобильное меню
     useEffect(() => {
         const handleClickOutside = (event) => {
             const isClickInsideMenu = menuRef.current && menuRef.current.contains(event.target);
@@ -151,8 +150,17 @@ const Header = () => {
                             </a>
                         </div>
 
-                        {/* ПРАВАЯ ЧАСТЬ: MEGA MENU + КОРЗИНА */}
+                        {/* ПРАВАЯ ЧАСТЬ: КОРЗИНА + MEGA MENU */}
                         <div className="Header_right">
+                            {/* КОРЗИНА */}
+                            <button
+                                className="Header_icon_btn"
+                                onClick={openCart}
+                                aria-label="Корзина"
+                            >
+                                <img src={Market} alt="Корзина" />
+                            </button>
+
                             {/* MEGA MENU БЛОК - DESKTOP */}
                             <div className={`Header_mega_menu ${isMenuOpen ? 'active' : ''}`} ref={menuRef}>
                                 {/* ТАБЫ */}
@@ -233,15 +241,6 @@ const Header = () => {
                                     <span></span>
                                 </button>
                             </div>
-
-                            {/* КОРЗИНА */}
-                            <button
-                                className="Header_icon_btn"
-                                onClick={openCart}
-                                aria-label="Корзина"
-                            >
-                                <img src={Market} alt="Корзина" />
-                            </button>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,265 @@
+/* src/pages/PartnerDetailPage/PartnerDetailPage.css */
+
+:root {
+    --partner-bg: #1f1f1f;
+    --partner-white: #ffffff;
+}
+
+.Partner_main {
+    background-color: var(--partner-bg);
+}
+
+.Partner_container {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 5.2vw;
+    padding-bottom: 5.2vw;
+}
+
+/* Hero */
+
+.Partner_hero {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 3.65vw; /* ~70px */
+    margin: 0;
+}
+
+.Partner_hero_content {
+    width: 36.7vw; /* ~705px */
+}
+
+.Partner_hero_cards {
+    display: flex;
+    gap: 1.1vw; /* ~30px */
+}
+
+/* Заголовок */
+
+.Partner_page_title {
+    font-family: "Hikasami", sans-serif;
+    font-size: 2.135vw; /* 41px / 1920 */
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--partner-white);
+    margin: 0 0 2.65vw 0; /* ~40px */
+}
+
+.Partner_page_description {
+    font-family: "Inter", sans-serif;
+    font-size: 1.25vw; /* 24px / 1920 */
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--partner-white);
+    margin-bottom: 5.5vw; /* ~40px */
+}
+
+/* Ссылка на сайт */
+
+.Partner_site_link {
+    font-family: "Inter", sans-serif;
+    font-size: 0.9375vw; /* 18px / 1920 */
+    color: var(--partner-white);
+    text-decoration: underline;
+    display: inline-block;
+}
+
+.Partner_site_link:hover {
+    opacity: 0.8;
+}
+
+/* Карточки статистики */
+
+.Partner_stat_card {
+    width: 21.6146vw; /* 415px / 1920 */
+    height: 20.885vw; /* 401px / 1920 */
+    border-radius: 0.78vw;
+    padding: 1.04vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0.05) 3.64%,
+            rgba(153, 153, 153, 0.05) 86.15%
+    );
+    border: 0.05vw solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(0.63vw);
+}
+
+.Partner_stat_number {
+    font-family: "Inter", sans-serif;
+    font-size: 4.635vw; /* 89px / 1920 */
+    font-weight: 600;
+    color: var(--partner-white);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+}
+
+.Partner_stat_bottom {
+    margin-top: auto;
+}
+
+.Partner_stat_row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.1vw; /* ~60px */
+}
+
+.Partner_stat_label {
+    margin-top: auto;
+    font-family: "Inter", sans-serif;
+    font-size: 1.25vw; /* 24px / 1920 */
+    color: var(--partner-white);
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.Partner_stat_cities {
+    font-family: "Inter", sans-serif;
+    font-size: 0.9375vw; /* 18px / 1920 */
+    color: var(--partner-white);
+    opacity: 0.4;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Адаптив */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .Partner_container {
+        width: 100%;
+        padding-top: 9.81vw;
+        padding-bottom: 9.81vw;
+    }
+
+    .Partner_hero {
+        flex-direction: column;
+        gap: 6.5vw;
+        margin-top: 5.2vw;
+        padding: 0;
+    }
+
+    .Partner_hero_content {
+        width: 100%;
+    }
+
+    .Partner_hero_cards {
+        width: 100%;
+        gap: 1.3vw;
+    }
+
+    .Partner_page_title {
+        width: 65%;
+        font-size: 4vw;
+        margin-bottom: 4.2vw;
+    }
+
+    .Partner_page_description {
+        width: 70%;
+        font-size: 2.6vw;
+        margin-bottom: 4.2vw;
+    }
+
+    .Partner_site_link {
+        font-size: 2.6vw;
+    }
+
+    .Partner_stat_card {
+        width: 46.74vw; /* 359px / 768 */
+        height: 33.5vw; /* 246px / 768 */
+        border-radius: 1.3vw;
+        padding: 2.6vw;
+    }
+
+    .Partner_stat_number {
+        font-size: 7vw;
+    }
+
+    .Partner_stat_row {
+        gap: 2.6vw;
+    }
+
+    .Partner_stat_label {
+        font-size: 2.6vw;
+    }
+
+    .Partner_stat_cities {
+        font-size: 2.1vw;
+    }
+}
+
+@media (max-width: 767px) {
+    .Partner_container {
+        width: 100%;
+        padding-top: 13.89vw;
+        padding-bottom: 13.89vw;
+    }
+
+    .Partner_hero {
+        flex-direction: column;
+        gap: 8.33vw;
+        margin-top: 8vw;
+        padding: 0;
+    }
+
+    .Partner_hero_content {
+        width: 100%;
+    }
+
+    .Partner_hero_cards {
+        flex-direction: column;
+        width: 100%;
+        gap: 4.17vw;
+    }
+
+    .Partner_page_title {
+        font-size: 6vw;
+        margin-bottom: 5.56vw;
+    }
+
+    .Partner_page_description {
+        font-size: 4.5vw;
+        line-height: 1.3;
+        margin-bottom: 5.56vw;
+    }
+
+    .Partner_site_link {
+        font-size: 4.5vw;
+    }
+
+    .Partner_stat_card {
+        width: 100%;
+        height: auto;
+        min-height: 37vw;
+        border-radius: 2.78vw;
+        padding: 2.8vw;
+    }
+
+    .Partner_stat_number {
+        font-size: 10vw;
+    }
+
+    .Partner_stat_row {
+        flex-direction: row;
+        gap: 11.78vw;
+    }
+
+    .Partner_stat_label {
+        font-size: 4.5vw;
+    }
+
+    .Partner_stat_cities {
+        font-size: 3.89vw;
+    }
+}

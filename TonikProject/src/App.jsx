@@ -12,6 +12,7 @@ import {BlogPage} from "./pages/BlogPage/BlogPage.jsx";
 import {BlogArticlePage} from "./components/Blog/BlogArticle/BlogArticlePage.jsx";
 import {BlogIdPage} from "./pages/BlogIdPage/BlogIdPage.jsx";
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs.jsx";
+import {PartnerDetailPage} from "./pages/PartnerDetailPage/PartnerDetailPage.jsx";
 
 function App() {
     const [count, setCount] = useState(0)
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/catalog" element={<CatalogPage />} />
                 <Route path="/about" element={<AboutCompanyPage />} />
                 <Route path="/partners" element={<PartnersPage />} />
+                <Route path="/partners/:id" element={<PartnerDetailPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:id" element={<BlogIdPage />} />
             </Routes>
