@@ -13,7 +13,7 @@ import blogImg7 from '../../../assets/Image/blog-7.jpg';
 import Pointer from '../../../assets/Image/Pointer.svg';
 import Search from '../../../assets/Image/search.svg';
 import FilterIcon from '../../../assets/Image/voronka.svg';
-import WhiteGalochka from '../../../assets/Image/whitegalochka.svg';
+import WhiteGalochka from '../../../assets/Image/WhiteGalochka.svg';
 import SortIcon from '../../../assets/Image/SortIcon.svg';
 import Breadcrumbs from '../../Breadcrumbs/Breadcrumbs.jsx';
 
