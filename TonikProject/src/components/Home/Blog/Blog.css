@@ -1,4 +1,5 @@
 /* === СЕКЦИЯ БЛОГА === */
+
 .Blog_section {
     width: 100%;
     background-color: var(--clr-bg);
@@ -203,15 +204,19 @@
 }
 
 .Blog_load_more_btn {
+    font-family: 'Inter', Regular;
     background-color: var(--clr-bg);
     border: 1px solid var(--clr-bg);
     color: var(--clr-white);
-    font-size: 0.85vw;
+    font-size: 1.3vw;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 0.52vw;
+}
+.Blog_load_more_btn img{
+    transform: rotate(90deg);
 }
 
 /* ========== DESKTOP: chaotic layout ========== */
@@ -345,7 +350,7 @@
 }
 
 .Blog_card_title_external {
-    font-size: 1.5vw;
+    font-size: 1.65vw;
     font-weight: 600;
     line-height: 110%;
     color: #fff;
@@ -357,10 +362,576 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.Blog_filters {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.04vw;
+    margin-bottom: 2.6vw;
+}
+
+.Blog_filters_left {
+    display: flex;
+    align-items: center;
+    gap: 0.55vw;
+    flex: 1;
+}
+
+.Blog_select_wrapper {
+    position: relative;
+}
+
+/* Базовые стили для всех селектов */
+.Blog_select {
+    height: 2.92vw; /* 56px / 1920 */
+    padding: 0 2.6vw 0 1.04vw;
+    border-radius: 0.8vw;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25vw;
+    color: #FFFFFF;
+    cursor: pointer;
+    appearance: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.Blog_select_wrapper--sort {
+    flex-direction: row-reverse;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.8vw;
+    padding-left: 1.04vw;
+    height: 2.92vw;
+}
+.Blog_select_inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+/* Сортировка - обычная стрелка dropdown */
+.Blog_select_wrapper--sort .Blog_select {
+    background: transparent;
+    border: none;
+    padding-right: 0.52vw;
+    padding-left: 1.04vw;
+}
+
+
+.Blog_select_sort_icon {
+    width: 1.83vw;
+    height: 1.83vw;
+    pointer-events: none;
+    flex-shrink: 0;
+}
+.Blog_select option {
+    background-color: #1f1f1f;
+    color: #FFFFFF;
+}
+
+/* Селекты с иконкой whitegalochka */
+.Blog_select--with-icon {
+    padding-right: 3.13vw;
+}
+
+.Blog_select_icon {
+    position: absolute;
+    right: 1.04vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.83vw;
+    height: 0.83vw;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.Blog_select--with-icon.active .Blog_select_icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Конкретные размеры для каждого селекта */
+.Blog_select_wrapper--sort .Blog_select {
+    width: 9.82vw; /* 227px */
+}
+
+.Blog_select_wrapper--section .Blog_select {
+    width: 8.49vw; /* 163px */
+}
+
+.Blog_select_wrapper--date .Blog_select {
+    width: 14.58vw; /* 280px */
+}
+
+.Blog_select_wrapper--author .Blog_select {
+    width: 7.81vw; /* 150px */
+}
+
+/* Dropdown для checkbox (Раздел и Автор) */
+.Blog_dropdown {
+    position: absolute;
+    top: calc(100% + 0.52vw);
+    left: 0;
+    background: rgba(31, 31, 31, 0.9);
+    border: 1px solid rgba(185, 185, 185, 1);
+    border-radius: 0.52vw;
+    padding: 0.52vw 0;
+    z-index: 100;
+    min-width: 100%;
+    max-height: 15.625vw;
+    overflow-y: auto;
+}
+.Blog_select_wrapper--author .Blog_dropdown {
+    width: 11.1vw; /* 194px / 1920 */
+    height: 9.67vw; /* 128px / 1920 */
+
+}
+.Blog_dropdown_item {
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+    padding: 0.52vw 0.5vw;
+    color: #fff;
+    font-size: 1.25vw;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.Blog_dropdown_item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Кастомный checkbox */
+.Blog_dropdown_item input[type="checkbox"] {
+
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid white;
+    background-color: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+/* Галочка при выборе */
+.Blog_dropdown_item input[type="checkbox"]:checked {
+    background-color: white;
+    border-color: white;
+}
+
+/* Создаём галочку через ::after */
+.Blog_dropdown_item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 0;
+    width: 5px;
+    height: 11px;
+    border: solid black;
+    border-width: 0 0.15vw 0.15vw 0;
+    transform: rotate(45deg);
+}
+
+.Blog_dropdown_item span {
+    flex: 1;
+}
+
+/* Датапикер */
+.Blog_select_wrapper--date {
+    position: relative;
+}
+
+.Blog_datepicker {
+    position: absolute;
+    top: calc(100% + 0.52vw);
+    left: 0;
+    background: rgba(31, 31, 31, 0.9);
+    border: 1px solid rgba(185, 185, 185, 1);
+    border-radius: 0.52vw;
+    padding: 1.04vw;
+    z-index: 100;
+    width: 25.73vw; /* 494px */
+    min-height: 17.03vw; /* 327px */
+}
+
+.Blog_datepicker_header {
+    display: flex;
+    gap: 1.04vw;
+    margin-bottom: 1.04vw;
+    padding-bottom: 1.04vw;
+    border-bottom: 1px solid rgba(185, 185, 185, 0.3);
+}
+
+.Blog_datepicker_range {
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+    flex: 1;
+}
+
+.Blog_datepicker_label {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.95vw;
+    font-weight: 400;
+}
+
+.Blog_datepicker_selects_group {
+    display: flex;
+    align-items: center;
+    gap: 0.16vw; /* 3px / 1920 */
+}
+
+/* Обёртки для селектов с иконками */
+.Blog_datepicker_month_wrapper,
+.Blog_datepicker_year_wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3vw; /* 3px между селектом и иконкой */
+}
+
+/* Селекты месяца и года - БЕЗ ОБВОДКИ */
+.Blog_datepicker_month_select,
+.Blog_datepicker_year_select {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 0.26vw 0 0.26vw 0.52vw;
+    font-size: 0.95vw;
+    cursor: pointer;
+    appearance: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.Blog_datepicker_month_select option,
+.Blog_datepicker_year_select option {
+    background-color: #1f1f1f;
+    color: #FFFFFF;
+}
+
+.Blog_datepicker_month_select {
+    min-width: 4.21vw;
+}
+
+.Blog_datepicker_year_select {
+    min-width: 3.13vw;
+}
+
+/* Иконки whitegalochka внутри селектов */
+.Blog_datepicker_month_wrapper .Blog_datepicker_icon,
+.Blog_datepicker_year_wrapper .Blog_datepicker_icon {
+    position: relative;
+    width: 0.625vw;
+    height: 0.625vw;
+    flex-shrink: 0;
+}
+
+/* Один календарь */
+.Blog_datepicker_calendar_single {
+    margin-bottom: 1.04vw;
+    background: rgba(64, 64, 64, 1);
+    padding: 0.52vw;
+    border-radius: 0.26vw;
+}
+
+.Blog_datepicker_weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.26vw;
+    margin-bottom: 0.52vw;
+    text-align: center;
+}
+
+.Blog_datepicker_weekdays div {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.73vw;
+    padding: 0.26vw;
+    font-weight: 600;
+}
+
+.Blog_datepicker_days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.26vw;
+}
+
+.Blog_datepicker_day {
+    background: transparent;
+    border: 1px solid rgba(185, 185, 185, 1);
+    color: #fff;
+    padding: 0.52vw;
+    border-radius: 0.26vw;
+    cursor: pointer;
+    font-size: 0.73vw;
+    transition: all 0.2s ease;
+    min-height: 2.08vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Blog_datepicker_day--empty {
+    border: none;
+    cursor: default;
+}
+
+.Blog_datepicker_day:not(.Blog_datepicker_day--empty):hover {
+
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+/* Футер с навигацией */
+.Blog_datepicker_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.04vw;
+    border-top: 1px solid rgba(185, 185, 185, 0.3);
+}
+
+.Blog_datepicker_nav {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Blog_datepicker_nav:hover {
+    opacity: 0.7;
+}
+
+.Blog_datepicker_nav img {
+    width: 0.83vw;
+    height: 0.83vw;
+}
+
+.Blog_datepicker_nav--prev img {
+    transform: rotate(-90deg);
+}
+
+.Blog_datepicker_nav--next img {
+    transform: rotate(90deg);
+}
+
+.Blog_datepicker_range_display {
+    color: #fff;
+    font-size: 0.83vw;
+    text-align: center;
+    flex: 1;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.52vw;
+}
+
+.Blog_datepicker_range_separator {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 400;
+}
+.Blog_datepicker_day--next-month {
+    color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(185, 185, 185, 0.5);
+}
+.Blog_datepicker_day--selected {
+    background: rgba(205, 255, 255, 1);
+    color: black;
+    font-weight: 600;
+}
+.Blog_datepicker_day--next-month:not(.Blog_datepicker_day--selected):hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Поиск */
+.Blog_filters .Blog_search {
+    width: 45.3vw; /* 850px */
+    height: 2.92vw; /* 56px */
+    position: relative;
+}
+
+.Blog_search_input {
+    width: 100%;
+    height: 100%;
+    padding: 0 3.13vw 0 1.04vw;
+    border-radius: 0.8vw;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.83vw;
+    color: #FFFFFF;
+}
+
+.Blog_search_input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.Blog_search_icon {
+    position: absolute;
+    right: 1.04vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.04vw;
+    height: 1.04vw;
+    cursor: pointer;
+}
+
+/* ========== EXTENDED с селектами: Хаотичная сетка 7 карточек ========== */
+
+.Blog_grid--extended-selects {
+    position: relative;
+    width: 100%;
+    height: 110vw; /* Увеличил высоту для 3 рядов */
+    margin: 0 auto;
+    display: block;
+}
+
+/* Размеры карточек из дизайна (базовые 1920px):
+   849x553 - большие (44.22vw x 28.8vw)
+   415x553 - маленькие (21.61vw x 28.8vw)
+*/
+
+/* РЯД 1: Карточки 1, 2, 3 */
+
+/* Карточка 1 - большая */
+.Blog_card_wrapper--ext-1 {
+    left: 0vw;
+    top: 0vw;
+    width: 45.3vw;
+}
+
+/* Карточка 2 - маленькая (вниз от главной) */
+.Blog_card_wrapper--ext-2 {
+    left: 46.4vw;
+    top: 7vw;
+    width: 22.1vw;
+}
+
+/* Карточка 3 - маленькая (чуть ниже 1-й) */
+.Blog_card_wrapper--ext-3 {
+    left: 69.6vw;
+    top: 3vw;
+    width: 22.1vw;
+}
+
+/* РЯД 2: Карточки 4 и 5 (пара) */
+
+/* Карточка 4 - маленькая */
+.Blog_card_wrapper--ext-4 {
+    left: 0vw;
+    top: 41vw;
+    width: 22.1vw;
+}
+
+/* Карточка 5 - большая (рядом с 4) */
+.Blog_card_wrapper--ext-5 {
+    left: 46.4vw;
+    top: 41vw;
+    width: 45.3vw;
+}
+
+/* РЯД 3: Карточки 6 и 7 (пара) */
+
+/* Карточка 6 - большая */
+.Blog_card_wrapper--ext-6 {
+    left: 0vw;
+    top: 77vw;
+    width: 45.3vw;
+}
+
+/* Карточка 7 - маленькая (рядом с 6) */
+.Blog_card_wrapper--ext-7 {
+    left: 69.6vw;
+    top: 77vw;
+    width: 22.1vw;
+}
+
+.Blog_grid--extended-selects .Blog_card {
+    position: relative;
+    display: block;
+    border-radius: 0.87vw;
+    overflow: hidden;
+    transition: transform 0.25s ease;
+    cursor: pointer;
+}
+
+/* Высоты для больших карточек */
+.Blog_grid--extended-selects .Blog_card--ext-1,
+.Blog_grid--extended-selects .Blog_card--ext-5,
+.Blog_grid--extended-selects .Blog_card--ext-6 {
+    height: 28.8vw;
+}
+
+/* Высоты для маленьких карточек */
+.Blog_grid--extended-selects .Blog_card--ext-2,
+.Blog_grid--extended-selects .Blog_card--ext-3,
+.Blog_grid--extended-selects .Blog_card--ext-4,
+.Blog_grid--extended-selects .Blog_card--ext-7 {
+    height: 28.8vw;
+}
+
+.Blog_grid--extended-selects .Blog_card_image_wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.Blog_grid--extended-selects .Blog_card_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.Blog_grid--extended-selects .Blog_card:hover .Blog_card_overlay {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.Blog_grid--extended-selects .Blog_card:hover .Blog_card_tag_center {
+    opacity: 1;
+}
+
+.Blog_grid--extended-selects .Blog_card:hover .Blog_card_btn_center {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.Blog_grid--extended-selects .Blog_card:hover {
+    transform: scale(1.02);
+    z-index: 5;
+}
+.Blog_grid--default {
+    display: none;
+}
+.Blog_filters_mobile_menu{
+    display: none;
+}
+.Blog_filters_btn {
+    display: none;
+}
 @media (min-width: 1025px) {
-    .Blog_section--default .Blog_grid--default {
+    .Blog_section--extended .Blog_grid--default {
         display: none;
     }
+
 }
 
 /* Скрываем хаотичную сетку на tablet/mobile */
@@ -376,6 +947,293 @@
 
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
+
+    .Blog_filters_mobile_menu{
+        display: block;
+    }
+    .Blog_grid--extended-selects {
+        display: none !important;
+    }
+
+    .Blog_section--extended .Blog_grid--default {
+        display: grid;
+    }
+
+    /* Фильтры на планшете */
+    .Blog_filters {
+        flex-direction: row;
+        gap: 1.3vw;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .Blog_filters_left {
+        display: flex;
+        gap: 1.3vw;
+        flex: 0;
+    }
+
+    /* Скрываем Desktop селекты на планшете */
+    .Blog_select_wrapper--section,
+    .Blog_select_wrapper--date,
+    .Blog_select_wrapper--author {
+        display: none;
+    }
+
+    /* Сортировка на планшете */
+    .Blog_select_wrapper--sort {
+        height: 5.21vw;
+        padding-left: 2.6vw;
+    }
+
+    .Blog_select_wrapper--sort .Blog_select {
+        font-size: 2.6vw;
+        width: 17vw;
+        padding-right: 1.3vw;
+    }
+
+    .Blog_select_sort_icon {
+        width: 2.6vw;
+        height: 2.6vw;
+    }
+
+    /* Кнопка "Фильтры" на планшете */
+    .Blog_filters_btn {
+        justify-content: center;
+        width: 22.5vw;
+        display: inline-flex !important;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 1.04vw;
+        padding: 0 2.6vw;
+        height: 5.21vw;
+        font-family: 'Inter', sans-serif;
+        font-size: 2.6vw;
+        color: #FFFFFF;
+        cursor: pointer;
+        gap: 1.04vw;
+        flex-direction: row-reverse;
+    }
+
+    .Blog_filters_btn img {
+        width: 2.6vw;
+        height: 2.6vw;
+    }
+
+    /* SearchBar на планшете */
+    .Blog_filters .Blog_search {
+        width: auto;
+        flex: 1;
+        height: 5.21vw;
+    }
+
+    .Blog_search_input {
+        font-size: 1.8vw;
+        padding: 0 3.9vw 0 2.6vw;
+        border-radius: 1.04vw;
+    }
+
+    .Blog_search_icon {
+        width: 2.6vw;
+        height: 2.6vw;
+        right: 2.6vw;
+    }
+
+    /* MOBILE FILTERS MENU (как Header_mobile_nav) */
+    .Blog_filters_mobile_menu {
+        position: fixed;
+        top: 19.67vw;
+        right: 13.7vw;
+        width: 60vw;
+        background: linear-gradient(100deg, rgba(69, 69, 69, 0.40) 3.64%, rgba(0, 0, 0, 0.40) 86.15%);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.30);
+        border-radius: 1.30vw;
+        padding: 2.60vw;
+        z-index: 999;
+        animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .Blog_filters_mobile_item {
+        margin-bottom: 3.26vw;
+    }
+
+    .Blog_filters_mobile_item:last-child {
+        margin-bottom: 0;
+    }
+
+    .Blog_filters_mobile_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .Blog_filters_mobile_header span {
+        font-size: 3.1vw;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+        color: #FFFFFF;
+
+        cursor: pointer;
+    }
+
+    .Blog_filters_mobile_toggle {
+        width: 2.34vw;
+        height: 2.34vw;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        padding: 0;
+        flex-shrink: 0;
+    }
+
+    .Blog_filters_mobile_toggle span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 0.26vw;
+        background: #FFFFFF;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+    }
+
+    .Blog_filters_mobile_toggle span::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #FFFFFF;
+        transform: rotate(90deg);
+        transition: all 0.3s ease;
+    }
+
+    .Blog_filters_mobile_toggle span.active::after {
+        transform: rotate(0deg);
+    }
+
+    .Blog_filters_mobile_submenu {
+        margin-top: 1.95vw;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.95vw;
+        animation: dropdownSlide 0.3s ease;
+        overflow: hidden;
+    }
+
+    @keyframes dropdownSlide {
+        from {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            max-height: 1000px;
+            transform: translateY(0);
+        }
+    }
+
+    .Blog_filters_mobile_submenu .Blog_dropdown_item {
+        font-size: 2.6vw;
+        padding: 0.52vw 0;
+    }
+
+    /* Календарь внутри мобильного меню - ПРОЗРАЧНЫЙ и 431x333 */
+    .Blog_filters_mobile_submenu .Blog_datepicker {
+        position: static;
+        width: 54.12vw; /* 431px при 768px */
+        min-height: 43.36vw; /* 333px при 768px */
+        background: transparent !important; /* ПРОЗРАЧНЫЙ */
+        border: 1px solid rgba(185, 185, 185, 1);
+        border-radius: 1.04vw;
+        padding: 2.6vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_header {
+        gap: 2.08vw;
+        margin-bottom: 2.08vw;
+        padding-bottom: 2.08vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_label {
+        font-size: 1.95vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_month_select,
+    .Blog_filters_mobile_submenu .Blog_datepicker_year_select {
+        font-size: 1.95vw;
+        padding: 0.52vw 0 0.52vw 1.04vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_month_wrapper,
+    .Blog_filters_mobile_submenu .Blog_datepicker_year_wrapper {
+        gap: 0.78vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_month_wrapper .Blog_datepicker_icon,
+    .Blog_filters_mobile_submenu .Blog_datepicker_year_wrapper .Blog_datepicker_icon {
+        width: 1.56vw;
+        height: 1.56vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_calendar_single {
+        margin-bottom: 2.08vw;
+        padding: 1.04vw;
+        border-radius: 0.52vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_weekdays {
+        gap: 0.52vw;
+        margin-bottom: 1.04vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_weekdays div {
+        font-size: 1.56vw;
+        padding: 0.52vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_days {
+        gap: 0.52vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_day {
+        font-size: 1.56vw;
+        padding: 1.04vw;
+        min-height: 4.17vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_footer {
+        padding-top: 2.08vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_nav img {
+        width: 1.95vw;
+        height: 1.95vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_range_display {
+        font-size: 1.56vw;
+    }
+
+    /* Остальные стили планшета */
     .Blog_section {
         border-radius: 0 0 30px 30px;
         padding: 7.81vw 0;
@@ -406,17 +1264,6 @@
 
     .Blog_search {
         width: 35vw;
-    }
-
-    .Blog_search_input {
-        font-size: 1.8vw;
-        padding: 2.3vw 3.9vw 2.3vw 1.95vw;
-    }
-
-    .Blog_search_icon {
-        width: 2vw;
-        height: 2vw;
-        right: 1.95vw;
     }
 
     .Blog_categories {
@@ -499,16 +1346,332 @@
     }
 
     .Blog_load_more_btn {
-        font-size: 1.82vw;
+        font-size: 2.6vw;
         padding: 1.56vw 3.13vw;
     }
+
 }
 
-/* ========== MOBILE (360px - 767px) ========== */
+
+
+
 /* ========== MOBILE (360px - 767px) ========== */
 @media (max-width: 767px) {
-    .Blog_section {
+    .Blog_section--extended .Blog_grid--default .Blog_card:nth-child(n+1):nth-child(-n+4) {
+        display: flex !important;
+    }
 
+    /* Скрываем 5-ю, 6-ю и 7-ю карточки */
+    .Blog_section--extended .Blog_grid--default .Blog_card:nth-child(n+5) {
+        display: none !important;
+    }
+
+    .Blog_filters_mobile_menu{
+        display: block;
+    }
+    .Blog_grid--extended-selects {
+        display: none !important;
+    }
+
+    .Blog_section--extended .Blog_grid--default {
+        display: grid;
+    }
+
+    /* Фильтры на мобилке */
+    .Blog_filters {
+        flex-direction: row;
+        gap: 2.78vw;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8.33vw;
+    }
+
+    .Blog_filters_left {
+        display: flex;
+        gap: 2.78vw;
+        flex: 0;
+    }
+
+    /* Скрываем Desktop селекты на мобилке */
+    .Blog_select_wrapper--section,
+    .Blog_select_wrapper--date,
+    .Blog_select_wrapper--author {
+        display: none;
+    }
+
+    /* Сортировка на мобилке - только иконка */
+    .Blog_select_wrapper--sort {
+        width: 11.11vw;
+        height: 11.11vw;
+        padding: 0;
+        border-radius: 2.22vw;
+        justify-content: center;
+    }
+
+    .Blog_select_wrapper--sort .Blog_select {
+        display: none; /* Скрываем текст */
+    }
+
+    .Blog_select_sort_icon {
+        width: 5.56vw;
+        height: 5.56vw;
+        position: static;
+    }
+
+    /* Кнопка "Фильтры" на мобилке - только иконка */
+    .Blog_filters_btn {
+        width: 11.11vw !important;
+        height: 11.11vw !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 2.22vw;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        font-size: 0; /* Скрываем текст */
+        color: #FFFFFF;
+        cursor: pointer;
+        gap: 0;
+    }
+
+    .Blog_filters_btn img {
+        width: 5.56vw;
+        height: 5.56vw;
+    }
+
+    /* SearchBar на мобилке */
+    .Blog_filters .Blog_search {
+        width: auto;
+        flex: 1;
+        height: 11.11vw;
+    }
+
+    .Blog_search_input {
+        display: block !important;
+        font-size: 3.89vw;
+        padding: 0 8.33vw 0 4.17vw;
+        border-radius: 2.22vw;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .Blog_search_icon {
+        width: 5.56vw;
+        height: 5.56vw;
+        right: 4.17vw;
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+    }
+
+    /* MOBILE FILTERS MENU - НА ВЕСЬ ЭКРАН */
+    .Blog_filters_mobile_menu {
+        position: fixed;
+        top: 36.78vw; /* Под хедером и фильтрами */
+        right: 5.56vw;
+        width: 88.89vw; /* 320px при 360px */
+        background: linear-gradient(100deg, rgba(69, 69, 69, 0.40) 3.64%, rgba(0, 0, 0, 0.40) 86.15%);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.30);
+        border-radius: 2.78vw;
+        padding: 5.56vw;
+        z-index: 999;
+        animation: slideInMobile 0.3s ease;
+        overflow-y: auto;
+        max-height: 80vh;
+    }
+
+    @keyframes slideInMobile {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .Blog_filters_mobile_item {
+        margin-bottom: 8.33vw;
+    }
+
+    .Blog_filters_mobile_item:last-child {
+        margin-bottom: 0;
+    }
+
+    .Blog_filters_mobile_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .Blog_filters_mobile_header span {
+        font-size: 5.56vw;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .Blog_filters_mobile_toggle {
+        width: 5.56vw;
+        height: 5.56vw;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        padding: 0;
+        flex-shrink: 0;
+    }
+
+    .Blog_filters_mobile_toggle span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 0.56vw;
+        background: #FFFFFF;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+    }
+
+    .Blog_filters_mobile_toggle span::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #FFFFFF;
+        transform: rotate(90deg);
+        transition: all 0.3s ease;
+    }
+
+    .Blog_filters_mobile_toggle span.active::after {
+        transform: rotate(0deg);
+    }
+
+    .Blog_filters_mobile_submenu {
+        margin-top: 5.56vw;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5.56vw;
+        animation: dropdownSlideMobile 0.3s ease;
+        overflow: hidden;
+    }
+
+    @keyframes dropdownSlideMobile {
+        from {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            max-height: 2000px;
+            transform: translateY(0);
+        }
+    }
+
+    .Blog_filters_mobile_submenu .Blog_dropdown_item {
+        font-size: 4.44vw;
+        padding: 2.22vw 0;
+    }
+
+
+
+    /* Календарь на мобилке - 280x219 */
+    .Blog_filters_mobile_submenu .Blog_datepicker {
+        position: static;
+        width: 77.78vw; /* 280px при 360px */
+        min-height: 60.83vw; /* 219px при 360px */
+        background: transparent !important;
+        border: none;
+        border-radius: 2.78vw;
+
+    }
+
+    /* С и По - в COLUMN */
+    .Blog_filters_mobile_submenu .Blog_datepicker_header {
+        flex-direction: column;
+        gap: 2.8vw;
+        margin-bottom: 5.56vw;
+        padding-bottom: 5.56vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_range {
+        width: 100%;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_label {
+        font-size: 4.44vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_month_select,
+    .Blog_filters_mobile_submenu .Blog_datepicker_year_select {
+        font-size: 4.44vw;
+        padding: 1.11vw 0 1.11vw 2.22vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_month_wrapper,
+    .Blog_filters_mobile_submenu .Blog_datepicker_year_wrapper {
+        gap: 1.67vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_month_wrapper .Blog_datepicker_icon,
+    .Blog_filters_mobile_submenu .Blog_datepicker_year_wrapper .Blog_datepicker_icon {
+        width: 3.33vw;
+        height: 3.33vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_calendar_single {
+        margin-bottom: 5.56vw;
+        padding: 2.78vw;
+        border-radius: 1.39vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_weekdays {
+        gap: 1.39vw;
+        margin-bottom: 2.78vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_weekdays div {
+        font-size: 3.33vw;
+        padding: 1.11vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_days {
+        gap: 1.39vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_day {
+        font-size: 3.33vw;
+        padding: 2.22vw;
+        min-height: 8.33vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_footer {
+        padding-top: 5.56vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_nav img {
+        width: 5.56vw;
+        height: 5.56vw;
+    }
+
+    .Blog_filters_mobile_submenu .Blog_datepicker_range_display {
+        font-size: 3.89vw;
+    }
+
+    /* Остальные стили мобилки */
+    .Blog_section--extended .Blog_grid--default .Blog_card:nth-child(n+4) {
+        display: none !important;
+    }
+
+    .Blog_section {
         border-radius: 0 0 20px 20px;
         padding: 13.89vw 0;
         background-color: var(--clr-bg);
@@ -524,27 +1687,22 @@
         padding: 0 5.56vw;
     }
 
-    /* Убрал привязку только к extended */
     .Blog_section--extended .Blog_container {
-        height: auto; /* Изменил с 390vw на auto */
+        height: auto;
     }
 
-    /* Скрываем хаотичную сетку на мобилке */
     .Blog_grid--chaotic {
         display: none !important;
     }
 
-    /* Для default варианта показываем только 3 карточки */
     .Blog_section--default .Blog_grid--default .Blog_card:nth-child(n+4) {
         display: none !important;
     }
 
-    /* Для extended варианта скрываем второй блок */
     .Blog_section--extended .Blog_grid--extended {
         display: none !important;
     }
 
-    /* Для extended варианта скрываем 5-ю карточку в первом блоке */
     .Blog_section--extended .Blog_grid--default .Blog_card:nth-child(5) {
         display: none !important;
     }
@@ -565,28 +1723,6 @@
     .Blog_link {
         font-size: 3.33vw;
         gap: 1.39vw;
-    }
-
-    .Blog_search {
-        background-color: rgba(255, 255, 255, 0.3);
-        width: 15.67vw;
-        height: 8.67vw;
-        border-radius: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .Blog_search_input {
-        display: none;
-    }
-
-    .Blog_search_icon {
-        position: static;
-        transform: none;
-        width: 5.56vw;
-        height: 5.56vw;
-        cursor: pointer;
     }
 
     .Blog_categories {
@@ -612,7 +1748,6 @@
         flex-shrink: 0;
     }
 
-    /* Сетка превращается в вертикальный список */
     .Blog_grid--default {
         display: block !important;
     }
@@ -628,7 +1763,6 @@
         margin-bottom: 2.8vw;
     }
 
-    /* Все карточки выглядят одинаково на мобилке */
     .Blog_card_large,
     .Blog_card_small {
         grid-row: auto;
@@ -683,7 +1817,6 @@
         display: block;
     }
 
-    /* Скрываем элементы хаотичной сетки */
     .Blog_card_wrapper {
         display: none;
     }
@@ -703,8 +1836,10 @@
     }
 
     .Blog_load_more_btn {
-        font-size: 4vw;
+        font-size: 4.4vw;
+        gap: 1.3vw;
         padding: 3.33vw 6.67vw;
     }
 }
+
 

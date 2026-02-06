@@ -11,10 +11,9 @@ export const BlogPage = () => {
                 <div>
                     <Blog
                         variant="extended"
-                        title="Блог"
                         showAllLink={false}
                         showSearchBar={true}
-                        categories={['Все', 'Наука', 'Технологии', 'Природа', 'Экология']}
+                        showSelects={true}
                     />
                 </div>
             </main>
