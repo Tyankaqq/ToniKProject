@@ -12,7 +12,7 @@ export const BlogIdPage = () => {
                     <BlogArticlePage/>
                 </div>
             </main>
-            <div style={{backgroundColor: '#1e0d0d', borderRadius: ''}}>
+            <div style={{scrollSnapAlign: 'start'}}>
                 <Footer />
             </div>
         </>

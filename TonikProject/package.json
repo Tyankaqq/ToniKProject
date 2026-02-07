@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.49",
-    "framer-motion": "^12.27.5",
+    "framer-motion": "^12.33.0",
     "gsap": "^3.14.2",
     "lodash": "^4.17.23",
     "prop-types": "^15.8.1",
@@ -19,6 +19,7 @@
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.10.0",
     "react-swipeable": "^7.0.2",
+    "swiper": "^12.1.0",
     "use-react-router-breadcrumbs": "^4.0.1"
   },
   "devDependencies": {
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
+    "baseline-browser-mapping": "^2.9.19",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",

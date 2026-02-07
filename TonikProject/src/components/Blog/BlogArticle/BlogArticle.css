@@ -3,43 +3,12 @@
     width: 100%;
     background-color: var(--clr-bg);
     padding-bottom: 5.21vw;
+    scroll-snap-align: start;
 }
 
-.BlogArticle_header {
-    margin-bottom: 1.3vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.BlogArticle_title {
-    font-size: 2.6vw;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: var(--clr-white);
-    margin: 0;
-}
-
-.BlogArticle_meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.26vw;
-    align-items: flex-end;
-}
-
-.BlogArticle_author,
-.BlogArticle_date {
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: var(--clr-white);
-    margin: 0;
-}
-
+/* ========== HERO SECTION С OVERLAY ========== */
 .BlogArticle_hero {
+    position: relative;
     height: 39.06vw;
     margin-bottom: 3.13vw;
     border-radius: 1.04vw;
@@ -52,133 +21,193 @@
     object-fit: cover;
 }
 
-.BlogArticle_toc {
-    margin-bottom: 1.3vw;
-}
-
-.BlogArticle_toc_title {
-    font-size: 1.82vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: var(--clr-white);
-    margin: 0 0 1.56vw 0;
-}
-
-.BlogArticle_toc_buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.52vw;
-}
-
-.BlogArticle_toc_btn {
-    width: 7.14vw;
-    height: 1.67vw;
-    padding: 0.26vw 1.04vw;
-    background-color: var(--clr-white);
-    border: none;
-    border-radius: 5.21vw;
-    font-size: 1.1vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: black;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.BlogArticle_toc_btn:hover {
-    opacity: 0.8;
-}
-
-.BlogArticle_toc_btn.active {
-    background-color: var(--clr-white);
-    color: var(--clr-bg);
-}
-
-.BlogArticle_content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, auto);
-    column-gap: 1.1vw;
-    row-gap: 2.7vw;
-    margin-bottom: 2.15vw;
-}
-
-.BlogArticle_section {
-    width: 45.27vw;
-    height: 50vw;
-}
-
-.BlogArticle_text_block {
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 5.21vw;
-    background-color: #272727;
-    border-radius: 1.04vw;
+.BlogArticle_hero_overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Распределяем между центром и низом */
+    padding: 2.6vw;
 }
 
-.BlogArticle_section_heading {
-    font-size: 2.60vw;
-    font-weight: 400;
+.BlogArticle_hero_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: 3.7vw;
+    max-width: 50%;
+    flex: 1;
+    justify-content: center; /* Заголовок и описание по центру */
+}
+
+.BlogArticle_hero_title {
+    font-family: 'Hikasami', sans-serif;
+    font-size: 4.75vw;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: -0.03em;
     line-height: 110%;
     color: var(--clr-white);
-    margin: 0 0 3.13vw 0;
+    margin: 0;
 }
 
-.BlogArticle_paragraph {
-    width: 70%;
-    font-size: 1.15vw;
+.BlogArticle_hero_description {
+    font-family: 'Inter', Regular;
+    font-size: 1.65vw;
     font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    text-align: justify;
-    color: var(--clr-white);
-    margin: 0 0 1.56vw 0;
-}
-
-.BlogArticle_paragraph:last-child {
-    margin-bottom: 0;
-}
-
-.BlogArticle_image_block {
-    width: 100%;
-    height: 100%;
-    border-radius: 1.04vw;
-    overflow: hidden;
-}
-
-.BlogArticle_section_image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.BlogArticle_share {
-    margin-bottom: 5.21vw;
-    display: flex;
-    align-items: center;
-    gap: 1.1vw;
-}
-
-.BlogArticle_share_text {
-    font-size: 0.73vw;
-    font-weight: 500;
     letter-spacing: -0.03em;
     line-height: 110%;
     color: var(--clr-white);
     margin: 0;
+    text-transform: uppercase;
+}
+
+.BlogArticle_hero_meta {
+    flex-direction: column;
+    display: flex;
+    gap: 0.55vw;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0; /* Убираем margin */
+}
+
+.BlogArticle_hero_author,
+.BlogArticle_hero_date {
+    font-family: 'Inter', Regular;
+    font-size: 1.3vw;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 110%;
+    color: var(--clr-white);
+    margin: 0;
+}
+
+/* ========== СВАЙП-СЕКЦИИ (5 секций) ========== */
+.BlogArticle_scenes {
+    background: var(--clr-bg);
+    color: #ffffff;
+    min-height: 47.92vw;
+    position: relative;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.BlogArticle_scenes_wrapper {
+    min-height: 47.92vw;
+    display: flex;
+    align-items: flex-start;
+    gap: 3vw;
+    padding: 0;
+}
+
+.BlogArticle_scenes_left {
+    flex: 0 0 45%;
+    display: flex;
+    gap: 1.5vw;
+    height: 47.92vw;
+}
+
+.BlogArticle_scenes_progress_bar {
+    position: relative;
+    width: 0.16vw;
+    height: 47.92vw;
+    flex-shrink: 0;
+}
+
+.BlogArticle_scenes_progress_track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 0.78vw;
+}
+
+.BlogArticle_scenes_progress_fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 0.78vw;
+}
+
+.BlogArticle_scenes_titles {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.BlogArticle_scenes_title_section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.BlogArticle_scenes_title {
+    font-family: 'Hikasami', sans-serif;
+    font-weight: 600;
+    font-size: 2.86vw;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin: 0;
+    color: #ffffff;
+    transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.BlogArticle_scenes_right {
+    flex: 1;
+    max-width: 44.27vw;
+    padding-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 37.92vw;
+}
+
+.BlogArticle_scenes_content {
+    will-change: opacity, filter;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.BlogArticle_scenes_description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw;
+    line-height: 130%;
+    letter-spacing: -0.03em;
+    margin: 0;
+    white-space: pre-line;
+}
+
+/* ========== SHARE ========== */
+.BlogArticle_share {
+    margin-bottom: 5.21vw;
+    display: flex;
+    align-items: center;
+    gap: 0.55vw;
+}
+
+.BlogArticle_share_text {
+    font-size: 1.3vw;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 110%;
+    color: var(--clr-white);
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Inter', Regular;
 }
 
 .BlogArticle_share_icons {
@@ -186,8 +215,8 @@
 }
 
 .BlogArticle_share_icon {
-    width: 1.67vw;
-    height: 1.67vw;
+    width: 2vw;
+    height: 2vw;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -204,11 +233,11 @@
     object-fit: contain;
 }
 
+/* ========== RELATED ARTICLES ========== */
 .BlogArticle_related {
     margin-top: 0;
 }
 
-/* Header для "ДРУГИЕ СТАТЬИ" с кнопкой */
 .BlogArticle_related_header {
     display: flex;
     justify-content: space-between;
@@ -217,8 +246,9 @@
 }
 
 .BlogArticle_related_title {
-    font-size: 2.60vw;
-    font-weight: 400;
+    font-family: 'Hikasami', sans-serif;
+    font-size: 2.9vw;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: -0.03em;
     line-height: 110%;
@@ -226,7 +256,6 @@
     margin: 0;
 }
 
-/* Кнопка "ВСЕ СТАТЬИ" */
 .BlogArticle_all_articles_link {
     font-size: 1.1vw;
     color: var(--clr-white);
@@ -249,19 +278,56 @@
     object-fit: contain;
 }
 
+/* DESKTOP: Absolute позиционирование */
 .BlogArticle_related_grid {
-    display: grid;
-    grid-template-columns: 45.27vw 22.1vw 22.1vw;
-    gap: 1.1vw;
+    position: relative;
+    width: 100%;
+    height: 35vw;
     margin-bottom: 3.13vw;
 }
 
 .BlogArticle_related_card {
+    position: absolute;
     display: flex;
     flex-direction: column;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s ease, z-index 0s;
+}
+
+/* Увеличение при наведении */
+.BlogArticle_related_card:hover {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+/* Первая карточка (large) */
+.BlogArticle_related_card:nth-child(1) {
+    top: 5vw;
+    left: 0;
+    width: 45.27vw;
+}
+/* Вторая карточка (medium) */
+.BlogArticle_related_card:nth-child(2) {
+    bottom: 5.9vw;
+    left: 46.37vw; /* 45.27vw + 1.1vw gap */
+    width: 22.1vw;
+}
+
+
+/* Третья карточка (medium) */
+.BlogArticle_related_card:nth-child(3) {
+    top: 5vw;
+    left: 69.57vw; /* 45.27vw + 1.1vw + 22.1vw + 1.1vw */
+    width: 22.1vw;
+}
+
+.BlogArticle_related_card_image_wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 1.04vw;
+    overflow: hidden;
+    margin-bottom: 0.5vw;
 }
 
 .BlogArticle_related_card.large .BlogArticle_related_card_image_wrapper {
@@ -272,28 +338,95 @@
     height: 31.20vw;
 }
 
-.BlogArticle_related_card_image_wrapper {
-    width: 100%;
-    border-radius: 1.04vw;
-    overflow: hidden;
-    margin-bottom: 0.5vw;
-}
-
 .BlogArticle_related_card_image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-.BlogArticle_related_card_content {
+/* OVERLAY (скрытый по умолчанию) */
+.BlogArticle_related_card_overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
     display: flex;
     flex-direction: column;
-    gap: 0.52vw;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+
+.BlogArticle_related_card:hover .BlogArticle_related_card_overlay {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* ТЕГ (появляется снизу) */
+.BlogArticle_related_card_tag {
+    position: absolute;
+    bottom: 1.5vw;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.04vw;
+    color: #FFFFFF;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.36vw;
+    padding: 0.4vw 0.9vw;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.BlogArticle_related_card:hover .BlogArticle_related_card_tag {
+    opacity: 1;
+}
+
+/* КНОПКА (появляется по центру) */
+.BlogArticle_related_card_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5vw;
+    font-size: 1.25vw;
+    color: #fff;
+    background: transparent;
+    border: none;
+    padding: 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(0.5vw);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+}
+
+.BlogArticle_related_card_btn img {
+    width: 1vw;
+    height: 1vw;
+}
+
+.BlogArticle_related_card:hover .BlogArticle_related_card_btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.BlogArticle_related_card_btn:hover {
+    opacity: 0.7;
+}
+
+/* КОНТЕНТ ПОД КАРТИНКОЙ */
+.BlogArticle_related_card_content {
+    display: flex;
+
+    gap: 0;
 }
 
 .BlogArticle_related_card_title {
-    font-size: 1.1vw;
-    font-weight: 400;
+    font-size: 1.65vw;
+    font-weight: 600;
     line-height: 130%;
     color: var(--clr-white);
     margin: 0;
@@ -301,6 +434,7 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-transform: uppercase;
 }
 
 .BlogArticle_related_card_excerpt {
@@ -321,116 +455,228 @@
     color: white;
     margin: 0 0 0.5vw 0;
 }
+.BlogArticle_scenes_paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.04vw; /* 20px при 1920px */
+}
+.BlogArticle_scenes_description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw;
+    line-height: 130%;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+.BlogArticle_scroll_container {
+    height: 250vh;
+    position: relative;
+}
 
-.BlogArticle_load_more {
-    display: none;
+/* Липкая обертка */
+.BlogArticle_sticky_wrapper {
+    position: sticky;
+    top: 0;
+    height: 99vh; /* Занимаем весь экран */
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* Центруем контент по вертикали */
+    background: var(--clr-bg); /* Твой фон */
+}
+
+/* Секция контента внутри липкого блока */
+.BlogArticle_scenes {
+    width: 100%;
+    height: 60vh; /* Высота самого блока с текстом (настрой под себя) */
+    position: relative;
+    z-index: 10;
+}
+
+.BlogArticle_scenes_wrapper {
+    display: flex;
+    height: 100%;
+    /* Твои отступы и gap */
+}
+
+/* --- Mobile Styles --- */
+.BlogArticle_mobile_list {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.BlogArticle_mobile_section {
+    margin-bottom: 40px;
+}
+.BlogArticle_mobile_title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.BlogArticle_scenes_mobile_scroll_wrapper {
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 2vw;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.BlogArticle_scenes_mobile_scroll_wrapper::-webkit-scrollbar {
+    width: 4px;
+}
+
+.BlogArticle_scenes_mobile_scroll_wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.BlogArticle_scenes_mobile_scroll_wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.BlogArticle_scenes_mobile_section {
+    margin-bottom: 8vw;
+}
+
+.BlogArticle_scenes_mobile_section:last-child {
+    margin-bottom: 0;
 }
 
 /* ============================================
    ПЛАНШЕТ (768px - 1024px)
    ============================================ */
 @media (min-width: 768px) and (max-width: 1024px) {
+
     .BlogArticle {
         padding-top: 10vw;
         padding-bottom: 7.81vw;
     }
-
-    .BlogArticle_header {
-        margin-bottom: 1.3vw;
-        flex-direction: row;
-        align-items: center;
-        text-align: right;
-        gap: 2.08vw;
+    .BlogArticle_scenes_paragraphs {
+        gap: 1.3vw; /* 20px при 768px */
     }
-
-    .BlogArticle_title {
-        font-size: 4.25vw;
-    }
-
-    .BlogArticle_meta {
-        align-items: flex-end;
-    }
-
-    .BlogArticle_author,
-    .BlogArticle_date {
-        font-size: 1.82vw;
-    }
-
+    /* Hero Section */
     .BlogArticle_hero {
         height: 50vw;
         margin-bottom: 5.21vw;
         border-radius: 1.56vw;
     }
 
-    .BlogArticle_toc {
-        margin-bottom: 5.21vw;
+    .BlogArticle_hero_overlay {
+        padding: 3.91vw;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
-    .BlogArticle_toc_title {
-        font-size: 3.13vw;
-        margin-bottom: 2.60vw;
+    .BlogArticle_hero_content {
+        gap: 5.7vw;
+        max-width: 80%;
+        flex: 1;
+        justify-content: center;
     }
 
-    /* Слайдер для кнопок на планшете */
-    .BlogArticle_toc_buttons {
-        display: flex;
+    .BlogArticle_hero_title {
+        font-size: 7vw;
+    }
+
+    .BlogArticle_hero_description {
+        width: 80%;
+        font-size: 3.15vw;
+    }
+
+    .BlogArticle_hero_meta {
+        gap: 1.3vw;
+        margin-top: 0;
+    }
+
+    .BlogArticle_hero_author,
+    .BlogArticle_hero_date {
+        font-size: 2.65vw;
+    }
+
+    /* Свайп-секции */
+    .BlogArticle_scenes {
+        min-height: 70vh;
+    }
+
+    .BlogArticle_scenes_wrapper {
+        padding: 7.81vw 0;
+        min-height: auto;
+    }
+
+    .BlogArticle_scenes--tablet .BlogArticle_scenes_wrapper {
         flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        gap: 1.04vw;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        padding-bottom: 1.3vw;
+        gap: 11.59vw;
+        align-items: flex-start;
     }
 
-    /* Скрываем скроллбар */
-    .BlogArticle_toc_buttons::-webkit-scrollbar {
-        display: none;
-    }
-
-    .BlogArticle_toc_btn {
-        width: 15.36vw;
-        min-width: 15.36vw;
-        height: 3.65vw;
-        padding: 0.52vw 2.08vw;
-        font-size: 2.08vw;
-        flex-shrink: 0;
-        white-space: nowrap;
-    }
-
-    .BlogArticle_content {
-        column-gap: 1.3vw;
-        row-gap: 3.91vw;
-        margin-bottom: 7.81vw;
-    }
-
-    .BlogArticle_section {
-        width: 46.74vw;
-        height: 46.61vw;
-    }
-
-    .BlogArticle_text_block {
-        padding: 2.6vw;
-        border-radius: 1.56vw;
-    }
-
-    .BlogArticle_section_heading {
-        font-size: 4.3vw;
-        margin-bottom: 2.6vw;
-    }
-
-    .BlogArticle_paragraph {
+    .BlogArticle_scenes_mobile_container {
         width: 100%;
-        font-size: 2.1vw;
-        margin-bottom: 2.08vw;
+        display: flex;
+        gap: 11.59vw;
     }
 
-    .BlogArticle_image_block {
-        border-radius: 1.56vw;
+    .BlogArticle_scenes_mobile_progress {
+        position: relative;
+        width: 0.52vw;
+        height: 100%;
+        min-height: 70vw;
+        flex-shrink: 0;
     }
 
+    .BlogArticle_scenes_mobile_progress_track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 0.52vw;
+    }
+
+    .BlogArticle_scenes_mobile_progress_fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 0.52vw;
+    }
+
+    .BlogArticle_scenes_mobile_content_wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4.17vw;
+        align-items: flex-start;
+    }
+
+    .BlogArticle_scenes_mobile_title {
+        font-family: 'Hikasami', sans-serif;
+        font-weight: 600;
+        font-size: 4.69vw;
+        line-height: 110%;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin: 0;
+        cursor: pointer;
+        transition: opacity 0.5s ease, filter 0.5s ease;
+        align-self: flex-start;
+    }
+
+    .BlogArticle_scenes_description {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 2.08vw;
+        line-height: 140%;
+        letter-spacing: -0.03em;
+
+        white-space: pre-line;
+        text-align: left;
+        align-self: flex-start;
+        width: 100%;
+    }
+
+    /* Share */
     .BlogArticle_share {
         margin-bottom: 7.81vw;
         gap: 2.6vw;
@@ -450,6 +696,7 @@
         height: 3.9vw;
     }
 
+    /* Related Articles */
     .BlogArticle_related_header {
         margin-bottom: 5.21vw;
     }
@@ -468,10 +715,28 @@
         height: 1.82vw;
     }
 
+    /* Возвращаем grid для планшета */
     .BlogArticle_related_grid {
+        position: static; /* Отключаем relative */
+        display: grid; /* Включаем grid */
         grid-template-columns: repeat(2, 1fr);
         gap: 1.3vw;
+        height: auto; /* Автоматическая высота */
         margin-bottom: 5.21vw;
+    }
+
+    /* Отключаем absolute для планшета */
+    .BlogArticle_related_card {
+        position: static;
+        width: auto;
+    }
+
+    .BlogArticle_related_card:nth-child(1),
+    .BlogArticle_related_card:nth-child(2) {
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
     }
 
     .BlogArticle_related_card:nth-child(3) {
@@ -480,7 +745,7 @@
 
     .BlogArticle_related_card.large .BlogArticle_related_card_image_wrapper,
     .BlogArticle_related_card.medium .BlogArticle_related_card_image_wrapper {
-        height: 31vw;
+        height: 40vw;
         border-radius: 1.56vw;
         margin-bottom: 0.7vw;
     }
@@ -499,17 +764,16 @@
 
     .BlogArticle_related_card_date {
         margin: 0 0 0.7vw 0;
-        color: white;
         font-size: 1.8vw;
     }
-
-    .BlogArticle_load_more {
-        padding: 1.56vw 20%;
-        font-size: 1.82vw;
-        border-width: 0.20vw;
+    .BlogArticle_scenes_paragraphs p:nth-child(n+4) {
+        display: none;
     }
 }
 
+/* ============================================
+   МОБИЛКА (до 767px)
+   ============================================ */
 /* ============================================
    МОБИЛКА (до 767px)
    ============================================ */
@@ -518,107 +782,141 @@
         padding-top: 13vw;
         padding-bottom: 13.89vw;
     }
+    .BlogArticle_scenes_paragraphs {
+        gap: 0; /* 20px при 360px */
+    }
+    /* Hero Section */
+    .BlogArticle_hero {
+        height: 180.67vw;
+        margin-bottom: 8.33vw;
+        border-radius: 2.78vw;
+    }
 
-    .BlogArticle_header {
-        margin-bottom: 2.78vw;
+    .BlogArticle_hero_overlay {
+        padding: 5.56vw;
         flex-direction: column;
-        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .BlogArticle_hero_content {
         gap: 2.78vw;
+        max-width: 100%;
+        flex: 1;
+        justify-content: center;
     }
 
-    .BlogArticle_title {
-        font-size: 6.67vw;
+    .BlogArticle_hero_title {
+        font-size: 10.3vw;
     }
 
-    .BlogArticle_meta {
-        gap: 1.11vw;
-        align-items: flex-start;
+    .BlogArticle_hero_description {
+        font-size: 5.3vw;
+        line-height: 110%;
     }
 
-    .BlogArticle_author,
-    .BlogArticle_date {
+    .BlogArticle_hero_meta {
+        flex-direction: column;
+        gap: 1.5vw;
+        margin-top: 0;
+    }
+
+    .BlogArticle_hero_author,
+    .BlogArticle_hero_date {
         font-size: 4vw;
     }
 
-    .BlogArticle_hero {
-        height: 88.67vw;
-        margin-bottom: 8.33vw;
-        border-radius: 2.78vw;
+    /* Свайп-секции */
+    .BlogArticle_scenes {
+        height: 177vw;
     }
 
-    .BlogArticle_toc {
-        margin-bottom: 8.33vw;
+    .BlogArticle_scenes_wrapper {
+        padding: 16.67vw 0;
+        min-height: auto;
     }
 
-    .BlogArticle_toc_title {
-        font-size: 5.56vw;
-        margin-bottom: 4.17vw;
-    }
-
-    .BlogArticle_toc_buttons {
-        display: flex;
+    .BlogArticle_scenes--mobile .BlogArticle_scenes_wrapper {
         flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        gap: 2.78vw;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
+        gap: 8.33vw;
+        align-items: flex-start;
     }
 
-    .BlogArticle_toc_buttons::-webkit-scrollbar {
-        display: none;
+    .BlogArticle_scenes_mobile_container {
+        width: 100%;
+        display: flex;
+        gap: 8.33vw;
     }
 
-    .BlogArticle_toc_btn {
-        width: 32.78vw;
-        min-width: 32.78vw;
-        height: 7.78vw;
-        padding: 1.67vw 4.44vw;
-        font-size: 4.44vw;
+    .BlogArticle_scenes_mobile_progress {
+        position: relative;
+        width: 1.11vw;
+        height: 100%;
+        min-height: 150vw;
         flex-shrink: 0;
     }
 
-    .BlogArticle_content {
-        grid-template-columns: 1fr;
-        gap: 2.6vw;
-        margin-bottom: 5.5vw;
-    }
-
-    .BlogArticle_section {
-        width: 88.89vw;
-        height: 105vw;
-    }
-
-    .BlogArticle_text_block {
-        padding: 8.33vw 5.56vw;
-        border-radius: 2.78vw;
-    }
-
-    .BlogArticle_section_heading {
-        font-size: 7vw;
-        margin-bottom: 5.56vw;
-    }
-
-    .BlogArticle_paragraph {
+    .BlogArticle_scenes_mobile_progress_track {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 1.11vw;
+    }
+
+    .BlogArticle_scenes_mobile_progress_fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 1.11vw;
+    }
+
+    .BlogArticle_scenes_mobile_content_wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8.33vw;
+        align-items: flex-start;
+    }
+
+    .BlogArticle_scenes_mobile_title {
+        font-family: 'Hikasami', sans-serif;
+        font-weight: 600;
+        font-size: 6.67vw;
+        line-height: 110%;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin: 0;
+        cursor: pointer;
+        transition: opacity 0.5s ease, filter 0.5s ease;
+        align-self: flex-start;
+    }
+
+    .BlogArticle_scenes_description {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
         font-size: 4.44vw;
-        margin-bottom: 4.17vw;
-        line-height: 130%;
+        line-height: 140%;
+        letter-spacing: -0.03em;
+        margin: 5.56vw 0 0 0;
+        white-space: pre-line;
+        text-align: left;
+        align-self: flex-start;
+        width: 100%;
     }
 
-    .BlogArticle_image_block {
-        border-radius: 2.78vw;
-    }
-
+    /* Share */
     .BlogArticle_share {
         margin-bottom: 22.11vw;
-        gap: 5.4vw;
+        gap: 2.6vw;
     }
 
     .BlogArticle_share_text {
-        font-size: 3.33vw;
+        font-size: 4.5vw;
     }
 
     .BlogArticle_share_icons {
@@ -631,6 +929,7 @@
         height: 6.67vw;
     }
 
+    /* Related Articles */
     .BlogArticle_related_header {
         flex-direction: row;
         justify-content: space-between;
@@ -653,15 +952,33 @@
         height: 3.33vw;
     }
 
+    /* Flex колонка для мобилки */
     .BlogArticle_related_grid {
+        position: static;
         display: flex;
         flex-direction: column;
         gap: 5.56vw;
+        height: auto;
         margin-bottom: 8.33vw;
     }
 
+    /* Отключаем absolute для мобилки */
+    .BlogArticle_related_card {
+        position: static;
+        width: 100%;
+    }
+
+    .BlogArticle_related_card:nth-child(1),
+    .BlogArticle_related_card:nth-child(2) {
+        position: static;
+        top: auto;
+        left: auto;
+        width: 100%;
+    }
+
+    /* СКРЫВАЕМ ТРЕТЬЮ КАРТОЧКУ НА МОБИЛКЕ */
     .BlogArticle_related_card:nth-child(3) {
-        display: flex;
+        display: none; /* Было display: flex - теперь скрываем */
     }
 
     .BlogArticle_related_card.large .BlogArticle_related_card_image_wrapper,
@@ -690,11 +1007,8 @@
         font-size: 4vw;
     }
 
-    .BlogArticle_load_more {
-        width: 100%;
-        padding: 3.33vw 20%;
-        font-size: 4vw;
-        border-width: 0.28vw;
-        border-radius: 5.56vw;
+    .BlogArticle_scenes_paragraphs p:nth-child(n+4) {
+        display: none;
     }
 }
+
