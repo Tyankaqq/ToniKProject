@@ -551,7 +551,7 @@
         padding-bottom: 7.81vw;
     }
     .BlogArticle_scenes_paragraphs {
-        gap: 1.3vw; /* 20px при 768px */
+        gap: 1.3vw;
     }
     /* Hero Section */
     .BlogArticle_hero {
@@ -669,7 +669,6 @@
         font-size: 2.08vw;
         line-height: 140%;
         letter-spacing: -0.03em;
-
         white-space: pre-line;
         text-align: left;
         align-self: flex-start;
@@ -717,18 +716,25 @@
 
     /* Возвращаем grid для планшета */
     .BlogArticle_related_grid {
-        position: static; /* Отключаем relative */
-        display: grid; /* Включаем grid */
+        position: static;
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1.3vw;
-        height: auto; /* Автоматическая высота */
+        height: auto;
         margin-bottom: 5.21vw;
     }
 
-    /* Отключаем absolute для планшета */
+    /* Отключаем absolute и hover эффекты для планшета */
     .BlogArticle_related_card {
         position: static;
         width: auto;
+        transform: none !important; /* Отключаем scale */
+    }
+
+    /* Убираем hover эффект */
+    .BlogArticle_related_card:hover {
+        transform: none !important;
+        z-index: auto;
     }
 
     .BlogArticle_related_card:nth-child(1),
@@ -741,6 +747,11 @@
 
     .BlogArticle_related_card:nth-child(3) {
         display: none;
+    }
+
+    /* Скрываем overlay на планшете */
+    .BlogArticle_related_card_overlay {
+        display: none !important;
     }
 
     .BlogArticle_related_card.large .BlogArticle_related_card_image_wrapper,
@@ -766,6 +777,7 @@
         margin: 0 0 0.7vw 0;
         font-size: 1.8vw;
     }
+
     .BlogArticle_scenes_paragraphs p:nth-child(n+4) {
         display: none;
     }
@@ -783,7 +795,7 @@
         padding-bottom: 13.89vw;
     }
     .BlogArticle_scenes_paragraphs {
-        gap: 0; /* 20px при 360px */
+        gap: 0;
     }
     /* Hero Section */
     .BlogArticle_hero {
@@ -962,10 +974,17 @@
         margin-bottom: 8.33vw;
     }
 
-    /* Отключаем absolute для мобилки */
+    /* Отключаем absolute и hover для мобилки */
     .BlogArticle_related_card {
         position: static;
         width: 100%;
+        transform: none !important; /* Отключаем scale */
+    }
+
+    /* Убираем hover эффект */
+    .BlogArticle_related_card:hover {
+        transform: none !important;
+        z-index: auto;
     }
 
     .BlogArticle_related_card:nth-child(1),
@@ -978,7 +997,12 @@
 
     /* СКРЫВАЕМ ТРЕТЬЮ КАРТОЧКУ НА МОБИЛКЕ */
     .BlogArticle_related_card:nth-child(3) {
-        display: none; /* Было display: flex - теперь скрываем */
+        display: none;
+    }
+
+    /* Скрываем overlay на мобилке */
+    .BlogArticle_related_card_overlay {
+        display: none !important;
     }
 
     .BlogArticle_related_card.large .BlogArticle_related_card_image_wrapper,
