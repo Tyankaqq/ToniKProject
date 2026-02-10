@@ -37,7 +37,151 @@
     gap: 1.04vw; /* 20px на 1920px */
 }
 
-/* MEGA MENU БЛОК */
+/* ========== КОРЗИНА MEGA MENU (ЛЕВАЯ КНОПКА) ========== */
+.Header_cart_menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3.125vw; /* 60px */
+    width: 3.125vw; /* 60px закрыто */
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0.05) 3.64%, rgba(153, 153, 153, 0.05) 86.15%);
+    border: 0.052vw solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.42vw;
+    padding: 0.52vw; /* ✅ Центрирование иконки */
+    overflow: hidden; /* ✅ Иконка не вылазит */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.Header_cart_menu.active {
+    width: 36.72vw; /* 705px */
+    padding: 0 0.78vw;
+    overflow: visible; /* Контент вылазит */
+}
+
+/* ИКОНКА КОРЗИНЫ - ПРАВИЛЬНОЕ ЦЕНТРИРОВАНИЕ */
+.Header_cart_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.08vw; /* 40px */
+    height: 2.08vw; /* 40px */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute; /* ✅ Абсолютное позиционирование для центрирования */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* ✅ ТОЧНО ПО ЦЕНТРУ */
+    padding: 0;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.Header_cart_icon img {
+    width: 2.08vw; /* 40px */
+    height: 2.08vw; /* 40px */
+    object-fit: contain;
+}
+
+/* ✅ ПОЛНОЕ СКРЫТИЕ ИКОНКИ при активном состоянии */
+.Header_cart_menu.active .Header_cart_icon {
+    opacity: 0;
+    visibility: hidden; /* ✅ Блок полностью скрыт */
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.8); /* Дополнительная анимация */
+}
+
+/* КОНТЕНТ КОРЗИНЫ */
+.Header_cart_mega {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease 0.1s;
+}
+
+.Header_cart_menu.active .Header_cart_mega {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ЗАГОЛОВОК СЛЕВА */
+.Header_cart_title_wrapper {
+    transform: translateX(-0.52vw);
+    opacity: 0;
+    transition: all 0.3s ease 0.2s;
+}
+
+.Header_cart_menu.active .Header_cart_title_wrapper {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.Header_cart_title {
+    font-size: 0.94vw; /* 18px */
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--clr-white);
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* КРЕСТИК СПРАВА */
+.Header_cart_close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.08vw; /* 40px */
+    height: 2.08vw; /* 40px */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    flex-shrink: 0;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+
+.Header_cart_close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.Header_cart_close span {
+    position: absolute;
+    width: 1.04vw; /* 20px */
+    height: 0.104vw; /* 2px */
+    background: var(--clr-white);
+    border-radius: 0.052vw;
+    transition: all 0.3s ease;
+}
+
+.Header_cart_close span:first-child {
+    transform: rotate(45deg);
+}
+
+.Header_cart_close span:last-child {
+    transform: rotate(-45deg);
+}
+
+/* Активное состояние крестика */
+.Header_cart_menu.active .Header_cart_toggle span {
+    opacity: 1;
+}
+
+.Header_cart_menu.active .Header_cart_toggle img {
+    opacity: 0;
+}
+
+/* ========== ОСНОВНОЕ MEGA MENU (ПРАВАЯ КНОПКА) ========== */
 .Header_mega_menu {
     display: flex;
     align-items: center;
@@ -164,7 +308,7 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* РАЗДЕЛИТЕЛЬ перед крестиком */
+/* РАЗДЕЛИТЕЛЬ перед бургером */
 .Header_divider {
     width: 0.052vw; /* 1px */
     height: 1.56vw; /* 30px */
@@ -219,31 +363,55 @@
 .Header_burger.active span:nth-child(3) {
     transform: translateY(-0.415vw) rotate(-45deg); /* -8px */
 }
+.Header_cart_header_row {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
 
-/* КОРЗИНА */
-.Header_icon_btn {
+}
+
+/* ✅ Кнопка НАЗАД слева от заголовка */
+.Header_cart_back {
+    width: 2vw;  /* 38px */
+    height: 2vw;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3.125vw; /* 60px */
-    height: 3.125vw; /* 60px */
-    background: linear-gradient(100deg, rgba(255, 255, 255, 0.05) 3.64%, rgba(153, 153, 153, 0.05) 86.15%);
-    border: 0.057vw solid rgba(255, 255, 255, 0.3);
-    border-radius: 0.568vw;
-    cursor: pointer;
-    padding: 0;
-    transition: all 0.3s ease;
 }
 
-.Header_icon_btn:hover {
-    background: linear-gradient(100deg, rgba(255, 255, 255, 0.08) 3.64%, rgba(153, 153, 153, 0.08) 86.15%);
+.Header_cart_back img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.Header_icon_btn img {
-    width: 2.08vw; /* 40px при 1920px */
-    height: 2.08vw; /* 40px при 1920px */
+.Header_cart_back:hover {
+    opacity: 0.7;
+}
+.Header_cart_title_wrapper {
+    flex: 1;
+    text-align: center;
+}
+.Header_cart_back {
+    position: relative !important;
+    z-index: 1200 !important; /* ВЫШЕ Cart_dropdown_container (1100) */
+    pointer-events: auto !important;
 }
 
+/* ✅ Header_cart_mega тоже поднимаем */
+.Header_cart_mega {
+    position: relative;
+    z-index: 1201 !important;
+}
+
+/* ✅ Cart НЕ перекрывает Header */
+.Cart_dropdown_container {
+    z-index: 1100; /* ОСТАЕТСЯ */
+}
 /* ============================================
    MOBILE NAV MENU (TABLET & MOBILE)
    ============================================ */
@@ -259,10 +427,44 @@
    TABLET (768px - 1024px)
    ============================================ */
 @media (min-width: 768px) and (max-width: 1024px) {
+    /* КОРЗИНА */
+    .Header_cart_menu {
+        height: 5.86vw; /* 45px */
+        border-radius: 1.17vw;
+        border: 0.13vw solid rgba(255, 255, 255, 0.3);
+        margin-right: 2.08vw;
+    }
+
+    .Header_cart_menu:not(.active) {
+        width: 5.86vw;
+    }
+
+    .Header_cart_menu.active {
+        width: 70vw;
+        padding: 0 1.5vw;
+    }
+
+    .Header_cart_title {
+        font-size: 3.1vw; /* 14px */
+    }
+
+    .Header_cart_toggle {
+        width: 3.12vw;
+        height: 3.12vw;
+    }
+
+    .Header_cart_menu .Header_divider {
+        height: 2.34vw;
+    }
+
+    /* ОСНОВНОЕ МЕНЮ */
     .Header_logo img {
         width: 9.9vw;
     }
+    .Header_cart_close span{
+        width: 3vw;
 
+    }
     .Header_right {
         gap: 2.08vw;
     }
@@ -305,18 +507,6 @@
 
     .Header_burger.active span:nth-child(3) {
         transform: translateY(-1.04vw) rotate(-45deg); /* -8px */
-    }
-
-    .Header_icon_btn {
-        width: 5.86vw; /* 45px */
-        height: 5.86vw; /* 45px */
-        border-radius: 1.17vw;
-        border: 0.13vw solid rgba(255, 255, 255, 0.3);
-    }
-
-    .Header_icon_btn img {
-        width: 3.26vw; /* 25px при 768px */
-        height: 3.26vw; /* 25px при 768px */
     }
 
     /* MOBILE NAV MENU */
@@ -472,12 +662,47 @@
         height: 100%;
         object-fit: contain;
     }
+    .Header_cart_icon img{
+        width: 3.34vw;
+        height: 3.34vw;
+    }
 }
 
 /* ============================================
    MOBILE (до 767px)
    ============================================ */
 @media (max-width: 767px) {
+    /* КОРЗИНА */
+    .Header_cart_menu {
+        height: 8.33vw; /* 30px */
+        border-radius: 1.67vw;
+        border: 0.28vw solid rgba(255, 255, 255, 0.3);
+
+    }
+
+    .Header_cart_menu:not(.active) {
+        width: 8.33vw;
+    }
+
+    .Header_cart_menu.active {
+
+        padding: 0 2vw;
+    }
+
+    .Header_cart_title {
+        font-size: 3.33vw; /* 12px */
+    }
+
+    .Header_cart_toggle {
+        width: 4.44vw;
+        height: 4.44vw;
+    }
+
+    .Header_cart_menu .Header_divider {
+        height: 3.33vw;
+    }
+
+    /* ОСНОВНОЕ МЕНЮ */
     .Header_logo img {
         width: 15.33vw;
     }
@@ -524,18 +749,6 @@
 
     .Header_burger.active span:nth-child(3) {
         transform: translateY(-1.48vw) rotate(-45deg); /* -5.34px */
-    }
-
-    .Header_icon_btn {
-        width: 8.33vw; /* 30px */
-        height: 8.33vw; /* 30px */
-        border-radius: 1.67vw;
-        border: 0.28vw solid rgba(255, 255, 255, 0.3);
-    }
-
-    .Header_icon_btn img {
-        width: 5.56vw; /* 20px при 360px */
-        height: 5.56vw; /* 20px при 360px */
     }
 
     /* MOBILE NAV MENU */
@@ -666,5 +879,19 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
+    }
+    .Header_cart_title{
+        font-size: 4.5vw;
+    }
+    .Header_cart_close span{
+        width: 4.44vw;
+
+    }
+    .Header_cart_icon img{
+        width: 4.5vw;
+        height: 4.5vw;
+    }
+    .Header_cart_menu.active{
+        width: 50vw;
     }
 }

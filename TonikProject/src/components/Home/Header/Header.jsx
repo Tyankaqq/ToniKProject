@@ -6,11 +6,13 @@ import Market from '../../../assets/Image/Market.svg';
 import VK from '../../../assets/Image/VkLogo.svg';
 import Telegram from '../../../assets/Image/TgLogo.svg';
 import WhatsApp from '../../../assets/Image/WhLogo.svg';
+import WhiteGalochka from '../../../assets/Image/WhiteGalochka.svg'; // ✅ Кнопка НАЗАД
 import Cart from '../../Cart/Cart/Cart.jsx';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isCheckout, setIsCheckout] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [hoveredTab, setHoveredTab] = useState(null);
     const lastScrollY = useRef(0);
@@ -20,8 +22,24 @@ const Header = () => {
 
     const VIDEO_THRESHOLD = 1500;
 
+    // ✅ Функция возврата в КОРЗИНУ (НЕ закрытие)
+    const goBackToCart = () => {
+        console.log('🔙 goBackToCart вызвана'); // ✅ DEBUG
+        setIsCheckout(false);
+        // НЕ закрываем корзину! Только переключаем сцену
+    };
+
+    // Сбрасываем isCheckout при закрытии корзины
     useEffect(() => {
-        if (isCartOpen) {
+        if (!isCartOpen) {
+            const timer = setTimeout(() => setIsCheckout(false), 300);
+            return () => clearTimeout(timer);
+        }
+    }, [isCartOpen]);
+
+    // Блокировка скролла при открытии меню
+    useEffect(() => {
+        if (isMenuOpen || isCartOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
@@ -29,77 +47,65 @@ const Header = () => {
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, [isCartOpen]);
+    }, [isMenuOpen, isCartOpen]);
 
+    // Логика появления/скрытия хедера при скролле
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-
             if (currentScrollY < VIDEO_THRESHOLD) {
                 setIsVisible(true);
                 lastScrollY.current = currentScrollY;
                 return;
             }
-
             if (currentScrollY > lastScrollY.current) {
                 setIsVisible(false);
                 setIsMenuOpen(false);
+                setIsCartOpen(false);
             } else {
                 setIsVisible(true);
             }
-
             lastScrollY.current = currentScrollY;
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
+    // Закрытие при клике вне меню
     useEffect(() => {
         const handleClickOutside = (event) => {
             const isClickInsideMenu = menuRef.current && menuRef.current.contains(event.target);
-            const isClickInsideMobileNav = mobileNavRef.current && mobileNavRef.current.contains(event.target);
-
-            if (!isClickInsideMenu && !isClickInsideMobileNav) {
+            if (!isClickInsideMenu) {
                 setIsMenuOpen(false);
                 setHoveredTab(null);
             }
         };
-
         if (isMenuOpen) {
             document.addEventListener('mousedown', handleClickOutside);
         }
-
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isMenuOpen]);
 
-    useEffect(() => {
-        return () => {
-            if (leaveTimeoutRef.current) {
-                clearTimeout(leaveTimeoutRef.current);
-            }
-        };
-    }, []);
-
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+        setIsCartOpen(false);
         setHoveredTab(null);
+    };
+
+    const toggleCart = (e) => {
+        e.preventDefault();
+        setIsCartOpen(!isCartOpen);
+        setIsMenuOpen(false);
     };
 
     const closeMenu = () => {
         setIsMenuOpen(false);
         setHoveredTab(null);
-    };
-
-    const openCart = (e) => {
-        e.preventDefault();
-        setIsCartOpen(true);
-        setIsMenuOpen(false);
     };
 
     const closeCart = () => {
@@ -111,7 +117,6 @@ const Header = () => {
             clearTimeout(leaveTimeoutRef.current);
             leaveTimeoutRef.current = null;
         }
-
         if (isMenuOpen) {
             setHoveredTab(tabName);
         }
@@ -138,6 +143,7 @@ const Header = () => {
         setHoveredTab(hoveredTab === tabName ? null : tabName);
     };
 
+
     return (
         <>
             <header className={`Header ${isVisible ? 'Header--visible' : 'Header--hidden'}`}>
@@ -152,18 +158,60 @@ const Header = () => {
 
                         {/* ПРАВАЯ ЧАСТЬ: КОРЗИНА + MEGA MENU */}
                         <div className="Header_right">
-                            {/* КОРЗИНА */}
-                            <button
-                                className="Header_icon_btn"
-                                onClick={openCart}
-                                aria-label="Корзина"
-                            >
-                                <img src={Market} alt="Корзина" />
-                            </button>
+                            {/* КОРЗИНА MEGA MENU */}
+                            <div className={`Header_cart_menu ${isCartOpen ? 'active' : ''}`}>
+                                {/* ИКОНКА КОРЗИНЫ */}
+                                <button
+                                    className="Header_cart_icon"
+                                    onClick={toggleCart}
+                                    aria-label="Корзина"
+                                >
+                                    <img src={Market} alt="Корзина" />
+                                </button>
+
+                                {/* ✅ КОНТЕНТ КОРЗИНЫ - WhiteGalochka ПЕРЕД заголовком */}
+                                <div className="Header_cart_mega">
+                                    {/* ✅ WhiteGalochka + Заголовок (строка) */}
+                                    <div className="Header_cart_header_row">
+                                        {/* КНОПКА НАЗАД - ТОЛЬКО при оформлении */}
+                                        {isCheckout && (
+                                            <button
+                                                className="Header_cart_back"
+                                                onClick={(e) => {
+                                                    console.log('🔙 НАЖАТА! isCheckout был:', isCheckout); // ✅ DEBUG
+                                                    e.stopPropagation(); // ✅ БЛОКИРУЕМ всплытие
+                                                    e.preventDefault();  // ✅ БЛОКИРУЕМ навигацию
+                                                    goBackToCart();
+                                                    console.log('🔙 setIsCheckout(false) вызвана'); // ✅ DEBUG
+                                                }}
+                                                aria-label="Назад в корзину"
+                                            >
+                                                <img src={WhiteGalochka} alt="Назад" />
+                                            </button>
+                                        )}
+                                        <div className="Header_cart_title_wrapper">
+                                            <h2 className="Header_cart_title">
+                                                {isCheckout ? 'ОФОРМЛЕНИЕ' : 'КОРЗИНА'}
+                                            </h2>
+                                        </div>
+                                    </div>
+
+                                    <div className="Header_divider"></div>
+
+                                    {/* КРЕСТИК ДЛЯ ЗАКРЫТИЯ */}
+                                    <button
+                                        className="Header_cart_close"
+                                        onClick={closeCart}
+                                        aria-label="Закрыть корзину"
+                                    >
+                                        <span></span>
+                                        <span></span>
+                                    </button>
+                                </div>
+                            </div>
 
                             {/* MEGA MENU БЛОК - DESKTOP */}
                             <div className={`Header_mega_menu ${isMenuOpen ? 'active' : ''}`} ref={menuRef}>
-                                {/* ТАБЫ */}
                                 <div className="Header_tabs">
                                     {/* Каталог */}
                                     <div
@@ -172,7 +220,6 @@ const Header = () => {
                                         onMouseLeave={handleTabLeave}
                                     >
                                         <a href="/catalog" className="Header_tab">Каталог</a>
-
                                         {isMenuOpen && hoveredTab === 'catalog' && (
                                             <div
                                                 className="Header_tab_dropdown"
@@ -191,7 +238,6 @@ const Header = () => {
                                         onMouseLeave={handleTabLeave}
                                     >
                                         <a href="/tonics" className="Header_tab">Наши тоники</a>
-
                                         {isMenuOpen && hoveredTab === 'tonics' && (
                                             <div
                                                 className="Header_tab_dropdown"
@@ -212,7 +258,6 @@ const Header = () => {
                                         onMouseLeave={handleTabLeave}
                                     >
                                         <span className="Header_tab">Информация</span>
-
                                         {isMenuOpen && hoveredTab === 'info' && (
                                             <div
                                                 className="Header_tab_dropdown"
@@ -227,7 +272,6 @@ const Header = () => {
                                     </div>
                                 </div>
 
-                                {/* РАЗДЕЛИТЕЛЬ перед крестиком */}
                                 <div className="Header_divider"></div>
 
                                 {/* БУРГЕР/КРЕСТИК СПРАВА */}
@@ -246,7 +290,15 @@ const Header = () => {
                 </div>
             </header>
 
-            {/* MOBILE NAV MENU - ВЫНЕСЕНО ВНЕ HEADER */}
+            {/* ВЫПАДАЮЩАЯ КОРЗИНА */}
+            <Cart
+                isOpen={isCartOpen}
+                onClose={closeCart}
+                isCheckout={isCheckout}      // ← Cart увидит false
+                setIsCheckout={setIsCheckout}
+            />
+
+            {/* MOBILE NAV MENU */}
             {isMenuOpen && (
                 <nav className="Header_mobile_nav" ref={mobileNavRef}>
                     <div className="Header_mobile_nav_item">
@@ -320,8 +372,6 @@ const Header = () => {
                     </div>
                 </nav>
             )}
-
-            <Cart isOpen={isCartOpen} onClose={closeCart} />
         </>
     );
 };

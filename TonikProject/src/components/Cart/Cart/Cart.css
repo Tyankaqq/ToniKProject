@@ -1,762 +1,984 @@
-.Cart_left_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3.13vw;
-}
-
-.Cart_close_tablet {
-    display: none;
-}
-
-.Cart_close_desktop {
-    display: block;
-}
-
-.Cart_overlay {
+/* --- Контейнер и Оверлей --- */
+.Cart_dropdown_container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--clr-bg);
-    backdrop-filter: blur(30px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 998;
+    z-index: 1100;
 }
 
-.Cart_overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.Cart {
-    position: fixed;
-    top: -100%;
-    left: 0;
+.Cart_backdrop {
+    position: absolute;
     width: 100%;
-    height: auto;
-    max-height: 90vh;
-    background: var(--clr-bg);
-    backdrop-filter: blur(30px);
-    transition: top 0.4s ease;
-    z-index: 999;
-    overflow: hidden;
-}
-
-.Cart.active {
-    top: 0;
-}
-
-.Cart_wrapper {
-    display: flex;
-    gap: 5.21vw;
-    padding: 5.13vw 0;
-}
-
-.Cart_left {
-    flex: 0 0 45%;
-    display: flex;
-    flex-direction: column;
-}
-
-.Cart_title {
-    font-size: 2.60vw;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: var(--clr-white);
-    margin: 0 0 1.6vw 0;
-}
-
-.Cart_items_wrapper {
-    position: relative;
-    flex: 1;
-    margin-bottom: 2.08vw;
-}
-
-.Cart_items {
-    display: flex;
-    flex-direction: column;
-    gap: 1.04vw;
-    max-height: 35vw;
-    overflow-y: auto;
-    padding-right: 1.04vw;
-    scrollbar-width: none;
-}
-
-.Cart_items::-webkit-scrollbar {
-    display: none;
-}
-
-.Cart_item {
-    display: flex;
-    gap: 1.04vw;
-    padding: 0;
+    height: 100%;
     background: transparent;
-    position: relative;
 }
 
-.Cart_item_image {
-    width: 6.25vw;
-    height: 7.71vw;
-    border-radius: 0.52vw;
+.Cart_panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(100deg, rgba(69, 69, 69, 0.40) 3.64%, rgba(0, 0, 0, 0.40) 86.15%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.30);
     overflow: hidden;
+    animation: slideDownCart 0.3s ease-out forwards;
+}
+
+@keyframes slideDownCart {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.Cart_panel_body {
+    flex: 1;
+    position: relative; /* ✅ Для наслоения кнопки */
+    overflow: hidden;
+    padding: 1.5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ✅ СКРОЛЛ ТОЛЬКО ВНУТРИ КОРЗИНЫ */
+.Scene_Cart {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.Cart_items_scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.5vw; /* Для скроллбара */
+    margin-bottom: 4vw; /* Отступ под кнопку */
+}
+
+.Cart_item_card {
+    display: flex;
+    gap: 1.5vw;
+
+    border-radius: 0.8vw;
+    margin-bottom: 1.5vw;
+}
+
+.Cart_item_img {
+    width: 11.4vw;
+    height: 12.2vw;
+    object-fit: cover;
+    border-radius: 0.5vw;
     flex-shrink: 0;
 }
 
-.Cart_item_image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.Cart_item_info {
+.Cart_item_content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 0.8vw;
 }
 
-.Cart_item_name {
-    font-size: 1.1vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: var(--clr-white);
-    margin: 0 0 1.04vw 0;
-}
-
-.Cart_item_controls {
+.Cart_item_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.Cart_item_quantity {
-    display: flex;
-    align-items: center;
-    gap: 0.52vw;
-    background: transparent;
-    border: 0.05vw solid var(--clr-white);
-    border-radius: 2.08vw;
-    padding: 0.52vw 1.56vw;
-    width: 14.06vw;
-    height: 2.19vw;
-    justify-content: space-between;
-}
-
-.Cart_item_quantity_btn {
-    background: transparent;
-    border: none;
-    color: var(--clr-white);
-    font-size: 1.25vw;
-    cursor: pointer;
-    padding: 0;
-    width: 1.56vw;
-    height: 1.56vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease;
-}
-
-.Cart_item_quantity_btn:hover {
-    opacity: 0.7;
-}
-
-.Cart_item_quantity_value {
-    font-size: 0.94vw;
-    color: var(--clr-white);
-    min-width: 2.08vw;
-    text-align: center;
+    margin-bottom: 0.5vw;
 }
 
 .Cart_item_price {
-    font-size: 0.94vw;
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--clr-white);
-}
-
-.Cart_item_remove {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: transparent;
-    border: none;
-    color: var(--clr-white);
-    font-size: 1.25vw;
-    cursor: pointer;
-    padding: 0;
-    width: 1.04vw;
-    height: 1.04vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease;
-}
-
-.Cart_item_remove:hover {
-    opacity: 0.7;
-}
-
-.Cart_scrollbar {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 0.21vw;
-    height: 100%;
-}
-
-.Cart_scrollbar_track {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 5.21vw;
-    position: relative;
-}
-
-.Cart_scrollbar_thumb {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 30%;
-    background: var(--clr-white);
-    border-radius: 5.21vw;
-}
-
-.Cart_total {
-    display: flex;
-    align-items: center;
-    gap: 0.52vw;
-    padding-top: 1.04vw;
-}
-
-.Cart_total_label {
-    font-size: 1.46vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: var(--clr-white);
-}
-
-.Cart_total_value {
-    font-size: 1.30vw;
-    font-weight: 400;
-    letter-spacing: -0.05em;
-    line-height: 110%;
-    color: var(--clr-white);
-}
-
-.Cart_right {
-    flex: 0 0 45%;
-}
-
-.Cart_form_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2.86vw;
-}
-
-.Cart_form_title {
-    font-size: 2.60vw;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: var(--clr-white);
+    color: #FFF; /* ✅ Белый вместо голубого */
+    font-size: 1.65vw;
+    font-weight: 600;
     margin: 0;
 }
 
-.Cart_close {
-    width: 1.20vw;
-    height: 1.20vw;
-    background: transparent;
-    border: none;
+/* КНОПКА УДАЛЕНИЯ 35x35 с фоном */
+.Cart_delete_btn {
+    width: 1.82vw; /* ✅ 35px = 1.82vw */
+    height: 1.82vw; /* ✅ 35px = 1.82vw */
+    background: rgba(255, 255, 255, 0.15); /* ✅ Фон добавлен */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* ✅ Рамка */
     cursor: pointer;
     padding: 0;
-    transition: opacity 0.3s ease;
-}
-
-.Cart_close:hover {
-    opacity: 0.7;
-}
-
-.Cart_close svg {
-    width: 100%;
-    height: 100%;
-}
-
-.Cart_form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.04vw;
-}
-
-.Cart_form_row {
-    display: flex;
-    gap: 1.04vw;
-}
-
-.Cart_form_input,
-.Cart_form_select {
-    width: 21.61vw;
-    height: 2.19vw;
-    padding: 0.5vw 1.04vw;
-    background: var(--clr-white);
-    border: none;
-    border-radius: 10.42vw;
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: #000;
-    outline: none;
-    flex-shrink: 0;
-}
-
-.Cart_form_input::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.Cart_form_select_wrapper {
-    position: relative;
-    width: 21.61vw;
-    height: 2.19vw;
-    flex-shrink: 0;
-}
-
-.Cart_form_select {
-    width: 100%;
-    appearance: none;
-    cursor: pointer;
-    padding-right: 2.60vw;
-}
-
-.Cart_form_select_arrow {
-    position: absolute;
-    right: 1.04vw;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    width: 0.63vw;
-    height: 0.42vw;
-}
-
-.Cart_form_checkbox {
-    display: flex;
-    align-items: center;
-    gap: 0.52vw;
-    cursor: pointer;
-    margin-top: 0.52vw;
-}
-
-.Cart_form_checkbox input {
-    display: none;
-}
-
-.Cart_form_checkbox_custom {
-    width: 0.94vw;
-    height: 0.94vw;
-    border: 0.10vw solid var(--clr-white);
-    border-radius: 0.21vw;
-    flex-shrink: 0;
-    position: relative;
-    background: transparent;
-}
-
-.Cart_form_checkbox input:checked + .Cart_form_checkbox_custom::after {
-    content: '✓';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--clr-white);
-    font-size: 0.73vw;
-}
-
-.Cart_form_checkbox_text {
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 110%;
-    color: var(--clr-white);
-}
-
-.Cart_form_checkbox_text a {
-    color: var(--clr-white);
-    text-decoration: underline;
-}
-
-.Cart_form_submit {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 2.19vw;
-    padding: 0.94vw;
-    background: rgba(205, 255, 255, 1);
+    border-radius: 0.33vw; /* ✅ Скругление */
+    transition: all 0.3s ease;
+}
+
+.Cart_delete_btn:hover {
+    background: rgba(255, 0, 0, 0.3); /* Красный hover */
+    border-color: rgba(255, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.Cart_delete_btn img {
+    width: 1.35vw; /* ✅ 26px = 1.35vw */
+    height: 1.35vw; /* ✅ 26px = 1.35vw */
+    object-fit: contain;
+    /* ✅ Убрал filter - иконка в своем цвете */
+}
+
+.Cart_item_name {
+    color: #FFF;
+    font-size: 1.3vw;
+    font-weight: 500;
+    margin: 0;
+    line-height: 110.00000000000001%;
+}
+
+.Cart_item_description {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.3vw;
+    line-height: 110.00000000000001%;
+    margin: 0;
+}
+
+.Cart_item_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1vw;
+
+}
+
+.Cart_stock {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95vw;
+}
+
+.Cart_counter {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    padding: 0;
+    height: 2vw;
+    border-radius: 0.3vw;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.Cart_counter button {
+    width: 2.2vw;
+    height: 2.2vw;
+    background: none;
     border: none;
-    border-radius: 2.08vw;
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    color: #000;
+    color: #FFF;
+    font-size: 1.1vw;
+    font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.3s ease;
-    margin-top: 0.52vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
 }
 
-.Cart_form_submit:hover {
-    opacity: 0.8;
+.Cart_counter button:hover {
+    opacity: 0.7;
 }
 
+.Cart_counter span {
+    color: #FFF;
+    font-size: 1vw;
+    font-weight: 500;
+    min-width: 2.5vw;
+    text-align: center;
+}
+
+/* ✅ ФИКСИРОВАННАЯ КНОПКА 100% x 56px */
+.Cart_btn_fixed {
+    position: absolute;
+    bottom: 1.5vw;
+    left: 1.5vw;
+    right: 1.5vw;
+    width: auto;
+    height: 2.92vw; /* 56px */
+    border-radius: 1.5vw;
+    border: none;
+    background: linear-gradient(135deg, #CDFFFF, #A0F0FF);
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0 1.2vw;
+}
+
+.Cart_btn_fixed:hover {
+    transform: translateY(-0.1vw);
+    box-shadow: 0 0.5vw 1.5vw rgba(205, 255, 255, 0.4);
+}
+
+.Cart_btn_content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.Cart_btn_text {
+    font-size: 1.3vw; /* ✅ 1.3vw */
+
+    font-weight: 400;
+    color: #000;
+    margin-right: auto; /* ✅ СЛЕВА */
+}
+
+.Cart_btn_total {
+    display: flex;
+    justify-content: flex-end; /* ✅ СПРАВА */
+    font-size: 1.3vw; /* ✅ 1.3vw */
+    font-weight: 500;
+    color: black;
+    margin-left: auto;
+}
+
+.Cart_footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1.5vw;
+}
+
+
+
+.Cart_btn_next {
+    width: 100%;
+    padding: 1.2vw;
+    border-radius: 3vw;
+    border: none;
+    background: linear-gradient(135deg, #CDFFFF, #A0F0FF);
+    color: #000;
+    font-size: 1vw;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.Cart_btn_next:hover {
+    transform: translateY(-0.1vw);
+    box-shadow: 0 0.5vw 1.5vw rgba(205, 255, 255, 0.4);
+}
+
+/* ФОРМА ОФОРМЛЕНИЯ */
+.Scene_Checkout {
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.Scene_Cart, .Scene_Checkout {
+    min-height: 100%;
+    width: 100%;
+}
+.Cart_panel_body .Scene_Cart {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 1;
+}
+.Cart_panel_body .Scene_Checkout {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 1;
+}
+.Cart_panel_body:has(.Scene_Cart:only-child) .Scene_Checkout,
+.Cart_panel_body:has(.Scene_Checkout:only-child) .Scene_Cart {
+    display: none !important;
+}
+.checkout_total {
+    color: #FFF;
+    font-size: 1.2vw;
+    font-weight: 500;
+    margin-bottom: 2vw;
+    padding: 1vw 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.Cart_back_btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1vw;
+    cursor: pointer;
+    margin-bottom: 1.5vw;
+    padding: 0.5vw 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.Cart_back_btn:hover {
+    color: #FFF;
+}
+
+/* ✅ ВСЕ ИНПУТЫ В КОЛОНА */
+.Cart_form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55vw;
+    flex: 1;
+}
+
+/* ✅ УБРАНА .Form_row - ВСЕ ПОДРЯД */
+.Cart_form input,
+.Cart_form select {
+    width: 33.35vw; /* ✅ 625px = 32.55vw при 1920px */
+    height: 2.92vw; /* ✅ 56px = 2.92vw */
+    padding: 0 1.5vw;
+    border-radius: 0.33vw;
+    border: 0.052vw solid rgba(255, 255, 255, 0.4); /* ✅ Новая граница */
+    background: rgba(31, 31, 31, 0.9); /* ✅ Новый фон */
+    font-size: 1.3vw;
+    color: #FFF;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.Cart_form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.Cart_form input:focus,
+.Cart_form select:focus {
+    border-color: #CDFFFF;
+    box-shadow: 0 0 0 0.1vw rgba(205, 255, 255, 0.3);
+}
+
+/* ✅ ПРИНИМАЮ УСЛОВИЯ - ПОЧИНЕННО */
+.Form_checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.33vw;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3vw;
+    cursor: pointer;
+    margin: 1vw 0;
+    user-select: none;
+}
+
+.checkbox_box {
+    width: 0.8vw;
+    height: 0.8vw;
+    border: 0.052vw solid rgba(255, 255, 255, 0.4);
+    border-radius: 0.3vw;
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 0.4vw;
+    background: rgba(31, 31, 31, 0.9); /* ✅ Тот же фон */
+    transition: all 0.3s ease;
+}
+
+.checkbox_box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #CDFFFF;
+    transform: translate(-50%, -50%);
+    border-radius: 0.15vw;
+    transition: all 0.2s ease;
+}
+
+.Form_checkbox input:checked + .checkbox_box {
+    border-color: #CDFFFF;
+    background: rgba(205, 255, 255, 0.2);
+}
+
+.Form_checkbox input:checked + .checkbox_box::after {
+    width: 0.7vw;
+    height: 0.7vw;
+}
+
+.Form_checkbox input {
+    display: none; /* ✅ Скрываем стандартный checkbox */
+}
+
+/* КНОПКА ОТПРАВИТЬ */
+.Cart_btn_next {
+    width: 33.35vw; /* 625px */
+    height: 2.92vw; /* 56px */
+    border-radius: 1.5vw;
+    border: none;
+    background: linear-gradient(135deg, #CDFFFF, #A0F0FF);
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1vw;
+    display: flex; /* ✅ Flex для углов */
+    align-items: center;
+    padding: 0 1.2vw;
+}
+
+.Cart_btn_next:hover {
+    transform: translateY(-0.1vw);
+    box-shadow: 0 0.5vw 1.5vw rgba(205, 255, 255, 0.4);
+}
+.Cart_btn_next .Cart_btn_content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.Cart_btn_next .Cart_btn_text {
+    font-size: 1.3vw; /* ✅ 1.3vw */
+
+    font-weight: 400;
+    color: #000;
+    margin-right: auto; /* ✅ СЛЕВА */
+}
+
+.Cart_btn_next .Cart_btn_total {
+    display: flex;
+    justify-content: flex-end; /* ✅ СПРАВА */
+    font-size: 1.3vw; /* ✅ 1.3vw */
+    font-weight: 500;
+    color: black;
+    margin-left: auto;
+}
+
+/* ============================================
+   АДАПТИВ И РАЗМЕРЫ (Четко по ТЗ)
+   ============================================ */
+
+/* Desktop (≥1025px) -> 705x913 */
+@media (min-width: 1025px) {
+    .Cart_panel {
+        top: 4.7vw;
+        right: 8vw;
+        width: 36.6vw;
+        height: 46.5vw;
+        border-radius: 0.52vw;
+    }
+    .Cart_panel_title { font-size: 1.4vw; }
+}
+
+
+/* ============================================
+   TABLET (768px - 1024px)
+
+   ============================================ */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .Cart_scrollbar_track {
-        display: none;
+    /* ✅ ОСНОВНОЙ КОНТЕЙНЕР КОРЗИНЫ */
+    .Cart_panel {
+        top: 10.46vw;
+        right: 12.6vw;
+        width: 70vw;
+        height: 92vw;
+        border-radius: 1.30vw;
+        padding: 3.3vw;
     }
 
-    .Cart_close_desktop {
-        display: none;
+    /* ✅ КАРТОЧКА ТОВАРА (из Group 146405: 625x228px) */
+    .Cart_item_card {
+        gap: 1.3vw;          /* 1.5vw → 3vw */
+        border-radius: 1.3vw; /* 0.8vw → 1.3vw */
+        margin-bottom: 3.9vw; /* 1.5vw → 3.9vw */
     }
 
-    .Cart_close_tablet {
-        display: block;
+    /* ✅ ИЗОБРАЖЕНИЕ ТОВАРА (Rectangle 478: 214x228px) */
+    .Cart_item_img {
+        width: 22.8vw;       /* 214px из 768px */
+        height: 22.7vw;      /* 228px из 768px */
+        border-radius: 1.95vw; /* 15px */
     }
 
-    .Cart_wrapper {
-        flex-direction: column;
-        gap: 5.21vw;
-        padding: 12.21vw 0;
+    /* ✅ КОНТЕНТ КАРТОЧКИ */
+    .Cart_item_content {
+        gap: 2.1vw;          /* 0.8vw → 2.1vw */
     }
 
-    .Cart_left,
-    .Cart_right {
-        flex: none;
-        width: 100%;
-    }
-
-    .Cart_title,
-    .Cart_form_title {
-        font-size: 4.30vw;
-    }
-
-    .Cart_close {
-        width: 2.60vw;
-        height: 2.60vw;
-    }
-
-    .Cart_items {
-        padding: 0;
-        max-height: 50vw;
-    }
-
-    .Cart_item {
-        gap: 2.08vw;
-        padding: 0;
-    }
-
-    .Cart_item_image {
-        width: 12.50vw;
-        height: 15.42vw;
-    }
-
-    .Cart_item_name {
-        font-size: 1.82vw;
-    }
-
-    .Cart_item_quantity {
-        width: 28vw;
-        height: 4.69vw;
-        padding: 1.04vw 3.13vw;
-    }
-
-    .Cart_item_quantity_btn {
-        font-size: 2.60vw;
-        width: 3.13vw;
-        height: 3.13vw;
-    }
-
-    .Cart_item_quantity_value {
-        font-size: 1.82vw;
-        min-width: 4.17vw;
-    }
-
+    /* ✅ ЦЕНА (5 000 ₽: 31px fontSize) */
     .Cart_item_price {
-        font-size: 1.82vw;
+        font-size: 3.15vw;      /* 31px из 768px */
+        font-weight: 500;    /* Medium */
     }
 
-    .Cart_item_remove {
-        font-size: 2.60vw;
-        width: 2.60vw;
-        height: 2.60vw;
+    /* ✅ НАЗВАНИЕ (Анфельция Тобучинская: 24px) */
+    .Cart_item_name {
+        font-size: 2.6vw;    /* 24px из 768px */
+        line-height: 110%;
+        font-weight: 400;
     }
 
-    .Cart_total_label {
-        font-size: 2.60vw;
+    /* ✅ ОПИСАНИЕ (Обыкновенная: 24px, opacity 40%) */
+    .Cart_item_description {
+        font-size: 2.6vw;    /* 24px */
+        color: rgba(255,255,255,0.4);
     }
 
-    .Cart_total_value {
-        font-size: 2.34vw;
+    /* ✅ КНОПКА УДАЛЕНИЯ (Frame 146292: 35x35px) */
+    .Cart_delete_btn {
+        width: 4.6vw;        /* 35px */
+        height: 4.6vw;
+        border-radius: 0.65vw; /* 5px */
+    }
+
+    .Cart_delete_btn img {
+        width: 3.4vw;        /* 26px */
+        height: 3.4vw;
+    }
+
+    /* ✅ КНОПКА СЧЕТЧИКА (Кнопка добавления товара: 136x35px) */
+    .Cart_counter {
+        height: 4.6vw;       /* 35px */
+        border-radius: 0.65vw; /* 5px */
+        gap: 1.3vw;
+    }
+
+    .Cart_counter button {
+        width: 4.6vw;        /* 35px */
+        height: 4.6vw;
+        font-size: 2.6vw;    /* 20px */
+    }
+
+    .Cart_counter span {
+        font-size: 2.3vw;    /* 18px из текста "1" */
+        min-width: 3.25vw;
+    }
+
+    /* ✅ НАЛИЧИЕ (В наличии 10 шт.: 18px) */
+    .Cart_stock {
+        font-size: 2.1vw;    /* 18px */
+        color: rgba(255,255,255,0.4);
+    }
+
+    /* ✅ ПАДДИНГ ВНУТРИ КОРЗИНЫ */
+    .Cart_panel_body {
+        padding: 0;      /* Удвоено */
+    }
+
+    /* ✅ ФИКСИРОВАННАЯ КНОПКА */
+    .Cart_btn_fixed {
+        width: 100%;
+        bottom: 0.3vw;
+        left: 0vw;
+        right: 3.9vw;
+        height: 5.5vw;
+        border-radius: 3.9vw;
+        padding: 0 3vw;
+    }
+
+    .Cart_btn_text,
+    .Cart_btn_total {
+        font-size: 2.6vw;    /* 26px */
+    }
+
+    /* ✅ ФОРМА ОФОРМЛЕНИЯ */
+    .Cart_form input,
+    .Cart_form select {
+        width: 81.5vw;       /* 625px из 768px */
+        height: 7.6vw;       /* 56px → больше */
+        padding: 3.9vw 3.9vw;
+        font-size: 3.4vw;    /* 26px */
+        border-radius: 0.65vw;
+    }
+
+    /* ✅ ЧЕКБОКС */
+    .Form_checkbox {
+        font-size: 3.4vw;
+        gap: 1.3vw;
+        margin: 2.6vw 0;
+    }
+
+    .checkbox_box {
+        width: 2.1vw;
+        height: 2.1vw;
+        margin-top: 1vw;
+    }
+
+    /* ✅ КНОПКА ОТПРАВИТЬ */
+    .Cart_btn_next {
+        width: 81.5vw;       /* 625px */
+        height: 7.6vw;
+        border-radius: 3.9vw;
+        padding: 0 3.9vw;
+        margin-top: 2.6vw;
+        font-size: 3.4vw;
+    }
+
+    /* ✅ СКРОЛЛБАР */
+    .Cart_items_scroll {
+
+        margin-bottom: 9.8vw; /* Больше места под кнопку */
+    }
+
+    /* ✅ Кнопка НАЗАД */
+    .Cart_back_btn {
+        font-size: 2.6vw;
+        margin-bottom: 3.9vw;
+        padding: 1.3vw 0;
+    }
+    .Scene_Checkout {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.3vw;
+        height: 100%;
+        align-items: center; /* Центрируем инпуты */
+    }
+
+    /* ✅ СТИЛИ ДЛЯ INPUT И SELECT (САМИ ПОЛЯ) */
+    .Cart_form input,
+    .Cart_form select {
+        width: 63vw;      /* Ширина поля */
+        height: 5.47vw;   /* Высота поля */
+        padding: 0 2vw;
+        border-radius: 1.3vw;
+        border: 0.13vw solid rgba(255,255,255,0.4);
+        background: rgba(31,31,31,0.9);
+        font-size: 2.6vw;
+        color: #FFF;
+        outline: none;
+        appearance: none; /* Убирает стандартную стрелку браузера */
+        -webkit-appearance: none;
+    }
+
+    /* ✅ ОБЕРТКА ДЛЯ SELECT (ИСПРАВЛЕНИЕ) */
+    /* Она должна быть просто контейнером, без рамок и фона */
+    .Form_select {
+        position: relative;
+        width: 63vw; /* Ширина как у инпутов */
+        height: 5.47vw;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+    }
+
+    /* Убеждаемся, что селект внутри занимает все место */
+    .Form_select select {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Добавляем кастомную стрелочку CSS-ом, так как стандартную убрали */
+    .Form_select::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 2vw;
+        width: 0.8vw;
+        height: 0.8vw;
+        border-right: 0.2vw solid #FFF;
+        border-bottom: 0.2vw solid #FFF;
+        transform: translateY(-70%) rotate(45deg);
+        pointer-events: none; /* Чтобы клик проходил сквозь стрелку */
+    }
+
+    /* ✅ КНОПКА "ЗАКАЗАТЬ" */
+    .Cart_btn_next {
+        width: 63vw;
+        height: 5.47vw;
+        padding: 0 2vw;
+        border-radius: 1.3vw;
+        margin-top: 1.3vw;
+        background: #CDFFFF;
+        color: #000;
+        font-size: 2.6vw;
+        font-weight: 500;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Центрируем контент */
+    }
+
+    .Cart_btn_content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* ✅ ЧЕКБОКС */
+    .Form_checkbox {
+        width: 63vw; /* Выравниваем по ширине инпутов */
+        font-size: 2.6vw;
+        gap: 1.3vw;
+        margin: 1.3vw 0;
+        align-items: flex-start;
+    }
+
+    .checkbox_box {
+        width: 2.34vw;
+        height: 2.34vw;
+        margin-top: 0.3vw;
+    }
+
+    /* ✅ КНОПКА НАЗАД */
+    .Cart_back_btn {
+        width: 63vw; /* Выравниваем по ширине контента */
+        font-size: 2.6vw;
+        padding: 1.3vw 0;
+        margin-bottom: 1.3vw;
+        color: rgba(255,255,255,0.7);
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 1vw;
     }
 
     .Cart_form {
-        gap: 2.60vw;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Центрируем все элементы формы */
+        gap: 1.3vw;
     }
 
-    .Cart_form_row {
-        flex-direction: row;
-        gap: 2.60vw;
+    .Form_row {
+        display: flex;
+        flex-direction: column; /* На планшете лучше в колонку, если места мало, или row */
+        gap: 1.3vw;
+        width: 63vw; /* Ширина контейнера */
     }
-
-    .Cart_form_input,
-    .Cart_form_select {
-        width: 46.74vw;
-        height: 5.47vw;
-        padding: 1.30vw 2.08vw;
-        font-size: 2.08vw;
-        flex-shrink: 0;
+    .Cart_btn_next .Cart_btn_text{
+        font-size: 2.6vw;
     }
-
-    .Cart_form_select_wrapper {
-        width: 46.74vw;
-        height: 5.47vw;
-        flex-shrink: 0;
+    .Cart_btn_next .Cart_btn_total{
+        font-size: 2.6vw;
     }
-
-    .Cart_form_select_arrow {
-        width: 1.56vw;
-        height: 1.04vw;
-        right: 2.08vw;
-    }
-
-    .Cart_form_checkbox {
-        gap: 1.56vw;
-    }
-
-    .Cart_form_checkbox_custom {
-        width: 2.08vw;
-        height: 2.08vw;
-    }
-
-    .Cart_form_checkbox input:checked + .Cart_form_checkbox_custom::after {
-        font-size: 1.56vw;
-    }
-
-    .Cart_form_checkbox_text {
-        font-size: 2.08vw;
-    }
-
-    .Cart_form_submit {
-        height: 5.47vw;
-        padding: 1.56vw;
-        font-size: 2.08vw;
+    .Header_cart_back{
+        width: 4vw;
+        height: 2vw;
     }
 }
 
+/* Mobile (< 767px) -> 320x660 */
+/* ============================================
+   MOBILE (до 767px)
+   Целевой размер: ~320px x 660px
+   ============================================ */
 @media (max-width: 767px) {
-    .Cart_scrollbar_track {
-        display: none;
+    /* ✅ ОСНОВНОЙ КОНТЕЙНЕР КОРЗИНЫ */
+    .Cart_panel {
+        top: 16.44vw;
+        right: 5.56vw;
+        width: 88.8vw; /* ~320px на экране 360px */
+        height: 170vw; /* ~612px, можно увеличить до 183vw для 660px */
+        max-height: 80vh; /* Ограничение по высоте экрана */
+        border-radius: 3vw;
+        padding: 5vw;
     }
 
-    .Cart {
-        max-height: 100vh;
-        overflow-y: auto;
-    }
-
-    .Cart_wrapper {
-        flex-direction: column;
-        gap: 8.33vw;
-        padding: 21.56vw 0;
-    }
-
-    .Cart_left,
-    .Cart_right {
-        flex: none;
-        width: 100%;
-    }
-
-    .Cart_title {
-        font-size: 7vw;
-    }
-
-    .Cart_form_title {
-        font-size: 7vw;
-    }
-
-    .Cart_close_desktop {
-        display: none;
-    }
-
-    .Cart_close_tablet {
-        display: block;
-    }
-
-    .Cart_left_header {
-        margin-bottom: 5.56vw;
-    }
-
-    .Cart_close {
-        width: 4.44vw;
-        height: 4.44vw;
-    }
-
-    .Cart_items_wrapper {
-        margin-bottom: 5.56vw;
-    }
-
-    .Cart_items {
-        max-height: none;
-        gap: 5.56vw;
-    }
-
-    .Cart_item {
-        gap: 0;
-        padding: 0;
-        flex-direction: row;
-        align-items: flex-start;
-        position: relative;
-    }
-
-    .Cart_item_image {
-        width: 43.06vw;
-        height: 47.22vw;
-        border-radius: 2.78vw;
-        flex-shrink: 0;
-    }
-
-    .Cart_item_info {
-        flex: 1;
-        padding-left: 2.78vw;
-        display: flex;
-        flex-direction: column;
-        gap: 2.78vw;
-    }
-
-    .Cart_item_name {
-        font-size: 4.4vw;
-        font-weight: 400;
-        letter-spacing: -0.03em;
-        line-height: 110%;
-        margin: 0;
-        padding-right: 8.33vw;
-    }
-
-    .Cart_item_price {
-        font-size: 4.4vw;
-        font-weight: 400;
-        letter-spacing: -0.03em;
-        text-transform: uppercase;
-        margin: 0;
-    }
-
-    .Cart_item_controls {
-        justify-content: space-between;
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        gap: 19vw;
-        width: 100%;
-    }
-
-    .Cart_item_quantity {
-        width: 100%;
-        max-width: 48.61vw;
-        height: 10vw;
-        padding: 1.67vw 3.33vw;
-        border-width: 0.28vw;
-        border-radius: 5.56vw;
-    }
-
-    .Cart_item_quantity_btn {
-        font-size: 4.44vw;
-        width: 4.44vw;
-        height: 4.44vw;
-    }
-
-    .Cart_item_quantity_value {
-        font-size: 3.33vw;
-        min-width: 6.67vw;
-    }
-
-    .Cart_item_remove {
-        font-size: 4.44vw;
-        width: 3.33vw;
-        height: 3.33vw;
-        top: 0;
-        right: 0;
-    }
-
-    .Cart_total {
-        gap: 2.78vw;
-        margin: 0;
-        padding: 0;
-    }
-
-    .Cart_total_label {
-        font-size: 5.56vw;
-    }
-
-    .Cart_total_value {
+    .Cart_panel_title {
         font-size: 5vw;
     }
 
-    .Cart_form {
-        gap: 2.78vw;
+    .Cart_panel_close {
+        width: 6vw;
+        height: 6vw;
     }
 
-    .Cart_form_row {
+    /* ✅ КАРТОЧКИ ТОВАРОВ */
+    .Cart_item_card {
+        gap: 3vw;
+        border-radius: 3vw;
+        margin-bottom: 5vw;
+    }
+
+    .Cart_item_img {
+        width: 37vw;
+        height: 44vw;
+        border-radius: 2vw;
+    }
+
+    .Cart_item_content {
+        gap: 2vw;
+    }
+
+    .Cart_item_name {
+        font-size: 4.5vw;
+        line-height: 110%;
+    }
+
+    .Cart_item_description {
+        font-size: 4.5vw;
+    }
+    .Cart_stock{
+
+        font-size: 4vw;
+    }
+    .Cart_item_row{
         flex-direction: column;
-        gap: 2.78vw;
+        align-items: flex-start;
+        gap: 1.5vw;
+    }
+    .Cart_item_price {
+        font-size: 5.3vw;
+    }
+    .Cart_panel_body{
+        padding: 0;
     }
 
-    .Cart_form_input,
-    .Cart_form_select {
+    /* Кнопки управления товаром */
+    .Cart_delete_btn {
+        width: 8vw;
+        height: 8vw;
+        border-radius: 1.5vw;
+    }
+
+    .Cart_delete_btn img {
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .Cart_counter {
         width: 100%;
-        height: 11.67vw;
-        padding: 2.78vw 4.44vw;
-        font-size: 3.89vw;
-        border-radius: 20vw;
+        height: 8vw;
+        border-radius: 1.5vw;
+        gap: 8vw;
     }
 
-    .Cart_form_select_wrapper {
+    .Cart_counter button {
+        width: 8vw;
+        height: 8vw;
+        font-size: 5vw;
+    }
+
+    .Cart_counter span {
+        font-size: 4vw;
+        min-width: 5vw;
+    }
+
+    /* ✅ ФОРМА ОФОРМЛЕНИЯ (Логика как на планшете) */
+    .Scene_Checkout {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
+        height: 100%;
+        align-items: center; /* Центрируем инпуты */
+    }
+
+    .Cart_form {
         width: 100%;
-        height: 11.67vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3vw;
     }
 
-    .Cart_form_select_arrow {
-        width: 2.78vw;
-        height: 1.67vw;
-        right: 4.44vw;
+    /* ✅ СТИЛИ ДЛЯ ИНПУТОВ И СЕЛЕКТА */
+    .Cart_form input,
+    .Cart_form select {
+        width: 78vw;       /* Ширина полей */
+        height: 12vw;      /* Высота ~45px */
+        padding: 0 4vw;
+        border-radius: 3vw;
+        border: 0.3vw solid rgba(255,255,255,0.4);
+        background: rgba(31,31,31,0.9);
+        font-size: 4.5vw;
+        color: #FFF;
+        outline: none;
+        appearance: none;
+        -webkit-appearance: none;
     }
 
-    .Cart_form_checkbox {
-        gap: 2.22vw;
+    /* ✅ ОБЕРТКА СЕЛЕКТА (Исправление двойных границ) */
+    .Form_select {
+        position: relative;
+        width: 78vw;
+        height: 12vw;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
     }
 
-    .Cart_form_checkbox_custom {
-        width: 4.44vw;
-        height: 4.44vw;
+    .Form_select select {
+        width: 100%;
+        height: 100%;
     }
 
-    .Cart_form_checkbox input:checked + .Cart_form_checkbox_custom::after {
-        font-size: 3.33vw;
+    /* Кастомная стрелка для мобилки */
+    .Form_select::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 4vw;
+        width: 2vw;
+        height: 2vw;
+        border-right: 0.5vw solid #FFF;
+        border-bottom: 0.5vw solid #FFF;
+        transform: translateY(-70%) rotate(45deg);
+        pointer-events: none;
     }
 
-    .Cart_form_checkbox_text {
-        font-size: 3.33vw;
+    /* ✅ КНОПКА ЗАКАЗАТЬ */
+    .Cart_btn_next {
+        width: 78vw;
+        height: 12vw;
+        padding: 0 4vw;
+        border-radius: 3vw;
+        margin-top: 3vw;
+        font-size: 4.5vw;
     }
 
-    .Cart_form_submit {
-        height: 11.67vw;
-        padding: 3.33vw;
-        font-size: 3.89vw;
-        border-radius: 11.11vw;
+    .Cart_btn_next .Cart_btn_text,
+    .Cart_btn_next .Cart_btn_total {
+        font-size: 4.5vw;
+    }
+
+    /* ✅ КНОПКА ФИКСИРОВАННАЯ (В корзине) */
+    .Cart_btn_fixed {
+        width: 100%;
+        height: 10vw;
+        border-radius: 3vw;
+        padding: 0 5vw;
+        left: 0;
+        right: 5vw;
+        bottom: 5vw;
+    }
+
+    .Cart_btn_text,
+    .Cart_btn_total {
+        font-size: 4.5vw;
+    }
+
+    /* ✅ ЧЕКБОКС */
+    .Form_checkbox {
+        width: 78vw;
+        font-size: 4.5vw;
+        gap: 2.5vw;
+        margin: 2vw 0;
+    }
+
+    .checkbox_box {
+        width: 5vw;
+        height: 5vw;
+        border-width: 0.3vw;
+        margin-top: 0;
+    }
+
+    .Form_checkbox input:checked + .checkbox_box::after {
+        width: 3vw;
+        height: 3vw;
+    }
+
+    /* ✅ КНОПКА НАЗАД */
+    .Cart_back_btn {
+        width: 78vw;
+        font-size: 4vw;
+        padding: 2vw 0;
+        margin-bottom: 2vw;
+        gap: 2vw;
+    }
+
+    /* Отступ для скролла, чтобы контент не перекрывался кнопкой */
+    .Cart_items_scroll {
+        margin-bottom: 20vw;
+    }
+    .Header_cart_back{
+        display: none;
     }
 }
+
