@@ -125,6 +125,7 @@
 }
 
 .Header_cart_title {
+    font-family: 'Hikasami', sans-serif;
     font-size: 0.94vw; /* 18px */
     font-weight: 600;
     text-transform: uppercase;
