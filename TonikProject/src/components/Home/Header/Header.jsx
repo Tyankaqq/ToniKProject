@@ -77,12 +77,19 @@ const Header = () => {
     // Закрытие при клике вне меню
     useEffect(() => {
         const handleClickOutside = (event) => {
+            // Проверяем клик по кнопке бургера/меню
             const isClickInsideMenu = menuRef.current && menuRef.current.contains(event.target);
-            if (!isClickInsideMenu) {
+
+            // ✅ ДОБАВЛЕНО: Проверяем клик внутри самого выпадающего мобильного меню
+            const isClickInsideMobileNav = mobileNavRef.current && mobileNavRef.current.contains(event.target);
+
+            // Если клик НЕ в бургере И НЕ в мобильном меню — закрываем
+            if (!isClickInsideMenu && !isClickInsideMobileNav) {
                 setIsMenuOpen(false);
                 setHoveredTab(null);
             }
         };
+
         if (isMenuOpen) {
             document.addEventListener('mousedown', handleClickOutside);
         }
