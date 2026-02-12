@@ -1,5 +1,5 @@
 import Header from "../../components/Home/Header/Header.jsx";
-import Catalog from "../../components/Catalog/Catalog/Catalog.jsx";
+import {CatalogCategories} from "../../components/Catalog/Catalog/CatalogCategories.jsx";
 import '../../index.css'
 import FAQ from "../../components/Catalog/FAQ/FAQ.jsx";
 import {ContactForm} from "../../components/Home/ContactForm/ContactForm.jsx";
@@ -12,8 +12,8 @@ export const CatalogPage = () => {
         <>
             <Header />
             <main>
-                <div>
-                    <Catalog/>
+                <div style={{backgroundColor: 'rgba(31, 31, 31, 1)', borderRadius: ''}}>
+                    <CatalogCategories/>
                     <FAQ/>
                 </div>
                     <ContactForm/>
@@ -21,7 +21,7 @@ export const CatalogPage = () => {
                     <SeoText/>
                 </div>
             </main>
-            <div style={{backgroundColor: '#1e0d0d', borderRadius: ''}}>
+            <div style={{backgroundColor: 'rgba(31, 31, 31, 1)', borderRadius: ''}}>
                 <Footer />
             </div>
         </>
