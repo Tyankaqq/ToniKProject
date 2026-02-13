@@ -599,6 +599,9 @@
     .Partners_featured--2 .Partners_featured_content img{
         margin-bottom: 4.17vw;
     }
+    .Partners_grid:not(.Partners_grid--featured-double) .Partners_card:nth-child(n+4) {
+        display: none;
+    }
 }
 
 

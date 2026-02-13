@@ -8,7 +8,7 @@
 .faq__wrapper {
     position: relative;
     width: 100%;
-    min-height: 50vw;
+    min-height: 70vw;
 }
 
 .faq__title {
@@ -17,8 +17,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 2.6vw;
+    font-weight: 400;
+    font-size: 4.75vw;
     line-height: 110%;
     letter-spacing: -3%;
     text-transform: uppercase;
@@ -26,90 +26,178 @@
     margin: 0;
     text-align: center;
     z-index: 10;
-    width: 30vw;
+    width: 100%;
 }
 
 .faq-card {
     position: absolute;
-    border: 1px solid #999999;
-    background: linear-gradient(100deg, rgba(255, 255, 255, 0.10) 3.64%, rgba(153, 153, 153, 0.10) 86.15%);
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0.05) 3.64%, rgba(153, 153, 153, 0.05) 86.15%);
     border-radius: 1.1vw;
-    padding: 1.56vw;
+    padding: 1.1vw;
     display: flex;
     flex-direction: column;
     gap: 0.83vw;
     justify-content: space-between;
     backdrop-filter: blur(10px);
+    width: 27.08vw; /* 520px */
 }
 
-/* Размеры карточек */
-.faq-card--small {
-    width: 18vw;
-    height: 15vw;
-}
-
-.faq-card--medium {
-    width: 20vw;
-    height: 18vw;
-}
-
-.faq-card--large {
-    width: 24vw;
-    height: 22vw;
-}
-
-/* Позиционирование карточек вокруг заголовка */
-
-/* Карточка 1 - левый верх */
+/* Высота для каждой карточки */
 .faq-card-1 {
-    top: 0;
-    left: 0;
-}
-
-/* Карточка 2 - центр верх */
-.faq-card-2 {
-    top: 0;
-    left: 22vw;
-}
-
-/* Карточка 3 - правый верх и центр */
-.faq-card-3 {
+    height: 16vw;
     top: 5vw;
+    left: 4vw;
+}
+
+.faq-card-2 {
+    height: 14vw;
+    top: -4vw;
+    left: 29vw;
+}
+
+.faq-card-3 {
+    height: 18.35vw;
+    top: 0;
     right: 0;
 }
 
-/* Карточка 4 - левый низ */
 .faq-card-4 {
-    bottom: 0;
+    height: 17vw;
+    bottom: 6vw;
     left: 0;
 }
 
-/* Карточка 5 - центр низ */
 .faq-card-5 {
-    bottom: 0;
-    left: 20vw;
+    height: 12vw;
+    bottom: 16vw;
+    left: 45vw;
 }
 
-/* Карточка 6 - правый низ */
 .faq-card-6 {
-    bottom: 0;
-    right: 2vw;
+    height: 15vw;
+    bottom: -5vw;
+    right: 3vw;
 }
 
 .faq-card__question {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 1.25vw;
-    line-height: 130%;
+    font-weight: 600;
+    font-size: 1.65vw;
+    line-height: 110%;
     color: #ffffff;
     margin: 0;
+    text-transform: uppercase;
 }
 
 .faq-card__answer {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 0.86vw;
-    line-height: 140%;
+    font-size: 1.25vw;
+    line-height: 110%;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+
+
+.faq {
+                                                          width: 100%;
+                                                          padding: 5.21vw 0;
+                                                          background: var(--clr-bg);
+                                                          border-radius: 0 0 40px 40px;
+                                                      }
+
+.faq__wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 70vw;
+}
+
+.faq__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 4.75vw;
+    line-height: 110%;
+    letter-spacing: -3%;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+}
+
+.faq-card {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0.05) 3.64%, rgba(153, 153, 153, 0.05) 86.15%);
+    border-radius: 1.1vw;
+    padding: 1.1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.83vw;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    width: 27.08vw; /* 520px */
+}
+
+/* Высота для каждой карточки */
+.faq-card-1 {
+    height: 16vw;
+    top: 5vw;
+    left: 4vw;
+}
+
+.faq-card-2 {
+    height: 14vw;
+    top: -4vw;
+    left: 29vw;
+}
+
+.faq-card-3 {
+    height: 18.35vw;
+    top: 0;
+    right: 0;
+}
+
+.faq-card-4 {
+    height: 17vw;
+    bottom: 6vw;
+    left: 0;
+}
+
+.faq-card-5 {
+    height: 12vw;
+    bottom: 16vw;
+    left: 45vw;
+}
+
+.faq-card-6 {
+    height: 15vw;
+    bottom: -5vw;
+    right: 3vw;
+}
+
+.faq-card__question {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.65vw;
+    line-height: 110%;
+    color: #ffffff;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.faq-card__answer {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw;
+    line-height: 110%;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
 }
@@ -117,45 +205,92 @@
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
     .faq {
-        border-radius: 0 0 30px 30px;
+
         padding: 10.42vw 0;
     }
 
     .faq__wrapper {
-        position: static;
+        position: relative;
         display: flex;
         flex-direction: column;
-        gap: 2.6vw;
+        gap: 0;
         min-height: auto;
     }
 
     .faq__title {
-        position: static;
+        position: relative;
         transform: none;
-        font-size: 4.3vw;
+        font-size: 7.1vw;
+        font-weight: 400;
         width: 100%;
-        text-align: left;
-        margin-bottom: 2.6vw;
+        text-align: center;
+        margin: 0 auto;
+        left: auto;
+        top: auto;
+        order: 4; /* Позиционируем заголовок между 3 и 4 карточками */
+        padding: 5.21vw 0;
+        z-index: 1;
     }
 
     .faq-card {
         position: static;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 25vw;
+        width: 56.02vw !important; /* 430px при 768px */
         padding: 2.6vw;
         gap: 1.3vw;
         border-radius: 2.67vw;
+        margin-bottom: 3vw;
+    }
+
+    /* Карточка 1 (Можно ли совмещать) - слева */
+    .faq-card-1 {
+        height: 32vw !important;
+        align-self: flex-start;
+        order: 1;
+    }
+
+    /* Карточка 2 (Подходит ли всем) - справа */
+    .faq-card-2 {
+        height: 28vw !important;
+        align-self: flex-end;
+        order: 2;
+    }
+
+    /* Карточка 3 (Чем отличается) - по центру */
+    .faq-card-3 {
+        height: 35vw !important;
+        align-self: center;
+        order: 3;
+    }
+
+    /* Карточка 4 (Научные исследования) - слева */
+    .faq-card-4 {
+        height: 34vw !important;
+        align-self: flex-start;
+        order: 5;
+    }
+
+    /* Карточка 5 (Что такое тоники) - справа */
+    .faq-card-5 {
+        height: 24.5vw !important;
+        align-self: center;
+        order: 6;
+    }
+
+    /* Карточка 6 (Как правильно принимать) - по центру */
+    .faq-card-6 {
+        height: 30vw !important;
+        align-self: flex-end;
+        order: 7;
     }
 
     .faq-card__question {
-        font-size: 2.34vw;
+        font-size: 3.1vw;
         line-height: 110%;
     }
 
     .faq-card__answer {
-        font-size: 1.82vw;
-        line-height: 130%;
+        font-size: 2.6vw;
+        line-height: 110%;
     }
 }
 
@@ -167,39 +302,86 @@
     }
 
     .faq__wrapper {
-        position: static;
+        position: relative;
         display: flex;
         flex-direction: column;
-        gap: 2.78vw;
+        gap: 0;
         min-height: auto;
     }
 
     .faq__title {
-        position: static;
+        position: relative;
         transform: none;
-        font-size: 7vw;
+        font-size: 9.7vw;
+        font-weight: 400;
         width: 100%;
-        text-align: left;
-        margin-bottom: 5.56vw;
+        text-align: center;
+        margin: 0 auto;
+        left: auto;
+        top: auto;
+        order: 4; /* Между 3 и 4 карточками */
+        padding: 8.33vw 0;
+        z-index: 1;
     }
 
     .faq-card {
         position: static;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 50vw;
+        width: 77.78vw !important; /* 280px при 360px */
         padding: 5.56vw;
         gap: 2.78vw;
         border-radius: 5.78vw;
+        margin-bottom: 5.56vw;
+    }
+
+    /* Карточка 1 - слева */
+    .faq-card-1 {
+        height: 70vw !important;
+        align-self: flex-end;
+        order: 1;
+    }
+
+    /* Карточка 2 - справа */
+    .faq-card-2 {
+        height: 56vw !important;
+        align-self: flex-start;
+        order: 2;
+    }
+
+    /* Карточка 3 - по центру */
+    .faq-card-3 {
+        height: 84vw !important;
+        align-self: flex-end;
+        order: 3;
+    }
+
+    /* Карточка 4 - слева */
+    .faq-card-4 {
+        height: 84vw !important;
+        align-self: flex-start;
+        order: 5;
+    }
+
+    /* Карточка 5 - справа */
+    .faq-card-5 {
+        height: 60vw !important;
+        align-self: center;
+        order: 6;
+    }
+
+    /* Карточка 6 - по центру */
+    .faq-card-6 {
+        height: 67vw !important;
+        align-self: flex-end;
+        order: 7;
     }
 
     .faq-card__question {
-        font-size: 5.6vw;
-        line-height: 130%;
+        font-size: 5.3vw;
+        line-height: 110%;
     }
 
     .faq-card__answer {
-        font-size: 3.89vw;
-        line-height: 150%;
+        font-size: 4.5vw;
+        line-height: 110%;
     }
 }
