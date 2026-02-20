@@ -13,6 +13,8 @@ import {BlogArticlePage} from "./components/Blog/BlogArticle/BlogArticlePage.jsx
 import {BlogIdPage} from "./pages/BlogIdPage/BlogIdPage.jsx";
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs.jsx";
 import {PartnerDetailPage} from "./pages/PartnerDetailPage/PartnerDetailPage.jsx";
+import Cart from "./components/Cart/Cart/Cart.jsx";
+import TypeOfTonicPage from "./pages/TypeOfTonicPage/TypeOfTonicPage.jsx";
 
 function App() {
     const [count, setCount] = useState(0)
@@ -31,6 +33,7 @@ function App() {
                 <Route path="/partners/:id" element={<PartnerDetailPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:id" element={<BlogIdPage />} />
+                <Route path="/typeoftonic" element={<TypeOfTonicPage />} />
             </Routes>
         </>
     )

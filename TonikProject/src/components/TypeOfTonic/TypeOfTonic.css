@@ -1,0 +1,330 @@
+.TypeOfTonic_section {
+    padding-top: 5.21vw;
+    padding-bottom: var(--gap-150);
+    background-color: var(--clr-bg);
+    position: relative;
+    width: 100%;
+}
+
+.TypeOfTonic_grid {
+    position: relative;
+    width: 100%;
+    min-height: 146.15vw;
+}
+
+.TypeOfTonic_card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--clr-card, #1a1a1a);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.TypeOfTonic_card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.TypeOfTonic_card_image {
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+    background-color: var(--clr-card-img-bg, #111);
+    min-height: 0;
+}
+
+.TypeOfTonic_card_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.TypeOfTonic_card:hover .TypeOfTonic_card_image img {
+    transform: scale(1.04);
+}
+
+.TypeOfTonic_card_footer {
+    padding: 1.11vw 1.39vw;
+    flex-shrink: 0;
+}
+
+.TypeOfTonic_card_title {
+    font-size: 1.25vw;
+    font-weight: 500;
+    color: var(--clr-text, #ffffff);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.TypeOfTonic_card_price {
+    font-size: 1.11vw;
+    font-weight: 400;
+    color: var(--clr-text-secondary, rgba(255, 255, 255, 0.7));
+    margin: 0;
+    white-space: nowrap;
+}
+
+
+.TypeOfTonic_card-1 {
+    left: 5.21vw;
+    top: 0;
+    width: 29.17vw;
+    height: 21.35vw;
+}
+
+.TypeOfTonic_card-2 {
+    left: 50.52vw;
+    top: 0;
+    width: 44.27vw;
+    height: 32.81vw;
+}
+
+.TypeOfTonic_card-3 {
+    left: 5.21vw;
+    top: 41.15vw;
+    width: 29.17vw;
+    height: 21.35vw;
+}
+
+.TypeOfTonic_card-4 {
+    left: 65.62vw;
+    top: 41.15vw;
+    width: 29.17vw;
+    height: 21.35vw;
+}
+
+.TypeOfTonic_card-5 {
+    left: 20.31vw;
+    top: 70.84vw;
+    width: 29.17vw;
+    height: 21.35vw;
+}
+
+.TypeOfTonic_card-6 {
+    left: 50.52vw;
+    top: 70.84vw;
+    width: 29.17vw;
+    height: 21.35vw;
+}
+
+.TypeOfTonic_card-7 {
+    left: 5.21vw;
+    top: 100.52vw;
+    width: 44.27vw;
+    height: 32.81vw;
+}
+
+.TypeOfTonic_card-8 {
+    left: 65.62vw;
+    top: 111.93vw;
+    width: 29.17vw;
+    height: 21.35vw;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+        .TypeOfTonic_section {
+            padding-top: 9.81vw;
+        }
+
+        .TypeOfTonic_grid {
+            position: relative;
+            min-height: 186.2vw;
+            display: block;
+        }
+
+        .TypeOfTonic_card {
+            position: absolute;
+        }
+
+        .TypeOfTonic_card-1,
+        .TypeOfTonic_card-3,
+        .TypeOfTonic_card-4,
+        .TypeOfTonic_card-5,
+        .TypeOfTonic_card-6,
+        .TypeOfTonic_card-8 {
+            width: 34.77vw;
+            height: auto;
+        }
+
+        .TypeOfTonic_card-2,
+        .TypeOfTonic_card-7 {
+            width: 46.74vw;
+            height: auto;
+        }
+
+        .TypeOfTonic_card-1 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-3 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-4 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-5 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-6 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-8 .TypeOfTonic_card_image {
+            flex: none;
+            height: 22.66vw;
+        }
+
+        .TypeOfTonic_card-2 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-7 .TypeOfTonic_card_image {
+            flex: none;
+            height: 34.24vw;
+        }
+
+        .TypeOfTonic_card-1 {
+            left: 2.60vw;
+            top: 24.09vw;
+        }
+
+        .TypeOfTonic_card-2 {
+            left: 50.65vw;
+            top: 24.09vw;
+        }
+
+        .TypeOfTonic_card-3 {
+            left: 2.60vw;
+            top: 74.35vw;
+        }
+
+        .TypeOfTonic_card-4 {
+            left: 62.63vw;
+            top: 74.35vw;
+        }
+
+        .TypeOfTonic_card-5 {
+            left: 14.32vw;
+            top: 113.02vw;
+        }
+
+        .TypeOfTonic_card-6 {
+            left: 50.65vw;
+            top: 113.02vw;
+        }
+
+        .TypeOfTonic_card-7 {
+            left: 2.60vw;
+            top: 151.69vw;
+        }
+
+        .TypeOfTonic_card-8 {
+            left: 62.63vw;
+            top: 151.69vw;
+        }
+
+        .TypeOfTonic_card_footer {
+            padding: 1.82vw 2.08vw;
+        }
+
+        .TypeOfTonic_card_title {
+            font-size: 2.08vw;
+        }
+
+        .TypeOfTonic_card_price {
+            font-size: 1.82vw;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .TypeOfTonic_section {
+            padding-top: 13.89vw;
+        }
+
+        .TypeOfTonic_grid {
+            position: relative;
+            display: block;
+            min-height: 420vw;
+        }
+
+        .TypeOfTonic_card {
+            position: absolute;
+        }
+
+        .TypeOfTonic_card-1,
+        .TypeOfTonic_card-6 {
+            width: 88.89vw;
+            height: auto;
+            left: auto;
+        }
+
+        .TypeOfTonic_card-1 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-6 .TypeOfTonic_card_image {
+            flex: none;
+            height: 58.61vw;
+        }
+
+        .TypeOfTonic_card-2,
+        .TypeOfTonic_card-3,
+        .TypeOfTonic_card-4,
+        .TypeOfTonic_card-5,
+        .TypeOfTonic_card-7,
+        .TypeOfTonic_card-8 {
+            width: 43.05vw;
+            height: auto;
+        }
+
+        .TypeOfTonic_card-2 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-3 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-4 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-5 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-7 .TypeOfTonic_card_image,
+        .TypeOfTonic_card-8 .TypeOfTonic_card_image {
+            flex: none;
+            height: 40.28vw;
+        }
+
+        /* ── Positions ── */
+        .TypeOfTonic_card-1 {
+            top: 43.33vw;
+        }
+
+        .TypeOfTonic_card-2 {
+            left: auto;
+            top: 130.83vw;
+        }
+
+        .TypeOfTonic_card-3 {
+            left: 47.39vw;
+            top: 130.83vw;
+        }
+
+        .TypeOfTonic_card-4 {
+            left: auto;
+            top: 205.83vw;
+        }
+
+        .TypeOfTonic_card-5 {
+            left: 47.39vw;
+            top: 205.83vw;
+        }
+
+        .TypeOfTonic_card-6 {
+            top: 278.06vw;
+        }
+
+        .TypeOfTonic_card-7 {
+            left: auto;
+            top: 365.56vw;
+        }
+
+        .TypeOfTonic_card-8 {
+            left: 47.39vw;
+            top: 365.56vw;
+        }
+
+        .TypeOfTonic_card_footer {
+            padding: 3.33vw 4.17vw;
+        }
+
+        .TypeOfTonic_card_title {
+            font-size: 5.2vw;
+        }
+
+        .TypeOfTonic_card_price {
+            font-size: 4.4vw;
+        }
+    }

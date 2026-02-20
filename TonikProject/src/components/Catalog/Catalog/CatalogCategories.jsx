@@ -16,7 +16,7 @@ export const CatalogCategories = () => {
             id: 1,
             name: 'Все Тоники',
             image: AllProductsImg,
-            link: '/catalog',
+            link: '/typeoftonic',
             size: 'large',
             shadowColor: '33, 150, 243'
         },
