@@ -1,44 +1,33 @@
 import React from 'react';
 import './TonicsHero.css';
-import { Button } from '../../../components/Home/Button/Button.jsx';
-import EarthPhoto from '../../../assets/Image/Earth.svg'
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
+import EarthCanvas from './EarthCanvas.jsx';
 
 const TonicsHero = () => {
     return (
-        <section className="TonicsHero_section">
-            <div className="container">
+        <div className="TonicsHero_wrapper container">
+
+            <EarthCanvas />
+
+            {/* Breadcrumbs — первый элемент в потоке */}
+            <div className="TonicsHero_breadcrumbs ">
                 <Breadcrumbs />
-
-                <div className="TonicsHero_content">
-                    {/* Левая часть: Текст */}
-                    <div className="TonicsHero_left">
-                        <h1 className="TonicsHero_title">
-                            Тоники жизни
-                        </h1>
-
-                        <p className="TonicsHero_description">
-                            ТОНИКИ ЖИЗНИ — ЭТО РЕЛИКТОВЫЕ ТВОРЕНИЯ НАШЕЙ ПЛАНЕТЫ,
-                            СОЗДАННЫЕ И СОХРАНЕННЫЕ ПРИРОДОЙ ДЛЯ ВОССТАНОВЛЕНИЯ
-                            ЕСТЕСТВЕННЫХ НАСТРОЕК ЖИВЫХ ОРГАНИЗМОВ.
-                        </p>
-
-                        <Button variant="primary">
-                            ОТКРЫТЬ КАТАЛОГ
-                        </Button>
-                    </div>
-
-                    {/* Правая часть: Планета */}
-                    <div className="TonicsHero_right">
-                        <img
-                            src={EarthPhoto}
-                            alt="Тоники жизни планета"
-                            className="TonicsHero_image"
-                        />
-                    </div>
-                </div>
             </div>
-        </section>
+
+            {/* Заголовок — центр */}
+            <div className="TonicsHero_title_wrap">
+                <h1 className="TonicsHero_title">Тоники жизни</h1>
+            </div>
+
+            {/* Подзаголовок — низ */}
+            <div className="TonicsHero_desc_wrap container">
+                <p className="TonicsHero_description">
+                    Реликтовые творения нашей планеты,<br />
+                    созданные и сохранённые природой
+                </p>
+            </div>
+
+        </div>
     );
 };
 
