@@ -1,330 +1,459 @@
-.TypeOfTonic_section {
+.tot_section {
     padding-top: 5.21vw;
-    padding-bottom: var(--gap-150);
-    background-color: var(--clr-bg);
-    position: relative;
-    width: 100%;
+    padding-bottom: 7.81vw;
 }
 
-.TypeOfTonic_grid {
-    position: relative;
-    width: 100%;
-    min-height: 146.15vw;
-}
-
-.TypeOfTonic_card {
-    position: absolute;
+.tot_menu {
     display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: var(--clr-card, #1a1a1a);
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.TypeOfTonic_card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-}
-
-.TypeOfTonic_card_image {
+    align-items: flex-start;
+    gap: 0.83vw;
+    margin-bottom: 3.13vw;
     width: 100%;
-    flex: 1;
-    overflow: hidden;
-    background-color: var(--clr-card-img-bg, #111);
-    min-height: 0;
 }
 
-.TypeOfTonic_card_image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.TypeOfTonic_card:hover .TypeOfTonic_card_image img {
-    transform: scale(1.04);
-}
-
-.TypeOfTonic_card_footer {
-    padding: 1.11vw 1.39vw;
+.tot_pills_desktop,
+.tot_pills_tablet,
+.tot_pills_mobile {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.83vw;
     flex-shrink: 0;
 }
 
-.TypeOfTonic_card_title {
-    font-size: 1.25vw;
-    font-weight: 500;
-    color: var(--clr-text, #ffffff);
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.tot_pills_desktop { display: flex; }
+.tot_pills_tablet  { display: none; }
+.tot_pills_mobile  { display: none; }
+
+.tot_pill_wrap {
+    position: relative;
+    flex-shrink: 0;
 }
 
-.TypeOfTonic_card_price {
-    font-size: 1.11vw;
+.tot_pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.63vw;
+    height: 2.92vw;
+    padding: 0 1.25vw;
+    border-radius: 0.78vw;
+    background: linear-gradient(135deg,
+    rgba(255,255,255,0.05) 0%,
+    rgba(153,153,153,0.05) 100%);
+    border: 1px solid rgba(255,255,255,0.30);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.15s;
+    font-family: 'Inter', sans-serif;
+}
+.tot_pill:hover { border-color: rgba(255,255,255,0.55); }
+.tot_pill--open  { border-color: rgba(255,255,255,0.70); }
+
+.tot_pill_icon {
+    display: flex;
+    align-items: center;
+    gap: 0.42vw;
+    flex-shrink: 0;
+}
+
+.tot_icon_svg { flex-shrink: 0; }
+
+.tot_pill_label {
+    font-size: 0.83vw;
     font-weight: 400;
-    color: var(--clr-text-secondary, rgba(255, 255, 255, 0.7));
-    margin: 0;
+    letter-spacing: 0.07em;
+    color: #fff;
+}
+
+.tot_chevron {
+    flex-shrink: 0;
+    opacity: 0.6;
+    transition: transform 0.18s;
+}
+.tot_pill--open .tot_chevron { transform: rotate(180deg); }
+
+.tot_dropdown {
+    position: absolute;
+    top: calc(100% + 0.52vw);
+    left: 0;
+    background: rgba(31, 31, 31, 0.92);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 0.78vw;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 400;
+    animation: tot_fadein 0.15s ease;
+    overflow: hidden;
+}
+
+@keyframes tot_fadein {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.tot_dropdown--sort {
+    min-width: 14vw;
+    padding: 0.52vw 0;
+}
+
+.tot_sort_option {
+    display: block;
+    width: 100%;
+    padding: 0.63vw 1.25vw;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.75);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.83vw;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+    white-space: nowrap;
+}
+.tot_sort_option:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.tot_sort_option--active { color: #fff; font-weight: 500; }
+
+.tot_dropdown--filter {
+    min-width: 13vw;
+    padding: 1.04vw 1.25vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.04vw;
+}
+
+.tot_dropdown--price {
+    min-width: 16vw;
+    padding: 1.04vw 1.25vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.04vw;
+}
+
+.tot_dropdown--all-filters {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.tot_filter_col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.04vw;
+    padding: 1.25vw 1.46vw;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    min-width: 11vw;
+}
+.tot_filter_col:last-child { border-right: none; }
+
+.tot_filter_col_title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.63vw;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    margin-bottom: 0.2vw;
+}
+
+.tot_filter_col--price {
+    min-width: 14vw;
+    gap: 0.83vw;
+}
+
+.tot_check_row {
+    display: flex;
+    align-items: center;
+    gap: 0.63vw;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tot_cb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 0.94vw;
+    height: 0.94vw;
+    border: 1px solid #fff;
+    border-radius: 0.26vw;
+    transition: background 0.12s;
+}
+.tot_cb svg { display: none; width: 0.58vw; height: 0.48vw; }
+.tot_cb--on { background: #fff; }
+.tot_cb--on svg { display: block; }
+
+.tot_check_text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78vw;
+    color: #fff;
     white-space: nowrap;
 }
 
-
-.TypeOfTonic_card-1 {
-    left: 0;
-    top: 0;
-    width: 29.17vw;
-    height: 21.35vw;
+.tot_price_row {
+    display: flex;
+    gap: 0.52vw;
 }
 
-.TypeOfTonic_card-2 {
-    right: 0;
-    top: 0;
-    width: 44.27vw;
-    height: 32.81vw;
+.tot_price_box {
+    display: flex;
+    align-items: center;
+    gap: 0.42vw;
+    flex: 1;
+    border: 1px solid rgba(255,255,255,0.40);
+    border-radius: 0.36vw;
+    padding: 0.21vw 0.52vw;
 }
 
-.TypeOfTonic_card-3 {
-    left: 0;
-    top: 41.15vw;
-    width: 29.17vw;
-    height: 21.35vw;
+.tot_price_box_label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.63vw;
+    color: rgba(255,255,255,0.45);
+    flex-shrink: 0;
 }
 
-.TypeOfTonic_card-4 {
-    right: 0;
-    top: 41.15vw;
-    width: 29.17vw;
-    height: 21.35vw;
+.tot_price_inp {
+    flex: 1;
+    width: 0;
+    min-width: 0;
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.83vw;
+    color: #fff;
+    padding: 0.21vw 0;
 }
 
-.TypeOfTonic_card-5 {
-    left: 16vw;
-    top: 70.84vw;
-    width: 29.17vw;
-    height: 21.35vw;
+.tot_slider_wrap { display: flex; flex-direction: column; gap: 0.31vw; }
+
+.tot_slider_track {
+    position: relative;
+    height: 1.5px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+    margin: 0.52vw 0;
+    cursor: pointer;
+}
+.tot_slider_fill {
+    position: absolute; top: 0; bottom: 0;
+    background: #fff; border-radius: 2px;
+    pointer-events: none;
+}
+.tot_slider_thumb {
+    position: absolute; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.78vw; height: 0.78vw;
+    background: #fff;
+    border: 1.5px solid #555;
+    border-radius: 50%;
+    cursor: grab; z-index: 2;
+    transition: box-shadow 0.12s;
+}
+.tot_slider_thumb:active { cursor: grabbing; box-shadow: 0 0 0 4px rgba(255,255,255,0.18); }
+
+.tot_slider_labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6vw;
+    color: rgba(255,255,255,0.35);
 }
 
-.TypeOfTonic_card-6 {
-    right: 16vw;
-    top: 70.84vw;
-    width: 29.17vw;
-    height: 21.35vw;
+.tot_search_pill {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 2.92vw;
+    padding: 0 1.25vw;
+    gap: 0.63vw;
+    border-radius: 0.78vw;
+    background: linear-gradient(135deg,
+    rgba(255,255,255,0.05) 0%,
+    rgba(153,153,153,0.05) 100%);
+    border: 1px solid rgba(255,255,255,0.30);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
-.TypeOfTonic_card-7 {
-    left: 0;
-    top: 100.52vw;
-    width: 44.27vw;
-    height: 32.81vw;
+.tot_search_inp {
+    flex: 1;
+    background: none; border: none; outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.94vw;
+    color: rgba(255,255,255,0.40);
+    padding: 0;
 }
+.tot_search_inp:focus { color: #fff; }
+.tot_search_inp::placeholder { color: rgba(255,255,255,0.35); }
 
-.TypeOfTonic_card-8 {
-    right: 0;
-    top: 111.93vw;
-    width: 29.17vw;
-    height: 21.35vw;
+.tot_search_btn {
+    background: none; border: none; padding: 0;
+    cursor: pointer; display: flex; align-items: center;
+    flex-shrink: 0; opacity: 0.85; transition: opacity 0.18s;
 }
+.tot_search_btn:hover { opacity: 0.5; }
+
+.tot_grid {
+    position: relative;
+    width: 100%;
+    min-height: 146vw;
+}
+.tot_card {
+    position: absolute;
+    display: flex; flex-direction: column;
+    border-radius: 15px; overflow: hidden;
+    text-decoration: none; color: inherit;
+    background: #1a1a1a;
+    transition: transform 0.22s, box-shadow 0.22s;
+}
+.tot_card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+.tot_card_img { flex: 1; overflow: hidden; background: #111; min-height: 0; }
+.tot_card_img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+.tot_card:hover .tot_card_img img { transform: scale(1.04); }
+.tot_card_foot { padding: 0.94vw 1.25vw; flex-shrink: 0; }
+.tot_card_name  { font-size: 1.25vw; font-weight: 500; color: #fff; margin: 0; }
+.tot_card_price { font-size: 1.04vw; color: rgba(255,255,255,0.65); margin: 0; }
+.tot_card--1 { left: 0;     top: 0;        width: 29.17vw; height: 21.35vw; }
+.tot_card--2 { right: 0;    top: 0;        width: 44.27vw; height: 32.81vw; }
+.tot_card--3 { left: 0;     top: 41.15vw;  width: 29.17vw; height: 21.35vw; }
+.tot_card--4 { right: 0;    top: 41.15vw;  width: 29.17vw; height: 21.35vw; }
+.tot_card--5 { left: 16vw;  top: 70.84vw;  width: 29.17vw; height: 21.35vw; }
+.tot_card--6 { right: 16vw; top: 70.84vw;  width: 29.17vw; height: 21.35vw; }
+.tot_card--7 { left: 0;     top: 100.52vw; width: 44.27vw; height: 32.81vw; }
+.tot_card--8 { right: 0;    top: 111.93vw; width: 29.17vw; height: 21.35vw; }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-        .TypeOfTonic_section {
-            padding-top: 9.81vw;
-        }
-
-        .TypeOfTonic_grid {
-            position: relative;
-            min-height: 186.2vw;
-            display: block;
-        }
-
-        .TypeOfTonic_card {
-            position: absolute;
-        }
-
-        .TypeOfTonic_card-1,
-        .TypeOfTonic_card-3,
-        .TypeOfTonic_card-4,
-        .TypeOfTonic_card-5,
-        .TypeOfTonic_card-6,
-        .TypeOfTonic_card-8 {
-            width: 34.77vw;
-            height: auto;
-        }
-
-        .TypeOfTonic_card-2,
-        .TypeOfTonic_card-7 {
-            width: 46.74vw;
-            height: auto;
-        }
-
-        .TypeOfTonic_card-1 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-3 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-4 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-5 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-6 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-8 .TypeOfTonic_card_image {
-            flex: none;
-            height: 22.66vw;
-        }
-
-        .TypeOfTonic_card-2 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-7 .TypeOfTonic_card_image {
-            flex: none;
-            height: 34.24vw;
-        }
-
-        .TypeOfTonic_card-1 {
-            left: 0;
-            top: 24.09vw;
-        }
-
-        .TypeOfTonic_card-2 {
-            right: 0;
-            top: 24.09vw;
-        }
-
-        .TypeOfTonic_card-3 {
-            left: 0;
-            top: 74.35vw;
-        }
-
-        .TypeOfTonic_card-4 {
-            right: 0;
-            top: 74.35vw;
-        }
-
-        .TypeOfTonic_card-5 {
-            left: 11.5vw;
-            top: 113.02vw;
-        }
-
-        .TypeOfTonic_card-6 {
-            right: 11.5vw;
-            top: 113.02vw;
-        }
-
-        .TypeOfTonic_card-7 {
-            left: 0;
-            top: 151.69vw;
-        }
-
-        .TypeOfTonic_card-8 {
-            right: 0;
-            top: 151.69vw;
-        }
-
-        .TypeOfTonic_card_footer {
-            padding: 1.82vw 2.08vw;
-        }
-
-        .TypeOfTonic_card_title {
-            font-size: 2.08vw;
-        }
-
-        .TypeOfTonic_card_price {
-            font-size: 1.82vw;
-        }
+    .tot_section {
+        padding-top: 9.85vw
+    ; }
+    .tot_menu {
+        gap: 1.38vw;
+        margin-bottom: 4.1vw;
+        align-items: center;
     }
 
-    @media (max-width: 767px) {
-        .TypeOfTonic_section {
-            padding-top: 13.89vw;
-        }
+    .tot_pills_desktop { display: none; }
+    .tot_pills_tablet  { display: flex; gap: 1.38vw; }
+    .tot_pills_mobile  { display: none; }
 
-        .TypeOfTonic_grid {
-            position: relative;
-            display: block;
-            min-height: 420vw;
-        }
-
-        .TypeOfTonic_card {
-            position: absolute;
-        }
-
-        .TypeOfTonic_card-1,
-        .TypeOfTonic_card-6 {
-            width: 88.89vw;
-            height: auto;
-            left: 0;
-        }
-
-        .TypeOfTonic_card-1 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-6 .TypeOfTonic_card_image {
-            flex: none;
-            height: 58.61vw;
-        }
-
-        .TypeOfTonic_card-2,
-        .TypeOfTonic_card-3,
-        .TypeOfTonic_card-4,
-        .TypeOfTonic_card-5,
-        .TypeOfTonic_card-7,
-        .TypeOfTonic_card-8 {
-            width: 43.05vw;
-            height: auto;
-        }
-
-        .TypeOfTonic_card-2 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-3 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-4 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-5 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-7 .TypeOfTonic_card_image,
-        .TypeOfTonic_card-8 .TypeOfTonic_card_image {
-            flex: none;
-            height: 40.28vw;
-        }
-
-        /* ── Positions ── */
-        .TypeOfTonic_card-1 {
-            top: 43.33vw;
-        }
-
-        .TypeOfTonic_card-2 {
-            left: auto;
-            top: 130.83vw;
-        }
-
-        .TypeOfTonic_card-3 {
-            left: 0;
-            top: 130.83vw;
-        }
-
-        .TypeOfTonic_card-4 {
-            left: auto;
-            top: 205.83vw;
-        }
-
-        .TypeOfTonic_card-5 {
-            left: 0;
-            top: 205.83vw;
-        }
-
-        .TypeOfTonic_card-6 {
-            top: 278.06vw;
-        }
-
-        .TypeOfTonic_card-7 {
-            left: auto;
-            top: 365.56vw;
-        }
-
-        .TypeOfTonic_card-8 {
-            left: 47.39vw;
-            top: 365.56vw;
-        }
-
-        .TypeOfTonic_card_footer {
-            padding: 3.33vw 4.17vw;
-        }
-
-        .TypeOfTonic_card_title {
-            font-size: 5.2vw;
-        }
-
-        .TypeOfTonic_card_price {
-            font-size: 4.4vw;
-        }
+    .tot_pill {
+        height: 5.78vw;
+        padding: 0 2.06vw;
+        border-radius: 1.38vw;
+        gap: 1.1vw;
     }
+    .tot_pill_label { font-size: 1.65vw; }
+
+    .tot_search_pill {
+        height: 5.78vw;
+        padding: 0 2.06vw;
+        border-radius: 1.38vw;
+    }
+    .tot_search_inp { font-size: 1.65vw; }
+
+    .tot_dropdown { border-radius: 1.38vw; top: calc(100% + 0.83vw); }
+    .tot_dropdown--sort { min-width: 22vw; padding: 0.69vw 0; }
+    .tot_sort_option { padding: 1.1vw 2.06vw; font-size: 1.65vw; }
+
+    .tot_filter_col { padding: 1.65vw 2.06vw; gap: 1.65vw; min-width: 18vw; }
+    .tot_filter_col_title { font-size: 1.1vw; }
+    .tot_filter_col--price { min-width: 22vw; }
+
+    .tot_cb      { width: 1.65vw; height: 1.65vw; border-radius: 0.41vw; }
+    .tot_cb svg  { width: 1.0vw; height: 0.83vw; }
+    .tot_check_text { font-size: 1.38vw; }
+    .tot_check_row  { gap: 1.1vw; }
+
+    .tot_price_box { padding: 0.41vw 0.83vw; border-radius: 0.55vw; }
+    .tot_price_box_label { font-size: 1.1vw; }
+    .tot_price_inp  { font-size: 1.38vw; }
+    .tot_slider_thumb { width: 1.38vw; height: 1.38vw; }
+    .tot_slider_labels { font-size: 1.0vw; }
+
+    .tot_grid { min-height: 200vw; }
+    .tot_card--1 { left: 0;    top: 0;      width: 34vw; height: 26vw; }
+    .tot_card--2 { right: 0;   top: 0;      width: 48vw; height: 39vw; }
+    .tot_card--3 { left: 0;    top: 50vw;   width: 34vw; height: 26vw; }
+    .tot_card--4 { right: 0;   top: 50vw;   width: 34vw; height: 26vw; }
+    .tot_card--5 { left: 10vw; top: 84vw;   width: 34vw; height: 26vw; }
+    .tot_card--6 { right:10vw; top: 84vw;   width: 34vw; height: 26vw; }
+    .tot_card--7 { left: 0;    top: 118vw;  width: 48vw; height: 39vw; }
+    .tot_card--8 { right: 0;   top: 130vw;  width: 34vw; height: 26vw; }
+    .tot_card_name  { font-size: 2.2vw; }
+    .tot_card_price { font-size: 1.8vw; }
+}
+
+@media (max-width: 767px) {
+    .tot_section { padding-top: 13.4vw; }
+    .tot_menu { gap: 3.13vw; margin-bottom: 6.25vw; align-items: center; }
+
+    .tot_pills_desktop { display: none; }
+    .tot_pills_tablet  { display: none; }
+    .tot_pills_mobile  { display: flex; }
+
+    .tot_pill {
+        height: 10.63vw;
+        padding: 0 4.69vw;
+        border-radius: 3.13vw;
+        gap: 2.5vw;
+    }
+    .tot_pills_mobile .tot_pill_label,
+    .tot_pills_mobile .tot_chevron { display: none; }
+
+    .tot_search_pill {
+        height: 10.63vw;
+        padding: 0 4.69vw;
+        border-radius: 3.13vw;
+    }
+    .tot_search_inp { font-size: 3.75vw; }
+
+    .tot_dropdown {
+        position: fixed;
+        top: auto;
+        left: 3.13vw;
+        right: 3.13vw;
+        border-radius: 3.13vw;
+        z-index: 500;
+    }
+    .tot_dropdown--all-filters { flex-direction: column; }
+    .tot_filter_col {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        padding: 4.69vw 5.63vw;
+        gap: 4.38vw;
+        min-width: unset;
+    }
+    .tot_filter_col:last-child { border-bottom: none; }
+    .tot_filter_col_title { font-size: 2.81vw; }
+    .tot_filter_col--price { min-width: unset; }
+
+    .tot_cb      { width: 4.38vw; height: 4.38vw; border-radius: 1.09vw; }
+    .tot_cb svg  { width: 2.66vw; height: 2.19vw; }
+    .tot_check_text { font-size: 3.44vw; }
+    .tot_check_row  { gap: 2.5vw; }
+
+    .tot_price_box { padding: 1.56vw 2.19vw; border-radius: 1.56vw; }
+    .tot_price_box_label { font-size: 2.5vw; }
+    .tot_price_inp  { font-size: 3.44vw; }
+    .tot_slider_thumb { width: 4.38vw; height: 4.38vw; }
+    .tot_slider_labels { font-size: 2.5vw; }
+
+    .tot_dropdown--sort { min-width: unset; width: 100%; padding: 2.19vw 0; border-radius: 3.13vw; }
+    .tot_sort_option { padding: 3.13vw 5.63vw; font-size: 3.44vw; }
+
+    .tot_grid { min-height: 380vw; }
+    .tot_card--1 { left: 0; top: 0;      width: 90vw; height: 62vw; }
+    .tot_card--2 { right: 0; top: 70vw;   width: 44vw; height: 44vw; }
+    .tot_card--3 { right:0; top: 70vw;   width: 44vw; height: 44vw; }
+    .tot_card--4 { right: 0; top: 122vw;  width: 44vw; height: 44vw; }
+    .tot_card--5 { left:0; top: 122vw;  width: 44vw; height: 44vw; }
+    .tot_card--6 { left: 0; top: 174vw;  width: 90vw; height: 62vw; }
+    .tot_card--7 { left: 0; top: 244vw;  width: 44vw; height: 44vw; }
+    .tot_card--8 { right:0; top: 244vw;  width: 44vw; height: 44vw; }
+    .tot_card_name  { font-size: 5vw; }
+    .tot_card_price { font-size: 4.1vw; }
+}
