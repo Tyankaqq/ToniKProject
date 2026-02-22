@@ -102,14 +102,14 @@
 }
 
 .TypeOfTonic_card-5 {
-    left: 20.31vw;
+    left: 16vw;
     top: 70.84vw;
     width: 29.17vw;
     height: 21.35vw;
 }
 
 .TypeOfTonic_card-6 {
-    right: 0;
+    right: 16vw;
     top: 70.84vw;
     width: 29.17vw;
     height: 21.35vw;
@@ -197,12 +197,12 @@
         }
 
         .TypeOfTonic_card-5 {
-            left: 14.32vw;
+            left: 11.5vw;
             top: 113.02vw;
         }
 
         .TypeOfTonic_card-6 {
-            right: 0;
+            right: 11.5vw;
             top: 113.02vw;
         }
 
@@ -248,7 +248,7 @@
         .TypeOfTonic_card-6 {
             width: 88.89vw;
             height: auto;
-            left: auto;
+            left: 0;
         }
 
         .TypeOfTonic_card-1 .TypeOfTonic_card_image,
@@ -288,7 +288,7 @@
         }
 
         .TypeOfTonic_card-3 {
-            left: 47.39vw;
+            left: 0;
             top: 130.83vw;
         }
 
@@ -298,7 +298,7 @@
         }
 
         .TypeOfTonic_card-5 {
-            left: 47.39vw;
+            left: 0;
             top: 205.83vw;
         }
 
