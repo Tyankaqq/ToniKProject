@@ -1,6 +1,10 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&family=Pontano+Sans:wght@300..700&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');*{
     margin: 0;
     padding: 0;
+}
+
+p, span, a{
+    font-family: "Sansation", sans-serif;
 }
 
 .pop_overlay {
@@ -146,7 +150,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
     border-radius: 8px;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
     letter-spacing: 1px;
 }
@@ -177,6 +181,7 @@
     margin-top: 40px;
     background: #222;
     padding-top: 20px;
+    width: 100%;
 }
 
 .pop_section_title {
@@ -194,8 +199,15 @@
     font-size: 15px;
 }
 
-.pop_spec_label { color: rgba(255, 255, 255, 0.4); }
-.pop_spec_value { color: #fff; text-align: right; max-width: 60%; }
+.pop_spec_label {
+    font-size: 1.1vw;
+    color: rgba(255, 255, 255, 0.4);
+}
+.pop_spec_value {
+    color: #fff;
+    text-align: right;
+    font-size: 1.1vw;
+}
 
 .pop_cert_item {
     display: flex;
@@ -205,7 +217,10 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.pop_cert_name { color: #fff; font-size: 16px; }
+.pop_cert_name {
+    color: #fff;
+    font-size: 1.1vw;
+}
 .pop_cert_actions { display: flex; align-items: center; gap: 20px; }
 .pop_download_btn {
     background: none;
@@ -215,10 +230,15 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    text-decoration: underline;
-    font-size: 14px;
+    font-size:1.1vw;
+    font-weight: 600;
+    line-height: 110%;
+
 }
-.pop_cert_size { color: rgba(255, 255, 255, 0.3); font-size: 14px; }
+.pop_cert_size {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.9vw;
+}
 
 .pop_delivery_sub {
     color: rgba(255, 255, 255, 0.4);
