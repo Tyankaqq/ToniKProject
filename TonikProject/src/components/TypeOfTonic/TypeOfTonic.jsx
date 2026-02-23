@@ -2,6 +2,11 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs.jsx";
 import "./TypeOfTonic.css";
 import TonicA from "../../assets/Image/TonicA.png";
+import TypeOfTonicPopap from "./TypeOfTonicPopap/TypeOfTonicPopap.jsx";
+
+const SORT_OPTIONS   = ['По умолчанию', 'Цена ↑', 'Цена ↓', 'Название А–Я', 'Название Я–А'];
+const TONIC_TYPES    = ['АССОРТИМЕНТ ОД', 'НОВИНКИ', 'ОГРАНИЧЕННАЯ СЕРИЯ'];
+const BENEFIT_TYPES  = ['КОНЦЕНТРИРОВАННЫЙ', 'КЛАССИЧЕСКИЙ', 'ПРЕМИУМ', 'СПОРТ', 'ОРГАНИК'];
 
 const ALL_TONICS = [
     { id: 1, name: 'Tonic', image: TonicA, price: 200 },
@@ -16,11 +21,6 @@ const ALL_TONICS = [
 
 const PRICE_MIN = 1;
 const PRICE_MAX = 10000;
-
-const SORT_OPTIONS = ['По умолчанию', 'Цена ↑', 'Цена ↓', 'Название А–Я', 'Название Я–А'];
-
-const TONIC_TYPES = ['АССОРТИМЕНТ ОД', 'НОВИНКИ', 'ОГРАНИЧЕННАЯ СЕРИЯ'];
-const BENEFIT_TYPES = ['КОНЦЕНТРИРОВАННЫЙ', 'КЛАССИЧЕСКИЙ', 'ПРЕМИУМ', 'СПОРТ', 'ОРГАНИК'];
 
 const SortIcon = () => (
     <svg width="14" height="22" viewBox="0 0 14 22" fill="none" className="tot_icon_svg">
@@ -37,7 +37,7 @@ const FilterIcon = () => (
 );
 
 const SearchIcon = () => (
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" className="tot_icon_svg">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <circle cx="9" cy="9" r="8" stroke="white" strokeWidth="2"/>
         <path d="M21 21L15 15" stroke="white" strokeWidth="2" strokeLinecap="round"/>
     </svg>
@@ -45,7 +45,8 @@ const SearchIcon = () => (
 
 const ChevronIcon = () => (
     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="tot_chevron">
-        <path d="M1 1l4 4 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M1 1l4 4 4-4" stroke="white" strokeWidth="1.5"
+              strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
 );
 
@@ -64,7 +65,6 @@ function Checkbox({ checked, onToggle, label }) {
     );
 }
 
-/* ─────────────── Слайдер цены ─────────────── */
 function PriceSlider({ from, to, onFromChange, onToChange }) {
     const trackRef = useRef(null);
     const dragging = useRef(null);
@@ -117,45 +117,9 @@ function PriceSlider({ from, to, onFromChange, onToChange }) {
     );
 }
 
-function SortDropdown({ value, onChange }) {
+function PriceBlock({ from, to, fromInput, toInput, onFromInput, onToInput, onFromChange, onToChange }) {
     return (
-        <div className="tot_dropdown tot_dropdown--sort">
-            {SORT_OPTIONS.map(opt => (
-                <button
-                    key={opt}
-                    className={`tot_sort_option${value === opt ? ' tot_sort_option--active' : ''}`}
-                    onClick={() => onChange(opt)}
-                >
-                    {opt}
-                </button>
-            ))}
-        </div>
-    );
-}
-
-function TonicTypeDropdown({ checked, onToggle }) {
-    return (
-        <div className="tot_dropdown tot_dropdown--filter">
-            {TONIC_TYPES.map(t => (
-                <Checkbox key={t} checked={!!checked[t]} onToggle={() => onToggle(t)} label={t}/>
-            ))}
-        </div>
-    );
-}
-
-function BenefitDropdown({ checked, onToggle }) {
-    return (
-        <div className="tot_dropdown tot_dropdown--filter">
-            {BENEFIT_TYPES.map(t => (
-                <Checkbox key={t} checked={!!checked[t]} onToggle={() => onToggle(t)} label={t}/>
-            ))}
-        </div>
-    );
-}
-
-function PriceDropdown({ from, to, fromInput, toInput, onFromInput, onToInput, onFromChange, onToChange }) {
-    return (
-        <div className="tot_dropdown tot_dropdown--price">
+        <>
             <div className="tot_price_row">
                 <div className="tot_price_box">
                     <span className="tot_price_box_label">ОТ</span>
@@ -169,73 +133,30 @@ function PriceDropdown({ from, to, fromInput, toInput, onFromInput, onToInput, o
                 </div>
             </div>
             <PriceSlider from={from} to={to} onFromChange={onFromChange} onToChange={onToChange}/>
-        </div>
+        </>
     );
 }
 
-function AllFiltersDropdown({ tonicChecked, onTonicToggle, benefitChecked, onBenefitToggle,
-                                from, to, fromInput, toInput, onFromInput, onToInput, onFromChange, onToChange }) {
-    return (
-        <div className="tot_dropdown tot_dropdown--all-filters">
-            {/* Колонка: Тип тоника */}
-            <div className="tot_filter_col">
-                <span className="tot_filter_col_title">ТИП ТОНИКА</span>
-                {TONIC_TYPES.map(t => (
-                    <Checkbox key={t} checked={!!tonicChecked[t]}
-                              onToggle={() => onTonicToggle(t)} label={t}/>
-                ))}
-            </div>
-
-            {/* Колонка: Виды пользы */}
-            <div className="tot_filter_col">
-                <span className="tot_filter_col_title">ВИДЫ ПОЛЬЗЫ</span>
-                {BENEFIT_TYPES.map(t => (
-                    <Checkbox key={t} checked={!!benefitChecked[t]}
-                              onToggle={() => onBenefitToggle(t)} label={t}/>
-                ))}
-            </div>
-
-            {/* Колонка: Цена */}
-            <div className="tot_filter_col tot_filter_col--price">
-                <span className="tot_filter_col_title">ЦЕНА</span>
-                <div className="tot_price_row">
-                    <div className="tot_price_box">
-                        <span className="tot_price_box_label">ОТ</span>
-                        <input className="tot_price_inp" type="text" inputMode="numeric"
-                               value={fromInput} onChange={onFromInput}/>
-                    </div>
-                    <div className="tot_price_box">
-                        <span className="tot_price_box_label">ДО</span>
-                        <input className="tot_price_inp" type="text" inputMode="numeric"
-                               value={toInput} onChange={onToInput}/>
-                    </div>
-                </div>
-                <PriceSlider from={from} to={to} onFromChange={onFromChange} onToChange={onToChange}/>
-            </div>
-        </div>
-    );
-}
-
-function Pill({ label, icon, isOpen, onClick, children }) {
+function Pill({ id, openId, onToggle, icon, label, children }) {
     const ref = useRef(null);
+    const isOpen = openId === id;
 
     useEffect(() => {
-        const h = e => {
-            if (ref.current && !ref.current.contains(e.target)) onClick(false);
-        };
-        if (isOpen) document.addEventListener('mousedown', h);
+        if (!isOpen) return;
+        const h = e => { if (ref.current && !ref.current.contains(e.target)) onToggle(null); };
+        document.addEventListener('mousedown', h);
         return () => document.removeEventListener('mousedown', h);
-    }, [isOpen, onClick]);
+    }, [isOpen, onToggle]);
 
     return (
         <div className="tot_pill_wrap" ref={ref}>
             <button
                 className={`tot_pill${isOpen ? ' tot_pill--open' : ''}`}
                 type="button"
-                onClick={() => onClick(!isOpen)}
+                onClick={() => onToggle(isOpen ? null : id)}
             >
                 {icon && <span className="tot_pill_icon">{icon}</span>}
-                <span className="tot_pill_label">{label}</span>
+                {label && <span className="tot_pill_label">{label}</span>}
                 <ChevronIcon/>
             </button>
             {isOpen && children}
@@ -245,20 +166,21 @@ function Pill({ label, icon, isOpen, onClick, children }) {
 
 
 export function TypeOfTonic() {
-    /* какой дропдаун открыт */
+
     const [openPill, setOpenPill] = useState(null);
 
-    /* состояния фильтров */
-    const [sort,          setSort]          = useState('По умолчанию');
-    const [tonicChecked,  setTonicChecked]  = useState({});
-    const [benefitChecked,setBenefitChecked]= useState({});
-    const [priceFrom,     setPriceFrom]     = useState(PRICE_MIN);
-    const [priceTo,       setPriceTo]       = useState(PRICE_MAX);
-    const [fromInput,     setFromInput]     = useState(String(PRICE_MIN));
-    const [toInput,       setToInput]       = useState(String(PRICE_MAX));
-    const [search,        setSearch]        = useState('');
+    const [sort,           setSort]           = useState('По умолчанию');
+    const [tonicChecked,   setTonicChecked]   = useState({});
+    const [benefitChecked, setBenefitChecked] = useState({});
+    const [priceFrom,      setPriceFrom]      = useState(PRICE_MIN);
+    const [priceTo,        setPriceTo]        = useState(PRICE_MAX);
+    const [fromInput,      setFromInput]      = useState(String(PRICE_MIN));
+    const [toInput,        setToInput]        = useState(String(PRICE_MAX));
+    const [search,         setSearch]         = useState('');
 
-    const toggle = (setter) => (key) => setter(p => ({ ...p, [key]: !p[key] }));
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+    const toggle = setter => key => setter(p => ({ ...p, [key]: !p[key] }));
 
     const syncFrom = v => { setPriceFrom(v); setFromInput(String(v)); };
     const syncTo   = v => { setPriceTo(v);   setToInput(String(v)); };
@@ -276,96 +198,133 @@ export function TypeOfTonic() {
         if (n > priceFrom && n <= PRICE_MAX) setPriceTo(n);
     };
 
-    const open = key => isOpen => setOpenPill(isOpen ? key : null);
+    const handleCardClick = (e, product) => {
+        e.preventDefault();
+        setSelectedProduct(product);
+    };
 
     const tonics = ALL_TONICS.filter(t =>
         t.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+    const SortDropdown = () => (
+        <div className="tot_dropdown tot_dropdown--sort">
+            {SORT_OPTIONS.map(opt => (
+                <button key={opt}
+                        className={`tot_sort_option${sort === opt ? ' tot_sort_option--active' : ''}`}
+                        onClick={() => { setSort(opt); setOpenPill(null); }}>
+                    {opt}
+                </button>
+            ))}
+        </div>
+    );
+
+    const TonicDropdown = () => (
+        <div className="tot_dropdown tot_dropdown--filter">
+            {TONIC_TYPES.map(t => (
+                <Checkbox key={t} checked={!!tonicChecked[t]}
+                          onToggle={() => toggle(setTonicChecked)(t)} label={t}/>
+            ))}
+        </div>
+    );
+
+    const BenefitDropdown = () => (
+        <div className="tot_dropdown tot_dropdown--filter">
+            {BENEFIT_TYPES.map(t => (
+                <Checkbox key={t} checked={!!benefitChecked[t]}
+                          onToggle={() => toggle(setBenefitChecked)(t)} label={t}/>
+            ))}
+        </div>
+    );
+
+    const PriceDropdown = () => (
+        <div className="tot_dropdown tot_dropdown--price">
+            <PriceBlock
+                from={priceFrom} to={priceTo}
+                fromInput={fromInput} toInput={toInput}
+                onFromInput={handleFromInput} onToInput={handleToInput}
+                onFromChange={syncFrom} onToChange={syncTo}/>
+        </div>
+    );
+
+    const AllFiltersDropdown = () => (
+        <div className="tot_dropdown tot_dropdown--all-filters">
+            <div className="tot_filter_col">
+                <span className="tot_filter_col_title">ТИП ТОНИКА</span>
+                {TONIC_TYPES.map(t => (
+                    <Checkbox key={t} checked={!!tonicChecked[t]}
+                              onToggle={() => toggle(setTonicChecked)(t)} label={t}/>
+                ))}
+            </div>
+            <div className="tot_filter_col">
+                <span className="tot_filter_col_title">ВИДЫ ПОЛЬЗЫ</span>
+                {BENEFIT_TYPES.map(t => (
+                    <Checkbox key={t} checked={!!benefitChecked[t]}
+                              onToggle={() => toggle(setBenefitChecked)(t)} label={t}/>
+                ))}
+            </div>
+            <div className="tot_filter_col tot_filter_col--price">
+                <span className="tot_filter_col_title">ЦЕНА</span>
+                <PriceBlock
+                    from={priceFrom} to={priceTo}
+                    fromInput={fromInput} toInput={toInput}
+                    onFromInput={handleFromInput} onToInput={handleToInput}
+                    onFromChange={syncFrom} onToChange={syncTo}/>
+            </div>
+        </div>
     );
 
     return (
         <section className="tot_section container">
             <Breadcrumbs/>
 
-
             <div className="tot_menu">
 
-                {/* ── DESKTOP: 4 отдельных таблетки ── */}
                 <div className="tot_pills_desktop">
-
-                    {/* 1. Сортировка */}
-                    <Pill label="СОРТИРОВКА" icon={<SortIcon/>}
-                          isOpen={openPill === 'sort'} onClick={open('sort')}>
-                        <SortDropdown value={sort} onChange={v => { setSort(v); setOpenPill(null); }}/>
+                    <Pill id="sort" openId={openPill} onToggle={setOpenPill}
+                          icon={<SortIcon/>} label="СОРТИРОВКА">
+                        <SortDropdown/>
                     </Pill>
-
-                    {/* 2. Тип тоника */}
-                    <Pill label="ТИП ТОНИКА"
-                          isOpen={openPill === 'tonic'} onClick={open('tonic')}>
-                        <TonicTypeDropdown checked={tonicChecked} onToggle={toggle(setTonicChecked)}/>
+                    <Pill id="tonic" openId={openPill} onToggle={setOpenPill}
+                          label="ТИП ТОНИКА">
+                        <TonicDropdown/>
                     </Pill>
-
-                    {/* 3. Виды пользы */}
-                    <Pill label="ВИДЫ ПОЛЬЗЫ"
-                          isOpen={openPill === 'benefit'} onClick={open('benefit')}>
-                        <BenefitDropdown checked={benefitChecked} onToggle={toggle(setBenefitChecked)}/>
+                    <Pill id="benefit" openId={openPill} onToggle={setOpenPill}
+                          label="ВИДЫ ПОЛЬЗЫ">
+                        <BenefitDropdown/>
                     </Pill>
-
-                    {/* 4. Цена */}
-                    <Pill label="ЦЕНА"
-                          isOpen={openPill === 'price'} onClick={open('price')}>
-                        <PriceDropdown
-                            from={priceFrom} to={priceTo}
-                            fromInput={fromInput} toInput={toInput}
-                            onFromInput={handleFromInput} onToInput={handleToInput}
-                            onFromChange={syncFrom} onToChange={syncTo}/>
+                    <Pill id="price" openId={openPill} onToggle={setOpenPill}
+                          label="ЦЕНА">
+                        <PriceDropdown/>
                     </Pill>
                 </div>
 
-                {/* ── TABLET: 2 таблетки ── */}
                 <div className="tot_pills_tablet">
-
-                    {/* 1. Сортировка */}
-                    <Pill label="СОРТИРОВКА" icon={<SortIcon/>}
-                          isOpen={openPill === 'sort'} onClick={open('sort')}>
-                        <SortDropdown value={sort} onChange={v => { setSort(v); setOpenPill(null); }}/>
+                    <Pill id="sort" openId={openPill} onToggle={setOpenPill}
+                          icon={<SortIcon/>} label="СОРТИРОВКА">
+                        <SortDropdown/>
                     </Pill>
-
-                    {/* 2. Фильтры (все вместе) */}
-                    <Pill label="ФИЛЬТРЫ" icon={<FilterIcon/>}
-                          isOpen={openPill === 'filters'} onClick={open('filters')}>
-                        <AllFiltersDropdown
-                            tonicChecked={tonicChecked}   onTonicToggle={toggle(setTonicChecked)}
-                            benefitChecked={benefitChecked} onBenefitToggle={toggle(setBenefitChecked)}
-                            from={priceFrom} to={priceTo}
-                            fromInput={fromInput} toInput={toInput}
-                            onFromInput={handleFromInput} onToInput={handleToInput}
-                            onFromChange={syncFrom} onToChange={syncTo}/>
+                    <Pill id="filters" openId={openPill} onToggle={setOpenPill}
+                          icon={<FilterIcon/>} label="ФИЛЬТРЫ">
+                        <AllFiltersDropdown/>
                     </Pill>
                 </div>
 
-                {/* ── MOBILE: только иконки (одна таблетка с обоими иконками) ── */}
                 <div className="tot_pills_mobile">
-                    <Pill label="" icon={<><SortIcon/><FilterIcon/></>}
-                          isOpen={openPill === 'filters'} onClick={open('filters')}>
-                        <AllFiltersDropdown
-                            tonicChecked={tonicChecked}   onTonicToggle={toggle(setTonicChecked)}
-                            benefitChecked={benefitChecked} onBenefitToggle={toggle(setBenefitChecked)}
-                            from={priceFrom} to={priceTo}
-                            fromInput={fromInput} toInput={toInput}
-                            onFromInput={handleFromInput} onToInput={handleToInput}
-                            onFromChange={syncFrom} onToChange={syncTo}/>
+                    <Pill id="sort" openId={openPill} onToggle={setOpenPill}
+                          icon={<SortIcon/>}>
+                        <SortDropdown/>
+                    </Pill>
+                    <Pill id="filters" openId={openPill} onToggle={setOpenPill}
+                          icon={<FilterIcon/>}>
+                        <AllFiltersDropdown/>
                     </Pill>
                 </div>
 
-                {/* ── ПОИСК (всегда) ── */}
                 <form className="tot_search_pill" onSubmit={e => e.preventDefault()}>
-                    <input
-                        className="tot_search_inp"
-                        type="text"
-                        placeholder="Поиск..."
-                        value={search}
-                        onChange={e => setSearch(e.target.value)}
-                    />
+                    <input className="tot_search_inp" type="text"
+                           placeholder="Поиск..."
+                           value={search} onChange={e => setSearch(e.target.value)}/>
                     <button className="tot_search_btn" type="submit" aria-label="Поиск">
                         <SearchIcon/>
                     </button>
@@ -374,8 +333,10 @@ export function TypeOfTonic() {
 
             <div className="tot_grid">
                 {tonics.map(t => (
-                    <a key={t.id} href={`/catalog/tonic/${t.name}`}
-                       className={`tot_card tot_card--${t.id}`}>
+                    <a key={t.id}
+                       href={`/catalog/tonic/${t.name}`}
+                       className={`tot_card tot_card--${t.id}`}
+                       onClick={e => handleCardClick(e, t)}>
                         <div className="tot_card_img">
                             <img src={t.image} alt={t.name}/>
                         </div>
@@ -386,6 +347,14 @@ export function TypeOfTonic() {
                     </a>
                 ))}
             </div>
+
+            {selectedProduct && (
+                <TypeOfTonicPopap
+                    product={selectedProduct}
+                    onClose={() => setSelectedProduct(null)}
+                />
+            )}
+
         </section>
     );
 }
