@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&family=Pontano+Sans:wght@300..700&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');*{
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&family=Pontano+Sans:wght@300..700&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+*{
     margin: 0;
     padding: 0;
 }
@@ -21,18 +22,18 @@ p, span, a{
 .pop_modal {
     position: relative;
     display: flex;
-    width: 1200px;
+    width: 62.5vw;
     max-width: 100%;
     max-height: 90vh;
-    background: #1A1A1A;
+    background: #1F1F1F;
     border-radius: 20px;
     overflow: hidden;
 }
 
 .pop_close {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1vw;
+    right: 1vw;
     background: none;
     border: none;
     cursor: pointer;
@@ -42,16 +43,16 @@ p, span, a{
 
 .pop_left {
     flex: 1;
-    background: #222;
-    padding: 40px;
+    background: #1F1F1F;
+    padding: 2vw;
     display: flex;
     flex-direction: column;
 }
 
 .pop_breadcrumbs {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-    margin-bottom: 40px;
+    font-size: 0.9vw;
+    margin-bottom: 2vw;
 }
 
 .pop_photo_container {
@@ -69,9 +70,9 @@ p, span, a{
 
 .pop_right {
     flex: 1;
-    padding: 5.4vw 2vw 0 0;
+    padding: 5.4vw 2vw 2vw 0 ;
     overflow-y: auto;
-    background: #222;
+    background: #1F1F1F;
 }
 
 .pop_head {
@@ -83,14 +84,14 @@ p, span, a{
 
 .pop_name {
     font-size: 2.1vw;
-    font-weight: 700;
+    font-weight: 600;
     color: #fff;
     text-transform: uppercase;
     max-width: 60%;
 }
 
 .pop_price {
-    font-size: 32px;
+    font-size: 2.1vw;
     font-weight: 700;
     color: #fff;
 }
@@ -110,8 +111,9 @@ p, span, a{
 
 .pop_purchase_row {
     display: flex;
-    gap: 15px;
+    gap: 0.8vw;
     margin-bottom: 15px;
+    height: 21.6vw;
 }
 
 .pop_qty_selector {
@@ -157,7 +159,7 @@ p, span, a{
 
 .pop_btn_cart {
     width: 100%;
-    height: 54px;
+    height: 2.9vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -168,7 +170,7 @@ p, span, a{
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    margin-bottom: 40px;
+    margin-bottom: 2vw;
     transition: background 0.3s;
 }
 
@@ -178,14 +180,14 @@ p, span, a{
 }
 
 .pop_section {
-    margin-top: 40px;
-    background: #222;
+    margin-top: 3.1vw;
+    background: #1F1F1F;
     padding-top: 20px;
     width: 100%;
 }
 
 .pop_section_title {
-    font-size: 24px;
+    font-size: 1.56vw;
     color: #fff;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -194,9 +196,8 @@ p, span, a{
 .pop_spec_item {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 0.2vw 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 15px;
 }
 
 .pop_spec_label {
@@ -207,6 +208,7 @@ p, span, a{
     color: #fff;
     text-align: right;
     font-size: 1.1vw;
+    width: 18.2vw;
 }
 
 .pop_cert_item {
@@ -242,7 +244,7 @@ p, span, a{
 
 .pop_delivery_sub {
     color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 20px;
+    margin-bottom: 1vw;
 }
 
 .pop_delivery_logos {
@@ -267,3 +269,271 @@ p, span, a{
 }
 
 .pop_right::-webkit-scrollbar { width: 0; }
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .pop_modal {
+        flex-direction: column;
+        width: 95vw;
+        max-height: 95vh;
+        overflow-y: auto;
+        padding: 3.1vw;
+        background: #1F1F1F;
+    }
+
+    .pop_breadcrumbs {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .pop_close {
+        top: 24px;
+        right: 24px;
+    }
+
+    .pop_left {
+        width: 100%;
+        padding: 0;
+        background: transparent;
+        margin-bottom: 40px;
+        display: flex;
+    }
+
+    .pop_photo_container {
+        flex: 1;
+        background: #1F1F1F;
+        border-radius: 15px;
+        padding: 0;
+    }
+
+    .pop_main_img {
+        max-height: 400px;
+        margin: 0 auto;
+    }
+
+    .pop_right {
+        width: 100%;
+        padding: 0;
+        overflow: visible;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 40px;
+        background: #1F1F1F;
+    }
+
+    .pop_head {
+        grid-column: span 2;
+        margin-bottom: 30px;
+    }
+
+    .pop_name {
+        font-size: 3.9vw;
+        max-width: 100%;
+    }
+
+    .pop_price {
+        font-size: 3.9vw;
+    }
+
+    /* Левая колонка: Описание */
+    .pop_desc {
+        grid-column: 1;
+        font-size: 2.6vw;
+    }
+
+    /* Правая колонка: Покупка */
+    .pop_stock {
+        grid-column: 2;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .pop_purchase_row {
+        grid-column: 2;
+        flex-direction: column;
+        gap: 12px;
+        height: 14vw;
+    }
+
+    .pop_qty_selector {
+        width: 100%;
+        height: 6.5vw;
+    }
+
+    .pop_btn_buy {
+        width: 100%;
+        height: 6.5vw;
+        font-size: 2.6vw;
+    }
+
+    .pop_btn_cart {
+        grid-column: 2;
+        width: 100%;
+        height: 6.5vw;
+        margin-bottom: 0;
+    }
+
+    .pop_section {
+        grid-column: span 2;
+        margin-top: 6.5vw;
+    }
+
+    .pop_section_title {
+        font-size: 3.9vw;
+        margin-bottom: 3.9vw;
+    }
+
+    .pop_spec_item, .pop_cert_item {
+        padding-top:0.6vw ;
+        padding-bottom: 3.5vw;
+        align-items: start;
+    }
+
+    .pop_spec_label, .pop_spec_value, .pop_cert_name, .pop_download_btn {
+        font-size: 2.6vw;
+    }
+
+    .pop_spec_value {
+        width: 45.9vw;
+    }
+
+    .pop_delivery_sub {
+        float: right;
+        margin-top: -45px;
+        font-size: 16px;
+        max-width: 50%;
+        text-align: right;
+    }
+
+    .pop_delivery_logos {
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr; /* Сетка как на скриншоте */
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .pop_delivery_card {
+        height: 90px;
+    }
+}
+
+@media (max-width: 767px) {
+    .pop_modal {
+        flex-direction: column;
+        width: 90vw; /* Увеличиваем ширину модалки на планшетах */
+        max-height: 95vh;
+        overflow-y: auto; /* Разрешаем прокрутку всей модалки */
+    }
+
+    .pop_close {
+        top: 20px;
+        right: 20px;
+    }
+    .pop_close svg {
+        width: 40px;
+        height: 40px;
+    }
+    .pop_stock{
+        font-size: 4.4vw;
+    }
+
+    .pop_left {
+        width: 100%;
+        padding:  5.5vw;
+        background: transparent;
+    }
+
+    .pop_breadcrumbs {
+        font-size: 3.8vw;
+        margin: 5.5vw 0;
+    }
+
+    .pop_photo_container {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .pop_main_img {
+        max-height: 400px;
+        width: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .pop_right {
+        width: 100%;
+        padding: 0 5.5vw 5.5vw 5.5vw;
+        overflow-y: visible;
+        background: transparent;
+    }
+
+    .pop_head {
+        flex-direction: row;
+        align-items: flex-start;
+        gap:5.5vw;
+        margin-bottom: 5.5vw;
+    }
+
+    .pop_name {
+        font-size: 6.1vw;
+        max-width: 70%;
+    }
+
+    .pop_price {
+        font-size: 6.1vw;
+    }
+
+    .pop_desc {
+        font-size: 4.4vw;
+        margin-bottom: 5.5vw;
+    }
+
+    .pop_purchase_row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .pop_qty_selector {
+        width: 100%;
+        height: 9.4vw;
+    }
+
+    .pop_btn_buy, .pop_btn_cart {
+        width: 100%;
+        height: 9.4vw;
+        font-size: 2.6vw;
+    }
+
+    .pop_section_title {
+        font-size: 24px;
+        margin-top: 40px;
+    }
+
+    .pop_spec_label, .pop_spec_value {
+        font-size: 2.6vw;
+    }
+
+    .pop_spec_value {
+        width: auto;
+        max-width: 60%;
+    }
+
+    .pop_cert_name, .pop_download_btn {
+        font-size: 2.6vw;
+    }
+
+    .pop_delivery_logos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .pop_delivery_card:last-child {
+        grid-column: span 2;
+    }
+
+    .pop_delivery_card {
+        height: 100px;
+    }
+}

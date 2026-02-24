@@ -84,7 +84,7 @@ export function TypeOfTonicPopap({ product, onClose }) {
                         <span className="pop_btn_total">{formattedTotal} ₽</span>
                     </button>
 
-                    <section className="pop_section">
+                    <div className="pop_section">
                         <h3 className="pop_section_title">ХАРАКТЕРИСТИКИ</h3>
                         <div className="pop_specs_list">
                             {SPECS.map((item, i) => (
@@ -94,9 +94,9 @@ export function TypeOfTonicPopap({ product, onClose }) {
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </div>
 
-                    <section className="pop_section">
+                    <div className="pop_section">
                         <h3 className="pop_section_title">СЕРТИФИКАТЫ</h3>
                         <div className="pop_certs_list">
                             {CERTS.map(cert => (
@@ -112,9 +112,9 @@ export function TypeOfTonicPopap({ product, onClose }) {
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </div>
 
-                    <section className="pop_section">
+                    <div className="pop_section">
                         <h3 className="pop_section_title">ДОСТАВКА</h3>
                         <p className="pop_delivery_sub">Мы работаем со следующими компаниями:</p>
                         <div className="pop_delivery_logos">
@@ -122,7 +122,7 @@ export function TypeOfTonicPopap({ product, onClose }) {
                             <div className="pop_delivery_card"><img src={Pek} alt="PEK" /></div>
                             <div className="pop_delivery_card"><img src={Delove} alt="Delovie Linii" /></div>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
