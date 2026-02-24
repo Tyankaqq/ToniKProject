@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './TypeOfTonicPopap.css';
 import LogoCdek from '../../../assets/Image/CDEK.png';
-import Pek from '../../../assets/Image/Pek.png';
+import Pek from '../../../assets/Image/PEK.png';
 import Delove from '../../../assets/Image/DELOVELINII.png';
 
 const SPECS = [
