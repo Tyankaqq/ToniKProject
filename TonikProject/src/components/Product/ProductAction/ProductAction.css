@@ -1,0 +1,177 @@
+.ProductAction {
+    background-color: var(--clr-bg);
+    color: var(--clr-white);
+    width: 100%;
+    overflow: hidden;
+}
+
+.ProductAction_inner {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+/* ======= Левый блок ======= */
+.ProductAction_left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4vw;
+    z-index: 1;              /* ← поверх canvas */
+    position: relative;
+}
+
+.ProductAction_title {
+    width: 85%;
+    font-family: 'Inter', sans-serif;
+    font-size: 2.85vw;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: start;
+}
+
+/* ======= Центр — 3D модель ======= */
+.ProductAction_model {
+    position: absolute;      /* ← абсолютный, по центру */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 44.27vw;          /* 850px при 1920px */
+    height: 38.70vw;         /* 743px при 1920px */
+    z-index: 0;              /* ← за текстом */
+    pointer-events: none;    /* ← не блокирует клики на тексте */
+}
+
+.ProductAction_model canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ======= Правый блок ======= */
+.ProductAction_right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 4vw;
+    z-index: 1;              /* ← поверх canvas */
+    position: relative;
+}
+
+.ProductAction_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.08vw;
+    width: 74%;
+}
+
+.ProductAction_list_item {
+    position: relative;
+    padding-left: 1.3vw;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15vw;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.ProductAction_list_item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4vw;
+    width: 0.52vw;
+    height: 0.52vw;
+    background-color: var(--clr-white);
+    border-radius: 50%;
+}
+
+/* ======= TABLET (768px - 1024px) ======= */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .ProductAction_inner {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .ProductAction_left {
+        padding: 8vw 4vw 2vw;
+    }
+
+    .ProductAction_title {
+        font-size: 4.3vw;
+    }
+
+    .ProductAction_model {
+        flex: none;
+        width: 100%;
+        height: 87.4vw; /* пропорция 850/743 */
+    }
+
+    .ProductAction_right {
+        padding: 2vw 4vw 8vw;
+    }
+
+    .ProductAction_list_item {
+        font-size: 2.1vw;
+        padding-left: 2.08vw;
+    }
+
+    .ProductAction_list_item::before {
+        top: 1.2vw;
+        width: 1.04vw;
+        height: 1.04vw;
+    }
+}
+
+/* ======= MOBILE (до 767px) ======= */
+@media (max-width: 767px) {
+    .ProductAction_inner {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .ProductAction_left {
+        padding: 10vw 5.56vw 2vw;
+    }
+
+    .ProductAction_title {
+        font-size: 6.9vw;
+    }
+
+    .ProductAction_model {
+        flex: none;
+        width: 100%;
+        height: 87.4vw;
+    }
+
+    .ProductAction_right {
+        padding: 2vw 5.56vw 10vw;
+    }
+
+    .ProductAction_list {
+        gap: 5.56vw;
+    }
+
+    .ProductAction_list_item {
+        font-size: 4.5vw;
+        padding-left: 4.17vw;
+        line-height: 1.3;
+    }
+
+    .ProductAction_list_item::before {
+        top: 2.5vw;
+        width: 2.22vw;
+        height: 2.22vw;
+    }
+}

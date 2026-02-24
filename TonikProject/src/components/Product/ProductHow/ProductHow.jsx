@@ -1,13 +1,13 @@
 import React, { Suspense, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useGLTF, OrbitControls } from '@react-three/drei';
-import './ProductInfo.css';
+import './ProductHow.css';
 
-const AhnfeltiaModelInfo = () => {
+const AhnfeltiaModelHow = () => {
     const { scene } = useGLTF(
         new URL('../../../assets/Image/Ahnfeltia_Red.glb', import.meta.url).href
     );
-    const cloned = useMemo(() => scene.clone(), [scene]);
+    const cloned = useMemo(() => scene.clone(true), [scene]);
     return (
         <primitive
             object={cloned}
@@ -17,20 +17,20 @@ const AhnfeltiaModelInfo = () => {
     );
 };
 
-export const ProductInfo = () => {
+export const ProductHow = () => {
     return (
-        <section className="ProductInfo">
-            <div className="ProductInfo_inner">
+        <section className="ProductHow">
+            <div className="ProductHow_inner">
 
                 {/* Левый блок — заголовок */}
-                <div className="ProductInfo_left">
-                    <h2 className="ProductInfo_title">
-                        Что такое<br />Анфельция?
+                <div className="ProductHow_left">
+                    <h2 className="ProductHow_title">
+                        Как она<br />действует?
                     </h2>
                 </div>
 
                 {/* Центр — 3D модель */}
-                <div className="ProductInfo_model">
+                <div className="ProductHow_model">
                     <Canvas
                         camera={{ position: [0, 0, 5], fov: 45 }}
                         gl={{ antialias: true, alpha: true }}
@@ -39,7 +39,7 @@ export const ProductInfo = () => {
                             <ambientLight intensity={1.2} />
                             <directionalLight position={[5, 3, 5]} intensity={1.5} />
                             <pointLight position={[-5, -3, -5]} intensity={0.3} />
-                            <AhnfeltiaModelInfo />
+                            <AhnfeltiaModelHow />
                             <OrbitControls
                                 enableZoom={false}
                                 enablePan={false}
@@ -51,14 +51,13 @@ export const ProductInfo = () => {
                 </div>
 
                 {/* Правый блок — текст */}
-                <div className="ProductInfo_right">
-                    <p className="ProductInfo_text">
-                        Это красная водоросль, которая появилась
-                        на Планете задолго до того, как человек научился лечить.
+                <div className="ProductHow_right">
+                    <p className="ProductHow_text">
+                        Мы не говорим «лечит». Мы говорим: организм вспоминает. Организм — сложная система.
                     </p>
-                    <p className="ProductInfo_text">
-                        Она вобрала в себя силу стихий, минералов
-                        и первозданного солнца. Её клеточная структура несёт в себе память о жизни в чистом виде.
+                    <p className="ProductHow_text">
+                        И в нем есть всё, чтобы быть здоровым.
+                        Иногда нужно просто напомнить.
                     </p>
                 </div>
 

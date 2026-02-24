@@ -1,11 +1,11 @@
-.ProductInfo {
+.ProductHow {
     background-color: var(--clr-bg);
     color: var(--clr-white);
     width: 100%;
     overflow: hidden;
 }
 
-.ProductInfo_inner {
+.ProductHow_inner {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -13,7 +13,7 @@
 }
 
 /* ======= Левый блок ======= */
-.ProductInfo_left {
+.ProductHow_left {
     flex: 1;
     display: flex;
     align-items: flex-start;
@@ -21,7 +21,7 @@
     padding: 4vw;
 }
 
-.ProductInfo_title {
+.ProductHow_title {
     font-family: 'Hikasami', sans-serif;
     font-size: 2.85vw;
     font-weight: 600;
@@ -33,28 +33,28 @@
 }
 
 /* ======= Центр — 3D модель ======= */
-.ProductInfo_model {
-    flex: 0 0 21.61vw; /* 415px при 1920px */
-    height: 18.90vw;   /* 363px при 1920px */
+.ProductHow_model {
+    flex: 0 0 21.61vw;
+    height: 18.90vw;
 }
 
-.ProductInfo_model canvas {
+.ProductHow_model canvas {
     width: 100% !important;
     height: 100% !important;
 }
 
 /* ======= Правый блок ======= */
-.ProductInfo_right {
+.ProductHow_right {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     gap: 2.08vw;
     padding: 4vw;
 }
 
-.ProductInfo_text {
+.ProductHow_text {
     font-family: 'Inter', sans-serif;
     font-size: 1.15vw;
     font-weight: 400;
@@ -67,62 +67,62 @@
 
 /* ======= TABLET (768px - 1024px) ======= */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .ProductInfo_inner {
+    .ProductHow_inner {
         flex-direction: column;
         min-height: auto;
     }
 
-    .ProductInfo_left {
+    .ProductHow_left {
         padding: 8vw 4vw 2vw;
     }
 
-    .ProductInfo_title {
+    .ProductHow_title {
         font-size: 4.3vw;
     }
 
-    .ProductInfo_model {
+    .ProductHow_model {
         flex: none;
         width: 100%;
         height: 60vw;
     }
 
-    .ProductInfo_right {
+    .ProductHow_right {
         padding: 2vw 4vw 8vw;
         gap: 3.91vw;
     }
 
-    .ProductInfo_text {
+    .ProductHow_text {
         font-size: 2.1vw;
     }
 }
 
 /* ======= MOBILE (до 767px) ======= */
 @media (max-width: 767px) {
-    .ProductInfo_inner {
+    .ProductHow_inner {
         flex-direction: column;
         min-height: auto;
     }
 
-    .ProductInfo_left {
+    .ProductHow_left {
         padding: 10vw 5.56vw 2vw;
     }
 
-    .ProductInfo_title {
+    .ProductHow_title {
         font-size: 6.9vw;
     }
 
-    .ProductInfo_model {
+    .ProductHow_model {
         flex: none;
         width: 100%;
         height: 80vw;
     }
 
-    .ProductInfo_right {
+    .ProductHow_right {
         padding: 2vw 5.56vw 10vw;
         gap: 5.56vw;
     }
 
-    .ProductInfo_text {
+    .ProductHow_text {
         font-size: 4.5vw;
         line-height: 1.3;
     }

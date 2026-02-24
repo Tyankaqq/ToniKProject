@@ -23,7 +23,8 @@ export const Blog = ({
                          showAllLink = true,
                          showSearchBar = false,
                          categories = [],
-                         showSelects = false
+                         showSelects = false,
+                         showBreadcrumbs = true,
                      }) => {
     const [showFiltersModal, setShowFiltersModal] = useState(false);
     const [activeCategory, setActiveCategory] = useState('Все');
@@ -231,7 +232,7 @@ export const Blog = ({
     return (
         <section className={`Blog_section Blog_section--${variant}`}>
             <div className="Blog_container container">
-                <Breadcrumbs />
+                {showBreadcrumbs && <Breadcrumbs />}
 
                 {/* Заголовок - только для default */}
                 {variant === 'default' && (

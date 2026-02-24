@@ -1,83 +1,113 @@
 .ForWhom {
-    background-color: var(--clr-bg);
-    color: var(--clr-white);
+    width: 100%;
     padding: 5.21vw 0;
+    background: var(--clr-bg);
+    color: var(--clr-white);
 }
 
-.ForWhom_container {
-    margin: 0 auto;
+.ForWhom_wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 70vw;
 }
 
+/* ======= Заголовок по центру ======= */
 .ForWhom_title {
-    font-size: 2.6vw;
-    font-weight: 400;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Hikasami', sans-serif;
+    font-weight: 600;
+    font-size: 4.75vw;
+    line-height: 110%;
     letter-spacing: -0.03em;
-    line-height: 1.1;
     text-transform: uppercase;
-    margin: 0 0 2.08vw 0;
-}
-
-.ForWhom_description {
-    display: flex;
-    flex-direction: column;
-    gap: 0.52vw;
-    margin-bottom: 4.16vw;
-}
-
-.ForWhom_description p {
-    font-size: 0.83vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    text-align: justify;
+    color: #ffffff;
     margin: 0;
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    pointer-events: none;
 }
 
-.ForWhom_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.08vw;
-}
-
+/* ======= Карточки ======= */
 .ForWhom_card {
-    background-color: #2a2a2a;
-    border: 1px solid #555555;
-    border-radius: 1.04vw;
-    padding: 1.04vw;
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0.05) 3.64%, rgba(153, 153, 153, 0.05) 86.15%);
+    border-radius: 1.1vw;
+    padding: 1.1vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 16.15vw;
-}
-
-.ForWhom_card_icon {
-    display: flex;
+    backdrop-filter: blur(10px);
     align-items: center;
     justify-content: center;
-    width: 4.69vw;
-    height: 4.69vw;
-    background-color: #272727;
-    border-radius: 50%;
+    width: 27.08vw;
+    text-align: center;
+}
+.ForWhom_card-1 {
+    height: 4vw;
+    top: 14vw;
+    left: 7vw;
 
 }
 
-.ForWhom_card_icon img {
-    width: 2.6vw;
-    height: 2.6vw;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
+.ForWhom_card-2 {
+    height: 10vw;
+    top: 8vw;
+    right: 2vw;
+
 }
 
-.ForWhom_card_text {
-    font-size: 1.9vw;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+/* ======= 4 карточки снизу ======= */
+.ForWhom_card-3 {
+    height: 9vw;
+    bottom: 17vw;
+    left: 2vw;
+
+}
+
+.ForWhom_card-4 {
+    height: 7vw;
+    bottom: 6vw;
+    left: 26.4vw;
+
+}
+
+.ForWhom_card-5 {
+    height: 5vw;
+    bottom: 12vw;
+    left: 51.8vw;
+
+}
+
+.ForWhom_card-6 {
+    height: 6vw;
+    bottom: 19vw;
+    right: 2vw;
+
+}
+
+/* wrapper подстраиваем под новую высоту */
+.ForWhom_wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 55vw;
+}
+
+.ForWhom_card_question {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.65vw;
+    line-height: 110%;
+    color: #ffffff;
     margin: 0;
-    margin-top: 1.04vw;
+    text-transform: uppercase;
 }
 
-.ForWhom_card_text .highlight {
+.ForWhom_card_question .highlight {
     background-color: var(--clr-white);
     color: #272727;
     padding: 0.1vw 0.3vw;
@@ -86,106 +116,95 @@
     line-height: 1.4;
 }
 
+.ForWhom_card_desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.25vw;
+    line-height: 110%;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* ======= TABLET ======= */
 @media (min-width: 768px) and (max-width: 1024px) {
     .ForWhom {
-        padding: 6.51vw 0;
+        padding: 10.42vw 0;
+    }
+
+    .ForWhom_wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
     }
 
     .ForWhom_title {
-        font-size: 4.21vw;
-        margin-bottom: 3.91vw;
-    }
-
-    .ForWhom_description {
-        gap: 1.04vw;
-        margin-bottom: 5.21vw;
-    }
-
-    .ForWhom_description p {
-        font-size: 1.8vw;
-    }
-
-    .ForWhom_grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.3vw;
+        position: relative;
+        transform: none;
+        top: auto;
+        left: auto;
+        font-size: 7.1vw;
+        order: 4;
+        padding: 5.21vw 0;
     }
 
     .ForWhom_card {
-        border-radius: 2.6vw;
+        position: static;
+        width: 56.02vw !important;
         padding: 2.6vw;
-        min-height: 33vw;
+        gap: 1.3vw;
+        border-radius: 2.67vw;
+        margin-bottom: 3vw;
     }
 
-    .ForWhom_card_icon {
-        width: 7.81vw;
-        height: 7.81vw;
-    }
+    .ForWhom_card-1 { height: 28vw !important; align-self: flex-start; order: 1; }
+    .ForWhom_card-2 { height: 32vw !important; align-self: flex-end;   order: 2; }
+    .ForWhom_card-3 { height: 34vw !important; align-self: center;     order: 3; }
+    .ForWhom_card-4 { height: 32vw !important; align-self: flex-start; order: 5; }
+    .ForWhom_card-5 { height: 24vw !important; align-self: center;     order: 6; }
+    .ForWhom_card-6 { height: 28vw !important; align-self: flex-end;   order: 7; }
 
-    .ForWhom_card_icon img {
-        width: 4.17vw;
-        height: 4.17vw;
-    }
-
-    .ForWhom_card_text {
-
-        font-size: 3.34vw;
-        margin: 0;
-    }
-
-    .ForWhom_card_text .highlight {
-        padding: 0.26vw 0.52vw;
-        border-radius: 0.26vw;
-    }
+    .ForWhom_card_question { font-size: 3.1vw; }
+    .ForWhom_card_desc     { font-size: 2.6vw; }
 }
 
+/* ======= MOBILE ======= */
 @media (max-width: 767px) {
     .ForWhom {
+        padding: 13.89vw 0;
+    }
+
+    .ForWhom_wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .ForWhom_title {
+        position: relative;
+        transform: none;
+        top: auto;
+        left: auto;
+        font-size: 9.7vw;
+        order: 4;
         padding: 8.33vw 0;
     }
 
-    .ForWhom_title {
-        font-size: 7.78vw;
+    .ForWhom_card {
+        position: static;
+        width: 77.78vw !important;
+        padding: 5.56vw;
+        gap: 2.78vw;
+        border-radius: 5.78vw;
         margin-bottom: 5.56vw;
     }
 
-    .ForWhom_description {
-        margin-bottom: 5.33vw;
-    }
+    .ForWhom_card-1 { height: 56vw !important; align-self: flex-end;   order: 1; }
+    .ForWhom_card-2 { height: 70vw !important; align-self: flex-start; order: 2; }
+    .ForWhom_card-3 { height: 80vw !important; align-self: flex-end;   order: 3; }
+    .ForWhom_card-4 { height: 76vw !important; align-self: flex-start; order: 5; }
+    .ForWhom_card-5 { height: 56vw !important; align-self: center;     order: 6; }
+    .ForWhom_card-6 { height: 64vw !important; align-self: flex-end;   order: 7; }
 
-    .ForWhom_description p {
-        font-size: 3.89vw;
-        line-height: 1.3;
-    }
-
-    .ForWhom_grid {
-        grid-template-columns: 1fr;
-        gap: 4.17vw;
-    }
-
-    .ForWhom_card {
-        border-radius: 5.56vw;
-        padding: 2.8vw;
-        min-height: 50vw;
-    }
-
-    .ForWhom_card_icon {
-        width: 13.89vw;
-        height: 13.89vw;
-    }
-
-    .ForWhom_card_icon img {
-        width: 8.33vw;
-        height: 8.33vw;
-    }
-
-    .ForWhom_card_text {
-        font-size: 5.5vw;
-        line-height: 1.3;
-
-    }
-
-    .ForWhom_card_text .highlight {
-        padding: 0.56vw 1.11vw;
-        border-radius: 0.56vw;
-    }
+    .ForWhom_card_question { font-size: 5.3vw; }
+    .ForWhom_card_desc     { font-size: 4.5vw; }
 }

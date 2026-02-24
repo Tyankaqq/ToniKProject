@@ -9,6 +9,9 @@ import {ContactForm} from "../../components/Home/ContactForm/ContactForm.jsx";
 import {SeoText} from "../../components/Home/SeoText/SeoText.jsx";
 import {Footer} from "../../components/Home/Footer/Footer.jsx";
 import React from "react";
+import {ProductAction} from "../../components/Product/ProductAction/ProductAction.jsx";
+import {Blog} from "../../components/Home/Blog/Blog.jsx";
+import {ProductHow} from "../../components/Product/ProductHow/ProductHow.jsx";
 export const ProductPage = () => {
     return (
         <>
@@ -17,9 +20,15 @@ export const ProductPage = () => {
                 <div className={'First_block'}>
                 <ProductHero/>
                     <ProductInfo/>
+                    <ProductHow/>
+                    <ProductAction/>
                     <ForWhom/>
-                    <BlogSection/>
+
                     <ProductSelection/>
+                    <Blog
+                        variant="default"
+                        showBreadcrumbs={false}   // ← скрываем на ProductPage
+                    />
                 </div>
                 <ContactForm/>
                 <div>
