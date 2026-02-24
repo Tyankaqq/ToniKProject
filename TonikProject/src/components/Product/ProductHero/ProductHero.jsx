@@ -1,37 +1,33 @@
 import React from 'react';
 import './ProductHero.css';
-import coralImage from '../../../assets/Image/Tonic.svg';
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs.jsx";
+import AhnfeltiaCanvas from './AhnfeltiaCanvas.jsx';
 
 export const ProductHero = ({
-
-                                title = 'Анфельция',
+                                title = 'Анфельция Тобучинская',
                                 subtitle = 'Тоник жизни, который возвращает природную силу',
-                                description = 'Иногда, чтобы услышать себя, нужно просто замолчать. Иногда, чтобы восстановиться, нужно просто прикоснуться к тому, что живет миллионы лет в согласии с природой. Анфельция — это не про "таблетки" "от чего-то". Это про возвращение к себе. Про ту самую чистую версию организма, которая знает, как жить, как восстанавливаться, как быть в балансе.'
                             }) => {
     return (
-        <section className="ProductHero">
-            <div className="ProductHero_container container">
+        <div className="ProductHero_wrapper">
 
+            {/* 3D модель — фон */}
+            <AhnfeltiaCanvas />
 
-                <div className="ProductHero_wrapper">
-                    <Breadcrumbs />
-                    <div className="ProductHero_top">
-
-                        <div className="ProductHero_text_wrapper">
-
-                            <h2 className="ProductHero_subtitle">{subtitle}</h2>
-                            <p className="ProductHero_description">{description}</p>
-                        </div>
-
-                        <div className="ProductHero_coral">
-                            <img src={coralImage} alt={title} />
-                        </div>
-                    </div>
-
-                    <h1 className="ProductHero_title">{title}</h1>
-                </div>
+            {/* Breadcrumbs — первый в потоке */}
+            <div className="ProductHero_breadcrumbs container">
+                <Breadcrumbs />
             </div>
-        </section>
+
+            {/* Заголовок — центр */}
+            <div className="ProductHero_title_wrap">
+                <h1 className="ProductHero_title">{title}</h1>
+            </div>
+
+            {/* Subtitle — низ */}
+            <div className="ProductHero_desc_wrap container">
+                <p className="ProductHero_subtitle">{subtitle}</p>
+            </div>
+
+        </div>
     );
 };
