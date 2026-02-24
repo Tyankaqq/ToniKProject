@@ -6,6 +6,7 @@ import {ContactForm} from "../../components/Home/ContactForm/ContactForm.jsx";
 import {SeoText} from "../../components/Home/SeoText/SeoText.jsx";
 import {Footer} from "../../components/Home/Footer/Footer.jsx";
 import React from "react";
+import ProductModal from "../../components/Catalog/ProductModal/ProductModal.jsx";
 
 export const CatalogPage = () => {
     return (
@@ -19,6 +20,7 @@ export const CatalogPage = () => {
                     <ContactForm/>
                 <div>
                     <SeoText/>
+
                 </div>
             </main>
             <div style={{backgroundColor: 'rgba(31, 31, 31, 1)', borderRadius: ''}}>

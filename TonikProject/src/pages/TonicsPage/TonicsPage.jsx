@@ -21,9 +21,11 @@ export const TonicsPage = () => {
 
 
                 <TonicsHero/>
+                    <TonicsIndustries/>
+                    <TonicsSeoText/>
                 <Tonics/>
-                <TonicsSeoText/>
-                <TonicsIndustries/>
+
+
                 </div>
                 <ContactForm/>
                 <div className={'Second_block'}>

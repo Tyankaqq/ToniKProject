@@ -7,8 +7,10 @@ export default defineConfig({
     react({
       babel: {
         plugins: [['babel-plugin-react-compiler']],
+
       },
     }),
   ],
+  assetsInclude: ['**/*.glb', '**/*.gltf'],
   base: './'
 })
