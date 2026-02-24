@@ -336,13 +336,11 @@ p, span, a{
         font-size: 3.9vw;
     }
 
-    /* Левая колонка: Описание */
     .pop_desc {
         grid-column: 1;
         font-size: 2.6vw;
     }
 
-    /* Правая колонка: Покупка */
     .pop_stock {
         grid-column: 2;
         text-align: left;
@@ -408,7 +406,7 @@ p, span, a{
 
     .pop_delivery_logos {
         display: grid;
-        grid-template-columns: 1fr 1fr 2fr; /* Сетка как на скриншоте */
+        grid-template-columns: 1fr 1fr 2fr;
         gap: 15px;
         margin-top: 20px;
     }
@@ -421,9 +419,9 @@ p, span, a{
 @media (max-width: 767px) {
     .pop_modal {
         flex-direction: column;
-        width: 90vw; /* Увеличиваем ширину модалки на планшетах */
+        width: 90vw;
         max-height: 95vh;
-        overflow-y: auto; /* Разрешаем прокрутку всей модалки */
+        overflow-y: auto;
     }
 
     .pop_close {
