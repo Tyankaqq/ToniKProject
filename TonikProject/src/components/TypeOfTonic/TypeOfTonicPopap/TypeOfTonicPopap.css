@@ -177,7 +177,6 @@
 .pop_section {
     margin-top: 3.1vw;
     background: #1F1F1F;
-    padding-top: 20px;
     width: 100%;
 }
 
@@ -265,7 +264,10 @@
 
 .pop_right::-webkit-scrollbar { width: 0; }
 
-
+.pop_btn_cart span{
+    font-weight: 400;
+    line-height: 110%;
+}
 @media (min-width: 768px) and (max-width: 1024px) {
 
     .pop_modal {
@@ -377,10 +379,17 @@
         margin-bottom: 3.9vw;
     }
 
-    .pop_spec_item, .pop_cert_item {
+    .pop_spec_item {
         padding-top:0.6vw ;
         padding-bottom: 3.5vw;
         align-items: start;
+    }
+    .pop_cert_size{
+        font-size: 2.08vw;
+    }
+    .pop_cert_item{
+        padding-top:0.6vw ;
+        padding-bottom:0.6vw ;
     }
 
     .pop_spec_label, .pop_spec_value, .pop_cert_name, .pop_download_btn {
@@ -400,6 +409,7 @@
     }
 
     .pop_delivery_logos {
+        width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr 2fr;
         gap: 15px;
@@ -407,7 +417,7 @@
     }
 
     .pop_delivery_card {
-        height: 90px;
+        height: 11.45vw;
     }
 }
 
@@ -484,7 +494,8 @@
 
     .pop_purchase_row {
         flex-direction: column;
-        gap: 15px;
+        gap:2.7vw;
+        height: 21.6vw;
     }
 
     .pop_qty_selector {
@@ -495,31 +506,32 @@
     .pop_btn_buy, .pop_btn_cart {
         width: 100%;
         height: 9.4vw;
-        font-size: 2.6vw;
+        font-size: 4.4vw;
     }
 
     .pop_section_title {
-        font-size: 24px;
-        margin-top: 40px;
+        font-size:6.1vw;
+        margin-top: 11.1vw;
     }
 
     .pop_spec_label, .pop_spec_value {
-        font-size: 2.6vw;
+        font-size: 4.4vw;
+        text-align: start;
     }
 
     .pop_spec_value {
         width: auto;
-        max-width: 60%;
     }
 
     .pop_cert_name, .pop_download_btn {
-        font-size: 2.6vw;
+        font-size: 4.4vw;
+        font-weight: 400;
     }
 
     .pop_delivery_logos {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 15px;
+        gap: 2.7vw;
     }
 
     .pop_delivery_card:last-child {
@@ -527,6 +539,23 @@
     }
 
     .pop_delivery_card {
-        height: 100px;
+        height: 15.2vw;
+    }
+    .pop_btn_total{
+        display: none;
+    }
+    .pop_delivery_sub{
+        margin-bottom: 2.7vw;
+    }
+    .pop_cert_size{
+        font-size: 3.6vw;
+    }
+    .pop_cert_item{
+        display: block;
+    }
+    .pop_spec_item{
+        display: flex;
+        flex-direction: column;
+        text-align: start;
     }
 }

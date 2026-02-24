@@ -307,7 +307,6 @@
     display: flex; flex-direction: column;
     border-radius: 15px; overflow: hidden;
     text-decoration: none; color: inherit;
-    background: #1a1a1a;
     transition: transform 0.22s, box-shadow 0.22s;
 }
 .tot_card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
@@ -339,6 +338,7 @@
     .tot_pills_desktop { display: none; }
     .tot_pills_tablet  { display: flex; gap: 1.38vw; }
     .tot_pills_mobile  { display: none; }
+
 
     .tot_pill {
         height: 5.78vw;
@@ -389,11 +389,11 @@
 
 @media (max-width: 767px) {
     .tot_section { padding-top: 13.4vw; }
-    .tot_menu { gap: 3.13vw; margin-bottom: 6.25vw; align-items: center; }
+    .tot_menu { gap: 2.7vw; margin-bottom: 6.25vw; align-items: center; }
 
     .tot_pills_desktop { display: none; }
     .tot_pills_tablet  { display: none; }
-    .tot_pills_mobile  { display: flex; }
+    .tot_pills_mobile  { display: flex; gap: 2.7vw; }
 
     .tot_pill {
         height: 10.63vw;
@@ -404,12 +404,17 @@
     .tot_pills_mobile .tot_pill_label,
     .tot_pills_mobile .tot_chevron { display: none; }
 
+
     .tot_search_pill {
+        width: 43.05vw;
         height: 10.63vw;
         padding: 0 4.69vw;
         border-radius: 3.13vw;
     }
-    .tot_search_inp { font-size: 3.75vw; }
+    .tot_search_inp {
+        font-size: 3.75vw;
+        width: 27.7vw;
+    }
 
     .tot_dropdown {
         position: fixed;
