@@ -6,7 +6,7 @@ import Market from '../../../assets/Image/Market.svg';
 import VK from '../../../assets/Image/VkLogo.svg';
 import Telegram from '../../../assets/Image/TgLogo.svg';
 import WhatsApp from '../../../assets/Image/WhLogo.svg';
-import WhiteGalochka from '../../../assets/Image/WhiteGalochka.svg';
+import WhiteGalochka from '../../../assets/Image/WhiteGalochka.svg'; // ✅ Кнопка НАЗАД
 import Cart from '../../Cart/Cart/Cart.jsx';
 
 const Header = () => {
@@ -22,6 +22,14 @@ const Header = () => {
 
     const VIDEO_THRESHOLD = 1500;
 
+    // ✅ Функция возврата в КОРЗИНУ (НЕ закрытие)
+    const goBackToCart = () => {
+        console.log('🔙 goBackToCart вызвана'); // ✅ DEBUG
+        setIsCheckout(false);
+        // НЕ закрываем корзину! Только переключаем сцену
+    };
+
+    // Сбрасываем isCheckout при закрытии корзины
     useEffect(() => {
         if (!isCartOpen) {
             const timer = setTimeout(() => setIsCheckout(false), 300);
@@ -32,30 +40,28 @@ const Header = () => {
     // Блокировка скролла при открытии меню
     useEffect(() => {
         if (isMenuOpen || isCartOpen) {
-            const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
             document.body.style.overflow = 'hidden';
-            document.body.style.paddingRight = `${scrollBarWidth}px`;
         } else {
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
+            document.body.style.overflow = 'unset';
         }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
     }, [isMenuOpen, isCartOpen]);
 
     // Логика появления/скрытия хедера при скролле
     useEffect(() => {
         const handleScroll = () => {
-            if (isMenuOpen || isCartOpen) return;
-
             const currentScrollY = window.scrollY;
-
             if (currentScrollY < VIDEO_THRESHOLD) {
                 setIsVisible(true);
                 lastScrollY.current = currentScrollY;
                 return;
             }
-
-            if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+            if (currentScrollY > lastScrollY.current) {
                 setIsVisible(false);
+                setIsMenuOpen(false);
+                setIsCartOpen(false);
             } else {
                 setIsVisible(true);
             }
@@ -63,59 +69,105 @@ const Header = () => {
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [isMenuOpen, isCartOpen]);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    // Закрытие при клике вне меню
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // Проверяем клик по кнопке бургера/меню
+            const isClickInsideMenu = menuRef.current && menuRef.current.contains(event.target);
+
+            // ✅ ДОБАВЛЕНО: Проверяем клик внутри самого выпадающего мобильного меню
+            const isClickInsideMobileNav = mobileNavRef.current && mobileNavRef.current.contains(event.target);
+
+            // Если клик НЕ в бургере И НЕ в мобильном меню — закрываем
+            if (!isClickInsideMenu && !isClickInsideMobileNav) {
+                setIsMenuOpen(false);
+                setHoveredTab(null);
+            }
+        };
+
+        if (isMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isMenuOpen]);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+        setIsCartOpen(false);
+        setHoveredTab(null);
+    };
 
     const toggleCart = (e) => {
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
+        e.preventDefault();
         setIsCartOpen(!isCartOpen);
         setIsMenuOpen(false);
     };
 
-    const closeCart = (e) => {
-        if (e) e.stopPropagation();
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+        setHoveredTab(null);
+    };
+
+    const closeCart = () => {
         setIsCartOpen(false);
     };
 
-    const toggleMenu = (e) => {
-        if (e) e.stopPropagation();
-        setIsMenuOpen(!isMenuOpen);
-        setIsCartOpen(false);
-    };
-
-    const goBackToCart = (e) => {
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
+    const handleTabEnter = (tabName) => {
+        if (leaveTimeoutRef.current) {
+            clearTimeout(leaveTimeoutRef.current);
+            leaveTimeoutRef.current = null;
         }
-        setIsCheckout(false);
+        if (isMenuOpen) {
+            setHoveredTab(tabName);
+        }
     };
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
-                setIsMenuOpen(false);
-            }
-        };
-        if (isMenuOpen) document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [isMenuOpen]);
+    const handleTabLeave = () => {
+        leaveTimeoutRef.current = setTimeout(() => {
+            setHoveredTab(null);
+        }, 300);
+    };
+
+    const handleDropdownEnter = () => {
+        if (leaveTimeoutRef.current) {
+            clearTimeout(leaveTimeoutRef.current);
+            leaveTimeoutRef.current = null;
+        }
+    };
+
+    const handleDropdownLeave = () => {
+        setHoveredTab(null);
+    };
+
+    const toggleMobileSubmenu = (tabName) => {
+        setHoveredTab(hoveredTab === tabName ? null : tabName);
+    };
+
 
     return (
         <>
             <header className={`Header ${isVisible ? 'Header--visible' : 'Header--hidden'}`}>
                 <div className="container">
                     <div className="Header_container">
+                        {/* ЛОГО СЛЕВА */}
                         <div className="Header_logo">
-                            <a href="/"><img src={Logo} alt="Logo"/></a>
+                            <a href="/">
+                                <img src={Logo} alt="Logo"/>
+                            </a>
                         </div>
 
+                        {/* ПРАВАЯ ЧАСТЬ: КОРЗИНА + MEGA MENU */}
                         <div className="Header_right">
                             {/* КОРЗИНА MEGA MENU */}
                             <div className={`Header_cart_menu ${isCartOpen ? 'active' : ''}`}>
+                                {/* ИКОНКА КОРЗИНЫ */}
                                 <button
                                     type="button"
                                     className="Header_cart_icon"
@@ -125,13 +177,22 @@ const Header = () => {
                                     <img src={Market} alt="Корзина" />
                                 </button>
 
+                                {/* ✅ КОНТЕНТ КОРЗИНЫ - WhiteGalochka ПЕРЕД заголовком */}
                                 <div className="Header_cart_mega">
+                                    {/* ✅ WhiteGalochka + Заголовок (строка) */}
                                     <div className="Header_cart_header_row">
+                                        {/* КНОПКА НАЗАД - ТОЛЬКО при оформлении */}
                                         {isCheckout && (
-                                            <button
-                                                type="button"
+                                            <button  type="button"
                                                 className="Header_cart_back"
-                                                onClick={goBackToCart}
+                                                onClick={(e) => {
+                                                    console.log('🔙 НАЖАТА! isCheckout был:', isCheckout); // ✅ DEBUG
+                                                    e.stopPropagation(); // ✅ БЛОКИРУЕМ всплытие
+                                                    e.preventDefault();  // ✅ БЛОКИРУЕМ навигацию
+                                                    goBackToCart();
+                                                    console.log('🔙 setIsCheckout(false) вызвана'); // ✅ DEBUG
+                                                }}
+                                                aria-label="Назад в корзину"
                                             >
                                                 <img src={WhiteGalochka} alt="Назад" />
                                             </button>
@@ -142,44 +203,95 @@ const Header = () => {
                                             </h2>
                                         </div>
                                     </div>
+
                                     <div className="Header_divider"></div>
+
+                                    {/* КРЕСТИК ДЛЯ ЗАКРЫТИЯ */}
                                     <button
-                                        type="button"
                                         className="Header_cart_close"
                                         onClick={closeCart}
+                                        aria-label="Закрыть корзину"
                                     >
-                                        <span></span><span></span>
+                                        <span></span>
+                                        <span></span>
                                     </button>
                                 </div>
                             </div>
 
                             {/* MEGA MENU БЛОК - DESKTOP */}
-
                             <div className={`Header_mega_menu ${isMenuOpen ? 'active' : ''}`} ref={menuRef}>
                                 <div className="Header_tabs">
-                                    <div className="Header_tab_item" onMouseEnter={() => isMenuOpen && setHoveredTab('cat')} onMouseLeave={() => setHoveredTab(null)}>
+                                    {/* Каталог */}
+                                    <div
+                                        className="Header_tab_item"
+                                        onMouseEnter={() => handleTabEnter('catalog')}
+                                        onMouseLeave={handleTabLeave}
+                                    >
                                         <a href="/catalog" className="Header_tab">Каталог</a>
-                                        {hoveredTab === 'cat' && (
-                                            <div className="Header_tab_dropdown"><a href="/catalog">Весь каталог</a></div>
+                                        {isMenuOpen && hoveredTab === 'catalog' && (
+                                            <div
+                                                className="Header_tab_dropdown"
+                                                onMouseEnter={handleDropdownEnter}
+                                                onMouseLeave={handleDropdownLeave}
+                                            >
+                                                <a href="/catalog" onClick={closeMenu}>Весь каталог</a>
+                                            </div>
                                         )}
                                     </div>
-                                    <div className="Header_tab_item" onMouseEnter={() => isMenuOpen && setHoveredTab('ton')} onMouseLeave={() => setHoveredTab(null)}>
+
+                                    {/* Наши тоники */}
+                                    <div
+                                        className="Header_tab_item"
+                                        onMouseEnter={() => handleTabEnter('tonics')}
+                                        onMouseLeave={handleTabLeave}
+                                    >
                                         <a href="/tonics" className="Header_tab">Наши тоники</a>
-                                        {hoveredTab === 'ton' && (
-                                            <div className="Header_tab_dropdown">
-                                                <a href="/tonics/anfelcia">Анфельция</a>
-                                                <a href="/tonics/laminaria">Ламинария</a>
+                                        {isMenuOpen && hoveredTab === 'tonics' && (
+                                            <div
+                                                className="Header_tab_dropdown"
+                                                onMouseEnter={handleDropdownEnter}
+                                                onMouseLeave={handleDropdownLeave}
+                                            >
+                                                <a href="/tonics/anfelcia" onClick={closeMenu}>Анфельция</a>
+                                                <a href="/tonics/laminaria" onClick={closeMenu}>Ламинария</a>
+                                                <a href="/tonics/fucus" onClick={closeMenu}>Фукус</a>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Информация */}
+                                    <div
+                                        className="Header_tab_item"
+                                        onMouseEnter={() => handleTabEnter('info')}
+                                        onMouseLeave={handleTabLeave}
+                                    >
+                                        <span className="Header_tab">Информация</span>
+                                        {isMenuOpen && hoveredTab === 'info' && (
+                                            <div
+                                                className="Header_tab_dropdown"
+                                                onMouseEnter={handleDropdownEnter}
+                                                onMouseLeave={handleDropdownLeave}
+                                            >
+                                                <a href="/product" onClick={closeMenu}>О продукте</a>
+                                                <a href="/about" onClick={closeMenu}>О компании</a>
+                                                <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
                                             </div>
                                         )}
                                     </div>
                                 </div>
+
                                 <div className="Header_divider"></div>
+
+                                {/* БУРГЕР/КРЕСТИК СПРАВА */}
                                 <button
                                     type="button"
                                     className={`Header_burger ${isMenuOpen ? 'active' : ''}`}
                                     onClick={toggleMenu}
+                                    aria-label="Меню"
                                 >
-                                    <span></span><span></span><span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </button>
                             </div>
                         </div>
@@ -187,24 +299,85 @@ const Header = () => {
                 </div>
             </header>
 
+            {/* ВЫПАДАЮЩАЯ КОРЗИНА */}
             <Cart
                 isOpen={isCartOpen}
                 onClose={closeCart}
-                isCheckout={isCheckout}
+                isCheckout={isCheckout}      // ← Cart увидит false
                 setIsCheckout={setIsCheckout}
             />
 
-            {/* Мобильная навигация */}
+            {/* MOBILE NAV MENU */}
             {isMenuOpen && (
                 <nav className="Header_mobile_nav" ref={mobileNavRef}>
                     <div className="Header_mobile_nav_item">
                         <div className="Header_mobile_nav_header">
-                            <a href="/catalog">КАТАЛОГ</a>
+                            <a href="/catalog" onClick={closeMenu}>КАТАЛОГ</a>
+                            <button
+                                className="Header_mobile_nav_toggle"
+                                onClick={() => toggleMobileSubmenu('catalog')}
+                                type="button"
+                            >
+                                <span className={hoveredTab === 'catalog' ? 'active' : ''}></span>
+                            </button>
                         </div>
+                        {hoveredTab === 'catalog' && (
+                            <div className="Header_mobile_nav_submenu">
+                                <a href="/catalog" onClick={closeMenu}>Весь каталог</a>
+                            </div>
+                        )}
                     </div>
+
+                    <div className="Header_mobile_nav_item">
+                        <div className="Header_mobile_nav_header">
+                            <a href="/tonics" onClick={closeMenu}>НАШИ ТОНИКИ</a>
+                            <button
+                                className="Header_mobile_nav_toggle"
+                                onClick={() => toggleMobileSubmenu('tonics')}
+                                type="button"
+                            >
+                                <span className={hoveredTab === 'tonics' ? 'active' : ''}></span>
+                            </button>
+                        </div>
+                        {hoveredTab === 'tonics' && (
+                            <div className="Header_mobile_nav_submenu">
+                                <a href="/tonics/anfelcia" onClick={closeMenu}>Анфельция</a>
+                                <a href="/tonics/laminaria" onClick={closeMenu}>Ламинария</a>
+                                <a href="/tonics/fucus" onClick={closeMenu}>Фукус</a>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="Header_mobile_nav_item">
+                        <div className="Header_mobile_nav_header">
+                            <span>ИНФОРМАЦИЯ</span>
+                            <button
+                                className="Header_mobile_nav_toggle"
+                                onClick={() => toggleMobileSubmenu('info')}
+                                type="button"
+                            >
+                                <span className={hoveredTab === 'info' ? 'active' : ''}></span>
+                            </button>
+                        </div>
+                        {hoveredTab === 'info' && (
+                            <div className="Header_mobile_nav_submenu">
+                                <a href="/product" onClick={closeMenu}>О продукте</a>
+                                <a href="/about" onClick={closeMenu}>О компании</a>
+                                <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="Header_mobile_social">
-                        <a href="#"><img src={VK} alt="VK" /></a>
-                        <a href="#"><img src={Telegram} alt="Telegram" /></a>
+                        <a href="https://vk.com" target="_blank" rel="noopener noreferrer" className="Header_mobile_social_link">
+                            <img src={VK} alt="VK" />
+                        </a>
+                        <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="Header_mobile_social_link">
+                            <img src={Telegram} alt="Telegram" />
+                        </a>
+                        <a href="https://wa.me" target="_blank" rel="noopener noreferrer" className="Header_mobile_social_link">
+                            <img src={WhatsApp} alt="WhatsApp" />
+                        </a>
                     </div>
                 </nav>
             )}
