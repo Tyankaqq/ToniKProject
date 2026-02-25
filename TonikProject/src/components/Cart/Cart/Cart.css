@@ -460,8 +460,8 @@
 @media (min-width: 1025px) {
     .Cart_panel {
         top: 4.7vw;
-        right: 8vw;
-        width: 36.6vw;
+        right: 8.4vw;
+        width: 36.72vw;
         height: 46.5vw;
         border-radius: 0.52vw;
     }
@@ -476,7 +476,7 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     /* ✅ ОСНОВНОЙ КОНТЕЙНЕР КОРЗИНЫ */
     .Cart_panel {
-        top: 10.46vw;
+        top: 9vw;
         right: 12.6vw;
         width: 70vw;
         height: 92vw;
@@ -768,8 +768,8 @@
     /* ✅ ОСНОВНОЙ КОНТЕЙНЕР КОРЗИНЫ */
     .Cart_panel {
         top: 16.44vw;
-        right: 5.56vw;
-        width: 88.8vw; /* ~320px на экране 360px */
+        right: 5.5vw;
+        width: 90%; /* ~320px на экране 360px */
         height: 170vw; /* ~612px, можно увеличить до 183vw для 660px */
         max-height: 80vh; /* Ограничение по высоте экрана */
         border-radius: 3vw;
