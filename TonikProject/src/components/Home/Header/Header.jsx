@@ -22,11 +22,14 @@ const Header = () => {
 
     const VIDEO_THRESHOLD = 1500;
 
-    // ✅ Функция возврата в КОРЗИНУ (НЕ закрытие)
-    const goBackToCart = () => {
-        console.log('🔙 goBackToCart вызвана'); // ✅ DEBUG
+    // ✅ Функция возврата в КОРЗИНУ
+    const goBackToCart = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        console.log('🔙 goBackToCart вызвана');
         setIsCheckout(false);
-        // НЕ закрываем корзину! Только переключаем сцену
     };
 
     // Сбрасываем isCheckout при закрытии корзины
@@ -37,15 +40,15 @@ const Header = () => {
         }
     }, [isCartOpen]);
 
-    // Блокировка скролла при открытии меню
+    // ✅ Блокировка скролла без прыжка страницы
     useEffect(() => {
         if (isMenuOpen || isCartOpen) {
             document.body.style.overflow = 'hidden';
         } else {
-            document.body.style.overflow = 'unset';
+            document.body.style.overflow = '';
         }
         return () => {
-            document.body.style.overflow = 'unset';
+            document.body.style.overflow = '';
         };
     }, [isMenuOpen, isCartOpen]);
 
@@ -53,16 +56,21 @@ const Header = () => {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
+
+            // Если открыто меню или корзина — не скрываем хедер
+            if (isMenuOpen || isCartOpen) return;
+
             if (currentScrollY < VIDEO_THRESHOLD) {
                 setIsVisible(true);
                 lastScrollY.current = currentScrollY;
                 return;
             }
+
             if (currentScrollY > lastScrollY.current) {
+                // Скролл вниз
                 setIsVisible(false);
-                setIsMenuOpen(false);
-                setIsCartOpen(false);
             } else {
+                // Скролл вверх
                 setIsVisible(true);
             }
             lastScrollY.current = currentScrollY;
@@ -72,18 +80,14 @@ const Header = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [isMenuOpen, isCartOpen]);
 
     // Закрытие при клике вне меню
     useEffect(() => {
         const handleClickOutside = (event) => {
-            // Проверяем клик по кнопке бургера/меню
             const isClickInsideMenu = menuRef.current && menuRef.current.contains(event.target);
-
-            // ✅ ДОБАВЛЕНО: Проверяем клик внутри самого выпадающего мобильного меню
             const isClickInsideMobileNav = mobileNavRef.current && mobileNavRef.current.contains(event.target);
 
-            // Если клик НЕ в бургере И НЕ в мобильном меню — закрываем
             if (!isClickInsideMenu && !isClickInsideMobileNav) {
                 setIsMenuOpen(false);
                 setHoveredTab(null);
@@ -98,14 +102,22 @@ const Header = () => {
         };
     }, [isMenuOpen]);
 
-    const toggleMenu = () => {
+    // ✅ Исправленные функции переключения
+    const toggleMenu = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         setIsMenuOpen(!isMenuOpen);
         setIsCartOpen(false);
         setHoveredTab(null);
     };
 
     const toggleCart = (e) => {
-        e.preventDefault();
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         setIsCartOpen(!isCartOpen);
         setIsMenuOpen(false);
     };
@@ -115,7 +127,8 @@ const Header = () => {
         setHoveredTab(null);
     };
 
-    const closeCart = () => {
+    const closeCart = (e) => {
+        if (e) e.preventDefault();
         setIsCartOpen(false);
     };
 
@@ -135,21 +148,9 @@ const Header = () => {
         }, 300);
     };
 
-    const handleDropdownEnter = () => {
-        if (leaveTimeoutRef.current) {
-            clearTimeout(leaveTimeoutRef.current);
-            leaveTimeoutRef.current = null;
-        }
-    };
-
-    const handleDropdownLeave = () => {
-        setHoveredTab(null);
-    };
-
     const toggleMobileSubmenu = (tabName) => {
         setHoveredTab(hoveredTab === tabName ? null : tabName);
     };
-
 
     return (
         <>
@@ -177,21 +178,14 @@ const Header = () => {
                                     <img src={Market} alt="Корзина" />
                                 </button>
 
-                                {/* ✅ КОНТЕНТ КОРЗИНЫ - WhiteGalochka ПЕРЕД заголовком */}
+                                {/* КОНТЕНТ КОРЗИНЫ */}
                                 <div className="Header_cart_mega">
-                                    {/* ✅ WhiteGalochka + Заголовок (строка) */}
                                     <div className="Header_cart_header_row">
-                                        {/* КНОПКА НАЗАД - ТОЛЬКО при оформлении */}
                                         {isCheckout && (
-                                            <button  type="button"
+                                            <button
+                                                type="button"
                                                 className="Header_cart_back"
-                                                onClick={(e) => {
-                                                    console.log('🔙 НАЖАТА! isCheckout был:', isCheckout); // ✅ DEBUG
-                                                    e.stopPropagation(); // ✅ БЛОКИРУЕМ всплытие
-                                                    e.preventDefault();  // ✅ БЛОКИРУЕМ навигацию
-                                                    goBackToCart();
-                                                    console.log('🔙 setIsCheckout(false) вызвана'); // ✅ DEBUG
-                                                }}
+                                                onClick={goBackToCart}
                                                 aria-label="Назад в корзину"
                                             >
                                                 <img src={WhiteGalochka} alt="Назад" />
@@ -208,6 +202,7 @@ const Header = () => {
 
                                     {/* КРЕСТИК ДЛЯ ЗАКРЫТИЯ */}
                                     <button
+                                        type="button"
                                         className="Header_cart_close"
                                         onClick={closeCart}
                                         aria-label="Закрыть корзину"
@@ -229,11 +224,7 @@ const Header = () => {
                                     >
                                         <a href="/catalog" className="Header_tab">Каталог</a>
                                         {isMenuOpen && hoveredTab === 'catalog' && (
-                                            <div
-                                                className="Header_tab_dropdown"
-                                                onMouseEnter={handleDropdownEnter}
-                                                onMouseLeave={handleDropdownLeave}
-                                            >
+                                            <div className="Header_tab_dropdown">
                                                 <a href="/catalog" onClick={closeMenu}>Весь каталог</a>
                                             </div>
                                         )}
@@ -247,11 +238,7 @@ const Header = () => {
                                     >
                                         <a href="/tonics" className="Header_tab">Наши тоники</a>
                                         {isMenuOpen && hoveredTab === 'tonics' && (
-                                            <div
-                                                className="Header_tab_dropdown"
-                                                onMouseEnter={handleDropdownEnter}
-                                                onMouseLeave={handleDropdownLeave}
-                                            >
+                                            <div className="Header_tab_dropdown">
                                                 <a href="/tonics/anfelcia" onClick={closeMenu}>Анфельция</a>
                                                 <a href="/tonics/laminaria" onClick={closeMenu}>Ламинария</a>
                                                 <a href="/tonics/fucus" onClick={closeMenu}>Фукус</a>
@@ -267,11 +254,7 @@ const Header = () => {
                                     >
                                         <span className="Header_tab">Информация</span>
                                         {isMenuOpen && hoveredTab === 'info' && (
-                                            <div
-                                                className="Header_tab_dropdown"
-                                                onMouseEnter={handleDropdownEnter}
-                                                onMouseLeave={handleDropdownLeave}
-                                            >
+                                            <div className="Header_tab_dropdown">
                                                 <a href="/product" onClick={closeMenu}>О продукте</a>
                                                 <a href="/about" onClick={closeMenu}>О компании</a>
                                                 <a href="/partners" onClick={closeMenu}>Сотрудничество</a>
@@ -302,8 +285,8 @@ const Header = () => {
             {/* ВЫПАДАЮЩАЯ КОРЗИНА */}
             <Cart
                 isOpen={isCartOpen}
-                onClose={closeCart}
-                isCheckout={isCheckout}      // ← Cart увидит false
+                onClose={() => setIsCartOpen(false)}
+                isCheckout={isCheckout}
                 setIsCheckout={setIsCheckout}
             />
 
