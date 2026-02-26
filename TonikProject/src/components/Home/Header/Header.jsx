@@ -40,7 +40,7 @@ const Header = () => {
     // Блокировка скролла при открытии меню
     useEffect(() => {
         if (isMenuOpen || isCartOpen) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'unset';
         } else {
             document.body.style.overflow = 'unset';
         }
