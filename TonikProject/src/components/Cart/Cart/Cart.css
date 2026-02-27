@@ -36,7 +36,7 @@
     flex: 1;
     position: relative; /* ✅ Для наслоения кнопки */
     overflow: hidden;
-    padding: 1.5vw;
+    padding: 1.5vw 2.08vw 2.08vw 2.08vw;
     display: flex;
     flex-direction: column;
 }
@@ -51,8 +51,7 @@
 .Cart_items_scroll {
     flex: 1;
     overflow-y: auto;
-    padding-right: 0.5vw; /* Для скроллбара */
-    margin-bottom: 4vw; /* Отступ под кнопку */
+    padding-right: 0.5vw;
 }
 
 .Cart_item_card {
@@ -460,9 +459,9 @@
 @media (min-width: 1025px) {
     .Cart_panel {
         top: 4.7vw;
-        right: 8.4vw;
+        right: 4.2vw;
         width: 36.72vw;
-        height: 46.5vw;
+        height: 43.9vw;
         border-radius: 0.52vw;
     }
     .Cart_panel_title { font-size: 1.4vw; }
@@ -477,8 +476,8 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     /* ✅ ОСНОВНОЙ КОНТЕЙНЕР КОРЗИНЫ */
     .Cart_panel {
-        top: 9vw;
-        right: 12.6vw;
+        top: 10.46vw;
+        right: 2.6vw;
         width: 70vw;
         height: 92vw;
         border-radius: 1.30vw;
@@ -613,11 +612,7 @@
         font-size: 3.4vw;
     }
 
-    /* ✅ СКРОЛЛБАР */
-    .Cart_items_scroll {
 
-        margin-bottom: 9.8vw; /* Больше места под кнопку */
-    }
 
     /* ✅ Кнопка НАЗАД */
     .Cart_back_btn {
@@ -768,7 +763,7 @@
 @media (max-width: 767px) {
     /* ✅ ОСНОВНОЙ КОНТЕЙНЕР КОРЗИНЫ */
     .Cart_panel {
-        top: 16.44vw;
+        top: 19.44vw;
         right: 5.5vw;
         width: 90%; /* ~320px на экране 360px */
         height: 170vw; /* ~612px, можно увеличить до 183vw для 660px */
@@ -981,12 +976,13 @@
         gap: 2vw;
     }
 
-    /* Отступ для скролла, чтобы контент не перекрывался кнопкой */
-    .Cart_items_scroll {
-        margin-bottom: 20vw;
-    }
+
     .Header_cart_back{
         display: none;
+    }
+
+    .Header_container {
+
     }
 }
 

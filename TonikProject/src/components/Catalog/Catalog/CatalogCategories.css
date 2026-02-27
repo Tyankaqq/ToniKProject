@@ -235,7 +235,7 @@
 /* ========== TABLET (768px - 1024px) ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .CatalogCategories_section {
-        padding-top: 9.81vw;
+        padding-top: 13.6vw;
         margin-bottom: 13.02vw !important;
     }
 
@@ -361,7 +361,7 @@
 /* ========== MOBILE (max-width: 767px) ========== */
 @media (max-width: 767px) {
     .CatalogCategories_section {
-        padding-top: 13.89vw;
+        padding-top: 23.6vw;
         margin-bottom: 22.67vw !important;
     }
 
