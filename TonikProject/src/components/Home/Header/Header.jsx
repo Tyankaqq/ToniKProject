@@ -1,4 +1,3 @@
-// src/components/Header/Header.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import Logo from '../../../assets/Image/Logo.svg';
@@ -40,7 +39,7 @@ const Header = () => {
     // Блокировка скролла при открытии меню
     useEffect(() => {
         if (isMenuOpen || isCartOpen) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'unset';
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -157,16 +156,16 @@ const Header = () => {
                 <div className="container">
                     <div className="Header_container">
                         {/* ЛОГО СЛЕВА */}
-                        <div className="Header_logo">
+                        <div className={`Headedr_logo ${isCartOpen ? 'logo--hidden' : ''}`}>
                             <a href="/">
-                                <img src={Logo} alt="Logo"/>
+                                <img className="Logo" src={Logo} alt="Logo"/>
                             </a>
                         </div>
 
                         {/* ПРАВАЯ ЧАСТЬ: КОРЗИНА + MEGA MENU */}
                         <div className="Header_right">
                             {/* КОРЗИНА MEGA MENU */}
-                            <div className={`Header_cart_menu ${isCartOpen ? 'active' : ''}`}>
+                            <div className={`Header_cart_menu ${isCartOpen ? 'active' : ''} ${isMenuOpen ? 'hidden-by-menu' : ''}`}>
                                 {/* ИКОНКА КОРЗИНЫ */}
                                 <button
                                     className="Header_cart_icon"
@@ -218,7 +217,8 @@ const Header = () => {
                             </div>
 
                             {/* MEGA MENU БЛОК - DESKTOP */}
-                            <div className={`Header_mega_menu ${isMenuOpen ? 'active' : ''}`} ref={menuRef}>
+                            <div  className={`Header_mega_menu ${isMenuOpen ? 'active' : ''} ${isCartOpen ? 'hidden-by-cart' : ''}`}
+                                  ref={menuRef}>
                                 <div className="Header_tabs">
                                     {/* Каталог */}
                                     <div
@@ -237,7 +237,6 @@ const Header = () => {
                                             </div>
                                         )}
                                     </div>
-
                                     {/* Наши тоники */}
                                     <div
                                         className="Header_tab_item"

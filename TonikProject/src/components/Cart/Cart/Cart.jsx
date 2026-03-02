@@ -22,6 +22,51 @@ const Cart = ({ isOpen, onClose, isCheckout, setIsCheckout }) => {
             description: 'Обыкновенная',
             quantity: 1,
             stock: 10
+        },
+        {
+            id: 1,
+            img: card1,
+            name: 'Название товара',
+            price: 20000,
+            description: 'Обыкновенная',
+            quantity: 1,
+            stock: 10
+        },
+        {
+            id: 1,
+            img: card1,
+            name: 'Название товара',
+            price: 20000,
+            description: 'Обыкновенная',
+            quantity: 1,
+            stock: 10
+        },
+        {
+            id: 1,
+            img: card1,
+            name: 'Название товара',
+            price: 20000,
+            description: 'Обыкновенная',
+            quantity: 1,
+            stock: 10
+        },
+        {
+            id: 1,
+            img: card1,
+            name: 'Название товара',
+            price: 20000,
+            description: 'Обыкновенная',
+            quantity: 1,
+            stock: 10
+        },
+        {
+            id: 1,
+            img: card1,
+            name: 'Название товара',
+            price: 20000,
+            description: 'Обыкновенная',
+            quantity: 1,
+            stock: 10
         }
     ]);
 

@@ -27,7 +27,7 @@
 
 /* ЛОГО */
 .Header_logo img {
-    width: 6vw;
+    width: 6.8vw;
 }
 
 /* ПРАВАЯ ЧАСТЬ (МЕНЮ + КОРЗИНА) */
@@ -56,7 +56,7 @@
 
 .Header_cart_menu.active {
     width: 36.72vw; /* 705px */
-    padding: 0 0.78vw;
+    padding: 0 1.5vw;
     overflow: visible; /* Контент вылазит */
 }
 
@@ -126,7 +126,7 @@
 
 .Header_cart_title {
     font-family: 'Hikasami', sans-serif;
-    font-size: 0.94vw; /* 18px */
+    font-size: 1.25vw; /* 24px */
     font-weight: 600;
     text-transform: uppercase;
     color: var(--clr-white);
@@ -158,7 +158,7 @@
 
 .Header_cart_close span {
     position: absolute;
-    width: 1.04vw; /* 20px */
+    width: 2.04vw; /* 20px */
     height: 0.104vw; /* 2px */
     background: var(--clr-white);
     border-radius: 0.052vw;
@@ -250,7 +250,7 @@
     background: transparent;
     border: none;
     color: var(--clr-white);
-    font-size: 0.73vw; /* 14px */
+    font-size: 1.25vw; /* 14px */
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
@@ -295,7 +295,7 @@
     display: block;
     color: var(--clr-white);
     text-decoration: none;
-    font-size: 0.73vw;
+    font-size: 1.25vw;
     text-transform: uppercase;
     letter-spacing: -0.03em;
     font-weight: 400;
@@ -416,7 +416,29 @@
 /* ============================================
    MOBILE NAV MENU (TABLET & MOBILE)
    ============================================ */
+/* Скрываем контейнер и иконку корзины, когда открыто основное меню */
+.Header_cart_menu.hidden-by-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}
+.Header_mega_menu.hidden-by-cart {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+}
 
+/*.Header_search{*/
+/*    width: 1.56vw;*/
+/*    height: 1.56vw;*/
+/*    margin: 0 1vw;*/
+/*}*/
 /* Скрываем на Desktop */
 @media (min-width: 1025px) {
     .Header_mobile_nav {
@@ -433,7 +455,6 @@
         height: 5.86vw; /* 45px */
         border-radius: 1.17vw;
         border: 0.13vw solid rgba(255, 255, 255, 0.3);
-        margin-right: 2.08vw;
     }
 
     .Header_cart_menu:not(.active) {
@@ -467,7 +488,7 @@
 
     }
     .Header_right {
-        gap: 2.08vw;
+        gap: 1.3vw;
     }
 
     .Header_mega_menu {
@@ -552,7 +573,7 @@
 
     .Header_mobile_nav_header a,
     .Header_mobile_nav_header span {
-        font-size: 2.08vw; /* 16px */
+        font-size: 2.6vw; /* 20px */
         font-weight: 400;
         letter-spacing: -0.03em;
         line-height: 110%;
@@ -624,7 +645,7 @@
     }
 
     .Header_mobile_nav_submenu a {
-        font-size: 2.08vw;
+        font-size: 2.6vw;
         font-weight: 400;
         letter-spacing: -0.03em;
         line-height: 110%;
@@ -666,6 +687,10 @@
     .Header_cart_icon img{
         width: 3.34vw;
         height: 3.34vw;
+    }
+    .Logo{
+        width: 11.32vw;
+        height: 5.2vw;
     }
 }
 
@@ -709,7 +734,7 @@
     }
 
     .Header_right {
-        gap: 3.33vw;
+        gap: 1.1vw;
     }
 
     .Header_mega_menu {
@@ -755,7 +780,7 @@
     /* MOBILE NAV MENU */
     .Header_mobile_nav {
         position: fixed;
-        top: 16.44vw;
+        top: 19.44vw;
         right: 5.56vw;
         width: 77.78vw; /* 280px */
         background: linear-gradient(100deg, rgba(69, 69, 69, 0.40) 3.64%, rgba(0, 0, 0, 0.40) 86.15%);
@@ -893,6 +918,20 @@
         height: 4.5vw;
     }
     .Header_cart_menu.active{
-        width: 50vw;
+        width: 88.88vw;
     }
+    .Logo{
+        width: 18.33vw;
+        height: 8.33vw;
+    }
+
+    .Headedr_logo.logo--hidden {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+
 }
