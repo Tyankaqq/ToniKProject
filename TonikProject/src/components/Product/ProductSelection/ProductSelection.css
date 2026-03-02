@@ -143,23 +143,77 @@
     .ProductSelection_arrow--right { right: 1vw; }
 }
 
+
 /* ======= MOBILE ======= */
 @media (max-width: 767px) {
-    .ProductSelection { padding: 8.33vw 0; }
+    .ProductSelection {
+        padding: 8.33vw 0;
+    }
 
-    .ProductSelection_header { margin-bottom: 5.56vw; }
-    .ProductSelection_title  { font-size: 6.67vw; }
-    .ProductSelection_link   { font-size: 3.33vw; }
-    .ProductSelection_link img { width: 3.33vw; height: 3.33vw; }
+    .ProductSelection_header {
+        margin-bottom: 5.56vw;
+    }
 
-    .ProductSelection_slide { width: 80vw; }
-    .ProductSelection_card_image { height: 52vw; }
+    .ProductSelection_title {
+        font-size: 6.67vw;
+    }
 
-    .ProductSelection_card_info { padding: 3vw 0; }
+    .ProductSelection_link {
+        gap: 0.88vw;
+        font-size: 3.33vw;
+    }
+
+    .ProductSelection_link img {
+        width: 3.33vw;
+        height: 3.33vw;
+    }
+
+    .ProductSelection_slide {
+        width: 83.33vw; /* 300px при 360px */
+        opacity: 0.4;
+        transition: opacity 0.5s ease;
+    }
+
+    .ProductSelection_slide--active {
+        opacity: 1;
+    }
+
+    .ProductSelection_card_image {
+        height: 121.39vw; /* 437px при 360px — неактивный */
+        transition: height 0.5s ease;
+    }
+
+    .ProductSelection_slide--active .ProductSelection_card_image {
+        height: 159.44vw; /* 574px при 360px — активный */
+    }
+
+    .ProductSelection_card_info {
+        padding: 3vw 0;
+    }
+
     .ProductSelection_card_name,
-    .ProductSelection_card_price { font-size: 4.44vw; }
+    .ProductSelection_card_price {
+        font-size: 4.44vw;
+    }
 
-    .ProductSelection_arrow img { width: 4vw; height: 4vw; }
-    .ProductSelection_arrow--left  { left: 0.5vw; }
-    .ProductSelection_arrow--right { right: 0.5vw; }
+    .ProductSelection_arrow {
+        top: calc(159.44vw / 2);
+    }
+
+    .ProductSelection_arrow img {
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .ProductSelection_arrow--left {
+        left: 0.5vw;
+    }
+
+    .ProductSelection_arrow--right {
+        right: 0.5vw;
+    }
+    .ProductSelection_arrow img{
+        display: none;
+    }
 }
+

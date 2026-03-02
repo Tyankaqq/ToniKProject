@@ -34,7 +34,7 @@
     line-height: 1.1;
     text-transform: uppercase;
     margin: 0;
-    text-align: start;
+    text-align: start   ;
 }
 
 /* ======= Центр — 3D модель ======= */
@@ -105,10 +105,13 @@
     }
 
     .ProductAction_left {
-        padding: 8vw 4vw 2vw;
+        justify-content: center;
+        padding: 8vw 0 2vw;
     }
 
     .ProductAction_title {
+        text-align: center;
+        width: 100%;
         font-size: 4.3vw;
     }
 
@@ -119,7 +122,9 @@
     }
 
     .ProductAction_right {
-        padding: 2vw 4vw 8vw;
+
+        justify-content: center;
+        padding: 2vw 0 8vw;
     }
 
     .ProductAction_list_item {
@@ -142,10 +147,13 @@
     }
 
     .ProductAction_left {
-        padding: 10vw 5.56vw 2vw;
+        justify-content: center;
+        padding: 10vw 0 2vw;
     }
 
     .ProductAction_title {
+        width: 100%;
+        text-align: center;
         font-size: 6.9vw;
     }
 
@@ -156,10 +164,13 @@
     }
 
     .ProductAction_right {
-        padding: 2vw 5.56vw 10vw;
+        padding: 2vw 0vw 10vw;
+        justify-content: left;
+        width: 100%;
     }
 
     .ProductAction_list {
+        width: 100%;
         gap: 5.56vw;
     }
 
